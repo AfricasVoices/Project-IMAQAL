@@ -1,0 +1,9 @@
+{
+  "RapidProDomain": "textit.in",
+  "RapidProTokenFileURL": "gs://avf-credentials/imaqal-text-it-token.txt",
+  "RapidProTestContactUUIDs": [
+    "fad44f22-235a-4821-9780-dfef09076fe1",
+    "3903ad8e-284e-48a0-881b-89c0b06b9334",
+    "45939459-e4d5-4ad6-8650-3e7134b9a035"
+  ]
+}
