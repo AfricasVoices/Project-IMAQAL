@@ -5,5 +5,50 @@
     "fad44f22-235a-4821-9780-dfef09076fe1",
     "3903ad8e-284e-48a0-881b-89c0b06b9334",
     "45939459-e4d5-4ad6-8650-3e7134b9a035"
-  ]
+  ],
+  "RapidProKeyRemappings": [
+    {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
+
+    {"RapidProKey": "Rqa_S01E01 (Run ID) - imaqal_s01e01_activation", "PipelineKey": "rqa_s01e01_run_id"},
+    {"RapidProKey": "Rqa_S01E02 (Run ID) - imaqal_s01e02_activation", "PipelineKey": "rqa_s01e02_run_id"},
+    {"RapidProKey": "Rqa_S01E03 (Run ID) - imaqal_s01e03_activation", "PipelineKey": "rqa_s01e03_run_id"},
+    {"RapidProKey": "Rqa_S01E04 (Run ID) - imaqal_s01e04_activation", "PipelineKey": "rqa_s01e04_run_id"},
+    {"RapidProKey": "Rqa_S01E05 (Run ID) - imaqal_s01e05_activation", "PipelineKey": "rqa_s01e05_run_id"},
+    {"RapidProKey": "Rqa_S01E06 (Run ID) - imaqal_s01e06_activation", "PipelineKey": "rqa_s01e06_run_id"},
+    {"RapidProKey": "Rqa_S01E07 (Run ID) - imaqal_s01e07_activation", "PipelineKey": "rqa_s01e07_run_id"},
+
+    {"RapidProKey": "Rqa_S01E01 (Time) - imaqal_s01e01_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S01E02 (Time) - imaqal_s01e02_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S01E03 (Time) - imaqal_s01e03_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S01E04 (Time) - imaqal_s01e04_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S01E05 (Time) - imaqal_s01e05_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S01E06 (Time) - imaqal_s01e06_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S01E07 (Time) - imaqal_s01e07_activation", "PipelineKey": "sent_on"},
+
+    {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
+    {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
+    {"RapidProKey": "Age (Value) - imaqal_demog", "PipelineKey": "age_raw"},
+    {"RapidProKey": "Age (Time) - imaqal_demog", "PipelineKey": "age_time"},
+    {"RapidProKey": "Recently_Displaced (Value) - imaqal_demog", "PipelineKey": "recently_displaced_raw"},
+    {"RapidProKey": "Recently_Displaced (Time) - imaqal_demog", "PipelineKey": "recently_displaced_time"},
+    {"RapidProKey": "Hh_Language (Value) - imaqal_demog", "PipelineKey": "household_language_raw"},
+    {"RapidProKey": "Hh_Language (Time) - imaqal_demog", "PipelineKey": "household_language_time"},
+    {"RapidProKey": "District_Split (Value) - imaqal_demog", "PipelineKey": "location_raw"},
+    {"RapidProKey": "District_Split (Time) - imaqal_demog", "PipelineKey": "location_time"},
+
+    {"RapidProKey": "Women_Participation (Value) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_raw"},
+    {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_time"},
+    {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"},
+    {"RapidProKey": "Challenges (Value) - imaqal_s01_follow_up_w6", "PipelineKey": "challenges_raw"},
+    {"RapidProKey": "Challenges (Time) - imaqal_s01_follow_up_w6", "PipelineKey": "challenges_time"},
+    {"RapidProKey": "Challenges (Run ID) - imaqal_s01_follow_up_w6", "PipelineKey": "challenges_run_id"}
+    
+  ],
+  "DriveUpload": {
+    "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
+    "ProductionUploadPath": "imaqal_analysis_outputs/imaqal_s01_production.csv",
+    "MessagesUploadPath": "imaqal_analysis_outputs/imaqal_s01_messages.csv",
+    "IndividualsUploadPath": "imaqal_analysis_outputs/imaqal_s01_individuals.csv",
+    "TracedDataUploadPath": "imaqal_analysis_outputs/imaqal_s01_traced_data.json"
+  }
 }
