@@ -19,18 +19,6 @@ if __name__ == "__main__":
                                      # Support \n and long lines
                                      formatter_class=argparse.RawTextHelpFormatter)
 
-    parser.add_argument("--drive-upload", nargs=4,
-                        metavar=("drive-credentials-path", "csv-by-message-drive-path",
-                                 "csv-by-individual-drive-path", "production-csv-drive-path"),
-                        help="Upload message csv, individual csv, and production csv to Drive. Parameters:\n"
-                             "  drive-credentials-path: Path to a G Suite service account JSON file\n"
-                             "  csv-by-message-drive-path: 'Path' to a file in the service account's Drive to "
-                             "upload the messages CSV to\n"
-                             "  csv-by-individual-drive-path: 'Path' to a file in the service account's Drive to "
-                             "upload the individuals CSV to\n"
-                             "  production-csv-drive-path: 'Path' to a file in the service account's Drive to "
-                             "upload the production CSV to"),
-
     parser.add_argument("user", help="User launching this program")
     parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
                         help="Path to the pipeline configuration json file"),
@@ -60,7 +48,7 @@ if __name__ == "__main__":
                         help="Path to the episode 6 raw messages JSON file, containing a list of serialized TracedData "
                              "objects")
     parser.add_argument("s01e07_input_path", metavar="s01e07-input-path",
-                        help="Path to the episode 6 raw messages JSON file, containing a list of serialized TracedData "
+                        help="Path to the episode 7 raw messages JSON file, containing a list of serialized TracedData "
                              "objects")
     parser.add_argument("s01_demog_input_path", metavar="s01-demog-input-path",
                         help="Path to the raw demographics JSON file for season 1, containing a list of serialized "
@@ -95,12 +83,6 @@ if __name__ == "__main__":
     csv_by_message_drive_path = None
     csv_by_individual_drive_path = None
     production_csv_drive_path = None
-
-    drive_upload = args.drive_upload is not None
-    if drive_upload:
-        csv_by_message_drive_path = args.drive_upload[1]
-        csv_by_individual_drive_path = args.drive_upload[2]
-        production_csv_drive_path = args.drive_upload[3]
 
     user = args.user
     pipeline_configuration_file_path = args.pipeline_configuration_file_path
@@ -177,7 +159,6 @@ if __name__ == "__main__":
         with open(path, "r") as f:
             survey_datasets.append(TracedDataJsonIO.import_json_to_traced_data_iterable(f))
         log.debug(f"Loaded {len(survey_datasets[-1])} messages")
-        
 
     # Add survey data to the messages
     log.info("Combining Datasets...")
