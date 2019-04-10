@@ -144,21 +144,18 @@ if __name__ == "__main__":
         log.info("Loading Episode {}/{}...".format(i + 1, len(message_paths)))
         with open(path, "r") as f:
             messages_datasets.append(TracedDataJsonIO.import_json_to_traced_data_iterable(f))
-        log.debug(f"Loaded {len(messages_datasets[-1])} messages")
 
     # Load demogs
     log.info("Loading Demographics...")
     with open(s01_demog_input_path, "r") as f:
         s01_demographics = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
-        log.debug(f"Loaded {len(s01_demographics)} contacts")
     
     # Load Follow up Surveys
     survey_datasets = []
     for i, path in enumerate(follow_up_survey_paths):
-        log.info("Loading Follow up {}/{}...".format(i + 1, len(follow_up_survey_paths)))
+        log.info("Loading Surveys {}/{}...".format(i + 1, len(follow_up_survey_paths)))
         with open(path, "r") as f:
             survey_datasets.append(TracedDataJsonIO.import_json_to_traced_data_iterable(f))
-        log.debug(f"Loaded {len(survey_datasets[-1])} messages")
 
     # Add survey data to the messages
     log.info("Combining Datasets...")
