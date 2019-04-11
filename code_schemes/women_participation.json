@@ -1,32 +1,8 @@
 {
-  "SchemeID": "Scheme-e1aa9330",
-  "Name": "Recently Displaced",
+  "SchemeID": "Scheme-929e4af4",
+  "Name": "Women Participation",
   "Version": "0.0.0.1",
   "Codes": [
-    {
-      "CodeID": "code-2b565901",
-      "CodeType": "Normal",
-      "DisplayText": "yes",
-      "NumericValue": 1,
-      "StringValue": "yes",
-      "Shortcut": "y",
-      "VisibleInCoda": true,
-      "MatchValues": [
-        "yes"
-      ]
-    },
-    {
-      "CodeID": "code-d67739e0",
-      "CodeType": "Normal",
-      "DisplayText": "no",
-      "Shortcut": "n",
-      "NumericValue": 2,
-      "StringValue": "no",
-      "VisibleInCoda": true,
-      "MatchValues": [
-        "no"
-      ]
-    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
@@ -92,3 +68,4 @@
     }
   ]
 }
+
