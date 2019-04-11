@@ -25,6 +25,9 @@
     {"RapidProKey": "Rqa_S01E06 (Time) - imaqal_s01e06_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_S01E07 (Time) - imaqal_s01e07_activation", "PipelineKey": "sent_on"},
 
+    {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Challenges (Time) - imaqal_s01_follow_up_w6", "PipelineKey": "sent_on"},
+
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
     {"RapidProKey": "Age (Value) - imaqal_demog", "PipelineKey": "age_raw"},
