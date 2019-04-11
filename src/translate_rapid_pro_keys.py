@@ -8,12 +8,13 @@ from dateutil.parser import isoparse
 class TranslateRapidProKeys(object):
     # TODO: Move the constants in this file to configuration json
     SHOW_ID_MAP = {
-        "Rqa_S01E01 (Value) - csap_s02e01_activation": 1,
-        "Rqa_S01E02 (Value) - csap_s02e02_activation": 2,
-        "Rqa_S01E03 (Value) - csap_s02e03_activation": 3,
-        "Rqa_S01E04 (Value) - csap_s02e04_activation": 4,
-        "Rqa_S01E05 (Value) - csap_s02e05_activation": 5,
-        "Rqa_S01E06 (Value) - csap_s02e06_activation": 6
+        "Rqa_S01E01 (Value) - imaqal_s01e01_activation": 1,
+        "Rqa_S01E02 (Value) - imaqal_s01e02_activation": 2,
+        "Rqa_S01E03 (Value) - imaqal_s01e03_activation": 3,
+        "Rqa_S01E04 (Value) - imaqal_s01e04_activation": 4,
+        "Rqa_S01E05 (Value) - imaqal_s01e05_activation": 5,
+        "Rqa_S01E06 (Value) - imaqal_s01e06_activation": 6,
+        "Rqa_S01E07 (Value) - imaqal_s01e07_activation": 7
     }
 
     RAW_ID_MAP = {
@@ -22,7 +23,8 @@ class TranslateRapidProKeys(object):
         3: "rqa_s01e03_raw",
         4: "rqa_s01e04_raw",
         5: "rqa_s01e05_raw",
-        6: "rqa_s01e06_raw"
+        6: "rqa_s01e06_raw",
+        7: "rqa_s01e07_raw"
     }
 
     @classmethod
