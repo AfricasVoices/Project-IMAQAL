@@ -9,7 +9,7 @@ from core_data_modules.util import PhoneNumberUuidTable, IOUtils
 from google.cloud import storage
 from storage.google_drive import drive_client_wrapper
 
-from src import  CombineRawDatasets, TranslateRapidProKeys, AutoCodeShowMessagesAndFollowups, ProductionFile, AutoCodeDemogs
+from src import  CombineRawDatasets, TranslateRapidProKeys, AutoCodeShowAndFollowupsMessages, ProductionFile, AutoCodeDemogs
 from src.lib import PipelineConfiguration
 
 log = Logger(__name__)
@@ -165,7 +165,7 @@ if __name__ == "__main__":
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
 
     log.info("Auto Coding Shows and Follow ups Messages...")
-    data = AutoCodeShowMessagesAndFollowups.auto_code_show_messages_and_followups(user, data, icr_output_dir, coded_dir_path)
+    data = AutoCodeShowAndFollowupsMessages.auto_code_show_and_followups_messages(user, data, icr_output_dir, coded_dir_path)
 
     log.info("Exporting production CSV...")
     data = ProductionFile.generate(data, production_csv_output_path)

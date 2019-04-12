@@ -14,7 +14,7 @@ from src.lib import PipelineConfiguration, MessageFilters, ICRTools
 
 log = Logger(__name__)
 
-class AutoCodeShowMessagesAndFollowups(object):
+class AutoCodeShowAndFollowupsMessages(object):
     RQA_AND_FOLLOW_UP_KEYS = []
     for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
         RQA_AND_FOLLOW_UP_KEYS.append(plan.raw_field)
@@ -24,9 +24,22 @@ class AutoCodeShowMessagesAndFollowups(object):
     ICR_MESSAGES_COUNT = 200
     ICR_SEED = 0
 
+    def log_empty_string_stats(data, raw_fields):
+        for raw_field in raw_fields:
+            total_messages_count = 0
+            empty_string_messages_count = 0
+
+            for td in data:
+                if raw_field in td:
+                    total_messages_count += 1
+                    if td[raw_field] == "":
+                        empty_string_messages_count += 1
+
+            log.debug(f"{raw_field}: {empty_string_messages_count} messages were \"\", out "
+                      f"of {total_messages_count} total")
+
     @classmethod
-    
-    def auto_code_show_messages_and_followups(cls, user, data, icr_output_dir, coda_output_dir):
+    def auto_code_show_and_followups_messages(cls, user, data, icr_output_dir, coda_output_dir):
         # Filter out test messages sent by AVF.
         if not PipelineConfiguration.DEV_MODE:
             data = MessageFilters.filter_test_messages(data)
@@ -35,10 +48,10 @@ class AutoCodeShowMessagesAndFollowups(object):
         data = MessageFilters.filter_time_range(
             data, cls.SENT_ON_KEY, PipelineConfiguration.PROJECT_START_DATE, PipelineConfiguration.PROJECT_END_DATE)
         
-        # Filter for runs which don't contain a response to any week's question
+        # Filter for runs which don't contain a response to any week's question or the follow-up questions
         data = MessageFilters.filter_empty_messages(data, cls.RQA_AND_FOLLOW_UP_KEYS)
 
-        # Tag RQA messages which are noise as being noise
+        # Tag RQA and follow up messages which are noise as being noise
         for td in data:
             is_noise = True
             for rqa_key in cls.RQA_AND_FOLLOW_UP_KEYS:
@@ -53,25 +66,32 @@ class AutoCodeShowMessagesAndFollowups(object):
         # Filter for messages which aren't noise (in order to export to Coda and export for ICR)
         not_noise = MessageFilters.filter_noise(data, cls.NOISE_KEY, lambda x: x)
 
-        # Compute the number of messages that have empty string
-        log.debug("Counting the number of empty string messages for each raw field...")
-        raw_fields = []
-        for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-            if plan.raw_field not in raw_fields:
-                raw_fields.append(plan.raw_field)
+        # Compute the number of RQA messages that were the empty string
+        log.debug("Counting the number of empty string messages for each raw radio show field...")
+        raw_rqa_fields = []
+        for plan in PipelineConfiguration.RQA_CODING_PLANS:
+            if plan.raw_field not in raw_rqa_fields:
+                raw_rqa_fields.append(plan.raw_field)
+        cls.log_empty_string_stats(data, raw_rqa_fields)
 
-        for raw_field in raw_fields:
-            total_messages_count = 0
-            empty_string_messages_count = 0
+        # Compute the number of follow up messages that were the empty string
+        log.debug("Counting the number of empty string messages for each follow up field...")
+        raw_follow_up_fields = []
+        for plan in PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+            if plan.raw_field not in raw_follow_up_fields:
+                raw_follow_up_fields.append(plan.raw_field)
+        cls.log_empty_string_stats(data, raw_follow_up_fields)
 
-            for td in data:
-                if raw_field in td:
-                    total_messages_count += 1
-                    if td[raw_field] == "":
-                        empty_string_messages_count += 1
-
-            log.debug(f"{raw_field}: {empty_string_messages_count} messages were \"\", out "
-                    f"of {total_messages_count} total")
+        # Compute the number of demog messages that were the empty string
+        log.debug("Counting the number of empty string messages for each demog field...")
+        raw_demog_fields = []
+        for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
+            if plan.raw_field not in raw_demog_fields:
+                raw_demog_fields.append(plan.raw_field)
+        demog_data = dict()
+        for td in data:
+            demog_data[td["uid"]] = td
+        cls.log_empty_string_stats(demog_data.values(), raw_demog_fields)
 
         # Output RQA and Follow Up surveys messages which aren't noise to Coda
         IOUtils.ensure_dirs_exist(coda_output_dir)
