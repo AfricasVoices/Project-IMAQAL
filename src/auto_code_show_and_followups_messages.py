@@ -8,9 +8,7 @@ from core_data_modules.traced_data import Metadata
 from core_data_modules.traced_data.io import TracedDataCSVIO, TracedDataCodaV2IO
 from core_data_modules.util import IOUtils
 
-from src.lib import PipelineConfiguration, MessageFilters, ICRTools
-#TODO Uncomment once channels.py is ready
-#from src.lib.channels import Channels
+from src.lib import PipelineConfiguration, MessageFilters, ICRTools, Channels
 
 log = Logger(__name__)
 
@@ -59,9 +57,9 @@ class AutoCodeShowAndFollowupsMessages(object):
                     is_noise = False
             td.append_data({cls.NOISE_KEY: is_noise}, Metadata(user, Metadata.get_call_location(), time.time()))
         
-        #TODO Uncomment once channels.py is ready
-        #Label each message with channel keys
-        #Channels.set_channel_keys(user, data, cls.SENT_ON_KEY)
+        
+        # Label each message with channel keys
+        Channels.set_channel_keys(user, data, cls.SENT_ON_KEY)
 
         # Filter for messages which aren't noise (in order to export to Coda and export for ICR)
         not_noise = MessageFilters.filter_noise(data, cls.NOISE_KEY, lambda x: x)
