@@ -67,20 +67,12 @@ class AutoCodeShowAndFollowupsMessages(object):
         not_noise = MessageFilters.filter_noise(data, cls.NOISE_KEY, lambda x: x)
 
         # Compute the number of RQA messages that were the empty string
-        log.debug("Counting the number of empty string messages for each raw radio show field...")
-        raw_rqa_fields = []
-        for plan in PipelineConfiguration.RQA_CODING_PLANS:
-            if plan.raw_field not in raw_rqa_fields:
-                raw_rqa_fields.append(plan.raw_field)
-        cls.log_empty_string_stats(data, raw_rqa_fields)
-
-        # Compute the number of follow up messages that were the empty string
-        log.debug("Counting the number of empty string messages for each follow up field...")
-        raw_follow_up_fields = []
-        for plan in PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-            if plan.raw_field not in raw_follow_up_fields:
-                raw_follow_up_fields.append(plan.raw_field)
-        cls.log_empty_string_stats(data, raw_follow_up_fields)
+        log.debug("Counting the number of empty string messages for each raw radio show and follow up survey field...")
+        raw_rqa_and_follow_up_fields = []
+        for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+            if plan.raw_field not in raw_rqa_and_follow_up_fields:
+                raw_rqa_and_follow_up_fields.append(plan.raw_field)
+        cls.log_empty_string_stats(data, raw_rqa_and_follow_up_fields)
 
         # Compute the number of demog messages that were the empty string
         log.debug("Counting the number of empty string messages for each demog field...")
