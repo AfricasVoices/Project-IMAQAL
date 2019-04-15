@@ -9,7 +9,7 @@ from core_data_modules.util import PhoneNumberUuidTable, IOUtils
 from google.cloud import storage
 from storage.google_drive import drive_client_wrapper
 
-from src import  CombineRawDatasets, TranslateRapidProKeys
+from src import  CombineRawDatasets, TranslateRapidProKeys, AutoCodeShowAndFollowupsMessages, ProductionFile, AutoCodeDemogs
 from src.lib import PipelineConfiguration
 
 log = Logger(__name__)
@@ -164,6 +164,15 @@ if __name__ == "__main__":
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
 
+    log.info("Auto Coding Shows and Follow ups Messages...")
+    data = AutoCodeShowAndFollowupsMessages.auto_code_show_and_followups_messages(user, data, icr_output_dir, coded_dir_path)
+
+    log.info("Exporting production CSV...")
+    data = ProductionFile.generate(data, production_csv_output_path)
+
+    log.info("Auto Coding Demogs...")
+    data = AutoCodeDemogs.auto_code_demogs(user, data, phone_number_uuid_table, coded_dir_path)
+
     log.info("Writing TracedData to file...")
     IOUtils.ensure_dirs_exist_for_file(json_output_path)
     with open(json_output_path, "w") as f:
@@ -175,15 +184,14 @@ if __name__ == "__main__":
     # traced data log.
     if pipeline_configuration.drive_upload is not None:
         log.info("Uploading CSVs to Google Drive...")
-        
-        #TODO 
-        '''
+
         production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
         production_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.production_upload_path)
         drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
                                               target_file_name=production_csv_drive_file_name,
                                               target_folder_is_shared_with_me=True)
-        
+        #TODO: Uncomment once generate analysis file step is ready
+        '''
         messages_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_upload_path)
         messages_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.messages_upload_path)
         drive_client_wrapper.update_or_create(csv_by_message_output_path, messages_csv_drive_dir,

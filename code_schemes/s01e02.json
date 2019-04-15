@@ -1,8 +1,32 @@
 {
   "SchemeID": "Scheme-adaba99c",
-  "Name": "S01E02 Reasons",
+  "Name": "S01E02",
   "Version": "0.0.0.1",
   "Codes": [
+    {
+      "CodeID": "code-ed0c2d8f",
+      "CodeType": "Normal",
+      "DisplayText": "yes",
+      "NumericValue": 1,
+      "StringValue": "yes",
+      "Shortcut": "y",
+      "VisibleInCoda": true,
+      "MatchValues": [
+        "yes"
+      ]
+    },
+    {
+      "CodeID": "code-ba58cffd",
+      "CodeType": "Normal",
+      "DisplayText": "no",
+      "Shortcut": "n",
+      "NumericValue": 2,
+      "StringValue": "no",
+      "VisibleInCoda": true,
+      "MatchValues": [
+        "no"
+      ]
+    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
@@ -68,4 +92,3 @@
     }
   ]
 }
-

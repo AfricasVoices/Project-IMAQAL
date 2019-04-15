@@ -5,7 +5,6 @@ from core_data_modules.cleaners import somali, Codes
 from core_data_modules.data_models import Scheme, validators
 from dateutil.parser import isoparse
 
-
 def _open_scheme(filename):
     with open(f"code_schemes/{filename}", "r") as f:
         firebase_map = json.load(f)
@@ -29,16 +28,19 @@ class CodeSchemes(object):
     WOMEN_PARTICIPATION_YES_NO = _open_scheme("women_participation_yes_no.json")
     CHALLENGES = _open_scheme("challenges.json")
 
-    SOMALIA_OPERATOR = _open_scheme("somalia_operator.json")
-
-    GENDER = _open_scheme("gender.json")
-    SOMALIA_DISTRICT = _open_scheme("somalia_district.json")
     AGE = _open_scheme("age.json")
     RECENTLY_DISPLACED = _open_scheme("recently_displaced.json")
     HOUSEHOLD_LANGUAGE = _open_scheme("household_language.json")
+    GENDER = _open_scheme("gender.json")
+
+    SOMALIA_OPERATOR = _open_scheme("somalia_operator.json")
+    SOMALIA_DISTRICT = _open_scheme("somalia_district.json")
+    MOGADISHU_SUB_DISTRICT = _open_scheme("mogadishu_sub_district.json")
+    SOMALIA_REGION = _open_scheme("somalia_region.json")
+    SOMALIA_STATE = _open_scheme("somalia_state.json")
+    SOMALIA_ZONE = _open_scheme("somalia_zone.json")
 
     WS_CORRECT_DATASET = _open_scheme("ws_correct_dataset.json")
-
 
 class CodingPlan(object):
     def __init__(self, raw_field, coded_field, coda_filename, cleaner=None, code_scheme=None, time_field=None,
@@ -63,9 +65,10 @@ class CodingPlan(object):
 
 
 class PipelineConfiguration(object):
-    DEV_MODE = False
+    DEV_MODE = True
     
-    PROJECT_START_DATE = isoparse("2019-04-12T00:00:00+03:00")
+    PROJECT_START_DATE = isoparse("2019-04-19T00:00:00+0300")
+    #TODO revise this as the project nears the end
     PROJECT_END_DATE = isoparse("2019-05-28T09:00:00+03:00")
 
     RQA_CODING_PLANS = [
@@ -194,8 +197,7 @@ class PipelineConfiguration(object):
         else:
             return Codes.NOT_CODED
 
-    
-    SURVEY_CODING_PLANS = [
+    DEMOG_CODING_PLANS = [
         CodingPlan(raw_field="gender_raw",
                    coded_field="gender_coded",
                    time_field="gender_time",
