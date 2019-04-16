@@ -123,7 +123,6 @@ class Channels(object):
             timestamp = isoparse(td[time_key])
 
             channel_dict = dict()
-            print(channel_dict)
 
             # Set channel ranges
             time_range_matches = 0
