@@ -8,7 +8,7 @@ from core_data_modules.traced_data.io import TracedDataCodaV2IO
 from core_data_modules.util import IOUtils
 
 from src.lib.pipeline_configuration import CodeSchemes, PipelineConfiguration
-
+from src.lib.message_filters import MessageFilters
 
 class AutoCodeDemogs(object):
     SENT_ON_KEY = "sent_on"
@@ -49,6 +49,36 @@ class AutoCodeDemogs(object):
                     Metadata.get_call_location()
                 )
             td.append_data({"operator_coded": label.to_dict()}, Metadata(user, Metadata.get_call_location(), time.time()))
+
+        #Sub sample messages for export to coda
+        sub_sample_data = MessageFilters.sub_sample_messages(data)
+
+        # Output single-scheme sub-sample answers to coda for manual verification + coding
+        IOUtils.ensure_dirs_exist(coda_output_dir)
+        for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
+            if plan.raw_field == "location_raw":
+                continue
+            
+            TracedDataCodaV2IO.compute_message_ids(user, sub_sample_data, plan.raw_field, plan.id_field)
+
+            coda_output_path = path.join(coda_output_dir, f'sub_sample_{plan.coda_filename}')
+            with open(coda_output_path, "w") as f:
+                TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
+                    sub_sample_data, plan.raw_field, plan.time_field, plan.id_field, {plan.coded_field: plan.code_scheme}, f
+                )
+        
+        # Output sub-sample location scheme to coda for manual verification + coding
+        output_path = path.join(coda_output_dir, "sub_sample_location.json")
+        TracedDataCodaV2IO.compute_message_ids(user, sub_sample_data, "location_raw", "location_raw_id")
+        with open(output_path, "w") as f:
+            TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
+                sub_sample_data, "location_raw", "location_time", "location_raw_id",
+                {"mogadishu_sub_district_coded": CodeSchemes.MOGADISHU_SUB_DISTRICT,
+                 "district_coded": CodeSchemes.SOMALIA_DISTRICT,
+                 "region_coded": CodeSchemes.SOMALIA_REGION,
+                 "state_coded": CodeSchemes.SOMALIA_STATE,
+                 "zone_coded": CodeSchemes.SOMALIA_ZONE}, f
+            )
 
         # Output single-scheme answers to coda for manual verification + coding
         IOUtils.ensure_dirs_exist(coda_output_dir)
