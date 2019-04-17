@@ -45,7 +45,8 @@ class MessageFilters(object):
 
         subsample_data = []
         for td in messages:
-            if int(SHAUtils.sha_string(td["uid"])[0], 16) < 4:
+            if (td["uid"] not in subsample_data) and (int(SHAUtils.sha_string(td["uid"])[0], 16) < 4):
                 subsample_data.append(td)
-                
+        log.info(f"Number of sample messages "
+                 f"{len(subsample_data)}/{len(messages)} messages.")        
         return subsample_data
