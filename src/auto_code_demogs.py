@@ -50,29 +50,29 @@ class AutoCodeDemogs(object):
                 )
             td.append_data({"operator_coded": label.to_dict()}, Metadata(user, Metadata.get_call_location(), time.time()))
 
-        #Sub sample messages for export to coda
-        sub_sample_data = MessageFilters.sub_sample_messages(data)
+        # Subsample messages for export to coda
+        subsample_data = MessageFilters.subsample_messages(data)
 
-        # Output single-scheme sub-sample answers to coda for manual verification + coding
+        # Output single-scheme subsample answers to coda for manual verification + coding
         IOUtils.ensure_dirs_exist(coda_output_dir)
         for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
             if plan.raw_field == "location_raw":
                 continue
             
-            TracedDataCodaV2IO.compute_message_ids(user, sub_sample_data, plan.raw_field, plan.id_field)
+            TracedDataCodaV2IO.compute_message_ids(user, subsample_data, plan.raw_field, plan.id_field)
 
             coda_output_path = path.join(coda_output_dir, f'sub_sample_{plan.coda_filename}')
             with open(coda_output_path, "w") as f:
                 TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
-                    sub_sample_data, plan.raw_field, plan.time_field, plan.id_field, {plan.coded_field: plan.code_scheme}, f
+                    subsample_data, plan.raw_field, plan.time_field, plan.id_field, {plan.coded_field: plan.code_scheme}, f
                 )
         
-        # Output sub-sample location scheme to coda for manual verification + coding
+        # Output subsample location scheme to coda for manual verification + coding
         output_path = path.join(coda_output_dir, "sub_sample_location.json")
-        TracedDataCodaV2IO.compute_message_ids(user, sub_sample_data, "location_raw", "location_raw_id")
+        TracedDataCodaV2IO.compute_message_ids(user, subsample_data, "location_raw", "location_raw_id")
         with open(output_path, "w") as f:
             TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
-                sub_sample_data, "location_raw", "location_time", "location_raw_id",
+                subsample_data, "location_raw", "location_time", "location_raw_id",
                 {"mogadishu_sub_district_coded": CodeSchemes.MOGADISHU_SUB_DISTRICT,
                  "district_coded": CodeSchemes.SOMALIA_DISTRICT,
                  "region_coded": CodeSchemes.SOMALIA_REGION,

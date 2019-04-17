@@ -1,6 +1,6 @@
 from core_data_modules.logging import Logger
 from dateutil.parser import isoparse
-import hashlib
+from core_data_modules.util import SHAUtils 
 
 log = Logger(__name__)
 
@@ -33,22 +33,19 @@ class MessageFilters(object):
         return [td for td in messages if not noise_fn(td.get(message_key))]
     
     @staticmethod
-    def sub_sample_messages(messages):
-        uuids =[]
-        hashed_uuids  = []
-        sub_sample_hashed_uuids = []
-        sub_sample_data = []
+    def subsample_messages(messages):
+        '''
+        Generates sample messages for labelling in coda
         
-        for td in messages:
-            if td["avf_phone_id"] not in uuids:
-                uuids.append(td["avf_phone_id"])
-                hashed_uuids.append(int(hashlib.sha256(td["avf_phone_id"].encode('utf-8')).hexdigest(), 16))
+        :param: messages: TracedData objects to sample
+        :type traced_data: TracedData
+        :return: sample of the TracedData objects
+        :rtype: TracedData
+        '''
 
-                for hashed_uuid in hashed_uuids:
-                    if int(str(hashed_uuid)[0]) < 4:
-                        sub_sample_hashed_uuids.append(hashed_uuid)
-            
-            for hashed_uuid in sub_sample_hashed_uuids:
-                sub_sample_data.append(td)
-                  
-        return sub_sample_data
+        subsample_data = []
+        for td in messages:
+            if int(SHAUtils.sha_string(td["uid"])[0], 16) < 4:
+                subsample_data.append(td)
+                
+        return subsample_data

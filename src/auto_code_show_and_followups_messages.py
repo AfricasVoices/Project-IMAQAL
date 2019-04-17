@@ -93,18 +93,18 @@ class AutoCodeShowAndFollowupsMessages(object):
                     not_noise, plan.raw_field, cls.SENT_ON_KEY, plan.id_field, {}, f
                 )
         
-        #Sub sample messages for export to coda
-        sub_sample_data = MessageFilters.sub_sample_messages(not_noise)
+        #Subsample messages for export to coda
+        subsample_data = MessageFilters.subsample_messages(not_noise)
 
-        # Output RQA and Follow Up sub-sample messages to Coda
+        # Output RQA and Follow Up subsample messages to Coda
         IOUtils.ensure_dirs_exist(coda_output_dir)
         for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-            TracedDataCodaV2IO.compute_message_ids(user, sub_sample_data, plan.raw_field, plan.id_field)
+            TracedDataCodaV2IO.compute_message_ids(user, subsample_data, plan.raw_field, plan.id_field)
 
             output_path = path.join(coda_output_dir, f'sub_sample_{plan.coda_filename}')
             with open(output_path, "w") as f:
                 TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
-                    sub_sample_data, plan.raw_field, cls.SENT_ON_KEY, plan.id_field, {}, f
+                    subsample_data, plan.raw_field, cls.SENT_ON_KEY, plan.id_field, {}, f
                 )
  
         # Output RQA and Follow Up surveys messages for ICR
