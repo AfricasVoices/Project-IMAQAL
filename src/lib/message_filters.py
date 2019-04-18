@@ -35,18 +35,18 @@ class MessageFilters(object):
     @staticmethod
     def subsample_messages(messages):
         '''
-        Generates sample messages for labelling in coda
+        Generates sample messages 
         
         :param: messages: TracedData objects to sample
-        :type traced_data: TracedData
+        :type traced_data: list of TracedData
         :return: sample of the TracedData objects
-        :rtype: TracedData
+        :rtype: list of TracedData
         '''
 
         subsample_data = []
         for td in messages:
-            if (td["uid"] not in subsample_data) and (int(SHAUtils.sha_string(td["uid"])[0], 16) < 4):
+            if (td not in subsample_data) and (int(SHAUtils.sha_string(td["uid"])[0], 16)) < 4:
                 subsample_data.append(td)
-        log.info(f"Number of sample messages "
-                 f"{len(subsample_data)}/{len(messages)} messages.")        
+        log.info(f"Sample messages generated "
+                 f"{len(subsample_data)}/{len(messages)} total messages.")        
         return subsample_data
