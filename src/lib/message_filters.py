@@ -2,6 +2,8 @@ from core_data_modules.logging import Logger
 from dateutil.parser import isoparse
 from core_data_modules.util import SHAUtils 
 
+from src.lib import PipelineConfiguration
+
 log = Logger(__name__)
 
 # TODO: Move to Core once adapted for and tested on a pipeline that supports multiple radio shows
@@ -45,7 +47,7 @@ class MessageFilters(object):
 
         subsample_data = []
         for td in messages:
-            if (td not in subsample_data) and (int(SHAUtils.sha_string(td["uid"])[0], 16)) < 4:
+            if int(SHAUtils.sha_string(td["uid"])[0], 16) < PipelineConfiguration.SUBSAMPLING_THRESHOLD:
                 subsample_data.append(td)
         log.info(f"Sample messages generated "
                  f"{len(subsample_data)}/{len(messages)} total messages.")        
