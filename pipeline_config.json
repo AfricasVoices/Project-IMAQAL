@@ -26,7 +26,6 @@
     {"RapidProKey": "Rqa_S01E07 (Time) - imaqal_s01e07_activation", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
-    {"RapidProKey": "Challenges (Time) - imaqal_s01_follow_up_w6", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
@@ -34,17 +33,14 @@
     {"RapidProKey": "Age (Time) - imaqal_demog", "PipelineKey": "age_time"},
     {"RapidProKey": "Recently_Displaced (Value) - imaqal_demog", "PipelineKey": "recently_displaced_raw"},
     {"RapidProKey": "Recently_Displaced (Time) - imaqal_demog", "PipelineKey": "recently_displaced_time"},
-    {"RapidProKey": "Hh_Language (Value) - imaqal_demog", "PipelineKey": "household_language_raw"},
-    {"RapidProKey": "Hh_Language (Time) - imaqal_demog", "PipelineKey": "household_language_time"},
-    {"RapidProKey": "District_Split (Value) - imaqal_demog", "PipelineKey": "location_raw"},
-    {"RapidProKey": "District_Split (Time) - imaqal_demog", "PipelineKey": "location_time"},
+    {"RapidProKey": "Household_Language (Value) - imaqal_demog", "PipelineKey": "household_language_raw"},
+    {"RapidProKey": "Household_Language (Time) - imaqal_demog", "PipelineKey": "household_language_time"},
+    {"RapidProKey": "District (Value) - imaqal_demog", "PipelineKey": "location_raw"},
+    {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"},
 
     {"RapidProKey": "Women_Participation (Value) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_raw"},
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_time"},
     {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"},
-    {"RapidProKey": "Challenges (Value) - imaqal_s01_follow_up_w6", "PipelineKey": "challenges_raw"},
-    {"RapidProKey": "Challenges (Time) - imaqal_s01_follow_up_w6", "PipelineKey": "challenges_time"},
-    {"RapidProKey": "Challenges (Run ID) - imaqal_s01_follow_up_w6", "PipelineKey": "challenges_run_id"}
     
   ],
   "DriveUpload": {
