@@ -35,7 +35,7 @@ class MessageFilters(object):
         return [td for td in messages if not noise_fn(td.get(message_key))]
     
     @staticmethod
-    def subsample_messages(messages):
+    def subsample_messages_by_uid(messages):
         '''
         Generates sample messages 
         

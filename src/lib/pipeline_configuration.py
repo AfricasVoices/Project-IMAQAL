@@ -65,7 +65,7 @@ class CodingPlan(object):
 class PipelineConfiguration(object):
     DEV_MODE = False
 
-    SUBSAMPLING_THRESHOLD = 4
+    SUBSAMPLING_THRESHOLD = 4 # /16 (a fraction of hex) subsample of data
     
     PROJECT_START_DATE = isoparse("2019-04-19T00:00:00+0300")
     #TODO revise this as the project nears the end
