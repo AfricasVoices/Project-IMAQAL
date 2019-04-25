@@ -1,5 +1,8 @@
 from core_data_modules.logging import Logger
 from dateutil.parser import isoparse
+from core_data_modules.util import SHAUtils 
+
+from src.lib import PipelineConfiguration
 
 log = Logger(__name__)
 
@@ -30,3 +33,22 @@ class MessageFilters(object):
     @staticmethod
     def filter_noise(messages, message_key, noise_fn):
         return [td for td in messages if not noise_fn(td.get(message_key))]
+    
+    @staticmethod
+    def subsample_messages(messages):
+        '''
+        Generates sample messages 
+        
+        :param: messages: TracedData objects to sample
+        :type traced_data: list of TracedData
+        :return: sample of the TracedData objects
+        :rtype: list of TracedData
+        '''
+
+        subsample_data = []
+        for td in messages:
+            if int(SHAUtils.sha_string(td["uid"])[0], 16) < PipelineConfiguration.SUBSAMPLING_THRESHOLD:
+                subsample_data.append(td)
+        log.info(f"Sample messages generated "
+                 f"{len(subsample_data)}/{len(messages)} total messages.")        
+        return subsample_data

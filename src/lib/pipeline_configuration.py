@@ -26,7 +26,6 @@ class CodeSchemes(object):
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
     WOMEN_PARTICIPATION_YES_NO = _open_scheme("women_participation_yes_no.json")
-    CHALLENGES = _open_scheme("challenges.json")
 
     AGE = _open_scheme("age.json")
     RECENTLY_DISPLACED = _open_scheme("recently_displaced.json")
@@ -63,13 +62,14 @@ class CodingPlan(object):
             id_field = "{}_id".format(self.raw_field)
         self.id_field = id_field
 
-
 class PipelineConfiguration(object):
-    DEV_MODE = True
+    DEV_MODE = False
+
+    SUBSAMPLING_THRESHOLD = 4
     
     PROJECT_START_DATE = isoparse("2019-04-19T00:00:00+0300")
     #TODO revise this as the project nears the end
-    PROJECT_END_DATE = isoparse("2019-05-28T09:00:00+03:00")
+    PROJECT_END_DATE = isoparse("2020-02-15T09:00:00+03:00")
 
     RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01e01_raw",
@@ -172,16 +172,7 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO,
                    binary_coded_field="women_participation_yes_no_coded",
                    binary_analysis_file_key="women_participation_yes_no"),
-        
-        CodingPlan(raw_field="challenges_raw",
-                   coded_field="challenges_coded",
-                   time_field="sent_on",
-                   coda_filename="challenges.json",
-                   icr_filename="challenges.csv",
-                   run_id_field="challenges_run_id",
-                   analysis_file_key="challenges_",
-                   cleaner=None,
-                   code_scheme=CodeSchemes.CHALLENGES)
+      
     ]
 
     @staticmethod

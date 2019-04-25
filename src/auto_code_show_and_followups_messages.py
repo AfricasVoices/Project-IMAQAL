@@ -57,7 +57,6 @@ class AutoCodeShowAndFollowupsMessages(object):
                     is_noise = False
             td.append_data({cls.NOISE_KEY: is_noise}, Metadata(user, Metadata.get_call_location(), time.time()))
         
-        
         # Label each message with channel keys
         Channels.set_channel_keys(user, data, cls.SENT_ON_KEY)
 
@@ -82,8 +81,8 @@ class AutoCodeShowAndFollowupsMessages(object):
         for td in data:
             demog_data[td["uid"]] = td
         cls.log_empty_string_stats(demog_data.values(), raw_demog_fields)
-
-        # Output RQA and Follow Up surveys messages which aren't noise to Coda
+        
+        # Output all RQA and Follow Up surveys messages which aren't noise to Coda
         IOUtils.ensure_dirs_exist(coda_output_dir)
         for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
             TracedDataCodaV2IO.compute_message_ids(user, not_noise, plan.raw_field, plan.id_field)
@@ -92,6 +91,20 @@ class AutoCodeShowAndFollowupsMessages(object):
             with open(output_path, "w") as f:
                 TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
                     not_noise, plan.raw_field, cls.SENT_ON_KEY, plan.id_field, {}, f
+                )
+        
+        #Subsample messages for export to coda
+        subsample_data = MessageFilters.subsample_messages(not_noise)
+
+        # Output RQA and Follow Up subsample messages to Coda
+        IOUtils.ensure_dirs_exist(coda_output_dir)
+        for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+            TracedDataCodaV2IO.compute_message_ids(user, subsample_data, plan.raw_field, plan.id_field)
+
+            output_path = path.join(coda_output_dir, f'sub_sample_{plan.coda_filename}')
+            with open(output_path, "w") as f:
+                TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
+                    subsample_data, plan.raw_field, cls.SENT_ON_KEY, plan.id_field, {}, f
                 )
  
         # Output RQA and Follow Up surveys messages for ICR

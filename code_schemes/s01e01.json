@@ -1,70 +1,173 @@
 {
-  "SchemeID": "Scheme-03bb299c",
-  "Name": "S01E01 Reasons",
-  "Version": "0.0.0.1",
-  "Codes": [
-    {
-      "CodeID": "code-NA-f93d3eb7",
-      "CodeType": "Control",
-      "ControlCode": "NA",
-      "DisplayText": "NA (missing)",
-      "NumericValue": -10,
-      "StringValue": "NA",
-      "VisibleInCoda": false
-    },
-    {
-      "CodeID": "code-NS-2c11b7c9",
-      "CodeType": "Control",
-      "ControlCode": "NS",
-      "DisplayText": "NS (skip)",
-      "NumericValue": -20,
-      "StringValue": "NS",
-      "VisibleInCoda": false
-    },
-    {
-      "CodeID": "code-NC-42f1d983",
-      "CodeType": "Control",
-      "ControlCode": "NC",
-      "DisplayText": "NC (not coded)",
-      "NumericValue": -30,
-      "StringValue": "NC",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-NR-5e3eee23",
-      "CodeType": "Control",
-      "ControlCode": "NR",
-      "DisplayText": "NR (not reviewed)",
-      "NumericValue": -40,
-      "StringValue": "NR",
-      "VisibleInCoda": false
-    },
-    {
-      "CodeID": "code-NIC-99631cb8",
-      "CodeType": "Control",
-      "ControlCode": "NIC",
-      "DisplayText": "NIC (not internally consistent)",
-      "NumericValue": -50,
-      "StringValue": "NIC",
-      "VisibleInCoda": false
-    },
-    {
-      "CodeID": "code-STOP-08b832a8",
-      "CodeType": "Control",
-      "ControlCode": "STOP",
-      "DisplayText": "STOP",
-      "NumericValue": -90,
-      "StringValue": "STOP",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-WS-adb25603b7af",
-      "CodeType": "Control",
-      "ControlCode": "WS",
-      "DisplayText": "WS (wrong scheme)",
-      "NumericValue": -100,
-      "StringValue": "WS",
-      "VisibleInCoda": true
-    }
-  ]
+    "SchemeID": "Scheme-03bb299c",
+    "Name": "S01E01",
+    "Version": "0.0.0.1",
+    "Codes": [{
+            "CodeID": "code-95f5ec39",
+            "CodeType": "Normal",
+            "DisplayText": "discrimination",
+            "NumericValue": 0,
+            "StringValue": "discrimination",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-e5c090d6",
+            "CodeType": "Normal",
+            "DisplayText": "need for cultural change",
+            "NumericValue": 1,
+            "StringValue": "need_for_cultural_change",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-f1d76a3c",
+            "CodeType": "Normal",
+            "DisplayText": "nepotism",
+            "NumericValue": 2,
+            "StringValue": "nepotism",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-0a5bc746",
+            "CodeType": "Normal",
+            "DisplayText": "such issues exist",
+            "NumericValue": 3,
+            "StringValue": "such_issues_exist",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-aff98330",
+            "CodeType": "Normal",
+            "DisplayText": "clannism",
+            "NumericValue": 4,
+            "StringValue": "clannism",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-7a79977b",
+            "CodeType": "Normal",
+            "DisplayText": "gender discrimination",
+            "NumericValue": 5,
+            "StringValue": "gender_discrimination",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-fb1c06d5",
+            "CodeType": "Normal",
+            "DisplayText": "women exclusion from decision making",
+            "NumericValue": 6,
+            "StringValue": "women_exclusion_from_decision_making",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-68ab8a5b",
+            "CodeType": "Normal",
+            "DisplayText": "youth unemployment",
+            "NumericValue": 7,
+            "StringValue": "youth_unemployment",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-883a7932",
+            "CodeType": "Normal",
+            "DisplayText": "youth voices not heard",
+            "NumericValue": 8,
+            "StringValue": "youth_voices_not_heard",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-f97c6d75",
+            "CodeType": "Normal",
+            "DisplayText": "demoralization",
+            "NumericValue": 9,
+            "StringValue": "demoralization",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-a4a0f10b",
+            "CodeType": "Normal",
+            "DisplayText": "illegal emigration",
+            "NumericValue": 10,
+            "StringValue": "illegal_emigration",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-13ca3fdf",
+            "CodeType": "Normal",
+            "DisplayText": "other",
+            "NumericValue": 11,
+            "StringValue": "other",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-3e46d3d7",
+            "CodeType": "Normal",
+            "DisplayText": "positive highlight",
+            "NumericValue": 12,
+            "StringValue": "positive_highlight",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-NA-f93d3eb7",
+            "CodeType": "Control",
+            "ControlCode": "NA",
+            "DisplayText": "NA (missing)",
+            "NumericValue": -10,
+            "StringValue": "NA",
+            "VisibleInCoda": false
+        },
+        {
+            "CodeID": "code-NS-2c11b7c9",
+            "CodeType": "Control",
+            "ControlCode": "NS",
+            "DisplayText": "NS (skip)",
+            "NumericValue": -20,
+            "StringValue": "NS",
+            "VisibleInCoda": false
+        },
+        {
+            "CodeID": "code-NC-42f1d983",
+            "CodeType": "Control",
+            "ControlCode": "NC",
+            "DisplayText": "NC (not coded)",
+            "NumericValue": -30,
+            "StringValue": "NC",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-NR-5e3eee23",
+            "CodeType": "Control",
+            "ControlCode": "NR",
+            "DisplayText": "NR (not reviewed)",
+            "NumericValue": -40,
+            "StringValue": "NR",
+            "VisibleInCoda": false
+        },
+        {
+            "CodeID": "code-NIC-99631cb8",
+            "CodeType": "Control",
+            "ControlCode": "NIC",
+            "DisplayText": "NIC (not internally consistent)",
+            "NumericValue": -50,
+            "StringValue": "NIC",
+            "VisibleInCoda": false
+        },
+        {
+            "CodeID": "code-STOP-08b832a8",
+            "CodeType": "Control",
+            "ControlCode": "STOP",
+            "DisplayText": "STOP",
+            "NumericValue": -90,
+            "StringValue": "STOP",
+            "VisibleInCoda": true
+        },
+        {
+            "CodeID": "code-WS-adb25603b7af",
+            "CodeType": "Control",
+            "ControlCode": "WS",
+            "DisplayText": "WS (wrong scheme)",
+            "NumericValue": -100,
+            "StringValue": "WS",
+            "VisibleInCoda": true
+        }
+    ]
 }
