@@ -25,7 +25,7 @@ class CodeSchemes(object):
     S01E07_YES_NO = _open_scheme("s01e07_yes_no.json")
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
-    WOMEN_PARTICIPATION_YES_NO = _open_scheme("women_participation_yes_no.json")
+    WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")
 
     AGE = _open_scheme("age.json")
     RECENTLY_DISPLACED = _open_scheme("recently_displaced.json")
@@ -169,9 +169,9 @@ class PipelineConfiguration(object):
                    analysis_file_key="women_participation_",
                    cleaner=None,
                    code_scheme=CodeSchemes.WOMEN_PARTICIPATION,
-                   binary_code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO,
-                   binary_coded_field="women_participation_yes_no_coded",
-                   binary_analysis_file_key="women_participation_yes_no"),
+                   binary_code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
+                   binary_coded_field="women_participation_yes_no_amb_coded",
+                   binary_analysis_file_key="women_participation_yes_no_amb"),
       
     ]
 

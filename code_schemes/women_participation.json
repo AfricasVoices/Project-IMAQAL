@@ -4,6 +4,94 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+        "CodeID": "code-28939e6b",
+        "CodeType": "Normal",
+        "DisplayText": "women are the backbone of the community",
+        "NumericValue": 0,
+        "StringValue": "women_are_the_backbone_of_the_community",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-4ddefc44",
+        "CodeType": "Normal",
+        "DisplayText": "good decision makers",
+        "NumericValue": 1,
+        "StringValue": "good_decision_makers",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-4ddefc44",
+        "CodeType": "Normal",
+        "DisplayText": "part of the society",
+        "NumericValue": 2,
+        "StringValue": "part_of_the_society",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-8f6128d1",
+        "CodeType": "Normal",
+        "DisplayText": "not given chances",
+        "NumericValue": 3,
+        "StringValue": "not_given_chances",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-c0c777ab",
+        "CodeType": "Normal",
+        "DisplayText": "culture does not allow",
+        "NumericValue": 4,
+        "StringValue": "culture_does_not_allow",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-eb8526f0",
+        "CodeType": "Normal",
+        "DisplayText": "no rights",
+        "NumericValue": 5,
+        "StringValue": "no_rights",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-1e00ecac",
+        "CodeType": "Normal",
+        "DisplayText": "women excluded from decision making",
+        "NumericValue": 6,
+        "StringValue": "women_excluded_from_decision_making",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-4f78a0e6",
+        "CodeType": "Normal",
+        "DisplayText": "discriminated",
+        "NumericValue": 7,
+        "StringValue": "discriminated",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-0684eebf",
+        "CodeType": "Normal",
+        "DisplayText": "not their role",
+        "NumericValue": 8,
+        "StringValue": "not_their_role",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-88b1975f",
+        "CodeType": "Normal",
+        "DisplayText": "bad decision-makers",
+        "NumericValue": 9,
+        "StringValue": "bad_decision_makers",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-a5afa957",
+        "CodeType": "Normal",
+        "DisplayText": "other",
+        "NumericValue": 10,
+        "StringValue": "other",
+        "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",

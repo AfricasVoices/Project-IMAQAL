@@ -1,6 +1,6 @@
 {
     "Version": "0.0.0.1",
-    "Name": "Women Participation Yes_No",
+    "Name": "Women Participation Yes/No/Amb",
     "SchemeID": "Scheme-24da3ea2",
     "Codes": [{
         "DisplayText": "Yes",
@@ -22,6 +22,17 @@
         ],
         "StringValue": "no",
         "DisplayText": "No",
+        "VisibleInCoda": true
+      },
+      {
+        "NumericValue": 1,
+        "CodeID": "code-8f13a0dd",
+        "CodeType": "Normal",
+        "MatchValues": [
+          "ambivalent"
+        ],
+        "StringValue": "ambivalent",
+        "DisplayText": "Ambivalent",
         "VisibleInCoda": true
       },
       {
