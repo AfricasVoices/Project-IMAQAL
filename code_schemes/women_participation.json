@@ -30,9 +30,9 @@
     {
         "CodeID": "code-8f6128d1",
         "CodeType": "Normal",
-        "DisplayText": "not given chance",
+        "DisplayText": "not given chances",
         "NumericValue": 3,
-        "StringValue": "not_given_chance",
+        "StringValue": "not_given_chances",
         "VisibleInCoda": true
     },
     {
