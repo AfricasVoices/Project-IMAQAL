@@ -94,7 +94,7 @@ class AutoCodeShowAndFollowupsMessages(object):
                 )
         
         #Subsample messages for export to coda
-        subsample_data = MessageFilters.subsample_messages(not_noise)
+        subsample_data = MessageFilters.subsample_messages_by_uid(not_noise)
 
         # Output RQA and Follow Up subsample messages to Coda
         IOUtils.ensure_dirs_exist(coda_output_dir)

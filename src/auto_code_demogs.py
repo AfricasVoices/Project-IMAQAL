@@ -51,7 +51,7 @@ class AutoCodeDemogs(object):
             td.append_data({"operator_coded": label.to_dict()}, Metadata(user, Metadata.get_call_location(), time.time()))
 
         # Subsample messages for export to coda
-        subsample_data = MessageFilters.subsample_messages(data)
+        subsample_data = MessageFilters.subsample_messages_by_uid(data)
 
         # Output single-scheme subsample answers to coda for manual verification + coding
         IOUtils.ensure_dirs_exist(coda_output_dir)
