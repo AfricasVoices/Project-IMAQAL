@@ -28,7 +28,8 @@ class Channels(object):
     ]
 
     DRAMA_PROMO_RANGES = [
-        ("2019-04-27T00:00:00+03:00", "2019-05-01T09:00:00+03:00"),
+
+        ("2019-04-28T00:00:00+03:00", "2019-05-01T09:00:00+03:00"),
         ("2019-05-05T00:00:00+03:00", "2019-05-08T09:00:00+03:00"),
         ("2019-05-12T00:00:00+03:00", "2019-05-15T09:00:00+03:00"),
         ("2019-05-19T00:00:00+03:00", "2019-05-22T09:00:00+03:00"),
@@ -50,6 +51,7 @@ class Channels(object):
     ]
 
     RADIO_MAGAZINE_RANGES = [
+
         ("2019-05-23T00:00:00+03:00", "2019-05-24T00:00:00+03:00"),
         ("2019-05-30T00:00:00+03:00", "2019-05-31T00:00:00+03:00")
     ]
@@ -111,9 +113,10 @@ class Channels(object):
     }
 
     @staticmethod
-    def timestamp_is_in_ranges(timestamp, ranges):
+    def timestamp_is_in_ranges(timestamp, ranges, matching_ranges):
         for range in ranges:
             if isoparse(range[0]) <= timestamp < isoparse(range[1]):
+                matching_ranges.append(range)
                 return True
         return False
 
@@ -126,8 +129,9 @@ class Channels(object):
 
             # Set channel ranges
             time_range_matches = 0
+            matching_ranges = []
             for key, ranges in cls.CHANNEL_RANGES.items():
-                if cls.timestamp_is_in_ranges(timestamp, ranges):
+                if cls.timestamp_is_in_ranges(timestamp, ranges, matching_ranges):
                     time_range_matches += 1
                     channel_dict[key] = Codes.TRUE
                 else:
@@ -140,12 +144,12 @@ class Channels(object):
                     f"Timestamp {td[time_key]} out of range of project"
                 channel_dict[cls.NON_LOGICAL_KEY] = Codes.TRUE
             else:
-                assert time_range_matches == 1, f"Time '{td[time_key]}' matches multiple time ranges"
+                assert time_range_matches == 1, f"Time '{td[time_key]}' matches multiple time ranges{matching_ranges}"
                 channel_dict[cls.NON_LOGICAL_KEY] = Codes.FALSE
 
             # Set show ranges
             for key, ranges in cls.SHOW_RANGES.items():
-                if cls.timestamp_is_in_ranges(timestamp, ranges):
+                if cls.timestamp_is_in_ranges(timestamp, ranges, matching_ranges):
                     channel_dict[key] = Codes.TRUE
                 else:
                     channel_dict[key] = Codes.FALSE

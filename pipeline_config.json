@@ -39,7 +39,6 @@
     {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"},
 
     {"RapidProKey": "Women_Participation (Value) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_raw"},
-    {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_time"},
     {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"}
     
   ],

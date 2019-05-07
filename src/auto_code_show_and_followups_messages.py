@@ -42,13 +42,13 @@ class AutoCodeShowAndFollowupsMessages(object):
         if not PipelineConfiguration.DEV_MODE:
             data = MessageFilters.filter_test_messages(data)
         
+        # Filter for runs which don't contain a response to any week's question or the follow-up questions
+        data = MessageFilters.filter_empty_messages(data, cls.RQA_AND_FOLLOW_UP_KEYS)
+
         # Filter out runs sent outwith the project start and end dates
         data = MessageFilters.filter_time_range(
             data, cls.SENT_ON_KEY, PipelineConfiguration.PROJECT_START_DATE, PipelineConfiguration.PROJECT_END_DATE)
         
-        # Filter for runs which don't contain a response to any week's question or the follow-up questions
-        data = MessageFilters.filter_empty_messages(data, cls.RQA_AND_FOLLOW_UP_KEYS)
-
         # Tag RQA and follow up messages which are noise as being noise
         for td in data:
             is_noise = True

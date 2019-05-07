@@ -67,7 +67,7 @@ class PipelineConfiguration(object):
 
     SUBSAMPLING_THRESHOLD = 4 # /16 (a fraction of hex) subsample of data
     
-    PROJECT_START_DATE = isoparse("2019-04-19T00:00:00+0300")
+    PROJECT_START_DATE = isoparse("2019-04-19T00:00:00+03:00")
     #TODO revise this as the project nears the end
     PROJECT_END_DATE = isoparse("2020-02-15T09:00:00+03:00")
 
@@ -172,7 +172,54 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
                    binary_coded_field="women_participation_yes_no_amb_coded",
                    binary_analysis_file_key="women_participation_yes_no_amb"),
-      
+    ]
+
+    LOCATION_CODING_PLANS = [
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="mogadishu_sub_district_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key=None,
+                   cleaner=None,
+                   code_scheme=CodeSchemes.MOGADISHU_SUB_DISTRICT),
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="district_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key="district",
+                   cleaner=somali.DemographicCleaner.clean_somalia_district,
+                   code_scheme=CodeSchemes.SOMALIA_DISTRICT),
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="region_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key="region",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.SOMALIA_REGION),
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="state_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key="state",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.SOMALIA_STATE),
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="zone_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key="zone",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.SOMALIA_ZONE),
     ]
 
     @staticmethod
@@ -187,6 +234,7 @@ class PipelineConfiguration(object):
             #       NC in the case where age is an int but is out of range
         else:
             return Codes.NOT_CODED
+    
 
     DEMOG_CODING_PLANS = [
         CodingPlan(raw_field="gender_raw",
@@ -230,6 +278,8 @@ class PipelineConfiguration(object):
                    cleaner=somali.DemographicCleaner.clean_somalia_district,
                    code_scheme=CodeSchemes.SOMALIA_DISTRICT),
     ]
+
+    DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, rapid_pro_test_contact_uuids,
                  rapid_pro_key_remappings, drive_upload=None):

@@ -16,8 +16,8 @@ DATA_ROOT=$3
 
 PROJECT_NAME="IMAQAL"
 DATASETS=(
-    "s01e01"
-    "s01e02"
+    #"s01e01"
+    #"s01e02"
     "s01e03"
     "s01e04"
     "s01e05"
