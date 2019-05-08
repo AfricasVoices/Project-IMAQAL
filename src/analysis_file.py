@@ -70,7 +70,6 @@ class ConsentUtils(object):
                 stop_dict = {key: Codes.STOP for key in td.keys() if key != withdrawn_key}
                 td.append_data(stop_dict, Metadata(user, Metadata.get_call_location(), time.time()))
 
-
 class AnalysisFile(object):
     @staticmethod
     def generate(user, data, csv_by_message_output_path, csv_by_individual_output_path):
@@ -183,16 +182,7 @@ class AnalysisFile(object):
                         td.append_data({consent_withdrawn_key: Codes.TRUE},
                                        Metadata(user, Metadata.get_call_location(), time.time()))
 
-        '''
-        uid_to_gender = {}
-        for td in data:
-            if td["uid"] not in uid_to_gender:
-                uid_to_gender[td["uid"]] = td["gender"]
-            else:
-                assert uid_to_gender[td["uid"]] == td["gender"], f"{td['uid']}, {uid_to_gender[td['uid']]}, {td['gender']}"
-        '''
         # Fold data to have one respondent per row
-        print("--Folding")
         to_be_folded = []
         for td in data:
             to_be_folded.append(td.copy())
@@ -202,7 +192,6 @@ class AnalysisFile(object):
             equal_keys=equal_keys, concat_keys=concat_keys, matrix_keys=matrix_keys, bool_keys=bool_keys,
             binary_keys=binary_keys
         )
-        print("--Folding Successful")
 
         # Fix-up _NA and _NC keys, which are currently being set incorrectly by
         # FoldTracedData.fold_iterable_of_traced_data when there are multiple radio shows
