@@ -10,7 +10,7 @@ from google.cloud import storage
 from storage.google_drive import drive_client_wrapper
 
 from src import CombineRawDatasets, TranslateRapidProKeys, \
-    AutoCodeShowAndFollowupsMessages, ProductionFile, AutoCodeDemogs
+    AutoCodeShowAndFollowupsMessages, ProductionFile, AutoCodeDemogs, ApplyManualCodes
 from src.lib import PipelineConfiguration
 
 log = Logger(__name__)
@@ -170,10 +170,11 @@ if __name__ == "__main__":
 
     log.info("Auto Coding Demogs...")
     data = AutoCodeDemogs.auto_code_demogs(user, data, phone_number_uuid_table, coded_dir_path)
-    '''
+
     log.info("Applying Manual Codes from Coda...")
     data = ApplyManualCodes.apply_manual_codes(user, data, prev_coded_dir_path)
 
+    '''
     log.info("Generating Analysis CSVs...")
     data = AnalysisFile.generate(user, data, csv_by_message_output_path, csv_by_individual_output_path)
 
