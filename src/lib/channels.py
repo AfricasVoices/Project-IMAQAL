@@ -6,6 +6,7 @@ from dateutil.parser import isoparse
 
 from src.lib import PipelineConfiguration
 
+
 class Channels(object):
     DRAMA_PROMO_KEY = "drama_promo"
     MAGAZINE_PROMO_KEY = "magazine_promo"
@@ -28,15 +29,16 @@ class Channels(object):
     ]
 
     DRAMA_PROMO_RANGES = [
-        ("2019-04-27T00:00:00+03:00", "2019-05-01T09:00:00+03:00"),
+
+        ("2019-04-28T00:00:00+03:00", "2019-05-01T09:00:00+03:00"),
         ("2019-05-05T00:00:00+03:00", "2019-05-08T09:00:00+03:00"),
         ("2019-05-12T00:00:00+03:00", "2019-05-15T09:00:00+03:00"),
         ("2019-05-19T00:00:00+03:00", "2019-05-22T09:00:00+03:00"),
         ("2019-05-26T00:00:00+03:00", "2019-05-29T09:00:00+0:300")
     ]
-    #TODO Update once dates have been agreed
+    # TODO Update once dates have been agreed
     MAGAZINE_PROMO_RANGES = [
-        
+
     ]
 
     RADIO_DRAMA_RANGES = [
@@ -92,28 +94,29 @@ class Channels(object):
 
     CHANNEL_RANGES = {
         DRAMA_PROMO_KEY: DRAMA_PROMO_RANGES,
-        #TODO Update and uncomment once dates have been agreed
-        #MAGAZINE_PROMO_KEY:MAGAZINE_PROMO_RANGES,
-        RADIO_DRAMA_KEY:RADIO_DRAMA_RANGES,
-        RADIO_MAGAZINE_KEY:RADIO_MAGAZINE_RANGES
+        # TODO Update and uncomment once dates have been agreed
+        # MAGAZINE_PROMO_KEY:MAGAZINE_PROMO_RANGES,
+        RADIO_DRAMA_KEY: RADIO_DRAMA_RANGES,
+        RADIO_MAGAZINE_KEY: RADIO_MAGAZINE_RANGES
     }
 
     SHOW_RANGES = {
-        DRAMA_S01E01_KEY:DRAMA_S01E01_RANGES,
-        DRAMA_S01E02_KEY:DRAMA_S01E02_RANGES,
-        DRAMA_S01E03_KEY:DRAMA_S01E03_RANGES,
-        DRAMA_S01E04_KEY:DRAMA_S01E04_RANGES,
-        DRAMA_S01E05_KEY:DRAMA_S01E05_RANGES,
-        DRAMA_S01E06_KEY:DRAMA_S01E06_RANGES,
-        DRAMA_S01E07_KEY:DRAMA_S01E07_RANGES,
-        MAGAZINE_S01E01_KEY:MAGAZINE_S01E01_RANGES,
-        MAGAZINE_S01E02_KEY:MAGAZINE_S01E02_RANGES
+        DRAMA_S01E01_KEY: DRAMA_S01E01_RANGES,
+        DRAMA_S01E02_KEY: DRAMA_S01E02_RANGES,
+        DRAMA_S01E03_KEY: DRAMA_S01E03_RANGES,
+        DRAMA_S01E04_KEY: DRAMA_S01E04_RANGES,
+        DRAMA_S01E05_KEY: DRAMA_S01E05_RANGES,
+        DRAMA_S01E06_KEY: DRAMA_S01E06_RANGES,
+        DRAMA_S01E07_KEY: DRAMA_S01E07_RANGES,
+        MAGAZINE_S01E01_KEY: MAGAZINE_S01E01_RANGES,
+        MAGAZINE_S01E02_KEY: MAGAZINE_S01E02_RANGES
     }
 
     @staticmethod
-    def timestamp_is_in_ranges(timestamp, ranges):
+    def timestamp_is_in_ranges(timestamp, ranges, matching_ranges):
         for range in ranges:
             if isoparse(range[0]) <= timestamp < isoparse(range[1]):
+                matching_ranges.append(range)
                 return True
         return False
 
@@ -126,8 +129,9 @@ class Channels(object):
 
             # Set channel ranges
             time_range_matches = 0
+            matching_ranges = []
             for key, ranges in cls.CHANNEL_RANGES.items():
-                if cls.timestamp_is_in_ranges(timestamp, ranges):
+                if cls.timestamp_is_in_ranges(timestamp, ranges, matching_ranges):
                     time_range_matches += 1
                     channel_dict[key] = Codes.TRUE
                 else:
@@ -140,12 +144,12 @@ class Channels(object):
                     f"Timestamp {td[time_key]} out of range of project"
                 channel_dict[cls.NON_LOGICAL_KEY] = Codes.TRUE
             else:
-                assert time_range_matches == 1, f"Time '{td[time_key]}' matches multiple time ranges"
+                assert time_range_matches == 1, f"Time '{td[time_key]}' matches multiple time ranges{matching_ranges}"
                 channel_dict[cls.NON_LOGICAL_KEY] = Codes.FALSE
 
             # Set show ranges
             for key, ranges in cls.SHOW_RANGES.items():
-                if cls.timestamp_is_in_ranges(timestamp, ranges):
+                if cls.timestamp_is_in_ranges(timestamp, ranges, matching_ranges):
                     channel_dict[key] = Codes.TRUE
                 else:
                     channel_dict[key] = Codes.FALSE

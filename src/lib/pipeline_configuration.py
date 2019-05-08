@@ -5,10 +5,12 @@ from core_data_modules.cleaners import somali, Codes
 from core_data_modules.data_models import Scheme, validators
 from dateutil.parser import isoparse
 
+
 def _open_scheme(filename):
     with open(f"code_schemes/{filename}", "r") as f:
         firebase_map = json.load(f)
         return Scheme.from_firebase_map(firebase_map)
+
 
 class CodeSchemes(object):
     S01E01 = _open_scheme("s01e01.json")
@@ -41,6 +43,7 @@ class CodeSchemes(object):
 
     WS_CORRECT_DATASET = _open_scheme("ws_correct_dataset.json")
 
+
 class CodingPlan(object):
     def __init__(self, raw_field, coded_field, coda_filename, cleaner=None, code_scheme=None, time_field=None,
                  run_id_field=None, icr_filename=None, analysis_file_key=None, id_field=None,
@@ -62,13 +65,14 @@ class CodingPlan(object):
             id_field = "{}_id".format(self.raw_field)
         self.id_field = id_field
 
+
 class PipelineConfiguration(object):
     DEV_MODE = False
 
-    SUBSAMPLING_THRESHOLD = 4 # /16 (a fraction of hex) subsample of data
-    
-    PROJECT_START_DATE = isoparse("2019-04-19T00:00:00+0300")
-    #TODO revise this as the project nears the end
+    SUBSAMPLING_THRESHOLD = 4  # /16 (a fraction of hex) subsample of data
+
+    PROJECT_START_DATE = isoparse("2019-04-19T00:00:00+03:00")
+    # TODO revise this as the project nears the end
     PROJECT_END_DATE = isoparse("2020-02-15T09:00:00+03:00")
 
     RQA_CODING_PLANS = [
@@ -143,7 +147,7 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.S01E06_YES_NO,
                    binary_coded_field="rqa_s01e06_yes_no_coded",
                    binary_analysis_file_key="rqa_s01e06_yes_no"),
-        
+
         CodingPlan(raw_field="rqa_s01e07_raw",
                    coded_field="rqa_s01e07_coded",
                    time_field="sent_on",
@@ -172,7 +176,54 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
                    binary_coded_field="women_participation_yes_no_amb_coded",
                    binary_analysis_file_key="women_participation_yes_no_amb"),
-      
+    ]
+
+    LOCATION_CODING_PLANS = [
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="mogadishu_sub_district_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key=None,
+                   cleaner=None,
+                   code_scheme=CodeSchemes.MOGADISHU_SUB_DISTRICT),
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="district_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key="district",
+                   cleaner=somali.DemographicCleaner.clean_somalia_district,
+                   code_scheme=CodeSchemes.SOMALIA_DISTRICT),
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="region_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key="region",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.SOMALIA_REGION),
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="state_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key="state",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.SOMALIA_STATE),
+
+        CodingPlan(raw_field="location_raw",
+                   id_field="location_raw_id",
+                   coded_field="zone_coded",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   analysis_file_key="zone",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.SOMALIA_ZONE),
     ]
 
     @staticmethod
@@ -231,6 +282,8 @@ class PipelineConfiguration(object):
                    code_scheme=CodeSchemes.SOMALIA_DISTRICT),
     ]
 
+    DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
+
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, rapid_pro_test_contact_uuids,
                  rapid_pro_key_remappings, drive_upload=None):
         """
@@ -277,7 +330,7 @@ class PipelineConfiguration(object):
     @classmethod
     def from_configuration_file(cls, f):
         return cls.from_configuration_dict(json.load(f))
-    
+
     def validate(self):
         validators.validate_string(self.rapid_pro_domain, "rapid_pro_domain")
         validators.validate_string(self.rapid_pro_token_file_url, "rapid_pro_token_file_url")
@@ -308,16 +361,16 @@ class RapidProKeyRemapping(object):
         """
         self.rapid_pro_key = rapid_pro_key
         self.pipeline_key = pipeline_key
-        
+
         self.validate()
 
     @classmethod
     def from_configuration_dict(cls, configuration_dict):
         rapid_pro_key = configuration_dict["RapidProKey"]
         pipeline_key = configuration_dict["PipelineKey"]
-        
+
         return cls(rapid_pro_key, pipeline_key)
-    
+
     def validate(self):
         validators.validate_string(self.rapid_pro_key, "rapid_pro_key")
         validators.validate_string(self.pipeline_key, "pipeline_key")
