@@ -25,6 +25,17 @@
         "VisibleInCoda": true
       },
       {
+        "NumericValue": 2,
+        "CodeID": "code-c3b633bc",
+        "CodeType": "Normal",
+        "MatchValues": [
+          "ambivalent"
+        ],
+        "StringValue": "ambivalent",
+        "DisplayText": "Ambivalent",
+        "VisibleInCoda": true
+      },
+      {
         "CodeID": "code-NA-f93d3eb7",
         "CodeType": "Control",
         "ControlCode": "NA",
