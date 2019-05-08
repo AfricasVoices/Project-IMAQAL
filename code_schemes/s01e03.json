@@ -4,6 +4,102 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+        "CodeID": "code-dddb7694",
+        "CodeType": "Normal",
+        "DisplayText": "clannism",
+        "NumericValue": 0,
+        "StringValue": "clannism",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-b68b573e",
+        "CodeType": "Normal",
+        "DisplayText": "discrimination",
+        "NumericValue": 1,
+        "StringValue": "discrimination",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-e8d6d8a0",
+        "CodeType": "Normal",
+        "DisplayText": "lack of justice ",
+        "NumericValue": 2,
+        "StringValue": "lack_of_justice ",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-64d2fc13",
+        "CodeType": "Normal",
+        "DisplayText": "awareness creation needed",
+        "NumericValue": 3,
+        "StringValue": "awareness_creation_needed",
+        "VisibleInCoda": true
+    },
+     {
+        "CodeID": "code-2e2c2589",
+        "CodeType": "Normal",
+        "DisplayText": "lack of good governance",
+        "NumericValue": 4,
+        "StringValue": "lack_of_good_governance",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-7e123769",
+        "CodeType": "Normal",
+        "DisplayText": "corruption",
+        "NumericValue": 5,
+        "StringValue": "corruption",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-a9649e0e",
+        "CodeType": "Normal",
+        "DisplayText": "positive highlight of the drama",
+        "NumericValue": 6,
+        "StringValue": "positive_highlight_of_the_drama",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-7c23f534",
+        "CodeType": "Normal",
+        "DisplayText": "nepotism",
+        "NumericValue": 7,
+        "StringValue": "nepotism",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-c0b233a3",
+        "CodeType": "Normal",
+        "DisplayText": "causes youth migration",
+        "NumericValue": 8,
+        "StringValue": "causes_youth_migration",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-614048ef",
+        "CodeType": "Normal",
+        "DisplayText": "all youths are equal",
+        "NumericValue": 9,
+        "StringValue": "all_youths_are_equal",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-efaf09bb",
+        "CodeType": "Normal",
+        "DisplayText": "lack of good education",
+        "NumericValue": 10,
+        "StringValue": "lack_of_good_education",
+        "VisibleInCoda": true
+    },
+    {
+        "CodeID": "code-a285d4ec",
+        "CodeType": "Normal",
+        "DisplayText": "other",
+        "NumericValue": 11,
+        "StringValue": "other",
+        "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
