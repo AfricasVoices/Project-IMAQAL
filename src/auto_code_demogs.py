@@ -10,6 +10,7 @@ from core_data_modules.util import IOUtils
 from src.lib.pipeline_configuration import CodeSchemes, PipelineConfiguration
 from src.lib.message_filters import MessageFilters
 
+
 class AutoCodeDemogs(object):
     SENT_ON_KEY = "sent_on"
 
@@ -40,33 +41,37 @@ class AutoCodeDemogs(object):
             operator_clean = PhoneCleaner.clean_operator(phone_uuid_table.get_phone(td["uid"]))
             if operator_clean == Codes.NOT_CODED:
                 label = CleaningUtils.make_label_from_cleaner_code(
-                    CodeSchemes.SOMALIA_OPERATOR, CodeSchemes.SOMALIA_OPERATOR.get_code_with_control_code(Codes.NOT_CODED),
+                    CodeSchemes.SOMALIA_OPERATOR,
+                    CodeSchemes.SOMALIA_OPERATOR.get_code_with_control_code(Codes.NOT_CODED),
                     Metadata.get_call_location()
                 )
             else:
                 label = CleaningUtils.make_label_from_cleaner_code(
-                    CodeSchemes.SOMALIA_OPERATOR, CodeSchemes.SOMALIA_OPERATOR.get_code_with_match_value(operator_clean),
+                    CodeSchemes.SOMALIA_OPERATOR,
+                    CodeSchemes.SOMALIA_OPERATOR.get_code_with_match_value(operator_clean),
                     Metadata.get_call_location()
                 )
-            td.append_data({"operator_coded": label.to_dict()}, Metadata(user, Metadata.get_call_location(), time.time()))
+            td.append_data({"operator_coded": label.to_dict()},
+                           Metadata(user, Metadata.get_call_location(), time.time()))
 
         # Subsample messages for export to coda
-        subsample_data = MessageFilters.subsample_messages(data)
+        subsample_data = MessageFilters.subsample_messages_by_uid(data)
 
         # Output single-scheme subsample answers to coda for manual verification + coding
         IOUtils.ensure_dirs_exist(coda_output_dir)
         for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
             if plan.raw_field == "location_raw":
                 continue
-            
+
             TracedDataCodaV2IO.compute_message_ids(user, subsample_data, plan.raw_field, plan.id_field)
 
             coda_output_path = path.join(coda_output_dir, f'sub_sample_{plan.coda_filename}')
             with open(coda_output_path, "w") as f:
                 TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
-                    subsample_data, plan.raw_field, plan.time_field, plan.id_field, {plan.coded_field: plan.code_scheme}, f
+                    subsample_data, plan.raw_field, plan.time_field, plan.id_field,
+                    {plan.coded_field: plan.code_scheme}, f
                 )
-        
+
         # Output subsample location scheme to coda for manual verification + coding
         output_path = path.join(coda_output_dir, "sub_sample_location.json")
         TracedDataCodaV2IO.compute_message_ids(user, subsample_data, "location_raw", "location_raw_id")
@@ -85,7 +90,7 @@ class AutoCodeDemogs(object):
         for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
             if plan.raw_field == "location_raw":
                 continue
-            
+
             TracedDataCodaV2IO.compute_message_ids(user, data, plan.raw_field, plan.id_field)
 
             coda_output_path = path.join(coda_output_dir, plan.coda_filename)

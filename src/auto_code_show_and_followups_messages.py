@@ -12,6 +12,7 @@ from src.lib import PipelineConfiguration, MessageFilters, ICRTools, Channels
 
 log = Logger(__name__)
 
+
 class AutoCodeShowAndFollowupsMessages(object):
     RQA_AND_FOLLOW_UP_KEYS = []
     for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
@@ -41,13 +42,13 @@ class AutoCodeShowAndFollowupsMessages(object):
         # Filter out test messages sent by AVF.
         if not PipelineConfiguration.DEV_MODE:
             data = MessageFilters.filter_test_messages(data)
-        
+
+        # Filter for runs which don't contain a response to any week's question or the follow-up questions
+        data = MessageFilters.filter_empty_messages(data, cls.RQA_AND_FOLLOW_UP_KEYS)
+
         # Filter out runs sent outwith the project start and end dates
         data = MessageFilters.filter_time_range(
             data, cls.SENT_ON_KEY, PipelineConfiguration.PROJECT_START_DATE, PipelineConfiguration.PROJECT_END_DATE)
-        
-        # Filter for runs which don't contain a response to any week's question or the follow-up questions
-        data = MessageFilters.filter_empty_messages(data, cls.RQA_AND_FOLLOW_UP_KEYS)
 
         # Tag RQA and follow up messages which are noise as being noise
         for td in data:
@@ -56,7 +57,7 @@ class AutoCodeShowAndFollowupsMessages(object):
                 if rqa_key in td and not somali.DemographicCleaner.is_noise(td[rqa_key], min_length=10):
                     is_noise = False
             td.append_data({cls.NOISE_KEY: is_noise}, Metadata(user, Metadata.get_call_location(), time.time()))
-        
+
         # Label each message with channel keys
         Channels.set_channel_keys(user, data, cls.SENT_ON_KEY)
 
@@ -81,7 +82,7 @@ class AutoCodeShowAndFollowupsMessages(object):
         for td in data:
             demog_data[td["uid"]] = td
         cls.log_empty_string_stats(demog_data.values(), raw_demog_fields)
-        
+
         # Output all RQA and Follow Up surveys messages which aren't noise to Coda
         IOUtils.ensure_dirs_exist(coda_output_dir)
         for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
@@ -92,9 +93,9 @@ class AutoCodeShowAndFollowupsMessages(object):
                 TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
                     not_noise, plan.raw_field, cls.SENT_ON_KEY, plan.id_field, {}, f
                 )
-        
-        #Subsample messages for export to coda
-        subsample_data = MessageFilters.subsample_messages(not_noise)
+
+        # Subsample messages for export to coda
+        subsample_data = MessageFilters.subsample_messages_by_uid(not_noise)
 
         # Output RQA and Follow Up subsample messages to Coda
         IOUtils.ensure_dirs_exist(coda_output_dir)
@@ -106,7 +107,7 @@ class AutoCodeShowAndFollowupsMessages(object):
                 TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
                     subsample_data, plan.raw_field, cls.SENT_ON_KEY, plan.id_field, {}, f
                 )
- 
+
         # Output RQA and Follow Up surveys messages for ICR
         IOUtils.ensure_dirs_exist(icr_output_dir)
         for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
@@ -118,7 +119,7 @@ class AutoCodeShowAndFollowupsMessages(object):
                     rqa_and_follow_up_messages.append(td)
             icr_messages = ICRTools.generate_sample_for_icr(
                 rqa_and_follow_up_messages, cls.ICR_MESSAGES_COUNT, random.Random(cls.ICR_SEED))
-                
+
             icr_output_path = path.join(icr_output_dir, plan.icr_filename)
             with open(icr_output_path, "w") as f:
                 TracedDataCSVIO.export_traced_data_iterable_to_csv(
