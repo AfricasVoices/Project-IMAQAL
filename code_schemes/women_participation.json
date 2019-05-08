@@ -1,159 +1,102 @@
 {
-  "SchemeID": "Scheme-929e4af4",
-  "Name": "Women Participation",
-  "Version": "0.0.0.1",
-  "Codes": [
-    {
-        "CodeID": "code-28939e6b",
-        "CodeType": "Normal",
-        "DisplayText": "women are the backbone of the community",
+    "Version": "0.0.0.1",
+    "Name": "Women Participation Yes/No/Amb",
+    "SchemeID": "Scheme-24da3ea2",
+    "Codes": [{
+        "DisplayText": "Yes",
+        "VisibleInCoda": true,
         "NumericValue": 0,
-        "StringValue": "women_are_the_backbone_of_the_community",
-        "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-4ddefc44",
+        "CodeID": "code-bf309a21",
         "CodeType": "Normal",
-        "DisplayText": "good decision makers",
+        "MatchValues": [
+          "yes"
+        ],
+        "StringValue": "yes"
+      },
+      {
         "NumericValue": 1,
-        "StringValue": "good_decision_makers",
-        "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-4ddefc44",
+        "CodeID": "code-0c843186",
         "CodeType": "Normal",
-        "DisplayText": "part of the society",
-        "NumericValue": 2,
-        "StringValue": "part_of_the_society",
+        "MatchValues": [
+          "no"
+        ],
+        "StringValue": "no",
+        "DisplayText": "No",
         "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-8f6128d1",
+      },
+      {
+        "NumericValue": 1,
+        "CodeID": "code-8f13a0dd",
         "CodeType": "Normal",
-        "DisplayText": "not given chances",
-        "NumericValue": 3,
-        "StringValue": "not_given_chances",
+        "MatchValues": [
+          "ambivalent"
+        ],
+        "StringValue": "ambivalent",
+        "DisplayText": "Ambivalent",
         "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-c0c777ab",
-        "CodeType": "Normal",
-        "DisplayText": "culture does not allow",
-        "NumericValue": 4,
-        "StringValue": "culture_does_not_allow",
+      },
+      {
+        "CodeID": "code-NA-f93d3eb7",
+        "CodeType": "Control",
+        "ControlCode": "NA",
+        "DisplayText": "NA (missing)",
+        "NumericValue": -10,
+        "StringValue": "NA",
+        "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-NS-2c11b7c9",
+        "CodeType": "Control",
+        "ControlCode": "NS",
+        "DisplayText": "NS (skip)",
+        "NumericValue": -20,
+        "StringValue": "NS",
+        "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-NC-42f1d983",
+        "CodeType": "Control",
+        "ControlCode": "NC",
+        "DisplayText": "NC (not coded)",
+        "NumericValue": -30,
+        "StringValue": "NC",
         "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-eb8526f0",
-        "CodeType": "Normal",
-        "DisplayText": "no rights",
-        "NumericValue": 5,
-        "StringValue": "no_rights",
+      },
+      {
+        "CodeID": "code-NR-5e3eee23",
+        "CodeType": "Control",
+        "ControlCode": "NR",
+        "DisplayText": "NR (not reviewed)",
+        "NumericValue": -40,
+        "StringValue": "NR",
+        "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-NIC-99631cb8",
+        "CodeType": "Control",
+        "ControlCode": "NIC",
+        "DisplayText": "NIC (not internally consistent)",
+        "NumericValue": -50,
+        "StringValue": "NIC",
+        "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-STOP-08b832a8",
+        "CodeType": "Control",
+        "ControlCode": "STOP",
+        "DisplayText": "STOP",
+        "NumericValue": -90,
+        "StringValue": "STOP",
         "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-1e00ecac",
-        "CodeType": "Normal",
-        "DisplayText": "women excluded from decision making",
-        "NumericValue": 6,
-        "StringValue": "women_excluded_from_decision_making",
+      },
+      {
+        "CodeID": "code-WS-adb25603b7af",
+        "CodeType": "Control",
+        "ControlCode": "WS",
+        "DisplayText": "WS (wrong scheme)",
+        "NumericValue": -100,
+        "StringValue": "WS",
         "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-4f78a0e6",
-        "CodeType": "Normal",
-        "DisplayText": "discriminated",
-        "NumericValue": 7,
-        "StringValue": "discriminated",
-        "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-0684eebf",
-        "CodeType": "Normal",
-        "DisplayText": "not their role",
-        "NumericValue": 8,
-        "StringValue": "not_their_role",
-        "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-88b1975f",
-        "CodeType": "Normal",
-        "DisplayText": "bad decision-makers",
-        "NumericValue": 9,
-        "StringValue": "bad_decision_makers",
-        "VisibleInCoda": true
-    },
-    {
-        "CodeID": "code-a5afa957",
-        "CodeType": "Normal",
-        "DisplayText": "other",
-        "NumericValue": 10,
-        "StringValue": "other",
-        "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-NA-f93d3eb7",
-      "CodeType": "Control",
-      "ControlCode": "NA",
-      "DisplayText": "NA (missing)",
-      "NumericValue": -10,
-      "StringValue": "NA",
-      "VisibleInCoda": false
-    },
-    {
-      "CodeID": "code-NS-2c11b7c9",
-      "CodeType": "Control",
-      "ControlCode": "NS",
-      "DisplayText": "NS (skip)",
-      "NumericValue": -20,
-      "StringValue": "NS",
-      "VisibleInCoda": false
-    },
-    {
-      "CodeID": "code-NC-42f1d983",
-      "CodeType": "Control",
-      "ControlCode": "NC",
-      "DisplayText": "NC (not coded)",
-      "NumericValue": -30,
-      "StringValue": "NC",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-NR-5e3eee23",
-      "CodeType": "Control",
-      "ControlCode": "NR",
-      "DisplayText": "NR (not reviewed)",
-      "NumericValue": -40,
-      "StringValue": "NR",
-      "VisibleInCoda": false
-    },
-    {
-      "CodeID": "code-NIC-99631cb8",
-      "CodeType": "Control",
-      "ControlCode": "NIC",
-      "DisplayText": "NIC (not internally consistent)",
-      "NumericValue": -50,
-      "StringValue": "NIC",
-      "VisibleInCoda": false
-    },
-    {
-      "CodeID": "code-STOP-08b832a8",
-      "CodeType": "Control",
-      "ControlCode": "STOP",
-      "DisplayText": "STOP",
-      "NumericValue": -90,
-      "StringValue": "STOP",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-WS-adb25603b7af",
-      "CodeType": "Control",
-      "ControlCode": "WS",
-      "DisplayText": "WS (wrong scheme)",
-      "NumericValue": -100,
-      "StringValue": "WS",
-      "VisibleInCoda": true
-    }
-  ]
-}
-
+      }
+    ]
+  }
