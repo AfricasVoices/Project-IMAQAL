@@ -44,7 +44,6 @@ if __name__ == "__main__":
     SURVEYS = [
         "imaqal_demog",
         "imaqal_s01_follow_up_w2",
-        "imaqal_s01_follow_up_w6"
     ]
 
     # Read the settings from the configuration file
