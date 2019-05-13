@@ -1,102 +1,158 @@
 {
     "Version": "0.0.0.1",
-    "Name": "Women Participation Yes/No/Amb",
-    "SchemeID": "Scheme-24da3ea2",
-    "Codes": [{
-        "DisplayText": "Yes",
+    "Name": "Women Participation",
+    "SchemeID": "Scheme-929e4af4",
+    "Codes": [
+      {
         "VisibleInCoda": true,
         "NumericValue": 0,
-        "CodeID": "code-bf309a21",
+        "CodeID": "code-28939e6b",
         "CodeType": "Normal",
-        "MatchValues": [
-          "yes"
-        ],
-        "StringValue": "yes"
+        "StringValue": "women_are_the_backbone_of_the_community",
+        "DisplayText": "women are the backbone of the community"
       },
       {
+        "VisibleInCoda": true,
         "NumericValue": 1,
-        "CodeID": "code-0c843186",
+        "CodeID": "code-4ddefc44",
         "CodeType": "Normal",
-        "MatchValues": [
-          "no"
-        ],
-        "StringValue": "no",
-        "DisplayText": "No",
+        "StringValue": "good_decision_makers",
+        "DisplayText": "good decision makers"
+      },
+      {
+        "NumericValue": 2,
+        "CodeID": "code-c412c8da",
+        "CodeType": "Normal",
+        "StringValue": "part_of_the_society",
+        "DisplayText": "part of the society",
         "VisibleInCoda": true
       },
       {
-        "NumericValue": 1,
-        "CodeID": "code-8f13a0dd",
+        "DisplayText": "not given chances",
+        "VisibleInCoda": true,
+        "NumericValue": 3,
+        "CodeID": "code-8f6128d1",
         "CodeType": "Normal",
-        "MatchValues": [
-          "ambivalent"
-        ],
-        "StringValue": "ambivalent",
-        "DisplayText": "Ambivalent",
-        "VisibleInCoda": true
+        "StringValue": "not_given_chances"
       },
       {
-        "CodeID": "code-NA-f93d3eb7",
-        "CodeType": "Control",
+        "DisplayText": "culture does not allow",
+        "VisibleInCoda": true,
+        "NumericValue": 4,
+        "CodeID": "code-c0c777ab",
+        "CodeType": "Normal",
+        "StringValue": "culture_does_not_allow"
+      },
+      {
+        "DisplayText": "no rights",
+        "VisibleInCoda": true,
+        "NumericValue": 5,
+        "CodeID": "code-eb8526f0",
+        "CodeType": "Normal",
+        "StringValue": "no_rights"
+      },
+      {
+        "DisplayText": "women excluded from decision making",
+        "VisibleInCoda": true,
+        "NumericValue": 6,
+        "CodeID": "code-1e00ecac",
+        "CodeType": "Normal",
+        "StringValue": "women_excluded_from_decision_making"
+      },
+      {
+        "CodeType": "Normal",
+        "StringValue": "discriminated",
+        "DisplayText": "discriminated",
+        "VisibleInCoda": true,
+        "NumericValue": 7,
+        "CodeID": "code-4f78a0e6"
+      },
+      {
+        "DisplayText": "not their role",
+        "VisibleInCoda": true,
+        "NumericValue": 8,
+        "CodeID": "code-0684eebf",
+        "CodeType": "Normal",
+        "StringValue": "not_their_role"
+      },
+      {
+        "DisplayText": "bad decision-makers",
+        "VisibleInCoda": true,
+        "NumericValue": 9,
+        "CodeID": "code-88b1975f",
+        "CodeType": "Normal",
+        "StringValue": "bad_decision_makers"
+      },
+      {
+        "DisplayText": "other",
+        "VisibleInCoda": true,
+        "NumericValue": 10,
+        "CodeID": "code-a5afa957",
+        "CodeType": "Normal",
+        "StringValue": "other"
+      },
+      {
+        "StringValue": "NA",
         "ControlCode": "NA",
         "DisplayText": "NA (missing)",
+        "VisibleInCoda": false,
         "NumericValue": -10,
-        "StringValue": "NA",
-        "VisibleInCoda": false
+        "CodeID": "code-NA-f93d3eb7",
+        "CodeType": "Control"
       },
       {
-        "CodeID": "code-NS-2c11b7c9",
-        "CodeType": "Control",
         "ControlCode": "NS",
         "DisplayText": "NS (skip)",
+        "VisibleInCoda": false,
         "NumericValue": -20,
-        "StringValue": "NS",
-        "VisibleInCoda": false
+        "CodeID": "code-NS-2c11b7c9",
+        "CodeType": "Control",
+        "StringValue": "NS"
       },
       {
+        "NumericValue": -30,
         "CodeID": "code-NC-42f1d983",
         "CodeType": "Control",
+        "StringValue": "NC",
         "ControlCode": "NC",
         "DisplayText": "NC (not coded)",
-        "NumericValue": -30,
-        "StringValue": "NC",
         "VisibleInCoda": true
       },
       {
-        "CodeID": "code-NR-5e3eee23",
-        "CodeType": "Control",
-        "ControlCode": "NR",
         "DisplayText": "NR (not reviewed)",
+        "VisibleInCoda": false,
+        "CodeID": "code-NR-5e3eee23",
         "NumericValue": -40,
+        "CodeType": "Control",
         "StringValue": "NR",
-        "VisibleInCoda": false
+        "ControlCode": "NR"
       },
       {
+        "DisplayText": "NIC (not internally consistent)",
+        "VisibleInCoda": false,
+        "NumericValue": -50,
         "CodeID": "code-NIC-99631cb8",
         "CodeType": "Control",
-        "ControlCode": "NIC",
-        "DisplayText": "NIC (not internally consistent)",
-        "NumericValue": -50,
         "StringValue": "NIC",
-        "VisibleInCoda": false
+        "ControlCode": "NIC"
       },
       {
-        "CodeID": "code-STOP-08b832a8",
-        "CodeType": "Control",
         "ControlCode": "STOP",
         "DisplayText": "STOP",
+        "VisibleInCoda": true,
         "NumericValue": -90,
-        "StringValue": "STOP",
-        "VisibleInCoda": true
+        "CodeID": "code-STOP-08b832a8",
+        "CodeType": "Control",
+        "StringValue": "STOP"
       },
       {
+        "DisplayText": "WS (wrong scheme)",
+        "VisibleInCoda": true,
+        "NumericValue": -100,
         "CodeID": "code-WS-adb25603b7af",
         "CodeType": "Control",
-        "ControlCode": "WS",
-        "DisplayText": "WS (wrong scheme)",
-        "NumericValue": -100,
         "StringValue": "WS",
-        "VisibleInCoda": true
+        "ControlCode": "WS"
       }
     ]
   }
