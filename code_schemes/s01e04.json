@@ -4,6 +4,86 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+            "CodeID": "code-cc3292e8",
+            "CodeType": "Normal",
+            "DisplayText": "conflicts between clans",
+            "NumericValue": 0,
+            "StringValue": "conflicts_between_clans",
+            "VisibleInCoda": true
+        },
+    {
+            "CodeID": "code-c7e0c897",
+            "CodeType": "Normal",
+            "DisplayText": "culture",
+            "NumericValue": 1,
+            "StringValue": "culture",
+            "VisibleInCoda": true
+        },
+    {
+            "CodeID": "code-ba8982f2",
+            "CodeType": "Normal",
+            "DisplayText": "discrimination",
+            "NumericValue": 2,
+            "StringValue": "discrimination",
+            "VisibleInCoda": true
+        },
+    {
+            "CodeID": "code-b1cdc2b0",
+            "CodeType": "Normal",
+            "DisplayText": "culture difference",
+            "NumericValue": 3,
+            "StringValue": "culture_difference",
+            "VisibleInCoda": true
+        },
+    {
+            "CodeID": "code-4e82a0f5",
+            "CodeType": "Normal",
+            "DisplayText": "lack of understanding of religion",
+            "NumericValue": 4,
+            "StringValue": "lack_of_understanding_of_religion",
+            "VisibleInCoda": true
+        },
+    {
+            "CodeID": "code-cffe31ba",
+            "CodeType": "Normal",
+            "DisplayText": "ignorance",
+            "NumericValue": 5,
+            "StringValue": "ignorance",
+            "VisibleInCoda": true
+        },
+    {
+            "CodeID": "code-b3f00a10",
+            "CodeType": "Normal",
+            "DisplayText": "family opposition",
+            "NumericValue": 6,
+            "StringValue": "family_opposition",
+            "VisibleInCoda": true
+        },
+    {
+            "CodeID": "code-d3cef3cc",
+            "CodeType": "Normal",
+            "DisplayText": "clannism",
+            "NumericValue": 7,
+            "StringValue": "clannism",
+            "VisibleInCoda": true
+        },
+     {
+            "CodeID": "code-5e448506",
+            "CodeType": "Normal",
+            "DisplayText": "awareness creation needed",
+            "NumericValue": 8,
+            "StringValue": "awareness_creation_needed",
+            "VisibleInCoda": true
+        },
+    {
+            "CodeID": "code-1d3fceac",
+            "CodeType": "Normal",
+            "DisplayText": "other",
+            "NumericValue": 9,
+            "StringValue": "other",
+            "VisibleInCoda": true
+        },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
