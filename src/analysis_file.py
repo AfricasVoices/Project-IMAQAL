@@ -54,7 +54,7 @@ class ConsentUtils(object):
                 )
 
     @staticmethod
-    def set_stopped(user, data, withdrawn_key="consent_withdrawn"):
+    def set_stopped(user, data, withdrawn_key="consent_withdrawn", additional_keys=None):
         """
         For each TracedData object in an iterable whose 'withdrawn_key' is Codes.True, sets every other key to
         Codes.STOP. If there is no withdrawn_key or the value is not Codes.True, that TracedData object is not modified.
@@ -64,10 +64,15 @@ class ConsentUtils(object):
         :type data: iterable of TracedData
         :param withdrawn_key: Key in each TracedData object which indicates whether consent has been withdrawn.
         :type withdrawn_key: str
+        :param additional_keys: Additional keys to set to 'STOP' (e.g. keys not already in some TracedData objects)
+        :type additional_keys: list of str | None
         """
+        if additional_keys is None:
+            additional_keys = []
+
         for td in data:
             if td.get(withdrawn_key) == Codes.TRUE:
-                stop_dict = {key: Codes.STOP for key in td.keys() if key != withdrawn_key}
+                stop_dict = {key: Codes.STOP for key in list(td.keys()) + additional_keys if key != withdrawn_key}
                 td.append_data(stop_dict, Metadata(user, Metadata.get_call_location(), time.time()))
 
 class AnalysisFile(object):
@@ -212,8 +217,8 @@ class AnalysisFile(object):
                                    Metadata(user, Metadata.get_call_location(), TimeUtils.utc_now_as_iso_string()))
 
         # Process consent
-        ConsentUtils.set_stopped(user, data, consent_withdrawn_key)
-        ConsentUtils.set_stopped(user, folded_data, consent_withdrawn_key)
+        ConsentUtils.set_stopped(user, data, consent_withdrawn_key, additional_keys=export_keys)
+        ConsentUtils.set_stopped(user, folded_data, consent_withdrawn_key, additional_keys=export_keys)
 
         # Output to CSV with one message per row
         with open(csv_by_message_output_path, "w") as f:
