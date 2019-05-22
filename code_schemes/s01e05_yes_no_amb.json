@@ -1,6 +1,6 @@
 {
     "Version": "0.0.0.1",
-    "Name": "S01E05 Yes_No",
+    "Name": "S01E05 Yes/No/Amb",
     "SchemeID": "Scheme-5addd5a4",
     "Codes": [{
         "DisplayText": "Yes",
@@ -23,6 +23,16 @@
         "StringValue": "no",
         "DisplayText": "No",
         "VisibleInCoda": true
+      },
+      {
+        "NumericValue": 2,
+        "CodeID": "code-2487d267",
+        "CodeType": "Normal",
+        "MatchValues": [
+          "ambivalent"
+        ],
+        "StringValue": "ambivalent",
+        "DisplayText": "Ambivalent"
       },
       {
         "CodeID": "code-NA-f93d3eb7",
