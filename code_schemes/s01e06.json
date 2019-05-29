@@ -140,17 +140,9 @@
       "StringValue": "family_opposition"
     },
     {
-      "DisplayText": "poor governance",
-      "VisibleInCoda": true,
-      "NumericValue": 17,
-      "CodeID": "code-f666c990",
-      "CodeType": "Normal",
-      "StringValue": "poor_governance"
-    },
-    {
       "DisplayText": "corruption",
       "VisibleInCoda": true,
-      "NumericValue": 18,
+      "NumericValue": 17,
       "CodeID": "code-e23f5fc9",
       "CodeType": "Normal",
       "StringValue": "corruption"
@@ -158,7 +150,7 @@
     {
       "DisplayText": "women don't face challenges",
       "VisibleInCoda": true,
-      "NumericValue": 19,
+      "NumericValue": 18,
       "CodeID": "code-2bea5ef6",
       "CodeType": "Normal",
       "StringValue": "women_don_t_face_challenges"
@@ -166,7 +158,7 @@
     {
       "DisplayText": "lack of resources",
       "VisibleInCoda": true,
-      "NumericValue": 20,
+      "NumericValue": 19,
       "CodeID": "code-b96b71b4",
       "CodeType": "Normal",
       "StringValue": "lack_of_resources"
@@ -174,7 +166,7 @@
     {
       "DisplayText": "closed politics",
       "VisibleInCoda": true,
-      "NumericValue": 21,
+      "NumericValue": 20,
       "CodeID": "code-8098bd0f",
       "CodeType": "Normal",
       "StringValue": "closed_politics"
@@ -182,7 +174,7 @@
     {
       "DisplayText": "women don't have advocates",
       "VisibleInCoda": true,
-      "NumericValue": 22,
+      "NumericValue": 21,
       "CodeID": "code-b171f5a9",
       "CodeType": "Normal",
       "StringValue": "women_don_t_have_advocates"
@@ -190,7 +182,7 @@
     {
       "DisplayText": "it is a good thing",
       "VisibleInCoda": true,
-      "NumericValue": 23,
+      "NumericValue": 22,
       "CodeID": "code-508df385",
       "CodeType": "Normal",
       "StringValue": "it_is_a_good_thing"
@@ -198,7 +190,7 @@
     {
       "DisplayText": "women are good leaders",
       "VisibleInCoda": true,
-      "NumericValue": 24,
+      "NumericValue": 23,
       "CodeID": "code-5e25f9a1",
       "CodeType": "Normal",
       "StringValue": "women_are_good_leaders"
@@ -206,7 +198,7 @@
     {
       "DisplayText": "other",
       "VisibleInCoda": true,
-      "NumericValue": 25,
+      "NumericValue": 24,
       "CodeID": "code-a74234a4",
       "CodeType": "Normal",
       "StringValue": "other"
