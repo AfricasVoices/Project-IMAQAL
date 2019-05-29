@@ -4,6 +4,206 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "it is wrong",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-3a25a141",
+      "CodeType": "Normal",
+      "StringValue": "it_is_wrong"
+    },
+    {
+      "DisplayText": "accused of poor leadership",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-e70e12a5",
+      "CodeType": "Normal",
+      "StringValue": "accused_of_poor_leadership"
+    },
+    {
+      "DisplayText": "negative perception",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-b5b74b31",
+      "CodeType": "Normal",
+      "StringValue": "negative_perception"
+    },
+    {
+      "DisplayText": "women not good leaders",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-8ea93b47",
+      "CodeType": "Normal",
+      "StringValue": "women_not_good_leaders"
+    },
+    {
+      "DisplayText": "cultural stigma/norms",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-b89e4d16",
+      "CodeType": "Normal",
+      "StringValue": "cultural_stigma_norms"
+    },
+    {
+      "DisplayText": "house chores and children",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-4f65ae57",
+      "CodeType": "Normal",
+      "StringValue": "house_chores_and_children"
+    },
+    {
+      "DisplayText": "clan system",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-98e481a0",
+      "CodeType": "Normal",
+      "StringValue": "clan_system"
+    },
+    {
+      "DisplayText": "opposition by traditional elders",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-7def17e1",
+      "CodeType": "Normal",
+      "StringValue": "opposition_by_traditional_elders"
+    },
+    {
+      "DisplayText": "they are muzzled",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-d2a8c709",
+      "CodeType": "Normal",
+      "StringValue": "they_are_muzzled"
+    },
+    {
+      "DisplayText": "lack of empowerment",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-b9065f3b",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_empowerment"
+    },
+    {
+      "DisplayText": "the role of religion",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-54ee8798",
+      "CodeType": "Normal",
+      "StringValue": "the_role_of_religion"
+    },
+    {
+      "DisplayText": "limited eduction",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-564b0ed9",
+      "CodeType": "Normal",
+      "StringValue": "limited_eduction"
+    },
+    {
+      "DisplayText": "women not working together",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-67d2aff8",
+      "CodeType": "Normal",
+      "StringValue": "women_not_working_together"
+    },
+    {
+      "DisplayText": "limited opportunities",
+      "VisibleInCoda": true,
+      "NumericValue": 13,
+      "CodeID": "code-400c8c5d",
+      "CodeType": "Normal",
+      "StringValue": "limited_opportunities"
+    },
+    {
+      "DisplayText": "poor governance",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-3d6b6d48",
+      "CodeType": "Normal",
+      "StringValue": "poor_governance"
+    },
+    {
+      "DisplayText": "women are regarded lesser",
+      "VisibleInCoda": true,
+      "NumericValue": 15,
+      "CodeID": "code-0d3ca54f",
+      "CodeType": "Normal",
+      "StringValue": "women_are_regarded_lesser"
+    },
+    {
+      "DisplayText": "family opposition",
+      "VisibleInCoda": true,
+      "NumericValue": 16,
+      "CodeID": "code-801ae2ad",
+      "CodeType": "Normal",
+      "StringValue": "family_opposition"
+    },
+    {
+      "DisplayText": "corruption",
+      "VisibleInCoda": true,
+      "NumericValue": 17,
+      "CodeID": "code-e23f5fc9",
+      "CodeType": "Normal",
+      "StringValue": "corruption"
+    },
+    {
+      "DisplayText": "women don't face challenges",
+      "VisibleInCoda": true,
+      "NumericValue": 18,
+      "CodeID": "code-2bea5ef6",
+      "CodeType": "Normal",
+      "StringValue": "women_don_t_face_challenges"
+    },
+    {
+      "DisplayText": "lack of resources",
+      "VisibleInCoda": true,
+      "NumericValue": 19,
+      "CodeID": "code-b96b71b4",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_resources"
+    },
+    {
+      "DisplayText": "closed politics",
+      "VisibleInCoda": true,
+      "NumericValue": 20,
+      "CodeID": "code-8098bd0f",
+      "CodeType": "Normal",
+      "StringValue": "closed_politics"
+    },
+    {
+      "DisplayText": "women don't have advocates",
+      "VisibleInCoda": true,
+      "NumericValue": 21,
+      "CodeID": "code-b171f5a9",
+      "CodeType": "Normal",
+      "StringValue": "women_don_t_have_advocates"
+    },
+    {
+      "DisplayText": "it is a good thing",
+      "VisibleInCoda": true,
+      "NumericValue": 22,
+      "CodeID": "code-508df385",
+      "CodeType": "Normal",
+      "StringValue": "it_is_a_good_thing"
+    },
+    {
+      "DisplayText": "women are good leaders",
+      "VisibleInCoda": true,
+      "NumericValue": 23,
+      "CodeID": "code-5e25f9a1",
+      "CodeType": "Normal",
+      "StringValue": "women_are_good_leaders"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 24,
+      "CodeID": "code-a74234a4",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
