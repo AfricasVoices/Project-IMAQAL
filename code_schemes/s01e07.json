@@ -100,17 +100,9 @@
       "StringValue": "limited_opportunities"
     },
     {
-      "DisplayText": "other",
-      "VisibleInCoda": true,
-      "NumericValue": 12,
-      "CodeID": "code-7cd0ec00",
-      "CodeType": "Normal",
-      "StringValue": "other"
-    },
-    {
       "DisplayText": "these roles are for men",
       "VisibleInCoda": true,
-      "NumericValue": 13,
+      "NumericValue": 12,
       "CodeID": "code-dbcd957b",
       "CodeType": "Normal",
       "StringValue": "these_roles_are_for_men"
@@ -118,10 +110,18 @@
     {
       "DisplayText": "women belong in the house",
       "VisibleInCoda": true,
-      "NumericValue": 14,
+      "NumericValue": 13,
       "CodeID": "code-fed8f323",
       "CodeType": "Normal",
       "StringValue": "women_belong_in_the_house"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-7cd0ec00",
+      "CodeType": "Normal",
+      "StringValue": "other"
     },
     {
       "CodeID": "code-NA-f93d3eb7",
