@@ -22,7 +22,6 @@ class CodeSchemes(object):
     S01E05 = _open_scheme("s01e05.json")
     S01E05_YES_NO_AMB = _open_scheme("s01e05_yes_no_amb.json")
     S01E06 = _open_scheme("s01e06.json")
-    S01E06_YES_NO_AMB = _open_scheme("s01e06_yes_no_amb.json")
     S01E07 = _open_scheme("s01e07.json")
     S01E07_YES_NO = _open_scheme("s01e07_yes_no.json")
 
@@ -143,10 +142,7 @@ class PipelineConfiguration(object):
                    run_id_field="rqa_s01e06_run_id",
                    analysis_file_key="rqa_s01e06_",
                    cleaner=None,
-                   code_scheme=CodeSchemes.S01E06,
-                   binary_code_scheme=CodeSchemes.S01E06_YES_NO_AMB,
-                   binary_coded_field="rqa_s01e06_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01e06_yes_no_amb"),
+                   code_scheme=CodeSchemes.S01E06),
 
         CodingPlan(raw_field="rqa_s01e07_raw",
                    coded_field="rqa_s01e07_coded",
