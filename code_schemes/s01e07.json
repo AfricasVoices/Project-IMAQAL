@@ -4,6 +4,126 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "have equal rights",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-77778b22",
+      "CodeType": "Normal",
+      "StringValue": "have_equal_rights"
+    },
+    {
+      "DisplayText": "part of the society",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-4058a665",
+      "CodeType": "Normal",
+      "StringValue": "part_of_the_society"
+    },
+    {
+      "DisplayText": "discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-4a458b99",
+      "CodeType": "Normal",
+      "StringValue": "discrimination"
+    },
+    {
+      "DisplayText": "lack of good governance",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-8ee5d3bb",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_good_governance"
+    },
+    {
+      "DisplayText": "religion doesn't allow",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-211b69e9",
+      "CodeType": "Normal",
+      "StringValue": "religion_doesn_t_allow"
+    },
+    {
+      "DisplayText": "women are reserved",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-964f305a",
+      "CodeType": "Normal",
+      "StringValue": "women_are_reserved"
+    },
+    {
+      "DisplayText": "lack of confidence",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-643577b9",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_confidence"
+    },
+    {
+      "DisplayText": "they are weak",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-bc14cc1e",
+      "CodeType": "Normal",
+      "StringValue": "they_are_weak"
+    },
+    {
+      "DisplayText": "lack of knowledge/encouragement",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-d122f572",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_knowledge_encouragement"
+    },
+    {
+      "DisplayText": "lack time",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-e99527f2",
+      "CodeType": "Normal",
+      "StringValue": "lack_time"
+    },
+    {
+      "DisplayText": "women are not just",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-4f4c90f6",
+      "CodeType": "Normal",
+      "StringValue": "women_are_not_just"
+    },
+    {
+      "DisplayText": "limited opportunities",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-ef1017c6",
+      "CodeType": "Normal",
+      "StringValue": "limited_opportunities"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-7cd0ec00",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
+      "DisplayText": "these roles are for men",
+      "VisibleInCoda": true,
+      "NumericValue": 13,
+      "CodeID": "code-dbcd957b",
+      "CodeType": "Normal",
+      "StringValue": "these_roles_are_for_men"
+    },
+    {
+      "DisplayText": "women belong in the house",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-fed8f323",
+      "CodeType": "Normal",
+      "StringValue": "women_belong_in_the_house"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
