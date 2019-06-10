@@ -24,6 +24,11 @@ class CodeSchemes(object):
     S01E06 = _open_scheme("s01e06.json")
     S01E07 = _open_scheme("s01e07.json")
     S01E07_YES_NO_AMB = _open_scheme("s01e07_yes_no_amb.json")
+    S01MAG03 = _open_scheme("s01mag03.json")
+    S01MAG03_YES_NO_AMB = _open_scheme("s01mag03_yes_no_amb.json")
+    S01MAG04 = _open_scheme("s01mag04.json")
+    S01MAG05 = _open_scheme("s01mag05.json")
+    S01MAG05_YES_NO_AMB = _open_scheme("s01mag05_yes_no_amb.json")
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
     WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")
@@ -156,6 +161,42 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.S01E07_YES_NO_AMB,
                    binary_coded_field="rqa_s01e07_yes_no_amb_coded",
                    binary_analysis_file_key="rqa_s01e07_yes_no_amb"),
+
+        CodingPlan(raw_field="rqa_s01mag03_raw",
+                   coded_field="rqa_s01mag03_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag03.json",
+                   icr_filename="s01mag03.csv",
+                   run_id_field="rqa_s01mag03_run_id",
+                   analysis_file_key="rqa_s01mag03_",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG03,
+                   binary_code_scheme=CodeSchemes.S01MAG03_YES_NO_AMB,
+                   binary_coded_field="rqa_s01mag03_yes_no_amb_coded",
+                   binary_analysis_file_key="rqa_s01mag03_yes_no_amb"),
+
+        CodingPlan(raw_field="rqa_s01mag04_raw",
+                   coded_field="rqa_s01mag04_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag04.json",
+                   icr_filename="s01mag04.csv",
+                   run_id_field="rqa_s01mag04_run_id",
+                   analysis_file_key="rqa_s01mag04_",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG04),
+
+        CodingPlan(raw_field="rqa_s01mag05_raw",
+                   coded_field="rqa_s01mag05_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag05.json",
+                   icr_filename="s01mag05.csv",
+                   run_id_field="rqa_s01mag05_run_id",
+                   analysis_file_key="rqa_s01mag05_",
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG05,
+                   binary_code_scheme=CodeSchemes.S01E05_YES_NO_AMB,
+                   binary_coded_field="rqa_s01mag05_yes_no_amb_coded",
+                   binary_analysis_file_key="rqa_s01mag05_yes_no_amb"),
     ]
 
     FOLLOW_UP_CODING_PLANS = [

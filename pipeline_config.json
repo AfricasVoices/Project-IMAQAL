@@ -16,6 +16,9 @@
     {"RapidProKey": "Rqa_S01E05 (Run ID) - imaqal_s01e05_activation", "PipelineKey": "rqa_s01e05_run_id"},
     {"RapidProKey": "Rqa_S01E06 (Run ID) - imaqal_s01e06_activation", "PipelineKey": "rqa_s01e06_run_id"},
     {"RapidProKey": "Rqa_S01E07 (Run ID) - imaqal_s01e07_activation", "PipelineKey": "rqa_s01e07_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E03 (Run ID) - mag_s01e03_activation", "PipelineKey": "rqa_s01mag03_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E04 (Run ID) - mag_s01e04_activation", "PipelineKey": "rqa_s01mag04_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E05 (Run ID) - mag_s01e05_activation", "PipelineKey": "rqa_s01mag05_run_id"},
 
     {"RapidProKey": "Rqa_S01E01 (Time) - imaqal_s01e01_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_S01E02 (Time) - imaqal_s01e02_activation", "PipelineKey": "sent_on"},
@@ -24,6 +27,9 @@
     {"RapidProKey": "Rqa_S01E05 (Time) - imaqal_s01e05_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_S01E06 (Time) - imaqal_s01e06_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_S01E07 (Time) - imaqal_s01e07_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E03 (Time) - mag_s01e03_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E04 (Time) - mag_s01e04_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E05 (Time) - mag_s01e05_activation", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
 
