@@ -9,7 +9,7 @@ from src.lib import PipelineConfiguration
 
 class Channels(object):
     DRAMA_PROMO_KEY = "drama_promo"
-    MAGAZINE_PROMO_KEY = "magazine_promo"
+    RADIO_MAGAZINE_PROMO_KEY = "magazine_promo"
     RADIO_DRAMA_KEY = "radio_drama"
     RADIO_MAGAZINE_KEY = "radio_magazine"
     NON_LOGICAL_KEY = "non_logical_time"
@@ -20,9 +20,9 @@ class Channels(object):
     DRAMA_S01E05_KEY = "radio_drama_participation_s01e05"
     DRAMA_S01E06_KEY = "radio_drama_participation_s01e06"
     DRAMA_S01E07_KEY = "radio_drama_participation_s01e07"
-    MAGAZINE_S01E03_KEY = "radio_magazine_participation_s01mag03"
-    MAGAZINE_S01E04_KEY = "radio_magazine_participation_s01mag04"
-    MAGAZINE_S01E05_KEY = "radio_magazine_participation_s01mag05"
+    RADIO_MAGAZINE_S01E03_KEY = "radio_magazine_participation_s01mag03"
+    RADIO_MAGAZINE_S01E04_KEY = "radio_magazine_participation_s01mag04"
+    RADIO_MAGAZINE_S01E05_KEY = "radio_magazine_participation_s01mag05"
 
     # Time ranges expressed in format (start_of_range_inclusive, end_of_range_exclusive)
     SMS_AD_RANGES = [
@@ -39,7 +39,7 @@ class Channels(object):
 
     ]
 
-    MAGAZINE_PROMO_RANGES = [
+    RADIO_MAGAZINE_PROMO_RANGES = [
         ("2019-06-02T00:00:00+03:00", "2019-06-06T24:00:00+03:00"),
         ("2019-06-09T00:00:00+03:00", "2019-06-13T24:00:00+03:00"),
         ("2019-06-16T00:00:00+03:00", "2019-06-20T24:00:00+03:00")
@@ -90,21 +90,21 @@ class Channels(object):
         ("2019-05-31T00:00:00+03:00", "2019-06-06T17:00:00+03:00")
     ]
 
-    MAGAZINE_S01E03_RANGES = [
+    RADIO_MAGAZINE_S01E03_RANGES = [
         ("2019-06-02T00:00:00+03:00", "2019-06-08T24:00:00+03:00")
     ]
 
-    MAGAZINE_S01E04_RANGES = [
+    RADIO_MAGAZINE_S01E04_RANGES = [
         ("2019-06-09T00:00:00+03:00", "2019-06-15T24:00:00+03:00"),
     ]
 
-    MAGAZINE_S01E05_RANGES = [
+    RADIO_MAGAZINE_S01E05_RANGES = [
         ("2019-06-16T00:00:00+03:00", "2019-06-22T24:00:00+03:00")
     ]
 
     CHANNEL_RANGES = {
         DRAMA_PROMO_KEY: DRAMA_PROMO_RANGES,
-        MAGAZINE_PROMO_KEY: MAGAZINE_PROMO_RANGES,
+        RADIO_MAGAZINE_PROMO_KEY: RADIO_MAGAZINE_PROMO_RANGES,
         RADIO_DRAMA_KEY: RADIO_DRAMA_RANGES,
         RADIO_MAGAZINE_KEY: RADIO_MAGAZINE_RANGES
     }
@@ -117,9 +117,9 @@ class Channels(object):
         DRAMA_S01E05_KEY: DRAMA_S01E05_RANGES,
         DRAMA_S01E06_KEY: DRAMA_S01E06_RANGES,
         DRAMA_S01E07_KEY: DRAMA_S01E07_RANGES,
-        MAGAZINE_S01E03_KEY: MAGAZINE_S01E03_RANGES,
-        MAGAZINE_S01E04_KEY: MAGAZINE_S01E04_RANGES,
-        MAGAZINE_S01E05_KEY: MAGAZINE_S01E05_RANGES
+        RADIO_MAGAZINE_S01E03_KEY: RADIO_MAGAZINE_S01E03_RANGES,
+        RADIO_MAGAZINE_S01E04_KEY: RADIO_MAGAZINE_S01E04_RANGES,
+        RADIO_MAGAZINE_S01E05_KEY: RADIO_MAGAZINE_S01E05_RANGES
 
     }
 
