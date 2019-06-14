@@ -4,117 +4,125 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
-            "CodeID": "code-a76109e9",
-            "CodeType": "Normal",
-            "DisplayText": "youth face challenges",
-            "NumericValue": 0,
-            "StringValue": "youth_face_challenges",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-a76109e9",
+      "CodeType": "Normal",
+      "DisplayText": "youth face challenges",
+      "NumericValue": 0,
+      "StringValue": "youth_face_challenges",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-d8811e6a",
-            "CodeType": "Normal",
-            "DisplayText": "clannism",
-            "NumericValue": 1,
-            "StringValue": "clannism",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-d8811e6a",
+      "CodeType": "Normal",
+      "DisplayText": "clannism",
+      "NumericValue": 1,
+      "StringValue": "clannism",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-e7efa236",
-            "CodeType": "Normal",
-            "DisplayText": "limited job opportunities",
-            "NumericValue": 2,
-            "StringValue": "limited_job_opportunities",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-e7efa236",
+      "CodeType": "Normal",
+      "DisplayText": "limited job opportunities",
+      "NumericValue": 2,
+      "StringValue": "limited_job_opportunities",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-0121cf53",
-            "CodeType": "Normal",
-            "DisplayText": "corruption",
-            "NumericValue": 3,
-            "StringValue": "corruption",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-0121cf53",
+      "CodeType": "Normal",
+      "DisplayText": "corruption",
+      "NumericValue": 3,
+      "StringValue": "corruption",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-a45efa50",
-            "CodeType": "Normal",
-            "DisplayText": "lack of justice",
-            "NumericValue": 4,
-            "StringValue": "lack_of_justice",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-a45efa50",
+      "CodeType": "Normal",
+      "DisplayText": "lack of justice",
+      "NumericValue": 4,
+      "StringValue": "lack_of_justice",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-5d21c1ec",
-            "CodeType": "Normal",
-            "DisplayText": "no support from government",
-            "NumericValue": 5,
-            "StringValue": "no_support_from_government",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-5d21c1ec",
+      "CodeType": "Normal",
+      "DisplayText": "no support from government",
+      "NumericValue": 5,
+      "StringValue": "no_support_from_government",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-8ff6ec93",
-            "CodeType": "Normal",
-            "DisplayText": "female youths are discriminated",
-            "NumericValue": 6,
-            "StringValue": "female_youths_are_discriminated",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-8ff6ec93",
+      "CodeType": "Normal",
+      "DisplayText": "female youths are discriminated",
+      "NumericValue": 6,
+      "StringValue": "female_youths_are_discriminated",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-3cc442b6",
-            "CodeType": "Normal",
-            "DisplayText": "lack of religious practices",
-            "NumericValue": 7,
-            "StringValue": "lack_of_religious_practices",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-3cc442b6",
+      "CodeType": "Normal",
+      "DisplayText": "lack of religious practices",
+      "NumericValue": 7,
+      "StringValue": "lack_of_religious_practices",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-fac56711",
-            "CodeType": "Normal",
-            "DisplayText": "regressive culture",
-            "NumericValue": 8,
-            "StringValue": "regressive_culture",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-fac56711",
+      "CodeType": "Normal",
+      "DisplayText": "regressive culture",
+      "NumericValue": 8,
+      "StringValue": "regressive_culture",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-889203c7",
-            "CodeType": "Normal",
-            "DisplayText": "youth lack education",
-            "NumericValue": 9,
-            "StringValue": "youth_lack_education",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-889203c7",
+      "CodeType": "Normal",
+      "DisplayText": "youth lack education",
+      "NumericValue": 9,
+      "StringValue": "youth_lack_education",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-97dfc396",
-            "CodeType": "Normal",
-            "DisplayText": "backbone of the community",
-            "NumericValue": 10,
-            "StringValue": "backbone_of_the_community",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-97dfc396",
+      "CodeType": "Normal",
+      "DisplayText": "backbone of the community",
+      "NumericValue": 10,
+      "StringValue": "backbone_of_the_community",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-06f6ea9e",
-            "CodeType": "Normal",
-            "DisplayText": "no encouragement",
-            "NumericValue": 11,
-            "StringValue": "no_encouragement",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-06f6ea9e",
+      "CodeType": "Normal",
+      "DisplayText": "no encouragement",
+      "NumericValue": 11,
+      "StringValue": "no_encouragement",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-3ffd91ea",
-            "CodeType": "Normal",
-            "DisplayText": "lack of trust between the leaders and the youths",
-            "NumericValue": 12,
-            "StringValue": "lack_of_trust_between_the_leaders_and_the_youths",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-3ffd91ea",
+      "CodeType": "Normal",
+      "DisplayText": "lack of trust between the leaders and the youths",
+      "NumericValue": 12,
+      "StringValue": "lack_of_trust_between_the_leaders_and_the_youths",
+      "VisibleInCoda": true
+    },
     {
-            "CodeID": "code-c76f94cc",
-            "CodeType": "Normal",
-            "DisplayText": "other",
-            "NumericValue": 13,
-            "StringValue": "other",
-            "VisibleInCoda": true
-        },
+      "CodeID": "code-c76f94cc",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 13,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
+      "StringValue": "no_discrimination",
+      "DisplayText": "No discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-c4c3b397",
+      "CodeType": "Normal"
+    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
