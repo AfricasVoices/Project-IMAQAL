@@ -194,7 +194,7 @@ class PipelineConfiguration(object):
                    analysis_file_key="rqa_s01mag05_",
                    cleaner=None,
                    code_scheme=CodeSchemes.S01MAG05,
-                   binary_code_scheme=CodeSchemes.S01E05_YES_NO_AMB,
+                   binary_code_scheme=CodeSchemes.S01MAG05_YES_NO_AMB,
                    binary_coded_field="rqa_s01mag05_yes_no_amb_coded",
                    binary_analysis_file_key="rqa_s01mag05_yes_no_amb"),
     ]
