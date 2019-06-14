@@ -153,9 +153,9 @@ class AnalysisFile(object):
             "radio_drama_participation_s01e05",
             "radio_drama_participation_s01e06",
             "radio_drama_participation_s01e07",
-            "radio_magazine_participation_s01e03",
-            "radio_magazine_participation_s01e04",
-            "radio_magazine_participation_s01e05",
+            "radio_magazine_participation_s01mag03",
+            "radio_magazine_participation_s01mag03",
+            "radio_magazine_participation_s01mag03",
 
         ]
 
