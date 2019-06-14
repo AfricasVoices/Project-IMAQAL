@@ -104,9 +104,10 @@ fi
 
 # Run the container
 docker start -a -i "$container"
+
 # Copy the output data back out of the container
-#mkdir -p "$(dirname "$OUTPUT_JSON")"
-#docker cp "$container:/data/output.json" "$OUTPUT_JSON"
+mkdir -p "$(dirname "$OUTPUT_JSON")"
+docker cp "$container:/data/output.json" "$OUTPUT_JSON"
 
 mkdir -p "$OUTPUT_ICR_DIR"
 docker cp "$container:/data/output-icr/." "$OUTPUT_ICR_DIR"
