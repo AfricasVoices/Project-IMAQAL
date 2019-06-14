@@ -37,8 +37,9 @@ cd ..
     "$DATA_ROOT/Raw Data/imaqal_s01e01_activation.json" "$DATA_ROOT/Raw Data/imaqal_s01e02_activation.json" \
     "$DATA_ROOT/Raw Data/imaqal_s01e03_activation.json" "$DATA_ROOT/Raw Data/imaqal_s01e04_activation.json" \
     "$DATA_ROOT/Raw Data/imaqal_s01e05_activation.json" "$DATA_ROOT/Raw Data/imaqal_s01e06_activation.json" \
-    "$DATA_ROOT/Raw Data/imaqal_s01e07_activation.json" "$DATA_ROOT/Raw Data/imaqal_demog.json" \
-    "$DATA_ROOT/Raw Data/imaqal_s01_follow_up_w2.json"\
+    "$DATA_ROOT/Raw Data/imaqal_s01e07_activation.json" "$DATA_ROOT/Raw Data/mag_s01e03_activation.json" \
+    "$DATA_ROOT/Raw Data/mag_s01e04_activation.json" "$DATA_ROOT/Raw Data/mag_s01e05_activation.json" \
+    "$DATA_ROOT/Raw Data/imaqal_demog.json" "$DATA_ROOT/Raw Data/imaqal_s01_follow_up_w2.json" \
     "$DATA_ROOT/Coded Coda Files/" "$DATA_ROOT/Outputs/traced_data.json" \
     "$DATA_ROOT/Outputs/ICR/" "$DATA_ROOT/Outputs/Coda Files/" \
     "$DATA_ROOT/Outputs/imaqal_s01_messages.csv" "$DATA_ROOT/Outputs/imaqal_s01_individuals.csv" \

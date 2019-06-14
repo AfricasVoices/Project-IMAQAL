@@ -11,6 +11,7 @@ from storage.google_drive import drive_client_wrapper
 
 from src import CombineRawDatasets, TranslateRapidProKeys, \
     AutoCodeShowAndFollowupsMessages, ProductionFile, AutoCodeDemogs, ApplyManualCodes, AnalysisFile
+
 from src.lib import PipelineConfiguration
 
 log = Logger(__name__)
@@ -51,6 +52,15 @@ if __name__ == "__main__":
     parser.add_argument("s01e07_input_path", metavar="s01e07-input-path",
                         help="Path to the episode 7 raw messages JSON file, containing a list of serialized TracedData "
                              "objects")
+    parser.add_argument("s01mag03_input_path", metavar="s01mag03-input-path",
+                        help="Path to the magazine episode 3 raw messages JSON file, containing a list of serialized "
+                             "TracedData objects")
+    parser.add_argument("s01mag04_input_path", metavar="s01mag04-input-path",
+                        help="Path to the magazine episode 4 raw messages JSON file, containing a list of serialized "
+                             "TracedData objects")
+    parser.add_argument("s01mag05_input_path", metavar="s01mag05-input-path",
+                        help="Path to the magazine episode 5 raw messages JSON file, containing a list of serialized "
+                             "TracedData objects")
     parser.add_argument("s01_demog_input_path", metavar="s01-demog-input-path",
                         help="Path to the raw demographics JSON file for season 1, containing a list of serialized "
                              "TracedData objects")
@@ -94,6 +104,9 @@ if __name__ == "__main__":
     s01e05_input_path = args.s01e05_input_path
     s01e06_input_path = args.s01e06_input_path
     s01e07_input_path = args.s01e07_input_path
+    s01mag03_input_path = args.s01mag03_input_path
+    s01mag04_input_path = args.s01mag04_input_path
+    s01mag05_input_path = args.s01mag05_input_path
     s01_demog_input_path = args.s01_demog_input_path
     s01_follow_up_w2_input_path = args.s01_follow_up_w2_input_path
     prev_coded_dir_path = args.prev_coded_dir_path
@@ -106,7 +119,8 @@ if __name__ == "__main__":
     production_csv_output_path = args.production_csv_output_path
 
     message_paths = [s01e01_input_path, s01e02_input_path, s01e03_input_path,
-                     s01e04_input_path, s01e05_input_path, s01e06_input_path, s01e07_input_path]
+                     s01e04_input_path, s01e05_input_path, s01e06_input_path, s01e07_input_path,
+                     s01mag03_input_path, s01mag04_input_path, s01mag05_input_path]
 
     follow_up_survey_paths = [s01_follow_up_w2_input_path]
 
@@ -164,7 +178,6 @@ if __name__ == "__main__":
     log.info("Auto Coding Shows and Follow ups Messages...")
     data = AutoCodeShowAndFollowupsMessages.auto_code_show_and_followups_messages(user, data, icr_output_dir,
                                                                                   coded_dir_path)
-
     log.info("Exporting production CSV...")
     data = ProductionFile.generate(data, production_csv_output_path)
 
@@ -176,7 +189,7 @@ if __name__ == "__main__":
 
     log.info("Generating Analysis CSVs...")
     data = AnalysisFile.generate(user, data, csv_by_message_output_path, csv_by_individual_output_path)
-
+    
     log.info("Writing TracedData to file...")
     IOUtils.ensure_dirs_exist_for_file(json_output_path)
     with open(json_output_path, "w") as f:
@@ -188,7 +201,6 @@ if __name__ == "__main__":
     # traced data log.
     if pipeline_configuration.drive_upload is not None:
         log.info("Uploading CSVs to Google Drive...")
-
         production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
         production_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.production_upload_path)
         drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
@@ -206,7 +218,7 @@ if __name__ == "__main__":
         drive_client_wrapper.update_or_create(csv_by_individual_output_path, individuals_csv_drive_dir,
                                               target_file_name=individuals_csv_drive_file_name,
                                               target_folder_is_shared_with_me=True)
-
+        
         traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.traced_data_upload_path)
         traced_data_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.traced_data_upload_path)
         drive_client_wrapper.update_or_create(json_output_path, traced_data_drive_dir,

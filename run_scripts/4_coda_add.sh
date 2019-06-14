@@ -23,6 +23,9 @@ DATASETS=(
     "s01e05"
     "s01e06"
     "s01e07"
+    "s01mag03"
+    "s01mag04"
+    "s01mag05"
 
     "gender"
     "location"

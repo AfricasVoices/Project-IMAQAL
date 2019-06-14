@@ -153,8 +153,10 @@ class AnalysisFile(object):
             "radio_drama_participation_s01e05",
             "radio_drama_participation_s01e06",
             "radio_drama_participation_s01e07",
-            "radio_magazine_participation_s01e01",
-            "radio_magazine_participation_s01e02",
+            "radio_magazine_participation_s01mag03",
+            "radio_magazine_participation_s01mag03",
+            "radio_magazine_participation_s01mag03",
+
         ]
 
         # Export to CSV

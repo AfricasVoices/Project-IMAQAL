@@ -38,7 +38,11 @@ if __name__ == "__main__":
         "imaqal_s01e04_activation",
         "imaqal_s01e05_activation",
         "imaqal_s01e06_activation",
-        "imaqal_s01e07_activation"
+        "imaqal_s01e07_activation",
+        "mag_s01e03_activation",
+        "mag_s01e04_activation",
+        "mag_s01e05_activation"
+
     ]
 
     SURVEYS = [
