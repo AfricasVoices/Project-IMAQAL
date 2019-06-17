@@ -2,7 +2,8 @@
     "SchemeID": "Scheme-fffee09d89",
     "Name": "WS - Correct Dataset",
     "Version": "0.0.0.2",
-    "Codes": [{
+    "Codes": [
+        {
             "CodeID": "code-70ac05ab",
             "CodeType": "Normal",
             "DisplayText": "age",
@@ -105,6 +106,110 @@
             "CodeID": "code-h321daf4",
             "CodeType": "Normal",
             "StringValue": "women_participation"
+        },
+        {
+            "DisplayText": "s01mag03",
+            "VisibleInCoda": true,
+            "NumericValue": 15,
+            "CodeID": "code-5779c382",
+            "CodeType": "Normal",
+            "StringValue": "s01mag03"
+        },
+        {
+            "DisplayText": "s01mag04",
+            "VisibleInCoda": true,
+            "NumericValue": 16,
+            "CodeID": "code-0e19748c",
+            "CodeType": "Normal",
+            "StringValue": "s01mag04"
+        },
+        {
+            "DisplayText": "s01mag05",
+            "VisibleInCoda": true,
+            "NumericValue": 17,
+            "CodeID": "code-2dcbe7ba",
+            "CodeType": "Normal",
+            "StringValue": "s01mag05"
+        },
+        {
+            "DisplayText": "s01mag06",
+            "VisibleInCoda": true,
+            "NumericValue": 18,
+            "CodeID": "code-617439b6",
+            "CodeType": "Normal",
+            "StringValue": "s01mag06"
+        },
+        {
+            "DisplayText": "s01mag07",
+            "VisibleInCoda": true,
+            "NumericValue": 19,
+            "CodeID": "code-8fa0ec44",
+            "CodeType": "Normal",
+            "StringValue": "s01mag07"
+        },
+        {
+            "DisplayText": "s01mag08",
+            "VisibleInCoda": true,
+            "NumericValue": 20,
+            "CodeID": "code-f27ee566",
+            "CodeType": "Normal",
+            "StringValue": "s01mag08"
+        },
+        {
+            "DisplayText": "s01mag09",
+            "VisibleInCoda": true,
+            "NumericValue": 21,
+            "CodeID": "code-0cb9f95f",
+            "CodeType": "Normal",
+            "StringValue": "s01mag09"
+        },
+        {
+            "DisplayText": "s01mag10",
+            "VisibleInCoda": true,
+            "NumericValue": 22,
+            "CodeID": "code-424c1d93",
+            "CodeType": "Normal",
+            "StringValue": "s01mag10"
+        },
+        {
+            "DisplayText": "s01mag11",
+            "VisibleInCoda": true,
+            "NumericValue": 23,
+            "CodeID": "code-93f0c63c",
+            "CodeType": "Normal",
+            "StringValue": "s01mag11"
+        },
+        {
+            "DisplayText": "s01mag12",
+            "VisibleInCoda": true,
+            "NumericValue": 24,
+            "CodeID": "code-86b74420",
+            "CodeType": "Normal",
+            "StringValue": "s01mag12"
+        },
+        {
+            "DisplayText": "s01mag13",
+            "VisibleInCoda": true,
+            "NumericValue": 25,
+            "CodeID": "code-dd19ad74",
+            "CodeType": "Normal",
+            "StringValue": "s01mag13"
+        },
+        {
+            "DisplayText": "s01mag14",
+            "VisibleInCoda": true,
+            "NumericValue": 26,
+            "CodeID": "code-d587b931",
+            "CodeType": "Normal",
+            "StringValue": "s01mag14"
+        },
+        {
+            "DisplayText": "s01mag15",
+            "VisibleInCoda": true,
+            "NumericValue": 27,
+            "CodeID": "code-eb74cbca",
+            "CodeType": "Normal",
+            "StringValue": "s01mag15"
         },
         {
             "CodeID": "code-NR-5e3eee23",
