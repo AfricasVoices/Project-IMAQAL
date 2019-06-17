@@ -4,6 +4,159 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "lack of education",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-508d0026",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_education"
+    },
+    {
+      "DisplayText": "lack of health care",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-7f7c9426",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_health_care"
+    },
+    {
+      "DisplayText": "insecurity",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-c713c1f9",
+      "CodeType": "Normal",
+      "StringValue": "insecurity"
+    },
+    {
+      "DisplayText": "lack of access to basic needs",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-97c1f8de",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_access_to_basic_needs"
+    },
+    {
+      "DisplayText": "lack the ability to help",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-3bb01dfc",
+      "CodeType": "Normal",
+      "StringValue": "lack_the_ability_to_help"
+    },
+    {
+      "DisplayText": "lack of access to job opportunities",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-11c1e451",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_access_to_job_opportunities"
+    },
+    {
+      "DisplayText": "violation of their rights",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-59934a55",
+      "CodeType": "Normal",
+      "StringValue": "violation_of_their_rights"
+    },
+    {
+      "DisplayText": "crowd-funding",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-184074e9",
+      "CodeType": "Normal",
+      "StringValue": "crowd_funding"
+    },
+    {
+      "DisplayText": "lack of proper hygiene",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-8d03dc01",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_proper_hygiene"
+    },
+    {
+      "DisplayText": "discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-f11b93d2",
+      "CodeType": "Normal",
+      "StringValue": "discrimination"
+    },
+    {
+      "DisplayText": "no one cares",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-43e4ebdb",
+      "CodeType": "Normal",
+      "StringValue": "no_one_cares"
+    },
+    {
+      "DisplayText": "poor governance",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-3a77c0d1",
+      "CodeType": "Normal",
+      "StringValue": "poor_governance"
+    },
+    {
+      "DisplayText": "forced eviction",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-621b1e29",
+      "CodeType": "Normal",
+      "StringValue": "forced_eviction"
+    },
+    {
+      "DisplayText": "not supported",
+      "VisibleInCoda": true,
+      "NumericValue": 13,
+      "CodeID": "code-d478e8d7",
+      "CodeType": "Normal",
+      "StringValue": "not_supported"
+    },
+    {
+      "DisplayText": "lack of financial resources",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-b6f6005e",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_financial_resources"
+    },
+    {
+      "DisplayText": "no one fights for their rights",
+      "VisibleInCoda": true,
+      "NumericValue": 15,
+      "CodeID": "code-eb6bc742",
+      "CodeType": "Normal",
+      "StringValue": "no_one_fights_for_their_rights"
+    },
+    {
+      "DisplayText": "dependency on aid groups",
+      "VisibleInCoda": true,
+      "NumericValue": 16,
+      "CodeID": "code-2632fbe7",
+      "CodeType": "Normal",
+      "StringValue": "dependency_on_aid_groups"
+    },
+
+    {
+      "DisplayText": "community not united",
+      "VisibleInCoda": true,
+      "NumericValue": 17,
+      "CodeID": "code-834dff0b",
+      "CodeType": "Normal",
+      "StringValue": "community_not_united"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 18,
+      "CodeID": "code-8274494f",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
