@@ -129,7 +129,7 @@ class TranslateRapidProKeys(object):
         # Correct drama week 6 messages recovered from the Hormuud downtime issue
         cls._remap_radio_show_by_time_range(
             user, data, "received_on", "rqa_s01e06_raw",
-            isoparse("2019-05-27T00:00:25+03:00"),
+            isoparse("2019-05-27T00:00:00+03:00"),
             isoparse("2019-05-30T22:47:46+03:00")
         )
 
