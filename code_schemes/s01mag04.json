@@ -4,6 +4,142 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "fight corruption",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-fd98fb56",
+      "CodeType": "Normal",
+      "StringValue": "fight_corruption"
+    },
+    {
+      "DisplayText": "take responsibility",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-cb504318",
+      "CodeType": "Normal",
+      "StringValue": "take_responsibility"
+    },
+    {
+      "DisplayText": "ensure there is justice",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-2b1c05a7",
+      "CodeType": "Normal",
+      "StringValue": "ensure_there_is_justice"
+    },
+    {
+      "DisplayText": "provide free education",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-d5c934d0",
+      "CodeType": "Normal",
+      "StringValue": "provide_free_education"
+    },
+    {
+      "DisplayText": "job creation",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-04cee735",
+      "CodeType": "Normal",
+      "StringValue": "job_creation"
+    },
+    {
+      "DisplayText": "tax payment",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-2387c6b9",
+      "CodeType": "Normal",
+      "StringValue": "tax_payment"
+    },
+    {
+      "DisplayText": "promote self employment",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-a60b6fee",
+      "CodeType": "Normal",
+      "StringValue": "promote_self_employment"
+    },
+    {
+      "DisplayText": "provide peace and security",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-4d0055f6",
+      "CodeType": "Normal",
+      "StringValue": "provide_peace_and_security"
+    },
+    {
+      "DisplayText": "introduce technical skills in schools",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-940653b5",
+      "CodeType": "Normal",
+      "StringValue": "introduce_technical_skills_in_schools"
+    },
+    {
+      "DisplayText": "expel foreigners",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-5ceb74de",
+      "CodeType": "Normal",
+      "StringValue": "expel_foreigners"
+    },
+    {
+      "DisplayText": "promote consultation and collaboration ",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-c521801a",
+      "CodeType": "Normal",
+      "StringValue": "promote_consultation_and_collaboration "
+    },
+    {
+      "DisplayText": "ban khat",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-ae0c512b",
+      "CodeType": "Normal",
+      "StringValue": "ban_khat"
+    },
+    {
+      "DisplayText": "civil servants",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-4daf7153",
+      "CodeType": "Normal",
+      "StringValue": "civil_servants"
+    },
+    {
+      "DisplayText": "civil servants' age limit",
+      "VisibleInCoda": true,
+      "NumericValue": 13,
+      "CodeID": "code-1d6c9019",
+      "CodeType": "Normal",
+      "StringValue": "civil_servants_age_limit"
+    },
+    {
+      "DisplayText": "mapping of the unemployed",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-b7d22827",
+      "CodeType": "Normal",
+      "StringValue": "mapping_of_the_unemployed"
+    },
+    {
+      "DisplayText": "limited resources",
+      "VisibleInCoda": true,
+      "NumericValue": 15,
+      "CodeID": "code-9d35f67d",
+      "CodeType": "Normal",
+      "StringValue": "limited_resources"
+    },
+    {
+      "DisplayText": "clannism",
+      "VisibleInCoda": true,
+      "NumericValue": 16,
+      "CodeID": "code-8b001d47",
+      "CodeType": "Normal",
+      "StringValue": "clannism"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
