@@ -6,6 +6,7 @@
     "3903ad8e-284e-48a0-881b-89c0b06b9334",
     "45939459-e4d5-4ad6-8650-3e7134b9a035"
   ],
+  "RecoveryCSVURLs": ["gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_week_6.csv"],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
 
@@ -19,6 +20,10 @@
     {"RapidProKey": "Rqa_Mag_S01E03 (Run ID) - mag_s01e03_activation", "PipelineKey": "rqa_s01mag03_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E04 (Run ID) - mag_s01e04_activation", "PipelineKey": "rqa_s01mag04_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E05 (Run ID) - mag_s01e05_activation", "PipelineKey": "rqa_s01mag05_run_id"},
+
+    {"RapidProKey": "message", "PipelineKey": "recovered_raw"},
+    {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
+    {"RapidProKey": "run_id", "PipelineKey": "recovered_run_id"},
 
     {"RapidProKey": "Rqa_S01E01 (Time) - imaqal_s01e01_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_S01E02 (Time) - imaqal_s01e02_activation", "PipelineKey": "sent_on"},

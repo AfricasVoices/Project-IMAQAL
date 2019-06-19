@@ -49,6 +49,9 @@ if __name__ == "__main__":
     parser.add_argument("s01e06_input_path", metavar="s01e06-input-path",
                         help="Path to the episode 6 raw messages JSON file, containing a list of serialized TracedData "
                              "objects")
+    parser.add_argument("s01e06_hormuud_recovered_input_path", metavar="s01e06_hormuud_recovered_input_path",
+                        help="Path to the episode 6 hormuud recovered raw messages JSON file, containing a list of "
+                             "serialized TracedData  objects")
     parser.add_argument("s01e07_input_path", metavar="s01e07-input-path",
                         help="Path to the episode 7 raw messages JSON file, containing a list of serialized TracedData "
                              "objects")
@@ -103,6 +106,7 @@ if __name__ == "__main__":
     s01e04_input_path = args.s01e04_input_path
     s01e05_input_path = args.s01e05_input_path
     s01e06_input_path = args.s01e06_input_path
+    s01e06_hormuud_recovered_input_path = args.s01e06_hormuud_recovered_input_path
     s01e07_input_path = args.s01e07_input_path
     s01mag03_input_path = args.s01mag03_input_path
     s01mag04_input_path = args.s01mag04_input_path
@@ -123,6 +127,7 @@ if __name__ == "__main__":
                      s01mag03_input_path, s01mag04_input_path, s01mag05_input_path]
 
     follow_up_survey_paths = [s01_follow_up_w2_input_path]
+
 
     # Load the pipeline configuration file
     log.info("Loading Pipeline Configuration File...")
@@ -156,6 +161,17 @@ if __name__ == "__main__":
         with open(path, "r") as f:
             messages_datasets.append(TracedDataJsonIO.import_json_to_traced_data_iterable(f))
 
+    # TODO Update this to read from config - RecoveryCSVURLs
+    recovery_datasets = []
+    log.info("Loading recovery datasets:")
+    raw_recovery_path = [s01e06_hormuud_recovered_input_path]
+    for recovered_data in raw_recovery_path:
+        log.info(f"Loading {recovered_data}...")
+        with open(recovered_data, "r") as f:
+            messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
+        log.debug(f"Loaded {len(messages)} messages")
+        recovery_datasets.append(messages)
+
     # Load demogs
     log.info("Loading Demographics...")
     with open(s01_demog_input_path, "r") as f:
@@ -170,7 +186,7 @@ if __name__ == "__main__":
 
     # Add survey data to the messages
     log.info("Combining Datasets...")
-    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets, survey_datasets, [s01_demographics])
+    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, survey_datasets, [s01_demographics])
 
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)

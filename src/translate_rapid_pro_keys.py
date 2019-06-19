@@ -3,7 +3,11 @@ from datetime import datetime
 import pytz
 from core_data_modules.traced_data import Metadata
 from core_data_modules.util import TimeUtils
+from core_data_modules.logging import Logger
 from dateutil.parser import isoparse
+
+log = Logger(__name__)
+
 
 class TranslateRapidProKeys(object):
     # TODO: Move the constants in this file to configuration json
@@ -89,8 +93,14 @@ class TranslateRapidProKeys(object):
         if range_end is None:
             range_end = pytz.utc.localize(datetime.max)
 
+        log.info(f"Remapping messages in time range {range_start.isoformat()} to {range_end.isoformat()} "
+                 f"to show {show_id_to_remap_to}...")
+
+        remapped_count = 0
         for td in data:
             if time_key in td and range_start <= isoparse(td[time_key]) < range_end:
+                remapped_count += 1
+
                 remapped = {
                     "show_id": show_id_to_remap_to
                 }
@@ -99,6 +109,9 @@ class TranslateRapidProKeys(object):
 
                 td.append_data(remapped,
                                Metadata(user, Metadata.get_call_location(), TimeUtils.utc_now_as_iso_string()))
+
+        log.info(f"Remapped {remapped_count} messages to show {show_id_to_remap_to}")
+
 
     @classmethod
     def remap_radio_shows(cls, user, data, coda_input_dir):
@@ -113,8 +126,12 @@ class TranslateRapidProKeys(object):
         :param coda_input_dir: Directory to read coded coda files from.
         :type coda_input_dir: str
         """
-        # No implementation needed yet, because no flow is yet to go wrong in production.
-        pass
+        # Correct drama week 6 messages recovered from the Hormuud downtime issue
+        cls._remap_radio_show_by_time_range(
+            user, data, "received_on", "rqa_s01e06_raw",
+            isoparse("2019-05-27T00:00:00+03:00"),
+            isoparse("2019-05-30T22:47:46+03:00")
+        )
 
     @classmethod
     def remap_key_names(cls, user, data, pipeline_configuration):

@@ -322,7 +322,7 @@ class PipelineConfiguration(object):
     DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, rapid_pro_test_contact_uuids,
-                 rapid_pro_key_remappings, drive_upload=None):
+                 rapid_pro_key_remappings, recovery_csv_urls=None, drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
         :type rapid_pro_domain: str
@@ -343,6 +343,7 @@ class PipelineConfiguration(object):
         self.rapid_pro_token_file_url = rapid_pro_token_file_url
         self.rapid_pro_test_contact_uuids = rapid_pro_test_contact_uuids
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
+        self.recovery_csv_urls = recovery_csv_urls
         self.drive_upload = drive_upload
 
         self.validate()
@@ -352,6 +353,7 @@ class PipelineConfiguration(object):
         rapid_pro_domain = configuration_dict["RapidProDomain"]
         rapid_pro_token_file_url = configuration_dict["RapidProTokenFileURL"]
         rapid_pro_test_contact_uuids = configuration_dict["RapidProTestContactUUIDs"]
+        recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
 
         rapid_pro_key_remappings = []
         for remapping_dict in configuration_dict["RapidProKeyRemappings"]:
@@ -362,7 +364,7 @@ class PipelineConfiguration(object):
             drive_upload_paths = DriveUpload.from_configuration_dict(configuration_dict["DriveUpload"])
 
         return cls(rapid_pro_domain, rapid_pro_token_file_url, rapid_pro_test_contact_uuids,
-                   rapid_pro_key_remappings, drive_upload_paths)
+                   rapid_pro_key_remappings, recovery_csv_urls, drive_upload_paths)
 
     @classmethod
     def from_configuration_file(cls, f):
@@ -375,6 +377,11 @@ class PipelineConfiguration(object):
         validators.validate_list(self.rapid_pro_test_contact_uuids, "rapid_pro_test_contact_uuids")
         for i, contact_uuid in enumerate(self.rapid_pro_test_contact_uuids):
             validators.validate_string(contact_uuid, f"rapid_pro_test_contact_uuids[{i}]")
+
+        if self.recovery_csv_urls is not None:
+            validators.validate_list(self.recovery_csv_urls, "recovery_csv_urls")
+            for i, recovery_csv_url in enumerate(self.recovery_csv_urls):
+                validators.validate_string(recovery_csv_url, f"recovery_csv_urls[{i}]")
 
         validators.validate_list(self.rapid_pro_key_remappings, "rapid_pro_key_remappings")
         for i, remapping in enumerate(self.rapid_pro_key_remappings):
