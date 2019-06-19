@@ -24,7 +24,7 @@ if [[ $# -ne 24 ]]; then
     [--profile-cpu <profile-output-path>]
     <user> <pipeline-configuration-file-path> <google-cloud-credentials-file-path> <phone-number-uuid-table-path>
     <s01e01-input-path> <s01e02-input-path> <s01e03-input-path> <s01e04-input-path> <s01e05-input-path>
-    <s01e06-input-path> <s01e06_hormuud_recovered_input_path> <s01e07-input-path> <s01mag03-input-path>
+    <s01e06-input-path> <s01e06-hormuud-recovered-input_path> <s01e07-input-path> <s01mag03-input-path>
     <s01mag04-input-path> <s01mag05-input-path> <s01-demog-input-path> <s01-follow-up-w2-input-path>
     <prev-coded-dir> <json-output-path> <icr-output-dir> <coded-output-dir> <messages-output-csv>
     <individuals-output-csv> <production-output-csv>"
