@@ -163,18 +163,14 @@ if __name__ == "__main__":
 
     # TODO Update this to read from config - RecoveryCSVURLs
     recovery_datasets = []
-    if pipeline_configuration.recovery_csv_urls is None:
-        log.debug("Not loading any recovery datasets (because the pipeline configuration json does not contain the key "
-                  "'RecoveryCSVURLs')")
-    else:
-        log.info("Loading recovery datasets:")
-        raw_recovery_path = [s01e06_hormuud_recovered_input_path]
-        for recovered_data in raw_recovery_path:
-            log.info(f"Loading {recovered_data}...")
-            with open(recovered_data, "r") as f:
-                messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
-            log.debug(f"Loaded {len(messages)} messages")
-            recovery_datasets.append(messages)
+    log.info("Loading recovery datasets:")
+    raw_recovery_path = [s01e06_hormuud_recovered_input_path]
+    for recovered_data in raw_recovery_path:
+        log.info(f"Loading {recovered_data}...")
+        with open(recovered_data, "r") as f:
+            messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
+        log.debug(f"Loaded {len(messages)} messages")
+        recovery_datasets.append(messages)
 
     # Load demogs
     log.info("Loading Demographics...")
