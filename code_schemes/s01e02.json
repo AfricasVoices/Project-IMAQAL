@@ -193,6 +193,15 @@
         "StringValue": "WS",
         "ControlCode": "WS",
         "DisplayText": "WS (wrong scheme)"
-      }
+      },
+    {
+      "CodeID": "code-CE-016c1e22",
+      "CodeType": "Control",
+      "ControlCode": "CE",
+      "DisplayText": "CE (coding error)",
+      "NumericValue": -110,
+      "StringValue": "CE",
+      "VisibleInCoda": false
+    }
   ]
 }
