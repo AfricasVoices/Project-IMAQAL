@@ -5,3 +5,4 @@ from .auto_code_demogs import AutoCodeDemogs
 from .production_file import ProductionFile
 from .apply_manual_codes import ApplyManualCodes
 from .analysis_file import AnalysisFile
+from .ws_corretion import WSCorrection

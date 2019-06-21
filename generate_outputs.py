@@ -10,7 +10,7 @@ from google.cloud import storage
 from storage.google_drive import drive_client_wrapper
 
 from src import CombineRawDatasets, TranslateRapidProKeys, \
-    AutoCodeShowAndFollowupsMessages, ProductionFile, AutoCodeDemogs, ApplyManualCodes, AnalysisFile
+    AutoCodeShowAndFollowupsMessages, ProductionFile, AutoCodeDemogs, ApplyManualCodes, AnalysisFile, WSCorrection
 
 from src.lib import PipelineConfiguration
 
@@ -190,6 +190,9 @@ if __name__ == "__main__":
 
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
+
+    log.info("Redirecting WS messages...")
+    data = WSCorrection.move_wrong_scheme_messages(user, data, prev_coded_dir_path)
 
     log.info("Auto Coding Shows and Follow ups Messages...")
     data = AutoCodeShowAndFollowupsMessages.auto_code_show_and_followups_messages(user, data, icr_output_dir,
