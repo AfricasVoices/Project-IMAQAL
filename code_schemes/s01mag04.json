@@ -100,12 +100,12 @@
       "StringValue": "ban_khat"
     },
     {
-      "DisplayText": "civil servants",
+      "DisplayText": "others"
       "VisibleInCoda": true,
       "NumericValue": 12,
       "CodeID": "code-4daf7153",
       "CodeType": "Normal",
-      "StringValue": "civil_servants"
+      "StringValue": "other"
     },
     {
       "DisplayText": "civil servants' age limit",
