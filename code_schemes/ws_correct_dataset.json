@@ -9,7 +9,10 @@
             "DisplayText": "age",
             "StringValue": "age",
             "NumericValue": 1,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "age"
+            ]
         },
         {
             "CodeID": "code-6774cedd",
@@ -17,7 +20,10 @@
             "DisplayText": "gender",
             "StringValue": "gender",
             "NumericValue": 2,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "gender"
+            ]
         },
         {
             "CodeID": "code-dda6e4b4",
@@ -25,7 +31,10 @@
             "DisplayText": "district",
             "StringValue": "district",
             "NumericValue": 3,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "location"
+            ]
         },
         {
             "CodeID": "code-c2ef3b7f",
@@ -33,7 +42,10 @@
             "DisplayText": "recently displaced",
             "StringValue": "recently displaced",
             "NumericValue": 4,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "recently displaced"
+            ]
         },
         {
             "CodeID": "code-87ec1cb8",
@@ -41,7 +53,10 @@
             "DisplayText": "hh language",
             "StringValue": "hh language",
             "NumericValue": 6,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+             "MatchValues": [
+                "hh language"
+            ]
         },
         {
             "CodeID": "code-9bd0f2b1",
@@ -49,7 +64,10 @@
             "DisplayText": "s01e01",
             "StringValue": "s01e01",
             "NumericValue": 7,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "s01e01"
+            ]
         },
         {
             "CodeID": "code-9a5f15d6",
@@ -57,7 +75,10 @@
             "DisplayText": "s01e02",
             "StringValue": "s01e02",
             "NumericValue": 8,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "s01e02"
+            ]
         },
         {
             "CodeID": "code-e8621530",
@@ -65,7 +86,10 @@
             "DisplayText": "s01e03",
             "StringValue": "s01e03",
             "NumericValue": 9,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "s01e03"
+            ]
         },
         {
             "CodeID": "code-f7a875ee",
@@ -73,7 +97,10 @@
             "DisplayText": "s01e04",
             "StringValue": "s01e04",
             "NumericValue": 10,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "s01e04"
+            ]
         },
         {
             "CodeID": "code-4dc91858",
@@ -81,7 +108,10 @@
             "DisplayText": "s01e05",
             "StringValue": "s01e05",
             "NumericValue": 11,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "s01e05"
+            ]
         },
         {
             "CodeID": "code-93ae8d7f",
@@ -89,7 +119,10 @@
             "DisplayText": "s01e06",
             "StringValue": "s01e06",
             "NumericValue": 12,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "s01e06"
+            ]
         },
         {
             "CodeID": "code-d321aaf7",
@@ -97,7 +130,10 @@
             "DisplayText": "s01e07",
             "StringValue": "s01e07",
             "NumericValue": 13,
-            "VisibleInCoda": true
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "s01e07"
+            ]
         },
         {
             "DisplayText": "women participation",
@@ -105,7 +141,10 @@
             "NumericValue": 14,
             "CodeID": "code-h321daf4",
             "CodeType": "Normal",
-            "StringValue": "women_participation"
+            "StringValue": "women_participation",
+            "MatchValues": [
+                "women_participation"
+            ]
         },
         {
             "DisplayText": "s01mag03",
@@ -113,7 +152,10 @@
             "NumericValue": 15,
             "CodeID": "code-5779c382",
             "CodeType": "Normal",
-            "StringValue": "s01mag03"
+            "StringValue": "s01mag03",
+            "MatchValues": [
+                "s01mag03"
+            ]
         },
         {
             "DisplayText": "s01mag04",
@@ -121,7 +163,10 @@
             "NumericValue": 16,
             "CodeID": "code-0e19748c",
             "CodeType": "Normal",
-            "StringValue": "s01mag04"
+            "StringValue": "s01mag04",
+            "MatchValues": [
+                "s01mag04"
+            ]
         },
         {
             "DisplayText": "s01mag05",
@@ -129,7 +174,10 @@
             "NumericValue": 17,
             "CodeID": "code-2dcbe7ba",
             "CodeType": "Normal",
-            "StringValue": "s01mag05"
+            "StringValue": "s01mag05",
+            "MatchValues": [
+                "s01mag05"
+            ]
         },
         {
             "DisplayText": "s01mag06",
@@ -137,7 +185,10 @@
             "NumericValue": 18,
             "CodeID": "code-617439b6",
             "CodeType": "Normal",
-            "StringValue": "s01mag06"
+            "StringValue": "s01mag06",
+            "MatchValues": [
+                "s01mag06"
+            ]
         },
         {
             "DisplayText": "s01mag07",
@@ -145,7 +196,10 @@
             "NumericValue": 19,
             "CodeID": "code-8fa0ec44",
             "CodeType": "Normal",
-            "StringValue": "s01mag07"
+            "StringValue": "s01mag07",
+            "MatchValues": [
+                "s01mag07"
+            ]
         },
         {
             "DisplayText": "s01mag08",
@@ -153,7 +207,10 @@
             "NumericValue": 20,
             "CodeID": "code-f27ee566",
             "CodeType": "Normal",
-            "StringValue": "s01mag08"
+            "StringValue": "s01mag08",
+            "MatchValues": [
+                "s01mag08"
+            ]
         },
         {
             "DisplayText": "s01mag09",
@@ -161,7 +218,10 @@
             "NumericValue": 21,
             "CodeID": "code-0cb9f95f",
             "CodeType": "Normal",
-            "StringValue": "s01mag09"
+            "StringValue": "s01mag09",
+            "MatchValues": [
+                "s01mag09"
+            ]
         },
         {
             "DisplayText": "s01mag10",
@@ -169,7 +229,10 @@
             "NumericValue": 22,
             "CodeID": "code-424c1d93",
             "CodeType": "Normal",
-            "StringValue": "s01mag10"
+            "StringValue": "s01mag10",
+            "MatchValues": [
+                "s01mag10"
+            ]
         },
         {
             "DisplayText": "s01mag11",
@@ -177,7 +240,10 @@
             "NumericValue": 23,
             "CodeID": "code-93f0c63c",
             "CodeType": "Normal",
-            "StringValue": "s01mag11"
+            "StringValue": "s01mag11",
+            "MatchValues": [
+                "s01mag11"
+            ]
         },
         {
             "DisplayText": "s01mag12",
@@ -185,7 +251,10 @@
             "NumericValue": 24,
             "CodeID": "code-86b74420",
             "CodeType": "Normal",
-            "StringValue": "s01mag12"
+            "StringValue": "s01mag12",
+            "MatchValues": [
+                "s01mag12"
+            ]
         },
         {
             "DisplayText": "s01mag13",
@@ -193,7 +262,10 @@
             "NumericValue": 25,
             "CodeID": "code-dd19ad74",
             "CodeType": "Normal",
-            "StringValue": "s01mag13"
+            "StringValue": "s01mag13",
+            "MatchValues": [
+                "s01mag13"
+            ]
         },
         {
             "DisplayText": "s01mag14",
@@ -201,7 +273,10 @@
             "NumericValue": 26,
             "CodeID": "code-d587b931",
             "CodeType": "Normal",
-            "StringValue": "s01mag14"
+            "StringValue": "s01mag14",
+            "MatchValues": [
+                "s01mag14"
+            ]
         },
         {
             "DisplayText": "s01mag15",
@@ -209,7 +284,10 @@
             "NumericValue": 27,
             "CodeID": "code-eb74cbca",
             "CodeType": "Normal",
-            "StringValue": "s01mag15"
+            "StringValue": "s01mag15",
+            "MatchValues": [
+                "s01mag15"
+            ]
         },
         {
             "CodeID": "code-NR-5e3eee23",
@@ -218,6 +296,15 @@
             "DisplayText": "NR (not reviewed)",
             "NumericValue": -40,
             "StringValue": "NR",
+            "VisibleInCoda": false
+        },
+        {
+            "CodeID": "code-CE-016c1e22",
+            "CodeType": "Control",
+            "ControlCode": "CE",
+            "DisplayText": "CE (coding error)",
+            "NumericValue": -110,
+            "StringValue": "CE",
             "VisibleInCoda": false
         }
     ]
