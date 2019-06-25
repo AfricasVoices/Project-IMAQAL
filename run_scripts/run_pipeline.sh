@@ -28,3 +28,4 @@ DATA_BACKUPS_DIR=$8
 
 ./4_coda_add.sh "$CODA_PUSH_CREDENTIALS_PATH" "$CODA_TOOLS_ROOT" "$DATA_ROOT"
 
+./5_backup_data_root.sh "$DATA_ROOT" "$DATA_BACKUPS_DIR"
