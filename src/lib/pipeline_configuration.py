@@ -50,7 +50,7 @@ class CodeSchemes(object):
 
 class CodingPlan(object):
     def __init__(self, raw_field, coded_field, coda_filename, cleaner=None, code_scheme=None, time_field=None,
-                 run_id_field=None, icr_filename=None, analysis_file_key=None, id_field=None,
+                 run_id_field=None, icr_filename=None, analysis_file_key=None, id_field=None, ws_code=None,
                  binary_code_scheme=None, binary_coded_field=None, binary_analysis_file_key=None):
         self.raw_field = raw_field
         self.coded_field = coded_field
@@ -60,6 +60,7 @@ class CodingPlan(object):
         self.code_scheme = code_scheme
         self.time_field = time_field
         self.run_id_field = run_id_field
+        self.ws_code = ws_code
         self.analysis_file_key = analysis_file_key
         self.binary_code_scheme = binary_code_scheme
         self.binary_coded_field = binary_coded_field
@@ -87,6 +88,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01e01.csv",
                    run_id_field="rqa_s01e01_run_id",
                    analysis_file_key="rqa_s01e01_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e01"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01E01),
 
@@ -97,6 +99,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01e02.csv",
                    run_id_field="rqa_s01e02_run_id",
                    analysis_file_key="rqa_s01e02_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e02"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01E02,
                    binary_code_scheme=CodeSchemes.S01E02_YES_NO_AMB,
@@ -110,6 +113,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01e03.csv",
                    run_id_field="rqa_s01e03_run_id",
                    analysis_file_key="rqa_s01e03_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e03"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01E03,
                    binary_code_scheme=CodeSchemes.S01E03_YES_NO_AMB,
@@ -123,6 +127,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01e04.csv",
                    run_id_field="rqa_s01e04_run_id",
                    analysis_file_key="rqa_s01e04_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e04"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01E04),
 
@@ -133,6 +138,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01e05.csv",
                    run_id_field="rqa_s01e05_run_id",
                    analysis_file_key="rqa_s01e05_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e05"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01E05,
                    binary_code_scheme=CodeSchemes.S01E05_YES_NO_AMB,
@@ -146,6 +152,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01e06.csv",
                    run_id_field="rqa_s01e06_run_id",
                    analysis_file_key="rqa_s01e06_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e06"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01E06),
 
@@ -156,6 +163,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01e07.csv",
                    run_id_field="rqa_s01e07_run_id",
                    analysis_file_key="rqa_s01e07_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e07"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01E07,
                    binary_code_scheme=CodeSchemes.S01E07_YES_NO_AMB,
@@ -169,6 +177,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01mag03.csv",
                    run_id_field="rqa_s01mag03_run_id",
                    analysis_file_key="rqa_s01mag03_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag03"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01MAG03,
                    binary_code_scheme=CodeSchemes.S01MAG03_YES_NO_AMB,
@@ -182,6 +191,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01mag04.csv",
                    run_id_field="rqa_s01mag04_run_id",
                    analysis_file_key="rqa_s01mag04_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag04"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01MAG04),
 
@@ -192,6 +202,7 @@ class PipelineConfiguration(object):
                    icr_filename="s01mag05.csv",
                    run_id_field="rqa_s01mag05_run_id",
                    analysis_file_key="rqa_s01mag05_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag05"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01MAG05,
                    binary_code_scheme=CodeSchemes.S01MAG05_YES_NO_AMB,
@@ -208,6 +219,7 @@ class PipelineConfiguration(object):
                    icr_filename="women_participation.csv",
                    run_id_field="women_participation_run_id",
                    analysis_file_key="women_participation_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("women_participation"),
                    cleaner=None,
                    code_scheme=CodeSchemes.WOMEN_PARTICIPATION,
                    binary_code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
@@ -223,6 +235,7 @@ class PipelineConfiguration(object):
                    time_field="location_time",
                    coda_filename="location.json",
                    analysis_file_key=None,
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
                    cleaner=None,
                    code_scheme=CodeSchemes.MOGADISHU_SUB_DISTRICT),
 
@@ -232,6 +245,7 @@ class PipelineConfiguration(object):
                    time_field="location_time",
                    coda_filename="location.json",
                    analysis_file_key="district",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
                    cleaner=somali.DemographicCleaner.clean_somalia_district,
                    code_scheme=CodeSchemes.SOMALIA_DISTRICT),
 
@@ -241,6 +255,7 @@ class PipelineConfiguration(object):
                    time_field="location_time",
                    coda_filename="location.json",
                    analysis_file_key="region",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
                    cleaner=None,
                    code_scheme=CodeSchemes.SOMALIA_REGION),
 
@@ -250,6 +265,7 @@ class PipelineConfiguration(object):
                    time_field="location_time",
                    coda_filename="location.json",
                    analysis_file_key="state",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
                    cleaner=None,
                    code_scheme=CodeSchemes.SOMALIA_STATE),
 
@@ -259,6 +275,7 @@ class PipelineConfiguration(object):
                    time_field="location_time",
                    coda_filename="location.json",
                    analysis_file_key="zone",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
                    cleaner=None,
                    code_scheme=CodeSchemes.SOMALIA_ZONE),
     ]
@@ -282,6 +299,7 @@ class PipelineConfiguration(object):
                    time_field="gender_time",
                    coda_filename="gender.json",
                    analysis_file_key="gender",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("gender"),
                    cleaner=somali.DemographicCleaner.clean_gender,
                    code_scheme=CodeSchemes.GENDER),
 
@@ -290,6 +308,7 @@ class PipelineConfiguration(object):
                    time_field="age_time",
                    coda_filename="age.json",
                    analysis_file_key="age",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("age"),
                    cleaner=lambda text: PipelineConfiguration.clean_age_with_range_filter(text),
                    code_scheme=CodeSchemes.AGE),
 
@@ -298,6 +317,7 @@ class PipelineConfiguration(object):
                    time_field="recently_displaced_time",
                    coda_filename="recently_displaced.json",
                    analysis_file_key="recently_displaced",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("recently displaced"),
                    cleaner=somali.DemographicCleaner.clean_yes_no,
                    code_scheme=CodeSchemes.RECENTLY_DISPLACED),
 
@@ -306,17 +326,9 @@ class PipelineConfiguration(object):
                    time_field="household_language_time",
                    coda_filename="household_language.json",
                    analysis_file_key="household_language",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("hh language"),
                    cleaner=None,
                    code_scheme=CodeSchemes.HOUSEHOLD_LANGUAGE),
-
-        CodingPlan(raw_field="location_raw",
-                   id_field="location_raw_id",
-                   coded_field="district_coded",
-                   time_field="location_time",
-                   coda_filename="location.json",
-                   analysis_file_key="district",
-                   cleaner=somali.DemographicCleaner.clean_somalia_district,
-                   code_scheme=CodeSchemes.SOMALIA_DISTRICT),
     ]
 
     DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
