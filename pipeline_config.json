@@ -10,6 +10,17 @@
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
 
+    {"RapidProKey": "Rqa_S01E01 (Value) - imaqal_s01e01_activation", "PipelineKey": "rqa_s01e01_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S01E02 (Value) - imaqal_s01e02_activation", "PipelineKey": "rqa_s01e02_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S01E03 (Value) - imaqal_s01e03_activation", "PipelineKey": "rqa_s01e03_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S01E04 (Value) - imaqal_s01e04_activation", "PipelineKey": "rqa_s01e04_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S01E05 (Value) - imaqal_s01e05_activation", "PipelineKey": "rqa_s01e05_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S01E06 (Value) - imaqal_s01e06_activation", "PipelineKey": "rqa_s01e06_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S01E07 (Value) - imaqal_s01e07_activation", "PipelineKey": "rqa_s01e07_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E03 (Value) - mag_s01e03_activation", "PipelineKey": "rqa_s01mag03_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E04 (Value) - mag_s01e04_activation", "PipelineKey": "rqa_s01mag04_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E05 (Value) - mag_s01e05_activation", "PipelineKey": "rqa_s01mag05_raw", "IsActivationMessage": true},
+
     {"RapidProKey": "Rqa_S01E01 (Run ID) - imaqal_s01e01_activation", "PipelineKey": "rqa_s01e01_run_id"},
     {"RapidProKey": "Rqa_S01E02 (Run ID) - imaqal_s01e02_activation", "PipelineKey": "rqa_s01e02_run_id"},
     {"RapidProKey": "Rqa_S01E03 (Run ID) - imaqal_s01e03_activation", "PipelineKey": "rqa_s01e03_run_id"},
@@ -21,7 +32,7 @@
     {"RapidProKey": "Rqa_Mag_S01E04 (Run ID) - mag_s01e04_activation", "PipelineKey": "rqa_s01mag04_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E05 (Run ID) - mag_s01e05_activation", "PipelineKey": "rqa_s01mag05_run_id"},
 
-    {"RapidProKey": "message", "PipelineKey": "recovered_raw"},
+    {"RapidProKey": "message", "PipelineKey": "recovered_raw", "IsActivationMessage": true},
     {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
     {"RapidProKey": "run_id", "PipelineKey": "recovered_run_id"},
 

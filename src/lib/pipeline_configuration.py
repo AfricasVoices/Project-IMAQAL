@@ -396,13 +396,17 @@ class PipelineConfiguration(object):
 
 
 class RapidProKeyRemapping(object):
-    def __init__(self, rapid_pro_key, pipeline_key):
+    def __init__(self, is_activation_message, rapid_pro_key, pipeline_key):
         """
+        :param is_activation_message: Whether this re-mapping contains an activation message (activation messages need
+                                   to be handled differently because they are not always in the correct flow)
+        :type is_activation_message: bool
         :param rapid_pro_key: Name of key in the dataset exported via RapidProTools.
         :type rapid_pro_key: str
         :param pipeline_key: Name to use for that key in the rest of the pipeline.
         :type pipeline_key: str
         """
+        self.is_activation_message = is_activation_message
         self.rapid_pro_key = rapid_pro_key
         self.pipeline_key = pipeline_key
 
@@ -410,12 +414,14 @@ class RapidProKeyRemapping(object):
 
     @classmethod
     def from_configuration_dict(cls, configuration_dict):
+        is_activation_message = configuration_dict.get("IsActivationMessage", False)
         rapid_pro_key = configuration_dict["RapidProKey"]
         pipeline_key = configuration_dict["PipelineKey"]
 
-        return cls(rapid_pro_key, pipeline_key)
+        return cls(is_activation_message, rapid_pro_key, pipeline_key)
 
     def validate(self):
+        validators.validate_bool(self.is_activation_message, "is_activation_message")
         validators.validate_string(self.rapid_pro_key, "rapid_pro_key")
         validators.validate_string(self.pipeline_key, "pipeline_key")
 
