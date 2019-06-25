@@ -84,12 +84,12 @@
       "StringValue": "expel_foreigners"
     },
     {
-      "DisplayText": "promote consultation and collaboration ",
+      "DisplayText": "promote consultation and collaboration",
       "VisibleInCoda": true,
       "NumericValue": 10,
       "CodeID": "code-c521801a",
       "CodeType": "Normal",
-      "StringValue": "promote_consultation_and_collaboration "
+      "StringValue": "promote_consultation_and_collaboration"
     },
     {
       "DisplayText": "ban khat",
@@ -100,7 +100,7 @@
       "StringValue": "ban_khat"
     },
     {
-      "DisplayText": "others"
+      "DisplayText": "other",
       "VisibleInCoda": true,
       "NumericValue": 12,
       "CodeID": "code-4daf7153",
