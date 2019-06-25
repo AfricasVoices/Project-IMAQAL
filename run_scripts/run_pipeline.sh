@@ -28,10 +28,4 @@ DATA_BACKUPS_DIR=$8
 
 ./4_coda_add.sh "$CODA_PUSH_CREDENTIALS_PATH" "$CODA_TOOLS_ROOT" "$DATA_ROOT"
 
-# Backup the project data directory
-DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-HASH=$(git rev-parse HEAD)
-mkdir -p "$DATA_BACKUPS_DIR"
-find "$DATA_ROOT" -type f -name '.DS_Store' -delete
-cd "$DATA_ROOT"
-tar -czvf "$DATA_BACKUPS_DIR/data-$DATE-$HASH.tar.gzip" .
+./5_backup_data_root.sh "$DATA_ROOT" "$DATA_BACKUPS_DIR"
