@@ -81,6 +81,7 @@ class WSCorrection(object):
                             CleaningUtils.make_label_from_cleaner_code(
                                 CodeSchemes.WS_CORRECT_DATASET,
                                 CodeSchemes.WS_CORRECT_DATASET.get_code_with_control_code(Codes.CODING_ERROR),
+
                                 Metadata.get_call_location(),
                             ).to_dict()
                     }
@@ -168,8 +169,8 @@ class WSCorrection(object):
             log.debug(f"\n\nStarting re-map for {group[0]['uid']}...")
             for i, td in enumerate(group):
                 log.debug(f"--------------td[{i}]--------------")
-                for _plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS \
-                             + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+                for _plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS + \
+                        PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
                     log.debug(f"{_plan.raw_field}: {td.get(_plan.raw_field)}")
                     log.debug(f"{_plan.time_field}: {td.get(_plan.time_field)}")
 
@@ -184,7 +185,7 @@ class WSCorrection(object):
                     td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"])
                 if ws_code.code_type == "Normal":
                     log.debug(
-                        f"Detected redirect from {plan.raw_field} -> {ws_code_to_raw_field_map.get(ws_code.code_id,ws_code.code_id)} for message {td[plan.raw_field]}")
+                        f"Detected redirect from {plan.raw_field} -> {ws_code_to_raw_field_map.get(ws_code.code_id, ws_code.code_id)} for message {td[plan.raw_field]}")
                     demog_and_follow_up_survey_moves[plan.raw_field] = ws_code_to_raw_field_map[ws_code.code_id]
 
             # Find all the RQA data being moved.
@@ -196,10 +197,10 @@ class WSCorrection(object):
                     ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
                         td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"])
                     if ws_code.code_type == "Normal":
-                        log.debug(f"Detected redirect from ({i}, {plan.raw_field}) -> \ {ws_code_to_raw_field_map.get(ws_code.code_id, ws_code.code_id)} for message {td[plan.raw_field]}")
+                        log.debug(f"Detected redirect from ({i}, {plan.raw_field}) -> {ws_code_to_raw_field_map.get(ws_code.code_id, ws_code.code_id)} for message {td[plan.raw_field]}")
                         rqa_moves[(i, plan.raw_field)] = ws_code_to_raw_field_map[ws_code.code_id]
 
-            # Build a dictionary of the demog and follow up survey fields that haven't been moved, and cleared fields for those which have.
+            # Build a dictionary of the demog and follow up survey fields that haven't been moved, and clear fields for those which have.
             demogs_and_follow_up_survey_updates = dict()  # of raw_field -> updated value
             for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
                 if plan.raw_field in demog_and_follow_up_survey_moves.keys():
@@ -232,7 +233,7 @@ class WSCorrection(object):
                 target_field = demog_and_follow_up_survey_moves[plan.raw_field]
                 update = _WSUpdate(td[plan.raw_field], td[plan.time_field], plan.raw_field)
                 if target_field in raw_demog_and_follow_up_survey_fields:
-                    demog_and_follow_up_survey_moves[target_field] = demog_and_follow_up_survey_moves.get(target_field, []) + [update]
+                    demogs_and_follow_up_survey_updates[target_field] = demogs_and_follow_up_survey_updates.get(target_field, []) + [update]
                 else:
                     assert target_field in raw_rqa_fields, f"Raw field '{target_field}' not in any coding plan"
                     rqa_updates.append((target_field, update))
@@ -244,12 +245,12 @@ class WSCorrection(object):
                         _td = group[i]
                         update = _WSUpdate(_td[plan.raw_field], _td[plan.time_field], plan.raw_field)
                         if target_field in raw_demog_and_follow_up_survey_fields:
-                            raw_demog_and_follow_up_survey_fields[target_field] = raw_demog_and_follow_up_survey_fields.get(target_field, []) + [update]
+                            demogs_and_follow_up_survey_updates[target_field] = demogs_and_follow_up_survey_updates.get(target_field, []) + [update]
                         else:
                             assert target_field in raw_rqa_fields, f"Raw field '{target_field}' not in any coding plan"
                             rqa_updates.append((target_field, update))
 
-            # Re-format the demog and follow up survey updates to a form suitable for use by the rest of the pipeline
+            # Re-format the demog and follow-up survey updates to a form suitable for use by the rest of the pipeline
             flattened_demog_and_follow_up_survey_updates = {}
             for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
                 if plan.raw_field in demogs_and_follow_up_survey_updates:
@@ -265,11 +266,11 @@ class WSCorrection(object):
                         flattened_demog_and_follow_up_survey_updates[plan.time_field] = None
                         flattened_demog_and_follow_up_survey_updates[f"{plan.raw_field}_source"] = None
 
-            # Hide the demog and follow up survey keys currently in the TracedData which have had data moved away.
+            # Hide the demogs and follow up survey keys currently in the TracedData which have had data moved away.
             td.hide_keys({k for k, v in flattened_demog_and_follow_up_survey_updates.items() if v is None}.intersection(td.keys()),
                          Metadata(user, Metadata.get_call_location(), time.time()))
 
-            # Update with the corrected demog and follow up survey data
+            # Update with the corrected demogs and follow up surveys data
             td.append_data({k: v for k, v in flattened_demog_and_follow_up_survey_updates.items() if v is not None},
                            Metadata(user, Metadata.get_call_location(), time.time()))
 
