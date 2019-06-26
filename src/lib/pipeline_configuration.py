@@ -333,14 +333,19 @@ class PipelineConfiguration(object):
 
     DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
 
-    def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, rapid_pro_test_contact_uuids,
-                 rapid_pro_key_remappings, recovery_csv_urls=None, drive_upload=None):
+    def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
+                 follow_up_flow_names, rapid_pro_test_contact_uuids, rapid_pro_key_remappings, recovery_csv_urls=None,
+                 drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
         :type rapid_pro_domain: str
         :param rapid_pro_token_file_url: GS URL of a text file containing the authorisation token for the Rapid Pro
                                          server.
         :type rapid_pro_token_file_url: str
+        :param activation_flow_names: The names of the RapidPro flows that contain the radio show responses.
+        :type: activation_flow_names: list of str
+        :param survey_flow_names: The names of the RapidPro flows that contain the survey responses.
+        :type: survey_flow_names: list of str
         :param rapid_pro_test_contact_uuids: Rapid Pro contact UUIDs of test contacts.
                                              Runs for any of those test contacts will be tagged with {'test_run': True},
                                              and dropped when the pipeline is in production mode.
@@ -353,6 +358,9 @@ class PipelineConfiguration(object):
         """
         self.rapid_pro_domain = rapid_pro_domain
         self.rapid_pro_token_file_url = rapid_pro_token_file_url
+        self.activation_flow_names = activation_flow_names
+        self.demog_flow_names = demog_flow_names
+        self.follow_up_flow_names = follow_up_flow_names
         self.rapid_pro_test_contact_uuids = rapid_pro_test_contact_uuids
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
         self.recovery_csv_urls = recovery_csv_urls
@@ -364,19 +372,24 @@ class PipelineConfiguration(object):
     def from_configuration_dict(cls, configuration_dict):
         rapid_pro_domain = configuration_dict["RapidProDomain"]
         rapid_pro_token_file_url = configuration_dict["RapidProTokenFileURL"]
+        activation_flow_names = configuration_dict["ActivationFlowNames"]
+        demog_flow_names = configuration_dict["DemogFlowNames"]
+        follow_up_flow_names = configuration_dict["FollowUpFlowNames"]
         rapid_pro_test_contact_uuids = configuration_dict["RapidProTestContactUUIDs"]
-        recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
 
         rapid_pro_key_remappings = []
         for remapping_dict in configuration_dict["RapidProKeyRemappings"]:
             rapid_pro_key_remappings.append(RapidProKeyRemapping.from_configuration_dict(remapping_dict))
 
+        recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
+
         drive_upload_paths = None
         if "DriveUpload" in configuration_dict:
             drive_upload_paths = DriveUpload.from_configuration_dict(configuration_dict["DriveUpload"])
 
-        return cls(rapid_pro_domain, rapid_pro_token_file_url, rapid_pro_test_contact_uuids,
-                   rapid_pro_key_remappings, recovery_csv_urls, drive_upload_paths)
+        return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
+                   follow_up_flow_names, rapid_pro_test_contact_uuids, rapid_pro_key_remappings, recovery_csv_urls,
+                   drive_upload_paths)
 
     @classmethod
     def from_configuration_file(cls, f):
@@ -386,20 +399,33 @@ class PipelineConfiguration(object):
         validators.validate_string(self.rapid_pro_domain, "rapid_pro_domain")
         validators.validate_string(self.rapid_pro_token_file_url, "rapid_pro_token_file_url")
 
+        validators.validate_list(self.activation_flow_names, "activation_flow_names")
+        for i, activation_flow_name in enumerate(self.activation_flow_names):
+            validators.validate_string(activation_flow_name, f"activation_flow_names[{i}")
+
+        validators.validate_list(self.follow_up_flow_names, "follow_up_flow_names")
+        for i, follow_up_flow_name in enumerate(self.follow_up_flow_names):
+            validators.validate_string(follow_up_flow_name, f"survey_follow_up_flow_names[{i}")
+
+        validators.validate_list(self.follow_up_flow_names, "demog_flow_names")
+        for i, demog_flow_name in enumerate(self.follow_up_flow_names):
+            validators.validate_string(demog_flow_name, f"demog_flow_names[{i}")
+
         validators.validate_list(self.rapid_pro_test_contact_uuids, "rapid_pro_test_contact_uuids")
         for i, contact_uuid in enumerate(self.rapid_pro_test_contact_uuids):
             validators.validate_string(contact_uuid, f"rapid_pro_test_contact_uuids[{i}]")
 
-        if self.recovery_csv_urls is not None:
-            validators.validate_list(self.recovery_csv_urls, "recovery_csv_urls")
-            for i, recovery_csv_url in enumerate(self.recovery_csv_urls):
-                validators.validate_string(recovery_csv_url, f"recovery_csv_urls[{i}]")
-
         validators.validate_list(self.rapid_pro_key_remappings, "rapid_pro_key_remappings")
         for i, remapping in enumerate(self.rapid_pro_key_remappings):
             assert isinstance(remapping, RapidProKeyRemapping), \
-                f"rapid_pro_key_mappings[{i}] is not of type RapidProKeyRemapping"
+                f"{remapping} is not of type RapidProKeyRemapping"
+
             remapping.validate()
+
+        if self.recovery_csv_urls is not None:
+            validators.validate_list(self.recovery_csv_urls, "recovery_csv_urls")
+            for i, recovery_csv_url in enumerate(self.recovery_csv_urls):
+                validators.validate_string(recovery_csv_url, f"{recovery_csv_url}")
 
         if self.drive_upload is not None:
             assert isinstance(self.drive_upload, DriveUpload), \
