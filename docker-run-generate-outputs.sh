@@ -19,14 +19,11 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Check that the correct number of arguments were provided.
-if [[ $# -ne 24 ]]; then
+if [[ $# -ne 12 ]]; then
     echo "Usage: ./docker-run-generate-outputs.sh
     [--profile-cpu <profile-output-path>]
     <user> <pipeline-configuration-file-path> <google-cloud-credentials-file-path> <phone-number-uuid-table-path>
-    <s01e01-input-path> <s01e02-input-path> <s01e03-input-path> <s01e04-input-path> <s01e05-input-path>
-    <s01e06-input-path> <s01e06-hormuud-recovered-input_path> <s01e07-input-path> <s01mag03-input-path>
-    <s01mag04-input-path> <s01mag05-input-path> <s01-demog-input-path> <s01-follow-up-w2-input-path>
-    <prev-coded-dir> <json-output-path> <icr-output-dir> <coded-output-dir> <messages-output-csv>
+    <raw-data-dir> <prev-coded-dir> <json-output-path> <icr-output-dir> <coded-output-dir> <messages-output-csv>
     <individuals-output-csv> <production-output-csv>"
     exit
 fi
@@ -36,26 +33,14 @@ USER=$1
 PIPELINE_CONFIGURATION=$2
 GOOGLE_CLOUD_CREDENTIALS_FILE_PATH=$3
 INPUT_PHONE_UUID_TABLE=$4
-INPUT_S01E01=$5
-INPUT_S01E02=$6
-INPUT_S01E03=$7
-INPUT_S01E04=$8
-INPUT_S01E05=$9
-INPUT_S01E06=${10}
-INPUT_S01E06_HORMUUD_RECOVERED=${11}
-INPUT_S01E07=${12}
-INPUT_S01MAG03=${13}
-INPUT_S01MAG04=${14}
-INPUT_S01MAG05=${15}
-INPUT_S01_DEMOG=${16}
-INPUT_S01_FOLLOW_UP_W2=${17}
-PREV_CODED_DIR=${18}
-OUTPUT_JSON=${19}
-OUTPUT_ICR_DIR=${20}
-OUTPUT_CODED_DIR=${21}
-OUTPUT_MESSAGES_CSV=${22}
-OUTPUT_INDIVIDUALS_CSV=${23}
-OUTPUT_PRODUCTION_CSV=${24}
+INPUT_RAW_DATA_DIR=$5
+PREV_CODED_DIR=$6
+OUTPUT_JSON=$7
+OUTPUT_ICR_DIR=$8
+OUTPUT_CODED_DIR=$9
+OUTPUT_MESSAGES_CSV=${10}
+OUTPUT_INDIVIDUALS_CSV=${11}
+OUTPUT_PRODUCTION_CSV=${12}
 
 # Build an image for this pipeline stage.
 docker build --build-arg INSTALL_CPU_PROFILER="$PROFILE_CPU" -t "$IMAGE_NAME" .
@@ -68,10 +53,7 @@ fi
 
 CMD="pipenv run $PROFILE_CPU_CMD python -u generate_outputs.py  \
     \"$USER\" /data/pipeline_configuration.json /credentials/google-cloud-credentials.json \
-    /data/phone-number-uuid-table-input.json /data/s01e01-input.json /data/s01e02-input.json \
-    /data/s01e03-input.json /data/s01e04-input.json /data/s01e05-input.json /data/s01e06-input.json \
-    /data/s01e06_hormuud_recovered_input_path.json /data/s01e07-input.json /data/s01mag03-input.json /data/s01mag04-input.json \
-    /data/s01mag05-input.json /data/s01-demog-input.json /data/s01-follow-up-w2-input.json \
+    /data/phone-number-uuid-table-input.json /data/raw-data \
     /data/prev-coded /data/output.json /data/output-icr /data/coded \
     /data/output-messages.csv /data/output-individuals.csv /data/output-production.csv \
 "
@@ -87,19 +69,7 @@ trap finish EXIT
 docker cp "$PIPELINE_CONFIGURATION" "$container:/data/pipeline_configuration.json"
 docker cp "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$container:/credentials/google-cloud-credentials.json"
 docker cp "$INPUT_PHONE_UUID_TABLE" "$container:/data/phone-number-uuid-table-input.json"
-docker cp "$INPUT_S01E01" "$container:/data/s01e01-input.json"
-docker cp "$INPUT_S01E02" "$container:/data/s01e02-input.json"
-docker cp "$INPUT_S01E03" "$container:/data/s01e03-input.json"
-docker cp "$INPUT_S01E04" "$container:/data/s01e04-input.json"
-docker cp "$INPUT_S01E05" "$container:/data/s01e05-input.json"
-docker cp "$INPUT_S01E06" "$container:/data/s01e06-input.json"
-docker cp "$INPUT_S01E06_HORMUUD_RECOVERED" "$container:/data/s01e06_hormuud_recovered_input_path.json"
-docker cp "$INPUT_S01E07" "$container:/data/s01e07-input.json"
-docker cp "$INPUT_S01MAG03" "$container:/data/s01mag03-input.json"
-docker cp "$INPUT_S01MAG04" "$container:/data/s01mag04-input.json"
-docker cp "$INPUT_S01MAG05" "$container:/data/s01mag05-input.json"
-docker cp "$INPUT_S01_DEMOG" "$container:/data/s01-demog-input.json"
-docker cp "$INPUT_S01_FOLLOW_UP_W2" "$container:/data/s01-follow-up-w2-input.json"
+docker cp "$INPUT_RAW_DATA_DIR" "$container:/data/raw-data"
 
 if [[ -d "$PREV_CODED_DIR" ]]; then
     docker cp "$PREV_CODED_DIR" "$container:/data/prev-coded"

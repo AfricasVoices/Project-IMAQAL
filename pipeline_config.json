@@ -7,6 +7,24 @@
     "45939459-e4d5-4ad6-8650-3e7134b9a035"
   ],
   "RecoveryCSVURLs": ["gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_week_6.csv"],
+  "ActivationFlowNames": [
+    "imaqal_s01e01_activation",
+    "imaqal_s01e02_activation",
+    "imaqal_s01e03_activation",
+    "imaqal_s01e04_activation",
+    "imaqal_s01e05_activation",
+    "imaqal_s01e06_activation",
+    "imaqal_s01e07_activation",
+    "mag_s01e03_activation",
+    "mag_s01e04_activation",
+    "mag_s01e05_activation"
+  ],
+  "DemogFlowNames":[
+    "imaqal_demog"
+  ],
+  "FollowUpFlowNames":[
+    "imaqal_s01_follow_up_w2"
+  ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
 
