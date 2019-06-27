@@ -29,6 +29,19 @@ class CodeSchemes(object):
     S01MAG04 = _open_scheme("s01mag04.json")
     S01MAG05 = _open_scheme("s01mag05.json")
     S01MAG05_YES_NO_AMB = _open_scheme("s01mag05_yes_no_amb.json")
+    S01MAG06 = _open_scheme("s01mag06.json")
+    S01MAG07 = _open_scheme("s01mag07.json")
+    S01MAG07_YES_NO_AMB = _open_scheme("s01mag07_yes_no_amb.json")
+    S01MAG08 = _open_scheme("s01mag08.json")
+    S01MAG09 = _open_scheme("s01mag09.json")
+    S01MAG09_YES_NO_AMB = _open_scheme("s01mag09_yes_no_amb.json")
+    # TODO Update this once data structure doc is updated.
+    S01MAG10 = _open_scheme("s01mag10.json")
+    S01MAG11 = _open_scheme("s01mag11.json")
+    S01MAG12 = _open_scheme("s01mag12.json")
+    S01MAG13 = _open_scheme("s01mag13.json")
+    S01MAG14 = _open_scheme("s01mag14.json")
+    S01MAG15 = _open_scheme("s01mag15.json")
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
     WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")
@@ -208,6 +221,122 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.S01MAG05_YES_NO_AMB,
                    binary_coded_field="rqa_s01mag05_yes_no_amb_coded",
                    binary_analysis_file_key="rqa_s01mag05_yes_no_amb"),
+
+        CodingPlan(raw_field="rqa_s01mag06_raw",
+                   coded_field="rqa_s01mag06_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag06.json",
+                   icr_filename="s01mag06.csv",
+                   run_id_field="rqa_s01mag06_run_id",
+                   analysis_file_key="rqa_s01mag06_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag06"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG06),
+
+        CodingPlan(raw_field="rqa_s01mag07_raw",
+                   coded_field="rqa_s01mag07_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag07.json",
+                   icr_filename="s01mag07.csv",
+                   run_id_field="rqa_s01mag07_run_id",
+                   analysis_file_key="rqa_s01mag07_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag07"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG07,
+                   binary_code_scheme=CodeSchemes.S01MAG07_YES_NO_AMB,
+                   binary_coded_field="rqa_s01mag07_yes_no_amb_coded",
+                   binary_analysis_file_key="rqa_s01mag06_yes_no_amb"),
+
+        CodingPlan(raw_field="rqa_s01mag08_raw",
+                   coded_field="rqa_s01mag08_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag08.json",
+                   icr_filename="s01mag08.csv",
+                   run_id_field="rqa_s01mag08_run_id",
+                   analysis_file_key="rqa_s01mag08_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag08"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG08),
+
+        CodingPlan(raw_field="rqa_s01mag09_raw",
+                   coded_field="rqa_s01mag09_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag09.json",
+                   icr_filename="s01mag09.csv",
+                   run_id_field="rqa_s01mag09_run_id",
+                   analysis_file_key="rqa_s01mag09_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag09"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG09,
+                   binary_code_scheme=CodeSchemes.S01MAG09_YES_NO_AMB,
+                   binary_coded_field="rqa_s01mag09_yes_no_amb_coded",
+                   binary_analysis_file_key="rqa_s01mag09_yes_no_amb"),
+
+        CodingPlan(raw_field="rqa_s01mag10_raw",
+                   coded_field="rqa_s01mag10_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag10.json",
+                   icr_filename="s01mag10.csv",
+                   run_id_field="rqa_s01mag10_run_id",
+                   analysis_file_key="rqa_s01mag10_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag10"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG10),
+
+        CodingPlan(raw_field="rqa_s01mag11_raw",
+                   coded_field="rqa_s01mag11_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag11.json",
+                   icr_filename="s01mag11.csv",
+                   run_id_field="rqa_s01mag11_run_id",
+                   analysis_file_key="rqa_s01mag11_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag11"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG11),
+
+        CodingPlan(raw_field="rqa_s01mag12_raw",
+                   coded_field="rqa_s01mag12_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag12.json",
+                   icr_filename="s01mag12.csv",
+                   run_id_field="rqa_s01mag12_run_id",
+                   analysis_file_key="rqa_s01mag12_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag12"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG12),
+
+        CodingPlan(raw_field="rqa_s01mag13_raw",
+                   coded_field="rqa_s01mag13_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag13.json",
+                   icr_filename="s01mag13.csv",
+                   run_id_field="rqa_s01mag13_run_id",
+                   analysis_file_key="rqa_s01mag13_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag13"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG13),
+
+        CodingPlan(raw_field="rqa_s01mag14_raw",
+                   coded_field="rqa_s01mag14_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag14.json",
+                   icr_filename="s01mag14.csv",
+                   run_id_field="rqa_s01mag14_run_id",
+                   analysis_file_key="rqa_s01mag14_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag14"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG14),
+
+        CodingPlan(raw_field="rqa_s01mag15_raw",
+                   coded_field="rqa_s01mag15_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag15.json",
+                   icr_filename="s01mag15.csv",
+                   run_id_field="rqa_s01mag15_run_id",
+                   analysis_file_key="rqa_s01mag15_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag15"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG15),
     ]
 
     FOLLOW_UP_CODING_PLANS = [

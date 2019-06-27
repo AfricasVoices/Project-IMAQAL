@@ -144,6 +144,8 @@ class AnalysisFile(object):
             consent_withdrawn_key,
             "drama_promo",
             "magazine_promo",
+            "magazine_sms_ad",
+            "facebook_ad",
             "radio_drama",
             "non_logical_time",
             "radio_drama_participation_s01e01",
@@ -154,8 +156,18 @@ class AnalysisFile(object):
             "radio_drama_participation_s01e06",
             "radio_drama_participation_s01e07",
             "radio_magazine_participation_s01mag03",
-            "radio_magazine_participation_s01mag03",
-            "radio_magazine_participation_s01mag03",
+            "radio_magazine_participation_s01mag04",
+            "radio_magazine_participation_s01mag05",
+            "radio_magazine_participation_s01mag06",
+            "radio_magazine_participation_s01mag07",
+            "radio_magazine_participation_s01mag08",
+            "radio_magazine_participation_s01mag09",
+            "radio_magazine_participation_s01mag10",
+            "radio_magazine_participation_s01mag11",
+            "radio_magazine_participation_s01mag12",
+            "radio_magazine_participation_s01mag13",
+            "radio_magazine_participation_s01mag14",
+            "radio_magazine_participation_s01mag15"
 
         ]
 
