@@ -4,6 +4,86 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "they follow sharia law",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-d8680a20",
+      "CodeType": "Normal",
+      "StringValue": "they_follow_sharia_law"
+    },
+    {
+      "DisplayText": "prosecution by the law",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-d7107c3c",
+      "CodeType": "Normal",
+      "StringValue": "prosecution_by_the_law"
+    },
+    {
+      "DisplayText": "decisions are made by the elders",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-576d9fbb",
+      "CodeType": "Normal",
+      "StringValue": "decisions_are_made_by_the_elders"
+    },
+    {
+      "DisplayText": "lack of fair justice system",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-ea929917",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_fair_justice_system"
+    },
+    {
+      "DisplayText": "poor governance",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-3be41df3",
+      "CodeType": "Normal",
+      "StringValue": "poor_governance"
+    },
+    {
+      "DisplayText": "clannism",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-d97140e5",
+      "CodeType": "Normal",
+      "StringValue": "clannism"
+    },
+    {
+      "DisplayText": "bribery",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-a66d1870",
+      "CodeType": "Normal",
+      "StringValue": "bribery"
+    },
+    {
+      "DisplayText": "rights disregarded",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-01d073b9",
+      "CodeType": "Normal",
+      "StringValue": "rights_disregarded"
+    },
+    {
+      "DisplayText": "not following sharia law",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-1fea2e8e",
+      "CodeType": "Normal",
+      "StringValue": "not_following_sharia_law"
+    },
+    {
+      "DisplayText": "the xeer system",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-0de8b66b",
+      "CodeType": "Normal",
+      "StringValue": "the_xeer_system"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
