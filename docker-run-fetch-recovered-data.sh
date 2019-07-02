@@ -29,8 +29,8 @@ fi
 
 # Assign the program arguments to bash variables.
 USER=$1
-PIPELINE_CONFIGURATION=$2
-GOOGLE_CLOUD_CREDENTIALS_FILE_PATH=$3
+GOOGLE_CLOUD_CREDENTIALS_FILE_PATH=$2
+PIPELINE_CONFIGURATION=$3
 OUTPUT_RAW_DATA_DIR=$4
 
 # Build an image for this pipeline stage.

@@ -34,4 +34,4 @@ mkdir -p "$DATA_ROOT/Raw Data"
 cd ..
 ./docker-run-fetch-raw-data.sh ${CPU_PROFILE_ARG} \
     "$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION_FILE_PATH" \
-     "$DATA_ROOT/UUIDs/phone_uuids.json" "$DATA_ROOT/Raw Data"
+     "$DATA_ROOT/Raw Data"

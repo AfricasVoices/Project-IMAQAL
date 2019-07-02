@@ -23,6 +23,7 @@ class AutoCodeShowAndFollowupsMessages(object):
     ICR_MESSAGES_COUNT = 200
     ICR_SEED = 0
 
+    @staticmethod
     def log_empty_string_stats(data, raw_fields):
         for raw_field in raw_fields:
             total_messages_count = 0

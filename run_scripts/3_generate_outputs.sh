@@ -33,7 +33,7 @@ mkdir -p "$DATA_ROOT/Outputs"
 
 cd ..
 ./docker-run-generate-outputs.sh ${CPU_PROFILE_ARG} \
-    "$USER" "$PIPELINE_CONFIGURATION" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$DATA_ROOT/UUIDs/phone_uuids.json" \
+    "$USER" "$PIPELINE_CONFIGURATION" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" \
     "$DATA_ROOT/Raw Data" "$DATA_ROOT/Coded Coda Files/" "$DATA_ROOT/Outputs/traced_data.json" \
     "$DATA_ROOT/Outputs/ICR/" "$DATA_ROOT/Outputs/Coda Files/" \
     "$DATA_ROOT/Outputs/imaqal_s01_messages.csv" "$DATA_ROOT/Outputs/imaqal_s01_individuals.csv" \

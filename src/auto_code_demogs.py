@@ -36,9 +36,15 @@ class AutoCodeDemogs(object):
                     td.append_data({"district_coded": nc_label.to_dict()},
                                    Metadata(user, Metadata.get_call_location(), time.time()))
 
-        # Set operator from phone number
+        # Create a look-up table of uuids to phone numbers for all the uuids in the dataset
+        uuids = set()
         for td in data:
-            operator_clean = PhoneCleaner.clean_operator(phone_uuid_table.get_phone(td["uid"]))
+            uuids.add(td["uid"])
+        uuid_to_phone_lut = phone_uuid_table.uuid_to_data_batch(uuids)
+
+        # Set the operator codes for each message, using the uuid -> phone number look-up table
+        for td in data:
+            operator_clean = PhoneCleaner.clean_operator(uuid_to_phone_lut[td["uid"]])
             if operator_clean == Codes.NOT_CODED:
                 label = CleaningUtils.make_label_from_cleaner_code(
                     CodeSchemes.SOMALIA_OPERATOR,
