@@ -1,12 +1,12 @@
 import argparse
 import json
 import os
-from urllib.parse import urlparse
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
-from core_data_modules.util import PhoneNumberUuidTable, IOUtils
-from google.cloud import storage
+from core_data_modules.util import IOUtils
+from id_infrastructure.firestore_uuid_table import FirestoreUuidTable
+from storage.google_cloud import google_cloud_utils
 from storage.google_drive import drive_client_wrapper
 
 from src import CombineRawDatasets, TranslateRapidProKeys, \
@@ -14,6 +14,7 @@ from src import CombineRawDatasets, TranslateRapidProKeys, \
 
 from src.lib import PipelineConfiguration
 
+Logger.set_project_name("IMAQAL")
 log = Logger(__name__)
 
 if __name__ == "__main__":
@@ -28,9 +29,6 @@ if __name__ == "__main__":
                         help="Path to a Google Cloud service account credentials file to use to access the "
                              "credentials bucket")
 
-    parser.add_argument("phone_number_uuid_table_path", metavar="phone-number-uuid-table-path",
-                        help="JSON file containing the phone number <-> UUID lookup table for the messages/surveys "
-                             "datasets")
     parser.add_argument("raw_data_dir", metavar="raw-data-dir",
                         help="Path to a directory containing the raw data files exported by fetch_raw_data.py")
     parser.add_argument("prev_coded_dir_path", metavar="prev-coded-dir-path",
@@ -62,7 +60,6 @@ if __name__ == "__main__":
     pipeline_configuration_file_path = args.pipeline_configuration_file_path
     google_cloud_credentials_file_path = args.google_cloud_credentials_file_path
 
-    phone_number_uuid_table_path = args.phone_number_uuid_table_path
     raw_data_dir = args.raw_data_dir
     prev_coded_dir_path = args.prev_coded_dir_path
 
@@ -78,25 +75,22 @@ if __name__ == "__main__":
     with open(pipeline_configuration_file_path) as f:
         pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
 
+    log.info("Downloading Firestore Uuid Table credentials...")
+    firestore_uuid_table_credentials = json.loads(google_cloud_utils.download_blob_to_string(
+        google_cloud_credentials_file_path,
+        pipeline_configuration.phone_number_uuid_table.firebase_credentials_file_url
+    ))
+    phone_number_uuid_table = FirestoreUuidTable(
+        pipeline_configuration.phone_number_uuid_table.table_name,
+        firestore_uuid_table_credentials,
+        "avf-phone-uuid-"
+    )
+
     if pipeline_configuration.drive_upload is not None:
-        # Fetch the Rapid Pro Token from the Google Cloud Storage URL
-        parsed_rapid_pro_token_file_url = urlparse(pipeline_configuration.drive_upload.drive_credentials_file_url)
-        bucket_name = parsed_rapid_pro_token_file_url.netloc
-        blob_name = parsed_rapid_pro_token_file_url.path.lstrip("/")
-
-        log.info(f"Downloading Drive service account credentials from file '{blob_name}' in bucket '{bucket_name}'...")
-        storage_client = storage.Client.from_service_account_json(google_cloud_credentials_file_path)
-        credentials_bucket = storage_client.bucket(bucket_name)
-        credentials_blob = credentials_bucket.blob(blob_name)
-        credentials_info = json.loads(credentials_blob.download_as_string())
-        log.info("Downloaded Drive service account credentials")
-
+        log.info(f"Downloading Google Drive service account credentials...")
+        credentials_info = json.loads(google_cloud_utils.download_blob_to_string(
+            google_cloud_credentials_file_path, pipeline_configuration.drive_upload.drive_credentials_file_url))
         drive_client_wrapper.init_client_from_info(credentials_info)
-
-    # Load phone number <-> UUID table
-    log.info("Loading Phone Number <-> UUID Table...")
-    with open(phone_number_uuid_table_path, "r") as f:
-        phone_number_uuid_table = PhoneNumberUuidTable.load(f)
 
     # Load messages
     messages_datasets = []
@@ -122,30 +116,26 @@ if __name__ == "__main__":
             log.debug(f"Loaded {len(messages)} messages")
             recovery_datasets.append(messages)
 
-    log.info("Loading demographics datasets:")
-    demogs_datasets = []
-    for i, demog_flow_name in enumerate(pipeline_configuration.demog_flow_names):
-        raw_survey_path = f"{raw_data_dir}/{demog_flow_name}.json"
+    log.info("Loading demographics + follow up surveys:")
+    survey_datasets = []
+    for i, survey_flow_name in enumerate(pipeline_configuration.demog_flow_names
+                                         + pipeline_configuration.follow_up_flow_names):
+        raw_survey_path = f"{raw_data_dir}/{survey_flow_name}.json"
         log.info(f"Loading {raw_survey_path}...")
         with open(raw_survey_path, "r") as f:
             contacts = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
         log.debug(f"Loaded {len(contacts)} contacts")
-        demogs_datasets.append(contacts)
-
-    # Load Follow up Surveys
-    follow_up_survey_datasets = []
-    for i, follow_up_name in enumerate(pipeline_configuration.follow_up_flow_names):
-        raw_activation_path = f"{raw_data_dir}/{follow_up_name}.json"
-        log.info(f"Loading {raw_activation_path}...")
-        with open(raw_activation_path, "r") as f:
-            messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
-        log.debug(f"Loaded {len(messages)} messages")
-        follow_up_survey_datasets.append(messages)
+        survey_datasets.append(contacts)
 
     # Add survey data to the messages
     log.info("Combining Datasets...")
+    coalesced_surveys_datasets = []
+    for dataset in survey_datasets:
+        coalesced_surveys_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
+
     data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets,
-                                                   follow_up_survey_datasets, demogs_datasets)
+                                                   coalesced_surveys_datasets)
+
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
 
@@ -166,7 +156,7 @@ if __name__ == "__main__":
 
     log.info("Generating Analysis CSVs...")
     data = AnalysisFile.generate(user, data, csv_by_message_output_path, csv_by_individual_output_path)
-    
+
     log.info("Writing TracedData to file...")
     IOUtils.ensure_dirs_exist_for_file(json_output_path)
     with open(json_output_path, "w") as f:
