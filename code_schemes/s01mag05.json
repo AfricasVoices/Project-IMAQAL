@@ -84,6 +84,14 @@
       "StringValue": "the_xeer_system"
     },
     {
+      "CodeType": "Normal",
+      "StringValue": "other",
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-7338a267"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
