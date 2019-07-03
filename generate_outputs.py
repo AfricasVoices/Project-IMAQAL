@@ -142,7 +142,11 @@ if __name__ == "__main__":
     for dataset in demog_datasets:
         coalesced_demog_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
 
-    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, follow_up_survey_datasets,
+    coalesced_follow_up_datasets = []
+    for dataset in follow_up_survey_datasets:
+        coalesced_follow_up_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
+
+    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_follow_up_datasets,
                                                    coalesced_demog_datasets)
 
     log.info("Translating Rapid Pro Keys...")
