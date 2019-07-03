@@ -463,7 +463,7 @@ class PipelineConfiguration(object):
     DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
-                 follow_up_flow_names, rapid_pro_test_contact_uuids, rapid_pro_key_remappings, recovery_csv_urls=None,
+                 follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings, recovery_csv_urls=None,
                  drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
@@ -479,6 +479,8 @@ class PipelineConfiguration(object):
                                              Runs for any of those test contacts will be tagged with {'test_run': True},
                                              and dropped when the pipeline is in production mode.
         :type rapid_pro_test_contact_uuids: list of str
+        :param phone_number_uuid_table: Configuration for the Firestore phone number <-> uuid table.
+        :type phone_number_uuid_table: PhoneNumberUuidTable
         :param rapid_pro_key_remappings: List of rapid_pro_key -> pipeline_key remappings.
         :type rapid_pro_key_remappings: list of RapidProKeyRemapping
         :param drive_upload: Configuration for uploading to Google Drive, or None.
@@ -491,6 +493,7 @@ class PipelineConfiguration(object):
         self.demog_flow_names = demog_flow_names
         self.follow_up_flow_names = follow_up_flow_names
         self.rapid_pro_test_contact_uuids = rapid_pro_test_contact_uuids
+        self.phone_number_uuid_table = phone_number_uuid_table
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
         self.recovery_csv_urls = recovery_csv_urls
         self.drive_upload = drive_upload
@@ -506,6 +509,8 @@ class PipelineConfiguration(object):
         follow_up_flow_names = configuration_dict["FollowUpFlowNames"]
         rapid_pro_test_contact_uuids = configuration_dict["RapidProTestContactUUIDs"]
 
+        phone_number_uuid_table = PhoneNumberUuidTable.from_configuration_dict(configuration_dict["PhoneNumberUuidTable"])
+
         rapid_pro_key_remappings = []
         for remapping_dict in configuration_dict["RapidProKeyRemappings"]:
             rapid_pro_key_remappings.append(RapidProKeyRemapping.from_configuration_dict(remapping_dict))
@@ -517,7 +522,7 @@ class PipelineConfiguration(object):
             drive_upload_paths = DriveUpload.from_configuration_dict(configuration_dict["DriveUpload"])
 
         return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
-                   follow_up_flow_names, rapid_pro_test_contact_uuids, rapid_pro_key_remappings, recovery_csv_urls,
+                   follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings, recovery_csv_urls,
                    drive_upload_paths)
 
     @classmethod
@@ -530,7 +535,7 @@ class PipelineConfiguration(object):
 
         validators.validate_list(self.activation_flow_names, "activation_flow_names")
         for i, activation_flow_name in enumerate(self.activation_flow_names):
-            validators.validate_string(activation_flow_name, f"activation_flow_names[{i}")
+            validators.validate_string(activation_flow_name, f"activation_flow_names[{i}]")
 
         validators.validate_list(self.follow_up_flow_names, "follow_up_flow_names")
         for i, follow_up_flow_name in enumerate(self.follow_up_flow_names):
@@ -543,6 +548,9 @@ class PipelineConfiguration(object):
         validators.validate_list(self.rapid_pro_test_contact_uuids, "rapid_pro_test_contact_uuids")
         for i, contact_uuid in enumerate(self.rapid_pro_test_contact_uuids):
             validators.validate_string(contact_uuid, f"rapid_pro_test_contact_uuids[{i}]")
+
+        assert isinstance(self.phone_number_uuid_table, PhoneNumberUuidTable)
+        self.phone_number_uuid_table.validate()
 
         validators.validate_list(self.rapid_pro_key_remappings, "rapid_pro_key_remappings")
         for i, remapping in enumerate(self.rapid_pro_key_remappings):
@@ -560,6 +568,32 @@ class PipelineConfiguration(object):
             assert isinstance(self.drive_upload, DriveUpload), \
                 "drive_upload is not of type DriveUpload"
             self.drive_upload.validate()
+
+
+class PhoneNumberUuidTable(object):
+    def __init__(self, firebase_credentials_file_url, table_name):
+        """
+        :param firebase_credentials_file_url: GS URL to the private credentials file for the Firebase account where
+                                                 the phone number <-> uuid table is stored.
+        :type firebase_credentials_file_url: str
+        :param table_name: Name of the data <-> uuid table in Firebase to use.
+        :type table_name: str
+        """
+        self.firebase_credentials_file_url = firebase_credentials_file_url
+        self.table_name = table_name
+
+        self.validate()
+
+    @classmethod
+    def from_configuration_dict(cls, configuration_dict):
+        firebase_credentials_file_url = configuration_dict["FirebaseCredentialsFileURL"]
+        table_name = configuration_dict["TableName"]
+
+        return cls(firebase_credentials_file_url, table_name)
+
+    def validate(self):
+        validators.validate_url(self.firebase_credentials_file_url, "firebase_credentials_file_url", scheme="gs")
+        validators.validate_string(self.table_name, "table_name")
 
 
 class RapidProKeyRemapping(object):
