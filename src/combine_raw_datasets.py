@@ -17,13 +17,16 @@ class CombineRawDatasets(object):
         return list(coalesced_runs.values())
 
     @staticmethod
-    def combine_raw_datasets(user, messages_datasets, survey_datasets):
+    def combine_raw_datasets(user, messages_datasets, follow_up_survey_datasets, coalesced_demog_datasets):
         data = []
 
         for messages_dataset in messages_datasets:
             data.extend(messages_dataset)
 
-        for survey_dataset in survey_datasets:
-            TracedData.update_iterable(user, "avf_phone_id", data, survey_dataset, "survey_responses")
+        for follow_up_survey_dataset in follow_up_survey_datasets:
+            data.extend(follow_up_survey_dataset)
+
+        for demog_dataset in coalesced_demog_datasets:
+            TracedData.update_iterable(user, "avf_phone_id", data, demog_dataset, "demog_responses")
 
         return data

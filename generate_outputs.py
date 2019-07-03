@@ -116,25 +116,34 @@ if __name__ == "__main__":
             log.debug(f"Loaded {len(messages)} messages")
             recovery_datasets.append(messages)
 
-    log.info("Loading demographics + follow up surveys:")
-    survey_datasets = []
-    for i, survey_flow_name in enumerate(pipeline_configuration.demog_flow_names
-                                         + pipeline_configuration.follow_up_flow_names):
-        raw_survey_path = f"{raw_data_dir}/{survey_flow_name}.json"
-        log.info(f"Loading {raw_survey_path}...")
-        with open(raw_survey_path, "r") as f:
+    # Load Follow up Surveys
+    follow_up_survey_datasets = []
+    for i, follow_up_name in enumerate(pipeline_configuration.follow_up_flow_names):
+        raw_activation_path = f"{raw_data_dir}/{follow_up_name}.json"
+        log.info(f"Loading {raw_activation_path}...")
+        with open(raw_activation_path, "r") as f:
+            messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
+        log.debug(f"Loaded {len(messages)} messages")
+        follow_up_survey_datasets.append(messages)
+
+    log.info("Loading demographics")
+    demog_datasets = []
+    for i, demog_flow_name in enumerate(pipeline_configuration.demog_flow_names):
+        raw_demog_path = f"{raw_data_dir}/{demog_flow_name}.json"
+        log.info(f"Loading {raw_demog_path}...")
+        with open(raw_demog_path, "r") as f:
             contacts = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
         log.debug(f"Loaded {len(contacts)} contacts")
-        survey_datasets.append(contacts)
+        demog_datasets.append(contacts)
 
     # Add survey data to the messages
     log.info("Combining Datasets...")
-    coalesced_surveys_datasets = []
-    for dataset in survey_datasets:
-        coalesced_surveys_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
+    coalesced_demog_datasets = []
+    for dataset in demog_datasets:
+        coalesced_demog_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
 
-    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets,
-                                                   coalesced_surveys_datasets)
+    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, follow_up_survey_datasets,
+                                                   coalesced_demog_datasets)
 
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
