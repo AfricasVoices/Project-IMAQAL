@@ -23,11 +23,12 @@ if __name__ == "__main__":
                                      formatter_class=argparse.RawTextHelpFormatter)
 
     parser.add_argument("user", help="User launching this program")
-    parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
-                        help="Path to the pipeline configuration json file"),
     parser.add_argument("google_cloud_credentials_file_path", metavar="google-cloud-credentials-file-path",
                         help="Path to a Google Cloud service account credentials file to use to access the "
                              "credentials bucket")
+    parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
+                        help="Path to the pipeline configuration json file"),
+
 
     parser.add_argument("raw_data_dir", metavar="raw-data-dir",
                         help="Path to a directory containing the raw data files exported by fetch_raw_data.py")
@@ -57,8 +58,8 @@ if __name__ == "__main__":
     production_csv_drive_path = None
 
     user = args.user
-    pipeline_configuration_file_path = args.pipeline_configuration_file_path
     google_cloud_credentials_file_path = args.google_cloud_credentials_file_path
+    pipeline_configuration_file_path = args.pipeline_configuration_file_path
 
     raw_data_dir = args.raw_data_dir
     prev_coded_dir_path = args.prev_coded_dir_path
