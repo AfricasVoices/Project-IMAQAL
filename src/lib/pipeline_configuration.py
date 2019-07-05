@@ -30,6 +30,7 @@ class CodeSchemes(object):
     S01MAG05 = _open_scheme("s01mag05.json")
     S01MAG05_YES_NO_AMB = _open_scheme("s01mag05_yes_no_amb.json")
     S01MAG06 = _open_scheme("s01mag06.json")
+    S01MAG06_YES_NO_AMB = _open_scheme("s01mag06_yes_no_amb.json")
     S01MAG07 = _open_scheme("s01mag07.json")
     S01MAG07_YES_NO_AMB = _open_scheme("s01mag07_yes_no_amb.json")
     S01MAG08 = _open_scheme("s01mag08.json")
@@ -231,7 +232,10 @@ class PipelineConfiguration(object):
                    analysis_file_key="rqa_s01mag06_",
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag06"),
                    cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG06),
+                   code_scheme=CodeSchemes.S01MAG06,
+                   binary_code_scheme=CodeSchemes.S01MAG06_YES_NO_AMB,
+                   binary_coded_field="rqa_s01mag06_yes_no_amb_coded",
+                   binary_analysis_file_key="rqa_s01mag06_yes_no_amb"),
 
         CodingPlan(raw_field="rqa_s01mag07_raw",
                    coded_field="rqa_s01mag07_coded",
