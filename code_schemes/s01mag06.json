@@ -4,6 +4,118 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "women playing an important role in society",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-8ee58984",
+      "CodeType": "Normal",
+      "StringValue": "women_playing_an_important_role_in_society"
+    },
+    {
+      "DisplayText": "they are the ones giving birth",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-2c490995",
+      "CodeType": "Normal",
+      "StringValue": "they_are_the_ones_giving_birth"
+    },
+    {
+      "DisplayText": "mothers are soft",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-ec2f2651",
+      "CodeType": "Normal",
+      "StringValue": "mothers_are_soft"
+    },
+    {
+      "DisplayText": "the decision is theirs",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-eb9d2f79",
+      "CodeType": "Normal",
+      "StringValue": "the_decision_is_theirs"
+    },
+    {
+      "DisplayText": "women know better",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-671f2864",
+      "CodeType": "Normal",
+      "StringValue": "women_know_better"
+    },
+    {
+      "DisplayText": "women are disrespected",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-bfb8d55b",
+      "CodeType": "Normal",
+      "StringValue": "women_are_disrespected"
+    },
+    {
+      "DisplayText": "the decision is mutual",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-a0e0ae75",
+      "CodeType": "Normal",
+      "StringValue": "the_decision_is_mutual"
+    },
+    {
+      "DisplayText": "decisions made on their behalf",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-7198428f",
+      "CodeType": "Normal",
+      "StringValue": "decisions_made_on_their_behalf"
+    },
+    {
+      "DisplayText": "decision made by parents",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-692f0e51",
+      "CodeType": "Normal",
+      "StringValue": "decision_made_by_parents"
+    },
+    {
+      "DisplayText": "religious beliefs",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-d7cb283a",
+      "CodeType": "Normal",
+      "StringValue": "religious_beliefs"
+    },
+    {
+      "DisplayText": "male guardianship",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-44d8fec8",
+      "CodeType": "Normal",
+      "StringValue": "male_guardianship"
+    },
+    {
+      "DisplayText": "women can not make decisions",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-89a731e3",
+      "CodeType": "Normal",
+      "StringValue": "women_can_not_make_decisions"
+    },
+    {
+      "DisplayText": "some women are uninformed",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-58c173a9",
+      "CodeType": "Normal",
+      "StringValue": "some_women_are_uninformed"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 13,
+      "CodeID": "code-dd1a4f09",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
