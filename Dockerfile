@@ -13,6 +13,12 @@ RUN if [ "$INSTALL_CPU_PROFILER" = "true" ]; then \
         rm -rf /pyflame; \
     fi
 
+ARG INSTALL_MEMORY_PROFILER="false"
+RUN if [ "$INSTALL_MEMORY_PROFILER" = "true" ]; then \
+        apt-get update && apt-get install -y gcc && \
+        pip install memory_profiler; \
+    fi
+
 # Make a directory for private credentials files
 RUN mkdir /credentials
 
