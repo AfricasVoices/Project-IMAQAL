@@ -34,17 +34,17 @@ To run all the pipeline stages at once, and create a compressed backup of the da
 run the following command from the `run_scripts` directory:
 
 ```
-$ ./run_pipeline.sh <user> <pipeline-configuration-file-path> <coda-pull-auth-file> <coda-push-auth-file> <google-cloud-credentials-file-path> <coda-tools-root> <data-root> <data-backup-dir>
+$ ./run_pipeline.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <coda-pull-auth-file> <coda-push-auth-file> <coda-tools-root> <data-root> <data-backup-dir>
 ```
 
 where:
 - `user` is the identifier of the person running the script, for use in the TracedData Metadata 
   e.g. `user@africasvoices.org` 
+- `google-cloud-credentials-file-path` is an absolute path to a json file containing the private key credentials
+  for accessing a cloud storage credentials bucket containing all the other project credentials files.
 - `pipeline-configuration-file-path` is an absolute path to a pipeline configuration json file.
 - `coda-pull-auth-file` is an absolute path to the private credentials file for the Coda instance to download manually coded datasets from.
 - `coda-push-auth-file` is an absolute path to the private credentials file for the Coda instance to upload datasets to be manually coded to.
-- `google-cloud-credentials-file-path` is an absolute path to a json file containing the private key credentials
-  for accessing a cloud storage credentials bucket containing all the other project credentials files.
 - `coda-tools-root` is an absolute path to a local directory containing a clone of the 
   [CodaV2](https://github.com/AfricasVoices/CodaV2) repository.
   If the given directory does not exist, the latest version of the Coda V2 repository will be cloned and set up 
@@ -87,13 +87,29 @@ where:
 - `data-root` is an absolute path to the directory in which all pipeline data should be stored.
   Raw data will be saved to TracedData JSON files in `<data-root>/Raw Data`.
 
-### 3. Generate Outputs
-This stage processes the raw data to produce outputs for ICR, Coda, and messages/individuals/production
-CSVs for final analysis.
+### 3. Fetch Recovered Data
+This stage fetches all the recovered data required by the pipeline from project google storage bucket.
 To use, run the following command from the `run_scripts` directory:
 
 ```
-$ ./3_generate_outputs.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <data-root>
+$ ./3_fetch_recovered_data.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <data-root>
+```
+where:
+- `user` is the identifier of the person running the script, for use in the TracedData Metadata 
+  e.g. `user@africasvoices.org` 
+- `google-cloud-credentials-file-path` is an absolute path to a json file containing the private key credentials
+  for accessing a cloud storage credentials bucket containing all the other project credentials files.
+- `pipeline-configuration-file-path` is an absolute path to a pipeline configuration json file.
+- `data-root` is an absolute path to the directory in which all pipeline data should be stored.
+  Raw data will be saved to TracedData JSON files in `<data-root>/Raw Data`.
+
+### 4. Generate Outputs
+This stage processes the raw data to produce outputs for ICR, Coda, and messages/individuals/production
+CSVs for final analysis.
+
+
+```
+$ ./4_generate_outputs.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <data-root>
 ```
 
 where:
@@ -114,13 +130,13 @@ pipeline configuration json file), this stage outputs the following files to `<d
  - For each week of radio shows, a random sample of 200 messages that weren't classified as noise, for use in ICR (`ICR/`)
  - Coda V2 messages files for each dataset (`Coda Files/<dataset>.json`). To upload these to Coda, see the next step.
 
-### 4. Upload Auto-Coded Data to Coda
+### 5. Upload Auto-Coded Data to Coda
 This stage uploads messages to Coda for manual coding and verification.
 Messages which have already been uploaded will not be added again or overwritten.
 To use, run the following command from the `run_scripts` directory:
 
 ```
-$ ./4_coda_add.sh <coda-auth-file> <coda-tools-root> <data-root>
+$ ./5_coda_add.sh <coda-auth-file> <coda-tools-root> <data-root>
 ```
 
 where:
@@ -132,13 +148,13 @@ where:
 - `data-root` is an absolute path to the directory in which all pipeline data should be stored.
   Downloaded Coda files are saved to `<data-root>/Coded Coda Files/<dataset>.json`.
 
-### 5. Back-up the Data Directory
+### 6. Back-up the Data Directory
 This stage makes a backup of the project data directory by creating a compressed, versioned, time-stamped copy at the
 requested location.
 To use, run the following command from the `run_scripts` directory:
 
 ```
-$ ./5_backup_data_root.sh <data-root> <data-backups-dir>
+$ ./6_backup_data_root.sh <data-root> <data-backups-dir>
 ```
 
 where:
@@ -151,13 +167,13 @@ where:
 
 ### CPU Profiling
 To run the main processing stage with statistical cpu profiling enabled, pass the argument 
-`--profile-cpu <cpu-profile-output-file>` to `run_scripts/3_generate_outputs.sh`.
+`--profile-cpu <cpu-profile-output-file>` to `run_scripts/4_generate_outputs.sh`.
 The output file is generated by the statistical profiler [Pyflame](https://github.com/uber/pyflame), and is in a 
 format compatible suitable for visualisation using [FlameGraph](https://github.com/brendangregg/FlameGraph).
 
 ### Memory Profiling
 To run the main processing stage with memory profiling enabled, pass the argument
-`--profile-memory <memory-profile-output-file>` to `run_scripts/3_generate_outputs.sh`.
+`--profile-memory <memory-profile-output-file>` to `run_scripts/4_generate_outputs.sh`.
 The output file lists (memory usage, timestamp) pairs, sampled approximately every 0.1s.
 
 To plot a graph of memory usage over time, on the host machine run:
