@@ -42,7 +42,7 @@ if [[ "$PROFILE_CPU" = true ]]; then
     SYS_PTRACE_CAPABILITY="--cap-add SYS_PTRACE"
 fi
 CMD="pipenv run $PROFILE_CPU_CMD python -u fetch_recovered_data.py \
-    \"$USER\" /data/pipeline_configuration.json /credentials/google-cloud-credentials.json /data/Raw\ Data
+    \"$USER\" /credentials/google-cloud-credentials.json /data/pipeline_configuration.json /data/Raw\ Data
 "
 container="$(docker container create ${SYS_PTRACE_CAPABILITY} -w /app "$IMAGE_NAME" /bin/bash -c "$CMD")"
 
@@ -53,8 +53,8 @@ function finish {
 trap finish EXIT
 
 # Copy input data into the container
-docker cp "$PIPELINE_CONFIGURATION" "$container:/data/pipeline_configuration.json"
 docker cp "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$container:/credentials/google-cloud-credentials.json"
+docker cp "$PIPELINE_CONFIGURATION" "$container:/data/pipeline_configuration.json"
 
 # Run the container
 docker start -a -i "$container"
