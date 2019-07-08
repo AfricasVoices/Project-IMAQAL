@@ -70,12 +70,12 @@ where:
 - `data-root` is an absolute path to the directory in which all pipeline data should be stored.
   Downloaded Coda files are saved to `<data-root>/Coded Coda Files/<dataset>.json`.
 
-### 2. Fetch Raw Data
-This stage fetches all the raw data required by the pipeline from Rapid Pro.
+### 2. Fetch Data
+This stage fetches all the raw data from Rapid Pro and recovered messages from the project google cloud storage.
 To use, run the following command from the `run_scripts` directory:
 
 ```
-$ ./2_fetch_raw_data.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <data-root>
+$ ./2_fetch_data.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <data-root>
 ```
 
 where:
@@ -87,29 +87,13 @@ where:
 - `data-root` is an absolute path to the directory in which all pipeline data should be stored.
   Raw data will be saved to TracedData JSON files in `<data-root>/Raw Data`.
 
-### 3. Fetch Recovered Data
-This stage fetches all the recovered data required by the pipeline from project google storage bucket.
-To use, run the following command from the `run_scripts` directory:
-
-```
-$ ./3_fetch_recovered_data.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <data-root>
-```
-where:
-- `user` is the identifier of the person running the script, for use in the TracedData Metadata 
-  e.g. `user@africasvoices.org` 
-- `google-cloud-credentials-file-path` is an absolute path to a json file containing the private key credentials
-  for accessing a cloud storage credentials bucket containing all the other project credentials files.
-- `pipeline-configuration-file-path` is an absolute path to a pipeline configuration json file.
-- `data-root` is an absolute path to the directory in which all pipeline data should be stored.
-  Raw data will be saved to TracedData JSON files in `<data-root>/Raw Data`.
-
-### 4. Generate Outputs
+### 3. Generate Outputs
 This stage processes the raw data to produce outputs for ICR, Coda, and messages/individuals/production
 CSVs for final analysis.
 
 
 ```
-$ ./4_generate_outputs.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <data-root>
+$ ./3_generate_outputs.sh <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <data-root>
 ```
 
 where:
@@ -130,13 +114,13 @@ pipeline configuration json file), this stage outputs the following files to `<d
  - For each week of radio shows, a random sample of 200 messages that weren't classified as noise, for use in ICR (`ICR/`)
  - Coda V2 messages files for each dataset (`Coda Files/<dataset>.json`). To upload these to Coda, see the next step.
 
-### 5. Upload Auto-Coded Data to Coda
+### 4. Upload Auto-Coded Data to Coda
 This stage uploads messages to Coda for manual coding and verification.
 Messages which have already been uploaded will not be added again or overwritten.
 To use, run the following command from the `run_scripts` directory:
 
 ```
-$ ./5_coda_add.sh <coda-auth-file> <coda-tools-root> <data-root>
+$ ./4_coda_add.sh <coda-auth-file> <coda-tools-root> <data-root>
 ```
 
 where:
@@ -148,13 +132,13 @@ where:
 - `data-root` is an absolute path to the directory in which all pipeline data should be stored.
   Downloaded Coda files are saved to `<data-root>/Coded Coda Files/<dataset>.json`.
 
-### 6. Back-up the Data Directory
+### 5. Back-up the Data Directory
 This stage makes a backup of the project data directory by creating a compressed, versioned, time-stamped copy at the
 requested location.
 To use, run the following command from the `run_scripts` directory:
 
 ```
-$ ./6_backup_data_root.sh <data-root> <data-backups-dir>
+$ ./5_backup_data_root.sh <data-root> <data-backups-dir>
 ```
 
 where:
