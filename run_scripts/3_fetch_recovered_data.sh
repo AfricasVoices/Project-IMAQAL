@@ -7,7 +7,6 @@ while [[ $# -gt 0 ]]; do
         --profile-cpu)
             PROFILE_CPU=true
             CPU_PROFILE_OUTPUT_PATH="$2"
-
             CPU_PROFILE_ARG="--profile-cpu $CPU_PROFILE_OUTPUT_PATH"
             shift 2;;
 
