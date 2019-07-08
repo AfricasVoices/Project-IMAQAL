@@ -3,7 +3,7 @@
 set -e
 
 if [[ $# -ne 3 ]]; then
-    echo "Usage: ./4_coda_add.sh <coda-auth-file> <coda-v2-root> <data-root>"
+    echo "Usage: ./5_coda_add.sh <coda-auth-file> <coda-v2-root> <data-root>"
     echo "Uploads coded messages datasets from '<data-root>/Outputs/Coda Files' to Coda"
     exit
 fi
