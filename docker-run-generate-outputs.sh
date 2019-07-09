@@ -84,20 +84,21 @@ fi
 docker start -a -i "$container"
 
 # Copy the output data back out of the container
+
 mkdir -p "$OUTPUT_ICR_DIR"
 docker cp "$container:/data/output-icr/." "$OUTPUT_ICR_DIR"
 
 mkdir -p "$OUTPUT_CODED_DIR"
 docker cp "$container:/data/coded/." "$OUTPUT_CODED_DIR"
 
+mkdir -p "$(dirname "$OUTPUT_PRODUCTION_CSV")"
+docker cp "$container:/data/output-production.csv" "$OUTPUT_PRODUCTION_CSV"
+
 mkdir -p "$(dirname "$OUTPUT_MESSAGES_CSV")"
 docker cp "$container:/data/output-messages.csv" "$OUTPUT_MESSAGES_CSV"
 
 mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_CSV")"
 docker cp "$container:/data/output-individuals.csv" "$OUTPUT_INDIVIDUALS_CSV"
-
-mkdir -p "$(dirname "$OUTPUT_PRODUCTION_CSV")"
-docker cp "$container:/data/output-production.csv" "$OUTPUT_PRODUCTION_CSV"
 
 mkdir -p "$(dirname "$OUTPUT_JSON")"
 docker cp "$container:/data/output.json" "$OUTPUT_JSON"
@@ -111,3 +112,4 @@ if [[ "$PROFILE_MEMORY" = true ]]; then
     mkdir -p "$(dirname "$MEMORY_PROFILE_OUTPUT_PATH")"
     docker cp "$container:/data/memory.prof" "$MEMORY_PROFILE_OUTPUT_PATH"
 fi
+

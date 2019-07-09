@@ -3,7 +3,7 @@
 set -e
 
 if [[ $# -ne 3 ]]; then
-    echo "Usage: ./5_coda_add.sh <coda-auth-file> <coda-v2-root> <data-root>"
+    echo "Usage: ./4_coda_add.sh <coda-auth-file> <coda-v2-root> <data-root>"
     echo "Uploads coded messages datasets from '<data-root>/Outputs/Coda Files' to Coda"
     exit
 fi
@@ -12,7 +12,7 @@ AUTH=$1
 CODA_V2_ROOT=$2
 DATA_ROOT=$3
 
-#./checkout_coda_v2.sh "$CODA_V2_ROOT"
+./checkout_coda_v2.sh "$CODA_V2_ROOT"
 
 PROJECT_NAME="IMAQAL"
 DATASETS=(
