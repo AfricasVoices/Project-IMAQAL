@@ -4,6 +4,110 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "youth are the future",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-227b079b",
+      "CodeType": "Normal",
+      "StringValue": "youth_are_the_future"
+    },
+    {
+      "DisplayText": "backbone_of_the_society",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-2cd02361",
+      "CodeType": "Normal",
+      "StringValue": "backbone_of_the_society"
+    },
+    {
+      "DisplayText": "youth_are_the_success_of_the_community",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-28853c86",
+      "CodeType": "Normal",
+      "StringValue": "youth_are_the_success_of_the_community"
+    },
+    {
+      "DisplayText": "part of the society",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-42463ad8",
+      "CodeType": "Normal",
+      "StringValue": "part_of_the_society"
+    },
+    {
+      "DisplayText": "majority of the population",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-05197dcb",
+      "CodeType": "Normal",
+      "StringValue": "majority_of_the_population"
+    },
+    {
+      "DisplayText": "youth are discriminated",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-f5bc5b1d",
+      "CodeType": "Normal",
+      "StringValue": "youth_are_discriminated"
+    },
+    {
+      "DisplayText": "decisions are made by elders and leaders",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-6b729a58",
+      "CodeType": "Normal",
+      "StringValue": "decisions_are_made_by_elders_and_leaders"
+    },
+    {
+      "DisplayText": "clannism as the major obstacle",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-e325e2f6",
+      "CodeType": "Normal",
+      "StringValue": "clannism_as_the_major_obstacle"
+    },
+    {
+      "DisplayText": "limited opportunity",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-75781e35",
+      "CodeType": "Normal",
+      "StringValue": "limited_opportunity"
+    },
+    {
+      "DisplayText": "lack of support from the govt/NGOs",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-b63e2c32",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_support_from_the_govt_NGOs"
+    },
+    {
+      "DisplayText": "youth not working together",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-5059e0a3",
+      "CodeType": "Normal",
+      "StringValue": "youth_not_working_together"
+    },
+    {
+      "DisplayText": "youth not ready to take up leadership",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-44410bae",
+      "CodeType": "Normal",
+      "StringValue": "youth_not_ready_to_take_up_leadership"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-fdff64ec",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
