@@ -60,12 +60,12 @@
       "StringValue": "decisions_are_made_by_elders_and_leaders"
     },
     {
-      "DisplayText": "clannism as the major obstacle",
+      "DisplayText": "clannism is a major obstacle",
       "VisibleInCoda": true,
       "NumericValue": 7,
       "CodeID": "code-e325e2f6",
       "CodeType": "Normal",
-      "StringValue": "clannism_as_the_major_obstacle"
+      "StringValue": "clannism_is_a_major_obstacle"
     },
     {
       "DisplayText": "limited opportunity",
