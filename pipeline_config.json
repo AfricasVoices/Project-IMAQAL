@@ -37,7 +37,8 @@
     "imaqal_demog"
   ],
   "FollowUpFlowNames":[
-    "imaqal_s01_follow_up_w2"
+    "imaqal_s01_follow_up_w2",
+    "mag_s01_w8_follow_up"
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
@@ -111,6 +112,7 @@
     {"RapidProKey": "Rqa_Mag_S01E15 (Time) - mag_s01e15_activation", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
@@ -124,7 +126,9 @@
     {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"},
 
     {"RapidProKey": "Women_Participation (Value) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_raw"},
-    {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"}
+    {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"},
+    {"RapidProKey": "Minority_Clan (Text) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_raw"},
+    {"RapidProKey": "Minority_Clan (Run ID) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_run_id"}
 
   ],
   "DriveUpload": {
