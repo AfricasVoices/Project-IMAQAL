@@ -1,0 +1,79 @@
+{
+    "Version": "0.0.0.1",
+    "Name": "Minority Clan Issues",
+    "SchemeID": "Scheme-d37ac715",
+    "Codes": [
+      {
+        "StringValue": "NA",
+        "ControlCode": "NA",
+        "DisplayText": "NA (missing)",
+        "VisibleInCoda": false,
+        "NumericValue": -10,
+        "CodeID": "code-NA-f93d3eb7",
+        "CodeType": "Control"
+      },
+      {
+        "ControlCode": "NS",
+        "DisplayText": "NS (skip)",
+        "VisibleInCoda": false,
+        "NumericValue": -20,
+        "CodeID": "code-NS-2c11b7c9",
+        "CodeType": "Control",
+        "StringValue": "NS"
+      },
+      {
+        "NumericValue": -30,
+        "CodeID": "code-NC-42f1d983",
+        "CodeType": "Control",
+        "StringValue": "NC",
+        "ControlCode": "NC",
+        "DisplayText": "NC (not coded)",
+        "VisibleInCoda": true
+      },
+      {
+        "DisplayText": "NR (not reviewed)",
+        "VisibleInCoda": false,
+        "CodeID": "code-NR-5e3eee23",
+        "NumericValue": -40,
+        "CodeType": "Control",
+        "StringValue": "NR",
+        "ControlCode": "NR"
+      },
+      {
+        "DisplayText": "NIC (not internally consistent)",
+        "VisibleInCoda": false,
+        "NumericValue": -50,
+        "CodeID": "code-NIC-99631cb8",
+        "CodeType": "Control",
+        "StringValue": "NIC",
+        "ControlCode": "NIC"
+      },
+      {
+        "ControlCode": "STOP",
+        "DisplayText": "STOP",
+        "VisibleInCoda": true,
+        "NumericValue": -90,
+        "CodeID": "code-STOP-08b832a8",
+        "CodeType": "Control",
+        "StringValue": "STOP"
+      },
+      {
+        "DisplayText": "WS (wrong scheme)",
+        "VisibleInCoda": true,
+        "NumericValue": -100,
+        "CodeID": "code-WS-adb25603b7af",
+        "CodeType": "Control",
+        "StringValue": "WS",
+        "ControlCode": "WS"
+      },
+      {
+        "CodeID": "code-CE-016c1e22",
+        "CodeType": "Control",
+        "ControlCode": "CE",
+        "DisplayText": "CE (coding error)",
+        "NumericValue": -110,
+        "StringValue": "CE",
+        "VisibleInCoda": false
+      }
+    ]
+  }
