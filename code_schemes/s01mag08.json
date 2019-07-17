@@ -4,6 +4,134 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-687979ab",
+      "CodeType": "Normal",
+      "StringValue": "discrimination"
+    },
+    {
+      "DisplayText": "derogatory remarks",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-885ff505",
+      "CodeType": "Normal",
+      "StringValue": "derogatory_remarks"
+    },
+    {
+      "DisplayText": "demoralization",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-99c60573",
+      "CodeType": "Normal",
+      "StringValue": "demoralization"
+    },
+    {
+      "DisplayText": "relationship segregation",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-0546a611",
+      "CodeType": "Normal",
+      "StringValue": "relationship_segregation"
+    },
+    {
+      "DisplayText": "job discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-7c5fdcc0",
+      "CodeType": "Normal",
+      "StringValue": "job_discrimination"
+    },
+    {
+      "DisplayText": "rights violation",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-eb6d56bd",
+      "CodeType": "Normal",
+      "StringValue": "rights_violation"
+    },
+    {
+      "DisplayText": "poverty",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-f64423bf",
+      "CodeType": "Normal",
+      "StringValue": "poverty"
+    },
+    {
+      "DisplayText": "clan based discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-b265c635",
+      "CodeType": "Normal",
+      "StringValue": "clan_based_discrimination"
+    },
+    {
+      "DisplayText": "political exclusion",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-f5f9ebe1",
+      "CodeType": "Normal",
+      "StringValue": "political_exclusion"
+    },
+    {
+      "DisplayText": "bodily harm",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-fc879229",
+      "CodeType": "Normal",
+      "StringValue": "bodily_harm"
+    },
+    {
+      "DisplayText": "rape",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-6a4ef22e",
+      "CodeType": "Normal",
+      "StringValue": "rape"
+    },
+    {
+      "DisplayText": "lack of access to essential services",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-65cd64a1",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_access_to_essential_services"
+    },
+    {
+      "DisplayText": "exclusion from decision making",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-28179c6b",
+      "CodeType": "Normal",
+      "StringValue": "exclusion_from_decision_making"
+    },
+    {
+      "DisplayText": "lack of justice",
+      "VisibleInCoda": true,
+      "NumericValue": 13,
+      "CodeID": "code-fc02d1ab",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_justice"
+    },
+    {
+      "DisplayText": "land grabbing",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-0cf540fa",
+      "CodeType": "Normal",
+      "StringValue": "land_grabbing"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 15,
+      "CodeID": "code-9bdf5585",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
