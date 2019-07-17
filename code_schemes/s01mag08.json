@@ -124,6 +124,14 @@
       "StringValue": "land_grabbing"
     },
     {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 15,
+      "CodeID": "code-9bdf5585",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
