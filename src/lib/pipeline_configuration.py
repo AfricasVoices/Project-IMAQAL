@@ -249,7 +249,7 @@ class PipelineConfiguration(object):
                    code_scheme=CodeSchemes.S01MAG07,
                    binary_code_scheme=CodeSchemes.S01MAG07_YES_NO_AMB,
                    binary_coded_field="rqa_s01mag07_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01mag06_yes_no_amb"),
+                   binary_analysis_file_key="rqa_s01mag07_yes_no_amb"),
 
         CodingPlan(raw_field="rqa_s01mag08_raw",
                    coded_field="rqa_s01mag08_coded",
