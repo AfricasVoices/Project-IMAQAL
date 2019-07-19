@@ -46,6 +46,8 @@ class CodeSchemes(object):
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
     WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")
+    MINORITY_CLAN_ISSUES = _open_scheme("minority_clan_issues.json")
+    MINORITY_CLAN_ISSUES_YES_NO_AMB = _open_scheme("minority_clan_issues_yes_no_amb.json")
 
     AGE = _open_scheme("age.json")
     RECENTLY_DISPLACED = _open_scheme("recently_displaced.json")
@@ -358,6 +360,20 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
                    binary_coded_field="women_participation_yes_no_amb_coded",
                    binary_analysis_file_key="women_participation_yes_no_amb"),
+
+        CodingPlan(raw_field="minority_clan_issues_raw",
+                   coded_field="minority_clan_issues_coded",
+                   time_field="sent_on",
+                   coda_filename="minority_clan_issues.json",
+                   icr_filename="minority_clan_issues.csv",
+                   run_id_field="minority_clan_issues_run_id",
+                   analysis_file_key="minority_clan_issues_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("minority_clan_issues"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.MINORITY_CLAN_ISSUES,
+                   binary_code_scheme=CodeSchemes.MINORITY_CLAN_ISSUES_YES_NO_AMB,
+                   binary_coded_field="minority_clan_issues_yes_no_amb_coded",
+                   binary_analysis_file_key="minority_clan_issues_yes_no_amb"),
     ]
 
     LOCATION_CODING_PLANS = [

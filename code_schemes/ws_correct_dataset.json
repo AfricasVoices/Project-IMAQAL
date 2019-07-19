@@ -290,6 +290,17 @@
             ]
         },
         {
+            "DisplayText": "minority clan issues",
+            "VisibleInCoda": true,
+            "NumericValue": 28,
+            "CodeID": "code-3a0e771e",
+            "CodeType": "Normal",
+            "StringValue": "minority_clan_issues",
+            "MatchValues": [
+                "minority_clan_issues"
+            ]
+        },
+        {
             "CodeID": "code-NR-5e3eee23",
             "CodeType": "Control",
             "ControlCode": "NR",
