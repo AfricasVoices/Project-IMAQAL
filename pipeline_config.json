@@ -127,7 +127,7 @@
 
     {"RapidProKey": "Women_Participation (Value) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_raw"},
     {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"},
-    {"RapidProKey": "Minority_Clan (Text) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_raw"},
+    {"RapidProKey": "Minority_Clan (Value) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_raw"},
     {"RapidProKey": "Minority_Clan (Run ID) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_run_id"}
 
   ],
