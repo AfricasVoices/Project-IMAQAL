@@ -120,9 +120,9 @@ if __name__ == "__main__":
     # Load Follow up Surveys
     follow_up_survey_datasets = []
     for i, follow_up_name in enumerate(pipeline_configuration.follow_up_flow_names):
-        raw_activation_path = f"{raw_data_dir}/{follow_up_name}.json"
-        log.info(f"Loading {raw_activation_path}...")
-        with open(raw_activation_path, "r") as f:
+        raw_follow_up_path = f"{raw_data_dir}/{follow_up_name}.json"
+        log.info(f"Loading {raw_follow_up_path}...")
+        with open(raw_follow_up_path, "r") as f:
             messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
         log.debug(f"Loaded {len(messages)} messages")
         follow_up_survey_datasets.append(messages)
