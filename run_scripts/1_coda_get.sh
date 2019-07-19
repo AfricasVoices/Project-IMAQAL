@@ -44,7 +44,6 @@ DATASETS=(
     "household_language"
     "women_participation"
     "minority_clan_issues"
-
 )
 
 cd "$CODA_V2_ROOT/data_tools"
