@@ -4,6 +4,135 @@
     "SchemeID": "Scheme-d37ac715",
     "Codes": [
       {
+        "VisibleInCoda": true,
+        "NumericValue": 0,
+        "CodeID": "code-2771c384",
+        "CodeType": "Normal",
+        "StringValue": "discrimination",
+        "DisplayText": "discrimination"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 1,
+        "CodeID": "code-a9ca6c31",
+        "CodeType": "Normal",
+        "StringValue": "insecurity",
+        "DisplayText": "insecurity"
+      },
+
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 2,
+        "CodeID": "code-840e8f45",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_representation",
+        "DisplayText": "lack of representation"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 3,
+        "CodeID": "code-cf357c99",
+        "CodeType": "Normal",
+        "StringValue": "relationship_segregation",
+        "DisplayText": "relation segregation"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 4,
+        "CodeID": "code-61d891fb",
+        "CodeType": "Normal",
+        "StringValue": "job_discrimination",
+        "DisplayText": "job discrimination"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 5,
+        "CodeID": "code-26f90c68",
+        "CodeType": "Normal",
+        "StringValue": "exclusion_from_political_participation",
+        "DisplayText": "exclusion from political participation"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 6,
+        "CodeID": "code-50af2212",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_education",
+        "DisplayText": "lack of education"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 7,
+        "CodeID": "code-3a1af7d2",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_justice",
+        "DisplayText": "lack of justice"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 8,
+        "CodeID": "code-b46d5cac",
+        "CodeType": "Normal",
+        "StringValue": "rights_violation",
+        "DisplayText": "rights violation"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 9,
+        "CodeID": "code-4fc791e4",
+        "CodeType": "Normal",
+        "StringValue": "exclusion_from_decision_making",
+        "DisplayText": "exclusion from decision making"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 10,
+        "CodeID": "code-13cb9e3a",
+        "CodeType": "Normal",
+        "StringValue": "exclusion_from_economic_opportunities",
+        "DisplayText": "exclusion from economic opportunities"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 11,
+        "CodeID": "code-fde285e4",
+        "CodeType": "Normal",
+        "StringValue": "demoralization",
+        "DisplayText": "demoralization"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 12,
+        "CodeID": "code-47c02d96",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_community_awareness",
+        "DisplayText": "lack of community awareness"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 13,
+        "CodeID": "code-09695ba9",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_trust",
+        "DisplayText": "lack of trust"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 14,
+        "CodeID": "code-497a2b3a",
+        "CodeType": "Normal",
+        "StringValue": "clan_based_discrimination",
+        "DisplayText": "clan based discimination"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 15,
+        "CodeID": "code-38b53a00",
+        "CodeType": "Normal",
+        "StringValue": "other",
+        "DisplayText": "other"
+      },
+      {
         "StringValue": "NA",
         "ControlCode": "NA",
         "DisplayText": "NA (missing)",
