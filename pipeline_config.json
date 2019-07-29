@@ -40,7 +40,6 @@
     "imaqal_s01_follow_up_w2",
     "mag_s01_w8_follow_up",
     "mag_s01_w10_follow_up"
-
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
@@ -114,7 +113,7 @@
 
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
     {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
-    {"RapidProKey": "Young_People_Split (Time) - mag_s01_w10_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Young_People (Time) - mag_s01_w10_follow_up", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
@@ -131,15 +130,16 @@
     {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"},
     {"RapidProKey": "Minority_Clan (Value) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_raw"},
     {"RapidProKey": "Minority_Clan (Run ID) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_run_id"},
-    {"RapidProKey": "Young_People_Split (Value) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_raw"},
-    {"RapidProKey": "Young_People_Split (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"}
+    {"RapidProKey": "Young_People (Value) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_raw"},
+    {"RapidProKey": "Young_People (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"}
   ],
   "DriveUpload": {
     "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
     "ProductionUploadPath": "imaqal_analysis_outputs/imaqal_s01_production.csv",
     "MessagesUploadPath": "imaqal_analysis_outputs/imaqal_s01_messages.csv",
     "IndividualsUploadPath": "imaqal_analysis_outputs/imaqal_s01_individuals.csv",
-    "TracedDataUploadPath": "imaqal_analysis_outputs/imaqal_s01_traced_data.json"
+    "MessagesTracedDataUploadPath": "imaqal_analysis_outputs/imaqal_s01_messages_traced_data.json",
+    "IndividualsTracedDataUploadPath": "imaqal_analysis_outputs/imaqal_s01_individual_traced_data.json"
   },
   "MemoryProfileUploadURLPrefix": "gs://avf-pipeline-logs-performance-nearline/2019/IMAQAL/memory-"
 }

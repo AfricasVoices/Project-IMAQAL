@@ -177,7 +177,6 @@ class AnalysisFile(object):
             "radio_magazine_participation_s01mag13",
             "radio_magazine_participation_s01mag14",
             "radio_magazine_participation_s01mag15"
-
         ]
 
         # Export to CSV
@@ -247,4 +246,4 @@ class AnalysisFile(object):
             TracedDataCSVIO.export_traced_data_iterable_to_csv(folded_data, f, headers=export_keys)
         print(f"--Csv by Individual exported to {csv_by_individual_output_path}")
 
-        return data
+        return data, folded_data
