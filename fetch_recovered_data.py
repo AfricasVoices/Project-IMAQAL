@@ -72,5 +72,5 @@ if __name__ == "__main__":
         log.info(f"Exporting {len(data)} TracedData items to {traced_data_output_path}...")
         IOUtils.ensure_dirs_exist_for_file(traced_data_output_path)
         with open(traced_data_output_path, "w") as f:
-            TracedDataJsonIO.export_traced_data_iterable_to_json(data, f, pretty_print=True)
+            TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
         log.info(f"Exported TracedData")

@@ -100,11 +100,11 @@ if __name__ == "__main__":
     # Load messages
     messages_datasets = []
     for i, activation_flow_name in enumerate(pipeline_configuration.activation_flow_names):
-        raw_activation_path = f"{raw_data_dir}/{activation_flow_name}.json"
+        raw_activation_path = f"{raw_data_dir}/{activation_flow_name}.jsonl"
         log.info(f"Loading {raw_activation_path}...")
         with open(raw_activation_path, "r") as f:
-            messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
-        log.debug(f"Loaded {len(messages)} messages")
+            messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
+        log.info(f"Loaded {len(messages)} runs")
         messages_datasets.append(messages)
 
     recovery_datasets = []
@@ -117,28 +117,28 @@ if __name__ == "__main__":
             raw_recovery_path = f"{raw_data_dir}/{recovery_csv_url.split('/')[-1].split('.')[0]}.json"
             log.info(f"Loading {raw_recovery_path}...")
             with open(raw_recovery_path, "r") as f:
-                messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
-            log.debug(f"Loaded {len(messages)} messages")
+                messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
+            log.info(f"Loaded {len(messages)} runs")
             recovery_datasets.append(messages)
 
     # Load Follow up Surveys
     follow_up_survey_datasets = []
     for i, follow_up_name in enumerate(pipeline_configuration.follow_up_flow_names):
-        raw_follow_up_path = f"{raw_data_dir}/{follow_up_name}.json"
+        raw_follow_up_path = f"{raw_data_dir}/{follow_up_name}.jsonl"
         log.info(f"Loading {raw_follow_up_path}...")
         with open(raw_follow_up_path, "r") as f:
-            messages = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
-        log.debug(f"Loaded {len(messages)} messages")
+            messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
+        log.info(f"Loaded {len(messages)} runs")
         follow_up_survey_datasets.append(messages)
 
     log.info("Loading demographics")
     demog_datasets = []
     for i, demog_flow_name in enumerate(pipeline_configuration.demog_flow_names):
-        raw_demog_path = f"{raw_data_dir}/{demog_flow_name}.json"
+        raw_demog_path = f"{raw_data_dir}/{demog_flow_name}.jsonl"
         log.info(f"Loading {raw_demog_path}...")
         with open(raw_demog_path, "r") as f:
-            contacts = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
-        log.debug(f"Loaded {len(contacts)} contacts")
+            contacts = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
+        log.info(f"Loaded {len(contacts)} contacts")
         demog_datasets.append(contacts)
 
     # Add survey data to the messages
@@ -153,7 +153,7 @@ if __name__ == "__main__":
 
     data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_follow_up_datasets,
                                                    coalesced_demog_datasets)
-    
+
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
 
@@ -179,12 +179,12 @@ if __name__ == "__main__":
     log.info("Writing messages TracedData to file...")
     IOUtils.ensure_dirs_exist_for_file(messages_json_output_path)
     with open(messages_json_output_path, "w") as f:
-        TracedDataJsonIO.export_traced_data_iterable_to_json(messages_data, f, pretty_print=True)
+        TracedDataJsonIO.export_traced_data_iterable_to_jsonl(messages_data, f)
 
     log.info("Writing individuals TracedData to file...")
     IOUtils.ensure_dirs_exist_for_file(individuals_json_output_path)
     with open(individuals_json_output_path, "w") as f:
-        TracedDataJsonIO.export_traced_data_iterable_to_json(individuals_data, f, pretty_print=True)
+        TracedDataJsonIO.export_traced_data_iterable_to_jsonl(individuals_data, f)
 
     # Upload to Google Drive, if requested.
     # Note: This should happen as late as possible in order to reduce the risk of the remainder of the pipeline failing
