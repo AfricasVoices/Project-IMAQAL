@@ -38,7 +38,9 @@
   ],
   "FollowUpFlowNames":[
     "imaqal_s01_follow_up_w2",
-    "mag_s01_w8_follow_up"
+    "mag_s01_w8_follow_up",
+    "mag_s01_w10_follow_up"
+
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
