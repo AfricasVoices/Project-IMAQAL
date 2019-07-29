@@ -85,7 +85,6 @@
     {"RapidProKey": "Rqa_Mag_S01E14 (Run ID) - mag_s01e14_activation", "PipelineKey": "rqa_s01mag14_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E15 (Run ID) - mag_s01e15_activation", "PipelineKey": "rqa_s01mag15_run_id"},
 
-
     {"RapidProKey": "message", "PipelineKey": "recovered_raw", "IsActivationMessage": true},
     {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
     {"RapidProKey": "run_id", "PipelineKey": "recovered_run_id"},
@@ -113,6 +112,7 @@
 
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
     {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Young_People_Split (Time) - mag_s01_w10_follow_up", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
@@ -128,8 +128,9 @@
     {"RapidProKey": "Women_Participation (Value) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_raw"},
     {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"},
     {"RapidProKey": "Minority_Clan (Value) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_raw"},
-    {"RapidProKey": "Minority_Clan (Run ID) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_run_id"}
-
+    {"RapidProKey": "Minority_Clan (Run ID) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_run_id"},
+    {"RapidProKey": "Young_People_Split (Value) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_raw"},
+    {"RapidProKey": "Young_People_Split (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"}
   ],
   "DriveUpload": {
     "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
