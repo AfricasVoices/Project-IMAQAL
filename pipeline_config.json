@@ -137,5 +137,6 @@
     "MessagesUploadPath": "imaqal_analysis_outputs/imaqal_s01_messages.csv",
     "IndividualsUploadPath": "imaqal_analysis_outputs/imaqal_s01_individuals.csv",
     "TracedDataUploadPath": "imaqal_analysis_outputs/imaqal_s01_traced_data.json"
-  }
+  },
+  "MemoryProfileUploadURLPrefix": "gs://avf-pipeline-logs-performance-nearline/2019/IMAQAL/memory-"
 }

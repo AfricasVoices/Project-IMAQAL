@@ -483,8 +483,8 @@ class PipelineConfiguration(object):
     DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
-                 follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings, recovery_csv_urls=None,
-                 drive_upload=None):
+                 follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
+                 memory_profile_upload_url_prefix, recovery_csv_urls=None, drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
         :type rapid_pro_domain: str
@@ -501,6 +501,10 @@ class PipelineConfiguration(object):
         :type rapid_pro_test_contact_uuids: list of str
         :param phone_number_uuid_table: Configuration for the Firestore phone number <-> uuid table.
         :type phone_number_uuid_table: PhoneNumberUuidTable
+        :param memory_profile_upload_url_prefix:The prefix of the GS URL to upload the memory profile log to.
+                                                 This prefix will be appended by the id of the pipeline run (provided
+                                                 as a command line argument), and the ".profile" file extension.
+        :type memory_profile_upload_url_prefix: str
         :param rapid_pro_key_remappings: List of rapid_pro_key -> pipeline_key remappings.
         :type rapid_pro_key_remappings: list of RapidProKeyRemapping
         :param drive_upload: Configuration for uploading to Google Drive, or None.
@@ -515,6 +519,7 @@ class PipelineConfiguration(object):
         self.rapid_pro_test_contact_uuids = rapid_pro_test_contact_uuids
         self.phone_number_uuid_table = phone_number_uuid_table
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
+        self.memory_profile_upload_url_prefix = memory_profile_upload_url_prefix
         self.recovery_csv_urls = recovery_csv_urls
         self.drive_upload = drive_upload
 
@@ -535,6 +540,8 @@ class PipelineConfiguration(object):
         for remapping_dict in configuration_dict["RapidProKeyRemappings"]:
             rapid_pro_key_remappings.append(RapidProKeyRemapping.from_configuration_dict(remapping_dict))
 
+        memory_profile_upload_url_prefix = configuration_dict["MemoryProfileUploadURLPrefix"]
+
         recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
 
         drive_upload_paths = None
@@ -542,8 +549,8 @@ class PipelineConfiguration(object):
             drive_upload_paths = DriveUpload.from_configuration_dict(configuration_dict["DriveUpload"])
 
         return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
-                   follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings, recovery_csv_urls,
-                   drive_upload_paths)
+                   follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
+                   memory_profile_upload_url_prefix, recovery_csv_urls, drive_upload_paths)
 
     @classmethod
     def from_configuration_file(cls, f):
@@ -578,6 +585,8 @@ class PipelineConfiguration(object):
                 f"{remapping} is not of type RapidProKeyRemapping"
 
             remapping.validate()
+
+        validators.validate_string(self.memory_profile_upload_url_prefix, "memory_profile_upload_url_prefix")
 
         if self.recovery_csv_urls is not None:
             validators.validate_list(self.recovery_csv_urls, "recovery_csv_urls")
