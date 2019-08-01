@@ -1,8 +1,9 @@
 {
     "Version": "0.0.0.1",
-    "Name": "Young people issues Yes/No/Amb",
+    "Name": "Young People Issues Yes/No/Amb",
     "SchemeID": "Scheme-928130f1",
-    "Codes": [{
+    "Codes": [
+        {
         "DisplayText": "Yes",
         "VisibleInCoda": true,
         "NumericValue": 0,
