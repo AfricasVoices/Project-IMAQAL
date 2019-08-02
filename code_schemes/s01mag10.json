@@ -60,12 +60,12 @@
       "StringValue": "support_girls"
     },
      {
-      "DisplayText": "put an effort",
+      "DisplayText": "put in effort",
       "VisibleInCoda": true,
       "NumericValue": 7,
       "CodeID": "code-54d5a563",
       "CodeType": "Normal",
-      "StringValue": "put_an_effort"
+      "StringValue": "put_in_effort"
     },
      {
       "DisplayText": "girls should be taught islamic studies",
