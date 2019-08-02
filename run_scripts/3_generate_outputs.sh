@@ -46,3 +46,4 @@ cd ..
 ./docker-run-generate-analysis-graphs.sh ${CPU_PROFILE_ARG} ${MEMORY_PROFILE_ARG} \
     "$USER" "$DATA_ROOT/Outputs/messages_traced_data.jsonl" \
     "$DATA_ROOT/Outputs/individual_traced_data.jsonl" "$DATA_ROOT/Outputs/"
+    
