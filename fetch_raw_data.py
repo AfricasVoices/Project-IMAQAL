@@ -77,7 +77,7 @@ if __name__ == "__main__":
             pipeline_configuration.demog_flow_names + pipeline_configuration.follow_up_flow_names:
         runs_log_path = f"{raw_data_dir}/{flow}_log.jsonl"
         raw_runs_path = f"{raw_data_dir}/{flow}_raw.json"
-        traced_runs_output_path = f"{raw_data_dir}/{flow}.json"
+        traced_runs_output_path = f"{raw_data_dir}/{flow}.jsonl"
         log.info(f"Exporting flow '{flow}' to '{traced_runs_output_path}'...")
 
         flow_id = rapid_pro.get_flow_id(flow)
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         log.info(f"Saving {len(traced_runs)} traced runs to {traced_runs_output_path}...")
         IOUtils.ensure_dirs_exist_for_file(traced_runs_output_path)
         with open(traced_runs_output_path, "w") as traced_runs_output_file:
-            TracedDataJsonIO.export_traced_data_iterable_to_json(traced_runs, traced_runs_output_file, pretty_print=True)
+            TracedDataJsonIO.export_traced_data_iterable_to_jsonl(traced_runs, traced_runs_output_file)
         log.info(f"Saved {len(traced_runs)} traced runs")
 
     log.info(f"Saving {len(raw_contacts)} raw contacts to file '{raw_contacts_path}'...")
