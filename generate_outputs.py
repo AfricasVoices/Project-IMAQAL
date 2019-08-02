@@ -36,7 +36,7 @@ if __name__ == "__main__":
                              "New data will be appended to these files.")
 
     parser.add_argument("messages_json_output_path", metavar="messages-json-output-path",
-                        help="Path to a JSON file to write the TracedData associated with the messages analysis file")
+                        help="Path to a JSONL file to write the TracedData associated with the messages analysis file")
     parser.add_argument("individuals_json_output_path", metavar="individuals-json-output-path",
                         help="Path to a JSON file to write the TracedData associated with the individuals analysis file")
 
