@@ -4,6 +4,110 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "the community understands",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-075d50e5",
+      "CodeType": "Normal",
+      "StringValue": "the_community_understands"
+    },
+     {
+      "DisplayText": "if given opportunity",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-fcc13212",
+      "CodeType": "Normal",
+      "StringValue": "if_given_opportunity"
+    },
+     {
+      "DisplayText": "part of the community",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-56b53b0c",
+      "CodeType": "Normal",
+      "StringValue": "part_of_the_community"
+    },
+     {
+      "DisplayText": "IDPs taking responsibility",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-4d0c6d41",
+      "CodeType": "Normal",
+      "StringValue": "idps_taking_reponsibility"
+    },
+     {
+      "DisplayText": "lack of security",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-78bf0a93",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_security"
+    },
+     {
+      "DisplayText": "they are perceived negatively",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-cff0a286",
+      "CodeType": "Normal",
+      "StringValue": "they_are_perceived_negatively"
+    },
+     {
+      "DisplayText": "lack of justice",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-9b06639a",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_justice"
+    },
+     {
+      "DisplayText": "clannism",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-2e9eaad3",
+      "CodeType": "Normal",
+      "StringValue": "clannisim"
+    },
+     {
+      "DisplayText": "discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-9a9beeb0",
+      "CodeType": "Normal",
+      "StringValue": "discrimination"
+    },
+     {
+      "DisplayText": "lack of community awareness",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-edf5a6b1",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_community_awareness"
+    },
+     {
+      "DisplayText": "lack of stable government",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-60036c60",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_stable_government"
+    },
+     {
+      "DisplayText": "exclusion from decision making",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-4844b195",
+      "CodeType": "Normal",
+      "StringValue": "exclusion_from_decision_making"
+    },
+     {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-47c749ac",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",

@@ -36,7 +36,7 @@ if __name__ == "__main__":
                              "New data will be appended to these files.")
 
     parser.add_argument("messages_json_output_path", metavar="messages-json-output-path",
-                        help="Path to a JSON file to write the TracedData associated with the messages analysis file")
+                        help="Path to a JSONL file to write the TracedData associated with the messages analysis file")
     parser.add_argument("individuals_json_output_path", metavar="individuals-json-output-path",
                         help="Path to a JSON file to write the TracedData associated with the individuals analysis file")
 
@@ -153,7 +153,7 @@ if __name__ == "__main__":
 
     data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_follow_up_datasets,
                                                    coalesced_demog_datasets)
-
+    
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
 
