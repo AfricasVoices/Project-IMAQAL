@@ -4,6 +4,143 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "societal benefits",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-f5e51184",
+      "CodeType": "Normal",
+      "StringValue": "societal_benefits"
+    },
+     {
+      "DisplayText": "awareness creation",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-00b41679",
+      "CodeType": "Normal",
+      "StringValue": "awareness_creation"
+    },
+     {
+      "DisplayText": "equality",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-36c12bb6",
+      "CodeType": "Normal",
+      "StringValue": "equality"
+    },
+     {
+      "DisplayText": "encourage girls",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-f1c39ec4",
+      "CodeType": "Normal",
+      "StringValue": "encourage_girls"
+    },
+     {
+      "DisplayText": "stop early/forced marriages",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-c2a120e8",
+      "CodeType": "Normal",
+      "StringValue": "stop_early_or_forced_marriages"
+    },
+     {
+      "DisplayText": "end belittling girls",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-d227fafd",
+      "CodeType": "Normal",
+      "StringValue": "end_belittling_girls"
+    },
+     {
+      "DisplayText": "support girls",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-dc9a22db",
+      "CodeType": "Normal",
+      "StringValue": "support_girls"
+    },
+     {
+      "DisplayText": "put an effort",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-54d5a563",
+      "CodeType": "Normal",
+      "StringValue": "put_an_effort"
+    },
+     {
+      "DisplayText": "girls should be taught islamic studies",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-89a28541",
+      "CodeType": "Normal",
+      "StringValue": "girls_should_be_taught_islamic_studies"
+    },
+     {
+      "DisplayText": "minimize house chores",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-5bd065de",
+      "CodeType": "Normal",
+      "StringValue": "minimize_house_chores"
+    },
+
+     {
+      "DisplayText": "give them education opportunities",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-3690d3e0",
+      "CodeType": "Normal",
+      "StringValue": "give_them_education_opportunities"
+    },
+     {
+      "DisplayText": "establish girls' schools",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-0d770c11",
+      "CodeType": "Normal",
+      "StringValue": "establish_girls_schools"
+    },
+     {
+      "DisplayText": "ensure girls' safety",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-c655af39",
+      "CodeType": "Normal",
+      "StringValue": "ensure_girls_safety"
+    },
+     {
+      "DisplayText": "no need to educate a girl",
+      "VisibleInCoda": true,
+      "NumericValue": 13,
+      "CodeID": "code-fd1c23bb",
+      "CodeType": "Normal",
+      "StringValue": "no_need_to_educate_a_girl"
+    },
+     {
+      "DisplayText": "girls should be willing",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-9c4832d0",
+      "CodeType": "Normal",
+      "StringValue": "girls_should_be_willing"
+    },
+    {
+      "DisplayText": "opportunities are there",
+      "VisibleInCoda": true,
+      "NumericValue": 15,
+      "CodeID": "code-13d1b72f",
+      "CodeType": "Normal",
+      "StringValue": "opportunities_are_there"
+    },
+     {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 16,
+      "CodeID": "code-9e79e20d",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
