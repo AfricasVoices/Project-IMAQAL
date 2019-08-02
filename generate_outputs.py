@@ -153,7 +153,7 @@ if __name__ == "__main__":
 
     data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_follow_up_datasets,
                                                    coalesced_demog_datasets)
-
+    
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
 
@@ -175,7 +175,7 @@ if __name__ == "__main__":
     log.info("Generating Analysis CSVs...")
     messages_data, individuals_data = AnalysisFile.generate(user, data, csv_by_message_output_path,
                                                             csv_by_individual_output_path)
-
+    
     log.info("Writing messages TracedData to file...")
     IOUtils.ensure_dirs_exist_for_file(messages_json_output_path)
     with open(messages_json_output_path, "w") as f:

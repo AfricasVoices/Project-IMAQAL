@@ -61,7 +61,7 @@ fi
 
 CMD="pipenv run $PROFILE_CPU_CMD $PROFILE_MEMORY_CMD python -u generate_outputs.py  \
     \"$USER\" /credentials/google-cloud-credentials.json /data/pipeline_configuration.json \
-    /data/raw-data /data/prev-coded /data/output-message-json-output.jsonl /data/output-individual-json-output.jsonl \
+    /data/raw-data /data/prev-coded /data/output-messages.jsonl /data/output-individuals.jsonl \
     /data/output-icr /data/coded \
     /data/output-messages.csv /data/output-individuals.csv /data/output-production.csv
 "
@@ -102,10 +102,10 @@ mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_CSV")"
 docker cp "$container:/data/output-individuals.csv" "$OUTPUT_INDIVIDUALS_CSV"
 
 mkdir -p "$(dirname "$OUTPUT_MESSAGES_JSONL")"
-docker cp "$container:/data/output-message-json-output.jsonl" "$OUTPUT_MESSAGES_JSONL"
+docker cp "$container:/data/output-messages.jsonl" "$OUTPUT_MESSAGES_JSONL"
 
 mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
-docker cp "$container:/data/output-individual-json-output.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
+docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
 
 if [[ "$PROFILE_CPU" = true ]]; then
     mkdir -p "$(dirname "$CPU_PROFILE_OUTPUT_PATH")"
@@ -116,4 +116,3 @@ if [[ "$PROFILE_MEMORY" = true ]]; then
     mkdir -p "$(dirname "$MEMORY_PROFILE_OUTPUT_PATH")"
     docker cp "$container:/data/memory.prof" "$MEMORY_PROFILE_OUTPUT_PATH"
 fi
-
