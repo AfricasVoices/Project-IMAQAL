@@ -61,7 +61,7 @@ fi
 
 CMD="pipenv run $PROFILE_CPU_CMD $PROFILE_MEMORY_CMD python -u generate_outputs.py  \
     \"$USER\" /credentials/google-cloud-credentials.json /data/pipeline_configuration.json \
-    /data/raw-data /data/prev-coded /data/output-message-json-output.json /data/output-individual-json-output.json \
+    /data/raw-data /data/prev-coded /data/output-messages.json /data/output-individuals.json \
     /data/output-icr /data/coded \
     /data/output-messages.csv /data/output-individuals.csv /data/output-production.csv
 "
