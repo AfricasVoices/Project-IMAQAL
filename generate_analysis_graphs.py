@@ -112,3 +112,32 @@ if __name__ == "__main__":
         )
         chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.html")
         chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.png", scale_factor=IMG_SCALE_FACTOR)
+
+    # Compute the number of UIDs with manually labelled relevant messages per show
+    log.info("Graphing the No. of UIDs with relevant messages per show...")
+    relevant_uids_per_show = OrderedDict()
+
+    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS:
+        relevant_uids_per_show[plan.raw_field] = 0
+    for msg in messages:
+        for plan in PipelineConfiguration.RQA_CODING_PLANS:
+            if plan.binary_code_scheme is not None and msg["consent_withdrawn"] == "false":
+                binary_coda_code = plan.binary_code_scheme.get_code_with_id(msg[plan.binary_coded_field]["CodeID"])
+                reason_coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
+                if binary_coda_code.code_type != "Control"  or reason_coda_code.code_type != "Control":
+                    relevant_uids_per_show[plan.raw_field] += 1
+
+            elif plan.binary_code_scheme is None and msg["consent_withdrawn"] == "false":
+                coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
+                if coda_code.code_type != "Control":
+                    relevant_uids_per_show[plan.raw_field] += 1
+    chart = altair.Chart(
+        altair.Data(values=[{"show": k, "count": v} for k, v in relevant_uids_per_show.items()])
+    ).mark_bar().encode(
+        x=altair.X("show:N", title="Show", sort=list(relevant_uids_per_show.keys())),
+        y=altair.Y("count:Q", title="Number of UID(s)")
+    ).properties(
+        title="UIDs with relevant messages per Show"
+    )
+    chart.save(f"{output_dir}/relevant_uid_per_show.html")
+    chart.save(f"{output_dir}/relevant_uid_per_show.png", scale_factor=IMG_SCALE_FACTOR)
