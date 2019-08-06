@@ -117,7 +117,7 @@ if __name__ == "__main__":
     log.info("Graphing the No. of UIDs with relevant messages per show...")
     relevant_uids_per_show = OrderedDict()
 
-    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS:
+    for plan in PipelineConfiguration.RQA_CODING_PLANS:
         relevant_uids_per_show[plan.raw_field] = 0
     for msg in messages:
         for plan in PipelineConfiguration.RQA_CODING_PLANS:
