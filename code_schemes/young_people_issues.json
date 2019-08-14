@@ -4,6 +4,110 @@
     "SchemeID": "Scheme-9c2fdb87",
     "Codes": [
       {
+        "DisplayText": "lack of jobs",
+        "VisibleInCoda": true,
+        "NumericValue": 0,
+        "CodeID": "code-a040f8c9",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_jobs"
+      },
+      {
+        "DisplayText": "youth emigration",
+        "VisibleInCoda": true,
+        "NumericValue": 1,
+        "CodeID": "code-a9066f16",
+        "CodeType": "Normal",
+        "StringValue": "youth_emigration"
+      },
+      {
+        "DisplayText": "lack of support from the gov't",
+        "VisibleInCoda": true,
+        "NumericValue": 2,
+        "CodeID": "code-4f5fd4b5",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_support_from_the_govt"
+      },
+      {
+        "DisplayText": "nothing can be done",
+        "VisibleInCoda": true,
+        "NumericValue": 3,
+        "CodeID": "code-3f320418",
+        "CodeType": "Normal",
+        "StringValue": "nothing_can_be_done"
+      },
+      {
+        "DisplayText": "youth are the backbone of the community",
+        "VisibleInCoda": true,
+        "NumericValue": 4,
+        "CodeID": "code-b7d0af30",
+        "CodeType": "Normal",
+        "StringValue": "youth_are_the_backbone_of_the_community"
+      },
+      {
+        "DisplayText": "prevention method in place",
+        "VisibleInCoda": true,
+        "NumericValue": 5,
+        "CodeID": "code-08bce1f9",
+        "CodeType": "Normal",
+        "StringValue": "prevention_method_in_place"
+      },
+      {
+        "DisplayText": "action would have been taken",
+        "VisibleInCoda": true,
+        "NumericValue": 6,
+        "CodeID": "code-a39c659e",
+        "CodeType": "Normal",
+        "StringValue": "action_would_have_been_taken"
+      },
+      {
+        "DisplayText": "youth are not given priority",
+        "VisibleInCoda": true,
+        "NumericValue": 7,
+        "CodeID": "code-dd8df40c",
+        "CodeType": "Normal",
+        "StringValue": "youth_are_not_given_priority"
+      },
+      {
+        "DisplayText": "clannism",
+        "VisibleInCoda": true,
+        "NumericValue": 8,
+        "CodeID": "code-2c114045",
+        "CodeType": "Normal",
+        "StringValue": "clannism"
+      },
+      {
+        "DisplayText": "no support",
+        "VisibleInCoda": true,
+        "NumericValue": 9,
+        "CodeID": "code-f2f65d78",
+        "CodeType": "Normal",
+        "StringValue": "no_support"
+      },
+      {
+        "DisplayText": "there is no prevention",
+        "VisibleInCoda": true,
+        "NumericValue": 10,
+        "CodeID": "code-fdaa52e9",
+        "CodeType": "Normal",
+        "StringValue": "there_is_no_prevention"
+      },
+      {
+        "DisplayText": "lack of awareness",
+        "VisibleInCoda": true,
+        "NumericValue": 11,
+        "CodeID": "code-0aeac87b",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_awareness"
+      },
+      {
+        "DisplayText": "other",
+        "VisibleInCoda": true,
+        "NumericValue": 12,
+        "CodeID": "code-33b05ec9",
+        "CodeType": "Normal",
+        "StringValue": "other"
+      },
+      {
         "StringValue": "NA",
         "ControlCode": "NA",
         "DisplayText": "NA (missing)",
@@ -74,6 +178,30 @@
         "NumericValue": -110,
         "StringValue": "CE",
         "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-PB-a434a800",
+        "CodeType": "Meta",
+        "DisplayText": "push back",
+        "NumericValue": -100000,
+        "StringValue": "push_back",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-Q-a5d3700d",
+        "CodeType": "Meta",
+        "DisplayText": "question",
+        "NumericValue": -100010,
+        "StringValue": "question",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-G-97cb3199",
+        "CodeType": "Meta",
+        "DisplayText": "greeting",
+        "NumericValue": -100020,
+        "StringValue": "greeting",
+        "VisibleInCoda": true
       }
     ]
   }
