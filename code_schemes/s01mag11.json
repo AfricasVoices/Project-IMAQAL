@@ -4,6 +4,86 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "creating awareness in the community",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-0d1fbf5d",
+      "CodeType": "Normal",
+      "StringValue": "creating_awareness_in_the_community"
+    },
+    {
+      "DisplayText": "same rights as others",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-dd0dc732",
+      "CodeType": "Normal",
+      "StringValue": "same_rights_as_others"
+    },
+    {
+      "DisplayText": "integration and marriage",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-267797a4",
+      "CodeType": "Normal",
+      "StringValue": "integration_and_marriage"
+    },
+     {
+      "DisplayText": "through encouragement",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-2be9f48a",
+      "CodeType": "Normal",
+      "StringValue": "through_encouragement"
+    },
+    {
+      "DisplayText": "by following religious teachings",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-7969ef52",
+      "CodeType": "Normal",
+      "StringValue": "by_following_religious_teachings"
+    },
+    {
+      "DisplayText": "leadership positions",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-4f888f14",
+      "CodeType": "Normal",
+      "StringValue": "leadership_positions"
+    },
+    {
+      "DisplayText": "through equality and justice",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-9e168c11",
+      "CodeType": "Normal",
+      "StringValue": "through_equality_and_justice"
+    },
+    {
+      "DisplayText": "end clannism",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-47ba99fd",
+      "CodeType": "Normal",
+      "StringValue": "end_clannism"
+    },
+    {
+      "DisplayText": "good governance",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-4f26c199",
+      "CodeType": "Normal",
+      "StringValue": "good_governance"
+    },
+     {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-4606c158",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
@@ -74,6 +154,30 @@
       "NumericValue": -110,
       "StringValue": "CE",
       "VisibleInCoda": false
+    },
+    {
+      "CodeID": "code-PB-a434a800",
+      "CodeType": "Meta",
+      "DisplayText": "push back",
+      "NumericValue": -100000,
+      "StringValue": "push_back",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-Q-a5d3700d",
+      "CodeType": "Meta",
+      "DisplayText": "question",
+      "NumericValue": -100010,
+      "StringValue": "question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-G-97cb3199",
+      "CodeType": "Meta",
+      "DisplayText": "greeting",
+      "NumericValue": -100020,
+      "StringValue": "greeting",
+      "VisibleInCoda": true
     }
   ]
 }
