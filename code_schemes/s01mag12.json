@@ -4,6 +4,62 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "adhere to teachings of the religion",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-95da9dd9",
+      "CodeType": "Normal",
+      "StringValue": "adhere_to_teachings_of_the_religion"
+    },
+    {
+      "DisplayText": "collaboration between youth and leaders",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-df8bc177",
+      "CodeType": "Normal",
+      "StringValue": "collaboration_between_youth_and_leaders"
+    },
+    {
+      "DisplayText": "awareness_creation",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-d6f2a489",
+      "CodeType": "Normal",
+      "StringValue": "awareness_creation"
+    },
+    {
+      "DisplayText": "opportunities for youth",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-60d721c8",
+      "CodeType": "Normal",
+      "StringValue": "opportunities_for_youth"
+    },
+    {
+      "DisplayText": "good governance",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-77ee6f9a",
+      "CodeType": "Normal",
+      "StringValue": "good_governance"
+    },
+    {
+      "DisplayText": "fight corruption",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-bdc4632c",
+      "CodeType": "Normal",
+      "StringValue": "fight_corruption"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-dc7adfd9",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
@@ -74,6 +130,30 @@
       "NumericValue": -110,
       "StringValue": "CE",
       "VisibleInCoda": false
+    },
+    {
+      "CodeID": "code-PB-a434a800",
+      "CodeType": "Meta",
+      "DisplayText": "push back",
+      "NumericValue": -100000,
+      "StringValue": "push_back",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-Q-a5d3700d",
+      "CodeType": "Meta",
+      "DisplayText": "question",
+      "NumericValue": -100010,
+      "StringValue": "question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-G-97cb3199",
+      "CodeType": "Meta",
+      "DisplayText": "greeting",
+      "NumericValue": -100020,
+      "StringValue": "greeting",
+      "VisibleInCoda": true
     }
   ]
 }
