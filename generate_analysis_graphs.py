@@ -1,5 +1,6 @@
 import argparse
 from collections import OrderedDict
+import csv
 
 import altair
 from core_data_modules.logging import Logger
@@ -143,3 +144,54 @@ if __name__ == "__main__":
     )
     chart.save(f"{output_dir}/relevant_uid_per_show.html")
     chart.save(f"{output_dir}/relevant_uid_per_show.png", scale_factor=IMG_SCALE_FACTOR)
+
+    log.info(f"Graphing sustained engagement...")
+    individuals_per_radio_show = OrderedDict()  # Of radio show index to individuals count
+    sustained_engagement = OrderedDict([('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5+', 0)])
+    csv_headers = []
+    all_uids = []
+    for plan in PipelineConfiguration.RQA_CODING_PLANS:
+        individuals_per_radio_show[plan.raw_field] = set()
+        csv_headers.append(plan.raw_field)
+    for ind in individuals:
+        for plan in PipelineConfiguration.RQA_CODING_PLANS:
+            if ind.get(plan.raw_field, "") != "" and ind["consent_withdrawn"] == Codes.FALSE:
+                individuals_per_radio_show[plan.raw_field].add(ind["avf_phone_id"])
+
+    for radio_show in individuals_per_radio_show.values():
+        for uid in radio_show:
+            all_uids.append(uid)
+    for uid in all_uids:
+        if all_uids.count(uid) == 1:
+            sustained_engagement['1'] +=1
+        elif all_uids.count(uid)== 2:
+            sustained_engagement['2'] +=1
+        elif all_uids.count(uid) == 3:
+            sustained_engagement['3'] +=1
+        elif all_uids.count(uid) == 4:
+            sustained_engagement['4'] +=1
+        elif all_uids.count(uid) >= 5:
+            sustained_engagement['5+'] +=1
+
+    print(sustained_engagement)
+    chart = altair.Chart(
+        altair.Data(values=[{"show": k, "count": v} for k, v in sustained_engagement.items()])
+    ).mark_bar().encode(
+        x=altair.X("show:N", title="No.of times they have engaged", sort=list(sustained_engagement.keys())),
+        y=altair.Y("count:Q", title="Number of UID(s)")
+    ).properties(
+        title="Sustained engagement"
+    )
+    chart.save(f"{output_dir}/sustained_engagement.html")
+    chart.save(f"{output_dir}/sustained_engagement.png", scale_factor=IMG_SCALE_FACTOR)
+
+    #TODO: match demogs to each uid in the csv file
+    with open(f'{output_dir}/sustained_engagement.csv', "w") as f:
+        writer = csv.DictWriter(f, fieldnames=csv_headers, lineterminator="\n")
+        writer.writeheader()
+        for radio_show in individuals_per_radio_show:
+            for uid in individuals_per_radio_show[radio_show]:
+                writer.writerow({
+                    radio_show: uid
+                })
+
