@@ -5,6 +5,7 @@ import altair
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
 from core_data_modules.util import IOUtils
+from core_data_modules.cleaners import Codes
 
 from src.lib import PipelineConfiguration
 
@@ -121,13 +122,14 @@ if __name__ == "__main__":
         relevant_uids_per_show[plan.raw_field] = 0
     for msg in messages:
         for plan in PipelineConfiguration.RQA_CODING_PLANS:
-            if plan.binary_code_scheme is not None and msg["consent_withdrawn"] == "false":
+            if msg["consent_withdrawn"] == Codes.TRUE:
+                continue
+            if plan.binary_code_scheme is not None:
                 binary_coda_code = plan.binary_code_scheme.get_code_with_id(msg[plan.binary_coded_field]["CodeID"])
                 reason_coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
                 if binary_coda_code.code_type != "Control"  or reason_coda_code.code_type != "Control":
                     relevant_uids_per_show[plan.raw_field] += 1
-
-            elif plan.binary_code_scheme is None and msg["consent_withdrawn"] == "false":
+            else:
                 coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
                 if coda_code.code_type != "Control":
                     relevant_uids_per_show[plan.raw_field] += 1
