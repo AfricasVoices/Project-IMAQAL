@@ -4,6 +4,78 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "provide education",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-d717ed54",
+      "CodeType": "Normal",
+      "StringValue": "provide_education"
+    },
+    {
+      "DisplayText": "equal opportunities",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-3782345d",
+      "CodeType": "Normal",
+      "StringValue": "equal_opportunities"
+    },
+    {
+      "DisplayText": "improve security",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-1f1463c8",
+      "CodeType": "Normal",
+      "StringValue": "improve_security"
+    },
+    {
+      "DisplayText": "create awareness",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-f3b3a321",
+      "CodeType": "Normal",
+      "StringValue": "create_awareness"
+    },
+    {
+      "DisplayText": "eradicate discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-74b86bdf",
+      "CodeType": "Normal",
+      "StringValue": "eradicate_discrimination"
+    },
+    {
+      "DisplayText": "women rights advocacy",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-ae0d2ea1",
+      "CodeType": "Normal",
+      "StringValue": "women_rights_advocacy"
+    },
+    {
+      "DisplayText": "religiously and culturally unacceptable",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-afc901c4",
+      "CodeType": "Normal",
+      "StringValue": "religiously_and_culturally_unacceptable"
+    },
+    {
+      "DisplayText": "cooperation and integration",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-93a25959",
+      "CodeType": "Normal",
+      "StringValue": "cooperation_and_integration"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-292c0f90",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
