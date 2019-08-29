@@ -153,7 +153,16 @@ if __name__ == "__main__":
 
     data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_follow_up_datasets,
                                                    coalesced_demog_datasets)
-    
+
+    # Infer which RQA coding plans to use from the pipeline name.
+    if pipeline_configuration.pipeline_name == "quarter_four":
+        log.info("Running quarter four pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.QUARTER_FOUR_RQA_CODING_PLANS
+    else:
+        assert pipeline_configuration.pipeline_name == "main_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'main pipeline'"
+        log.info("Running Main Pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.MAIN_RQA_CODING_PLANS
+
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
 
