@@ -159,9 +159,9 @@ if __name__ == "__main__":
         log.info("Running quarter four pipeline")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.QUARTER_FOUR_RQA_CODING_PLANS
     else:
-        assert pipeline_configuration.pipeline_name == "main_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'main pipeline'"
+        assert pipeline_configuration.pipeline_name == "all_quarters", "PipelineName must be either 'a quartely pipeline name' or 'all_quarters'"
         log.info("Running Main Pipeline")
-        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.MAIN_RQA_CODING_PLANS
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.ALL_QUARTERS_RQA_CODING_PLANS
 
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)

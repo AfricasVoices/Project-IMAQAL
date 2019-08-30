@@ -100,7 +100,7 @@ class PipelineConfiguration(object):
 
     RQA_CODING_PLANS = None
 
-    MAIN_RQA_CODING_PLANS = [
+    ALL_QUARTERS_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01e01_raw",
                    coded_field="rqa_s01e01_coded",
                    time_field="sent_on",
