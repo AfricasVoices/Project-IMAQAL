@@ -98,7 +98,9 @@ class PipelineConfiguration(object):
     # TODO revise this as the project nears the end
     PROJECT_END_DATE = isoparse("2020-02-15T09:00:00+03:00")
 
-    RQA_CODING_PLANS = [
+    RQA_CODING_PLANS = None
+
+    ALL_QUARTERS_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01e01_raw",
                    coded_field="rqa_s01e01_coded",
                    time_field="sent_on",
@@ -347,6 +349,99 @@ class PipelineConfiguration(object):
                    code_scheme=CodeSchemes.S01MAG15),
     ]
 
+    QUARTER_FOUR_RQA_CODING_PLANS =[
+        CodingPlan(raw_field="rqa_s01mag08_raw",
+                   coded_field="rqa_s01mag08_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag08.json",
+                   icr_filename="s01mag08.csv",
+                   run_id_field="rqa_s01mag08_run_id",
+                   analysis_file_key="rqa_s01mag08_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag08"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG08),
+
+        CodingPlan(raw_field="rqa_s01mag09_raw",
+                   coded_field="rqa_s01mag09_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag09.json",
+                   icr_filename="s01mag09.csv",
+                   run_id_field="rqa_s01mag09_run_id",
+                   analysis_file_key="rqa_s01mag09_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag09"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG09,
+                   binary_code_scheme=CodeSchemes.S01MAG09_YES_NO_AMB,
+                   binary_coded_field="rqa_s01mag09_yes_no_amb_coded",
+                   binary_analysis_file_key="rqa_s01mag09_yes_no_amb"),
+
+        CodingPlan(raw_field="rqa_s01mag10_raw",
+                   coded_field="rqa_s01mag10_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag10.json",
+                   icr_filename="s01mag10.csv",
+                   run_id_field="rqa_s01mag10_run_id",
+                   analysis_file_key="rqa_s01mag10_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag10"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG10),
+
+        CodingPlan(raw_field="rqa_s01mag11_raw",
+                   coded_field="rqa_s01mag11_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag11.json",
+                   icr_filename="s01mag11.csv",
+                   run_id_field="rqa_s01mag11_run_id",
+                   analysis_file_key="rqa_s01mag11_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag11"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG11),
+
+        CodingPlan(raw_field="rqa_s01mag12_raw",
+                   coded_field="rqa_s01mag12_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag12.json",
+                   icr_filename="s01mag12.csv",
+                   run_id_field="rqa_s01mag12_run_id",
+                   analysis_file_key="rqa_s01mag12_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag12"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG12),
+
+        CodingPlan(raw_field="rqa_s01mag13_raw",
+                   coded_field="rqa_s01mag13_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag13.json",
+                   icr_filename="s01mag13.csv",
+                   run_id_field="rqa_s01mag13_run_id",
+                   analysis_file_key="rqa_s01mag13_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag13"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG13),
+
+        CodingPlan(raw_field="rqa_s01mag14_raw",
+                   coded_field="rqa_s01mag14_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag14.json",
+                   icr_filename="s01mag14.csv",
+                   run_id_field="rqa_s01mag14_run_id",
+                   analysis_file_key="rqa_s01mag14_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag14"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG14),
+
+        CodingPlan(raw_field="rqa_s01mag15_raw",
+                   coded_field="rqa_s01mag15_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag15.json",
+                   icr_filename="s01mag15.csv",
+                   run_id_field="rqa_s01mag15_run_id",
+                   analysis_file_key="rqa_s01mag15_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag15"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG15),
+    ]
+
     FOLLOW_UP_CODING_PLANS = [
 
         CodingPlan(raw_field="women_participation_raw",
@@ -500,7 +595,7 @@ class PipelineConfiguration(object):
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
                  follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                 memory_profile_upload_url_prefix, recovery_csv_urls=None, drive_upload=None):
+                 memory_profile_upload_url_prefix, recovery_csv_urls=None, pipeline_name=None, drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
         :type rapid_pro_domain: str
@@ -523,6 +618,8 @@ class PipelineConfiguration(object):
         :type memory_profile_upload_url_prefix: str
         :param rapid_pro_key_remappings: List of rapid_pro_key -> pipeline_key remappings.
         :type rapid_pro_key_remappings: list of RapidProKeyRemapping
+        :param pipeline_name: The name of the pipeline to run.
+        :type pipeline_name: str | None
         :param drive_upload: Configuration for uploading to Google Drive, or None.
                              If None, does not upload to Google Drive.
         :type drive_upload: DriveUploadPaths | None
@@ -537,6 +634,7 @@ class PipelineConfiguration(object):
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
         self.memory_profile_upload_url_prefix = memory_profile_upload_url_prefix
         self.recovery_csv_urls = recovery_csv_urls
+        self.pipeline_name = pipeline_name
         self.drive_upload = drive_upload
 
         self.validate()
@@ -560,13 +658,14 @@ class PipelineConfiguration(object):
 
         recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
 
+        pipeline_name = configuration_dict.get("PipelineName")
         drive_upload_paths = None
         if "DriveUpload" in configuration_dict:
             drive_upload_paths = DriveUpload.from_configuration_dict(configuration_dict["DriveUpload"])
 
         return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
                    follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                   memory_profile_upload_url_prefix, recovery_csv_urls, drive_upload_paths)
+                   memory_profile_upload_url_prefix, recovery_csv_urls, pipeline_name, drive_upload_paths)
 
     @classmethod
     def from_configuration_file(cls, f):
@@ -608,6 +707,9 @@ class PipelineConfiguration(object):
             validators.validate_list(self.recovery_csv_urls, "recovery_csv_urls")
             for i, recovery_csv_url in enumerate(self.recovery_csv_urls):
                 validators.validate_string(recovery_csv_url, f"{recovery_csv_url}")
+
+        if self.pipeline_name is not None:
+            validators.validate_string(self.pipeline_name, "pipeline_name")
 
         if self.drive_upload is not None:
             assert isinstance(self.drive_upload, DriveUpload), \

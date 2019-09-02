@@ -14,9 +14,6 @@ log = Logger(__name__)
 
 
 class AutoCodeShowAndFollowupsMessages(object):
-    RQA_AND_FOLLOW_UP_KEYS = []
-    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-        RQA_AND_FOLLOW_UP_KEYS.append(plan.raw_field)
 
     SENT_ON_KEY = "sent_on"
     NOISE_KEY = "noise"
@@ -40,12 +37,16 @@ class AutoCodeShowAndFollowupsMessages(object):
 
     @classmethod
     def auto_code_show_and_followups_messages(cls, user, data, icr_output_dir, coda_output_dir):
+        rqa_and_follow_up_keys = []
+        for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+            rqa_and_follow_up_keys.append(plan.raw_field)
+
         # Filter out test messages sent by AVF.
         if not PipelineConfiguration.DEV_MODE:
             data = MessageFilters.filter_test_messages(data)
 
         # Filter for runs which don't contain a response to any week's question or the follow-up questions
-        data = MessageFilters.filter_empty_messages(data, cls.RQA_AND_FOLLOW_UP_KEYS)
+        data = MessageFilters.filter_empty_messages(data, rqa_and_follow_up_keys)
 
         # Filter out runs sent outwith the project start and end dates
         data = MessageFilters.filter_time_range(
@@ -54,7 +55,7 @@ class AutoCodeShowAndFollowupsMessages(object):
         # Tag RQA and follow up messages which are noise as being noise
         for td in data:
             is_noise = True
-            for rqa_key in cls.RQA_AND_FOLLOW_UP_KEYS:
+            for rqa_key in rqa_and_follow_up_keys:
                 if rqa_key in td and not somali.DemographicCleaner.is_noise(td[rqa_key], min_length=10):
                     is_noise = False
             td.append_data({cls.NOISE_KEY: is_noise}, Metadata(user, Metadata.get_call_location(), time.time()))

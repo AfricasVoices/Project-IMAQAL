@@ -133,6 +133,7 @@
     {"RapidProKey": "Young_People (Value) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_raw"},
     {"RapidProKey": "Young_People (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"}
   ],
+  "PipelineName": "all_quarters",
   "DriveUpload": {
     "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
     "ProductionUploadPath": "imaqal_analysis_outputs/imaqal_s01_production.csv",
