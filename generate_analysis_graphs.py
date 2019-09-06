@@ -5,6 +5,7 @@ import altair
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
 from core_data_modules.util import IOUtils
+from core_data_modules.cleaners import Codes
 
 from src.lib import PipelineConfiguration
 
@@ -112,3 +113,33 @@ if __name__ == "__main__":
         )
         chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.html")
         chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.png", scale_factor=IMG_SCALE_FACTOR)
+
+    # Compute the number of UIDs with manually labelled relevant messages per show
+    log.info("Graphing the No. of UIDs with relevant messages per show...")
+    relevant_uids_per_show = {}
+
+    for plan in PipelineConfiguration.RQA_CODING_PLANS:
+        relevant_uids_per_show[plan.raw_field] = 0
+    for msg in messages:
+        for plan in PipelineConfiguration.RQA_CODING_PLANS:
+            if msg["consent_withdrawn"] == Codes.TRUE:
+                continue
+            if plan.binary_code_scheme is not None:
+                binary_coda_code = plan.binary_code_scheme.get_code_with_id(msg[plan.binary_coded_field]["CodeID"])
+                reason_coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
+                if binary_coda_code.code_type == "normal"  or reason_coda_code.code_type == "normal":
+                    relevant_uids_per_show[plan.raw_field] += 1
+            else:
+                coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
+                if coda_code.code_type == "normal":
+                    relevant_uids_per_show[plan.raw_field] += 1
+    chart = altair.Chart(
+        altair.Data(values=[{"show": k, "count": v} for k, v in relevant_uids_per_show.items()])
+    ).mark_bar().encode(
+        x=altair.X("show:N", title="Show", sort=list(relevant_uids_per_show.keys())),
+        y=altair.Y("count:Q", title="Number of UID(s)")
+    ).properties(
+        title="UIDs with relevant messages per Show"
+    )
+    chart.save(f"{output_dir}/relevant_uid_per_show.html")
+    chart.save(f"{output_dir}/relevant_uid_per_show.png", scale_factor=IMG_SCALE_FACTOR)
