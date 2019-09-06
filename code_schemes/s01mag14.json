@@ -4,6 +4,110 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "corruption",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-cbd23fe7",
+      "CodeType": "Normal",
+      "StringValue": "corruption"
+    },
+    {
+      "DisplayText": "lack of women advocates",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-e5eb79e8",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_women_advocates"
+    },
+    {
+      "DisplayText": "don't value girls",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-797b7bca",
+      "CodeType": "Normal",
+      "StringValue": "don_t_value_girls"
+    },
+    {
+      "DisplayText": "unfair traditional elders",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-34cb2a54",
+      "CodeType": "Normal",
+      "StringValue": "unfair_traditional_elders"
+    },
+    {
+      "DisplayText": "women are weak",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-ffbf7ae4",
+      "CodeType": "Normal",
+      "StringValue": "women_are_weak"
+    },
+    {
+      "DisplayText": "lack of good governance",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-5ba97d4b",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_good_governance"
+    },
+    {
+      "DisplayText": "xeer and culture",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-b32145bd",
+      "CodeType": "Normal",
+      "StringValue": "xeer_and_culture"
+    },
+    {
+      "DisplayText": "stigmatization",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-223949b9",
+      "CodeType": "Normal",
+      "StringValue": "stigmatization"
+    },
+    {
+      "DisplayText": "clannism",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-bf88706a",
+      "CodeType": "Normal",
+      "StringValue": "clannism"
+    },
+    {
+      "DisplayText": "lack of fair justice system",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-a1e3c6af",
+      "CodeType": "Normal",
+      "StringValue": "lack_of_fair_justice_system"
+    },
+    {
+      "DisplayText": "not following sharia law",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-fd784385",
+      "CodeType": "Normal",
+      "StringValue": "not_following_sharia_law"
+    },
+    {
+      "DisplayText": "such issues exist",
+      "VisibleInCoda": true,
+      "NumericValue": 11,
+      "CodeID": "code-8667c675",
+      "CodeType": "Normal",
+      "StringValue": "such_issues_exist"
+    },
+     {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-756e42cc",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
@@ -74,6 +178,46 @@
       "NumericValue": -110,
       "StringValue": "CE",
       "VisibleInCoda": false
+    },
+    {
+      "CodeID": "code-PB-a434a800",
+      "CodeType": "Meta",
+      "DisplayText": "push back",
+      "NumericValue": -100000,
+      "StringValue": "push_back",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-SQ-5e8f0122",
+      "CodeType": "Meta",
+      "DisplayText": "showtime question",
+      "NumericValue": -100030,
+      "StringValue": "showtime_question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-Q-a5d3700d",
+      "CodeType": "Meta",
+      "DisplayText": "question",
+      "NumericValue": -100010,
+      "StringValue": "question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-G-97cb3199",
+      "CodeType": "Meta",
+      "DisplayText": "greeting",
+      "NumericValue": -100020,
+      "StringValue": "greeting",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-OI-c5f1d054",
+      "CodeType": "Meta",
+      "DisplayText": "opt-in",
+      "NumericValue": -100040,
+      "StringValue": "opt_in",
+      "VisibleInCoda": true
     }
   ]
 }
