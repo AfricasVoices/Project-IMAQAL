@@ -6,7 +6,9 @@
     "3903ad8e-284e-48a0-881b-89c0b06b9334",
     "45939459-e4d5-4ad6-8650-3e7134b9a035"
   ],
-  "RecoveryCSVURLs": ["gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_week_6.csv"],
+  "RecoveryCSVURLs": ["gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_week_6.csv",
+    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_15_de_identified.csv",
+    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_15_wednesday_de_identified.csv"],
   "PhoneNumberUuidTable": {
     "FirebaseCredentialsFileURL": "gs://avf-credentials/avf-id-infrastructure-firebase-adminsdk-6xps8-b9173f2bfd.json",
     "TableName": "IMAQAL"
