@@ -19,11 +19,12 @@ if __name__ == "__main__":
 
     parser.add_argument("csv_input_path", metavar="recovered-csv-input-url",
                         help="Path to a CSV file to de-identify a column of")
+    parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
+                        help="Path to the pipeline configuration json file")
     parser.add_argument("google_cloud_credentials_file_path", metavar="google-cloud-credentials-file-path",
                         help="Path to a Google Cloud service account credentials file to use to access the "
                              "credentials bucket")
-    parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
-                        help="Path to the pipeline configuration json file")
+
     parser.add_argument("column_to_de_identify", metavar="column-to-de-identify",
                         help="Name of the column containing phone numbers to be de-identified")
     parser.add_argument("de_identified_csv_output_path", metavar="de-identified-csv-output-path",
@@ -39,6 +40,7 @@ if __name__ == "__main__":
 
     # Read the settings from the configuration file
     log.info("Loading Pipeline Configuration File...")
+    print(pipeline_configuration_file_path)
     with open(pipeline_configuration_file_path) as f:
         pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
 
