@@ -127,11 +127,11 @@ if __name__ == "__main__":
             if plan.binary_code_scheme is not None:
                 binary_coda_code = plan.binary_code_scheme.get_code_with_id(msg[plan.binary_coded_field]["CodeID"])
                 reason_coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
-                if binary_coda_code.code_type != "Control"  or reason_coda_code.code_type != "Control":
+                if binary_coda_code.code_type == "normal"  or reason_coda_code.code_type == "normal":
                     relevant_uids_per_show[plan.raw_field] += 1
             else:
                 coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
-                if coda_code.code_type != "Control":
+                if coda_code.code_type == "normal":
                     relevant_uids_per_show[plan.raw_field] += 1
     chart = altair.Chart(
         altair.Data(values=[{"show": k, "count": v} for k, v in relevant_uids_per_show.items()])
