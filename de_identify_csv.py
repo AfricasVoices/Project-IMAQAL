@@ -40,7 +40,6 @@ if __name__ == "__main__":
 
     # Read the settings from the configuration file
     log.info("Loading Pipeline Configuration File...")
-    print(pipeline_configuration_file_path)
     with open(pipeline_configuration_file_path) as f:
         pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
 
