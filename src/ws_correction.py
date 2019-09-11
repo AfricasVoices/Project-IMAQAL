@@ -165,6 +165,8 @@ class WSCorrection(object):
         # Perform the WS correction for each uid.
         log.info("Performing WS correction...")
         corrected_data = []  # List of TracedData with the WS data moved.
+        unknown_target_code_counts = dict() # 'WS - Correct Dataset' with no matching code in any coding plan
+                                    # for this project, with a count of occurrences
         for group in data_grouped_by_uid.values():
             log.debug(f"\n\nStarting re-map for {group[0]['uid']}...")
             for i, td in enumerate(group):
@@ -184,9 +186,14 @@ class WSCorrection(object):
                 ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
                     td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"])
                 if ws_code.code_type == "Normal":
-                    log.debug(
-                        f"Detected redirect from {plan.raw_field} -> {ws_code_to_raw_field_map.get(ws_code.code_id, ws_code.code_id)} for message {td[plan.raw_field]}")
-                    demog_and_follow_up_survey_moves[plan.raw_field] = ws_code_to_raw_field_map[ws_code.code_id]
+                    if ws_code.code_id in ws_code_to_raw_field_map:
+                        log.debug(
+                            f"Detected redirect from {plan.raw_field} -> {ws_code_to_raw_field_map.get(ws_code.code_id,ws_code.code_id)} for message {td[plan.raw_field]}")
+                        demog_and_follow_up_survey_moves[plan.raw_field] = ws_code_to_raw_field_map[ws_code.code_id]
+                    else:
+                        if (ws_code.code_id, ws_code.display_text) not in unknown_target_code_counts:
+                            unknown_target_code_counts[(ws_code.code_id, ws_code.display_text)] = 0
+                        unknown_target_code_counts[(ws_code.code_id, ws_code.display_text)] += 1
 
             # Find all the RQA data being moved.
             rqa_moves = dict()  # of (index in group, source_field) -> target_field
@@ -197,8 +204,13 @@ class WSCorrection(object):
                     ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
                         td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"])
                     if ws_code.code_type == "Normal":
-                        log.debug(f"Detected redirect from ({i}, {plan.raw_field}) -> {ws_code_to_raw_field_map.get(ws_code.code_id, ws_code.code_id)} for message {td[plan.raw_field]}")
-                        rqa_moves[(i, plan.raw_field)] = ws_code_to_raw_field_map[ws_code.code_id]
+                        if ws_code.code_id in ws_code_to_raw_field_map:
+                            log.debug(f"Detected redirect from ({i}, {plan.raw_field}) -> {ws_code_to_raw_field_map.get(ws_code.code_id, ws_code.code_id)} for message {td[plan.raw_field]}")
+                            rqa_moves[(i, plan.raw_field)] = ws_code_to_raw_field_map[ws_code.code_id]
+                        else:
+                            if (ws_code.code_id, ws_code.display_text) not in unknown_target_code_counts:
+                                unknown_target_code_counts[(ws_code.code_id, ws_code.display_text)] = 0
+                            unknown_target_code_counts[(ws_code.code_id, ws_code.display_text)] += 1
 
             # Build a dictionary of the demog and follow up survey fields that haven't been moved, and clear fields for those which have.
             demogs_and_follow_up_survey_updates = dict()  # of raw_field -> updated value
@@ -295,5 +307,10 @@ class WSCorrection(object):
                 for _plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS:
                     log.debug(f"{_plan.raw_field}: {corrected_td.get(_plan.raw_field)}")
                     log.debug(f"{_plan.time_field}: {corrected_td.get(_plan.time_field)}")
+
+        if len(unknown_target_code_counts) > 0:
+            log.warning("Found the following 'WS - Correct Dataset' CodeIDs with no matching coding plan:")
+            for (code_id, display_text), count in unknown_target_code_counts.items():
+                log.warning("  '{code_id}' (DisplayText '{display_text}') ({count} occurrences)")
 
         return corrected_data
