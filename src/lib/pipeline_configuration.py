@@ -105,7 +105,7 @@ class PipelineConfiguration(object):
 
     RQA_CODING_PLANS = None
 
-    ALL_QUARTERS_RQA_CODING_PLANS = [
+    FULL_PIPELINE_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01e01_raw",
                    coded_field="rqa_s01e01_coded",
                    time_field="sent_on",
@@ -409,7 +409,7 @@ class PipelineConfiguration(object):
                    code_scheme=CodeSchemes.S01MAG20),
     ]
 
-    QUARTER_FOUR_RQA_CODING_PLANS =[
+    Q4_RQA_CODING_PLANS =[
         CodingPlan(raw_field="rqa_s01mag08_raw",
                    coded_field="rqa_s01mag08_coded",
                    time_field="sent_on",
@@ -502,7 +502,7 @@ class PipelineConfiguration(object):
                    code_scheme=CodeSchemes.S01MAG15),
     ]
 
-    QUARTER_FIVE_RQA_CODING_PLANS = [
+    Q5_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01mag16_raw",
                    coded_field="rqa_s01mag16_coded",
                    time_field="sent_on",
