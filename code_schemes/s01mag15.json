@@ -4,6 +4,62 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "unemployment causes migration",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-d2717a01",
+      "CodeType": "Normal",
+      "StringValue": "unemployment_causes_migration"
+    },
+    {
+      "DisplayText": "government should create jobs",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-c11d9ee3",
+      "CodeType": "Normal",
+      "StringValue": "government_should_create_jobs"
+    },
+    {
+      "DisplayText": "poor governance",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-5e26245d",
+      "CodeType": "Normal",
+      "StringValue": "poor_governance"
+    },
+    {
+      "DisplayText": "peace and security",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-1683bc1e",
+      "CodeType": "Normal",
+      "StringValue": "peace_and_Security"
+    },
+    {
+      "DisplayText": "clannism",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-f8e7579c",
+      "CodeType": "Normal",
+      "StringValue": "clannism"
+    },
+    {
+      "DisplayText": "stay in your country",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-8eb8a3be",
+      "CodeType": "Normal",
+      "StringValue": "stay_in_your_country"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-a932c9f1",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
@@ -74,6 +130,51 @@
       "NumericValue": -110,
       "StringValue": "CE",
       "VisibleInCoda": false
+    },
+    {
+      "CodeID": "code-PB-a434a800",
+      "CodeType": "Meta",
+      "MetaCode": "push_back",
+      "DisplayText": "push back",
+      "NumericValue": -100000,
+      "StringValue": "push_back",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-SQ-5e8f0122",
+      "CodeType": "Meta",
+      "MetaCode": "showtime_question",
+      "DisplayText": "showtime question",
+      "NumericValue": -100030,
+      "StringValue": "showtime_question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-Q-a5d3700d",
+      "CodeType": "Meta",
+      "MetaCode": "question",
+      "DisplayText": "question",
+      "NumericValue": -100010,
+      "StringValue": "question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-G-97cb3199",
+      "CodeType": "Meta",
+      "MetaCode": "greeting",
+      "DisplayText": "greeting",
+      "NumericValue": -100020,
+      "StringValue": "greeting",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-OI-c5f1d054",
+      "CodeType": "Meta",
+      "MetaCode": "opt-in",
+      "DisplayText": "opt-in",
+      "NumericValue": -100040,
+      "StringValue": "opt_in",
+      "VisibleInCoda": true
     }
   ]
 }
