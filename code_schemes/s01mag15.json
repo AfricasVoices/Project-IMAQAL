@@ -4,6 +4,62 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "unemployment causes migration",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-d2717a01",
+      "CodeType": "Normal",
+      "StringValue": "unemployment_causes_migration"
+    },
+    {
+      "DisplayText": "government should create jobs",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-c11d9ee3",
+      "CodeType": "Normal",
+      "StringValue": "government_should_create_jobs"
+    },
+    {
+      "DisplayText": "poor governance",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-5e26245d",
+      "CodeType": "Normal",
+      "StringValue": "poor_governance"
+    },
+    {
+      "DisplayText": "peace and security",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-1683bc1e",
+      "CodeType": "Normal",
+      "StringValue": "peace_and_Security"
+    },
+    {
+      "DisplayText": "clannism",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-f8e7579c",
+      "CodeType": "Normal",
+      "StringValue": "clannism"
+    },
+    {
+      "DisplayText": "stay in your country",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-8eb8a3be",
+      "CodeType": "Normal",
+      "StringValue": "stay_in_your_country"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-a932c9f1",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
