@@ -1,8 +1,10 @@
 import argparse
+import json
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
-from core_data_modules.util import IOUtils
+from core_data_modules.util import IOUtils, SHAUtils
+
 
 Logger.set_project_name("IMAQAL")
 log = Logger(__name__)
@@ -38,3 +40,17 @@ if __name__ == "__main__":
     with open(individuals_json_input_path) as f:
         individuals = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
     log.info(f"Loaded {len(individuals)} individuals")
+
+    individuals_quantitative_map = {}
+    messages_quantitative_map = {}
+
+    individuals_quantitative_map['INDIVIDUAL_SHA'] = SHAUtils.sha_string(f'{individuals}')
+    messages_quantitative_map['MESSAGE_SHA'] = SHAUtils.sha_string(f'{messages}')
+
+    # Write individuals quantitative map
+    with open(f'{output_dir}/individuals_quantitative_map.json', "wb") as f:
+        f.write(json.dumps(individuals_quantitative_map).encode("utf-8"))
+
+    # Write messages quantitative map
+    with open(f'{output_dir}/messages_quantitative_map.json', "wb") as f:
+        f.write(json.dumps(messages_quantitative_map).encode("utf-8"))
