@@ -4,6 +4,7 @@ import json
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
 from core_data_modules.util import IOUtils, SHAUtils
+from core_data_modules.cleaners import Codes
 
 
 Logger.set_project_name("IMAQAL")
@@ -46,6 +47,12 @@ if __name__ == "__main__":
 
     individuals_quantitative_map['INDIVIDUAL_SHA'] = SHAUtils.sha_string(f'{individuals}')
     messages_quantitative_map['MESSAGE_SHA'] = SHAUtils.sha_string(f'{messages}')
+
+    individuals_quantitative_map['ids'] = []
+    for uid in individuals:
+        if uid['consent_withdrawn'] == Codes.FALSE:
+            avf_phone_uid = uid["avf_phone_id"]
+            individuals_quantitative_map['ids'].append(avf_phone_uid)
 
     # Write individuals quantitative map
     with open(f'{output_dir}/individuals_quantitative_map.json', "wb") as f:
