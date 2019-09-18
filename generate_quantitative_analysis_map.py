@@ -6,7 +6,6 @@ from core_data_modules.traced_data.io import TracedDataJsonIO
 from core_data_modules.util import IOUtils, SHAUtils
 from core_data_modules.cleaners import Codes
 
-from src.lib import PipelineConfiguration
 
 Logger.set_project_name("IMAQAL")
 log = Logger(__name__)
@@ -52,14 +51,7 @@ if __name__ == "__main__":
     individuals_quantitative_map['ids'] = []
     for uid in individuals:
         if uid['consent_withdrawn'] == Codes.FALSE:
-            demog_data_for_id = {}
-
-            # Create labelled demographic map for each uid
-            for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
-                key = plan.analysis_file_key
-                demog_data_for_id[key] = plan.code_scheme.get_code_with_id(uid[plan.coded_field]["CodeID"]).string_value
-
-            avf_phone_uid = {uid["avf_phone_id"] : [demog_data_for_id]}
+            avf_phone_uid = uid["avf_phone_id"]
             individuals_quantitative_map['ids'].append(avf_phone_uid)
 
     # Write individuals quantitative map
