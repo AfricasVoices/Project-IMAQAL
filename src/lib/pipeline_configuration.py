@@ -417,29 +417,7 @@ class PipelineConfiguration(object):
                    analysis_file_key="rqa_s01mag13_",
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag13"),
                    cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG13),
-
-        CodingPlan(raw_field="rqa_s01mag14_raw",
-                   coded_field="rqa_s01mag14_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag14.json",
-                   icr_filename="s01mag14.csv",
-                   run_id_field="rqa_s01mag14_run_id",
-                   analysis_file_key="rqa_s01mag14_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag14"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG14),
-
-        CodingPlan(raw_field="rqa_s01mag15_raw",
-                   coded_field="rqa_s01mag15_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag15.json",
-                   icr_filename="s01mag15.csv",
-                   run_id_field="rqa_s01mag15_run_id",
-                   analysis_file_key="rqa_s01mag15_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag15"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG15),
+                   code_scheme=CodeSchemes.S01MAG13)
     ]
 
     FOLLOW_UP_CODING_PLANS = [
