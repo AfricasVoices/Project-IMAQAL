@@ -19,9 +19,8 @@
     "mag_s01e10_activation",
     "mag_s01e11_activation",
     "mag_s01e12_activation",
-    "mag_s01e13_activation",
-    "mag_s01e14_activation",
-    "mag_s01e15_activation"
+    "mag_s01e13_activation"
+
   ],
   "DemogFlowNames":[
     "imaqal_demog"
@@ -40,8 +39,6 @@
     {"RapidProKey": "Rqa_Mag_S01E11 (Value) - mag_s01e11_activation", "PipelineKey": "rqa_s01mag11_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E12 (Value) - mag_s01e12_activation", "PipelineKey": "rqa_s01mag12_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E13 (Value) - mag_s01e13_activation", "PipelineKey": "rqa_s01mag13_raw", "IsActivationMessage": true},
-    {"RapidProKey": "Rqa_Mag_S01E14 (Value) - mag_s01e14_activation", "PipelineKey": "rqa_s01mag14_raw", "IsActivationMessage": true},
-    {"RapidProKey": "Rqa_Mag_S01E15 (Value) - mag_s01e15_activation", "PipelineKey": "rqa_s01mag15_raw", "IsActivationMessage": true},
 
     {"RapidProKey": "Rqa_Mag_S01E08 (Run ID) - mag_s01e08_activation", "PipelineKey": "rqa_s01mag08_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E09 (Run ID) - mag_s01e09_activation", "PipelineKey": "rqa_s01mag09_run_id"},
@@ -49,8 +46,6 @@
     {"RapidProKey": "Rqa_Mag_S01E11 (Run ID) - mag_s01e11_activation", "PipelineKey": "rqa_s01mag11_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E12 (Run ID) - mag_s01e12_activation", "PipelineKey": "rqa_s01mag12_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E13 (Run ID) - mag_s01e13_activation", "PipelineKey": "rqa_s01mag13_run_id"},
-    {"RapidProKey": "Rqa_Mag_S01E14 (Run ID) - mag_s01e14_activation", "PipelineKey": "rqa_s01mag14_run_id"},
-    {"RapidProKey": "Rqa_Mag_S01E15 (Run ID) - mag_s01e15_activation", "PipelineKey": "rqa_s01mag15_run_id"},
 
     {"RapidProKey": "message", "PipelineKey": "recovered_raw", "IsActivationMessage": true},
     {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
@@ -62,8 +57,6 @@
     {"RapidProKey": "Rqa_Mag_S01E11 (Time) - mag_s01e11_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E12 (Time) - mag_s01e12_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E13 (Time) - mag_s01e13_activation", "PipelineKey": "sent_on"},
-    {"RapidProKey": "Rqa_Mag_S01E14 (Time) - mag_s01e14_activation", "PipelineKey": "sent_on"},
-    {"RapidProKey": "Rqa_Mag_S01E15 (Time) - mag_s01e15_activation", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
     {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
