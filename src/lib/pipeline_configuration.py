@@ -573,7 +573,7 @@ class PipelineConfiguration(object):
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
                  follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                 memory_profile_upload_url_prefix, recovery_csv_urls=None, pipeline_name=None, drive_upload=None):
+                 memory_profile_upload_url_prefix, move_ws_messages, analysis_files_mode, recovery_csv_urls=None, pipeline_name=None, drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
         :type rapid_pro_domain: str
@@ -594,6 +594,10 @@ class PipelineConfiguration(object):
                                                  This prefix will be appended by the id of the pipeline run (provided
                                                  as a command line argument), and the ".profile" file extension.
         :type memory_profile_upload_url_prefix: str
+        :param move_ws_messages: Whether to move messages labelled as Wrong Scheme to the correct dataset.
+        :type move_ws_messages: bool
+        :param analysis_files_mode: Whether to run post labelling pipeline stages.
+        :type analysis_files_mode: bool
         :param rapid_pro_key_remappings: List of rapid_pro_key -> pipeline_key remappings.
         :type rapid_pro_key_remappings: list of RapidProKeyRemapping
         :param pipeline_name: The name of the pipeline to run.
@@ -611,6 +615,8 @@ class PipelineConfiguration(object):
         self.phone_number_uuid_table = phone_number_uuid_table
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
         self.memory_profile_upload_url_prefix = memory_profile_upload_url_prefix
+        self.move_ws_messages = move_ws_messages
+        self.analysis_files_mode = analysis_files_mode
         self.recovery_csv_urls = recovery_csv_urls
         self.pipeline_name = pipeline_name
         self.drive_upload = drive_upload
@@ -634,6 +640,10 @@ class PipelineConfiguration(object):
 
         memory_profile_upload_url_prefix = configuration_dict["MemoryProfileUploadURLPrefix"]
 
+        move_ws_messages = configuration_dict["MoveWSMessages"]
+
+        analysis_files_mode = configuration_dict["AnalysisFilesMode"]
+
         recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
 
         pipeline_name = configuration_dict.get("PipelineName")
@@ -643,7 +653,7 @@ class PipelineConfiguration(object):
 
         return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
                    follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                   memory_profile_upload_url_prefix, recovery_csv_urls, pipeline_name, drive_upload_paths)
+                   memory_profile_upload_url_prefix, move_ws_messages, analysis_files_mode, recovery_csv_urls, pipeline_name, drive_upload_paths)
 
     @classmethod
     def from_configuration_file(cls, f):
@@ -688,6 +698,9 @@ class PipelineConfiguration(object):
 
         if self.pipeline_name is not None:
             validators.validate_string(self.pipeline_name, "pipeline_name")
+
+        validators.validate_bool(self.move_ws_messages, "move_ws_messages")
+        validators.validate_bool(self.analysis_files_mode, "analysis_files_mode")
 
         if self.drive_upload is not None:
             assert isinstance(self.drive_upload, DriveUpload), \

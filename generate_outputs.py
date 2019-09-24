@@ -166,8 +166,12 @@ if __name__ == "__main__":
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
 
-    log.info("Redirecting WS messages...")
-    data = WSCorrection.move_wrong_scheme_messages(user, data, prev_coded_dir_path)
+    if pipeline_configuration.move_ws_messages:
+        log.info("Moving WS messages...")
+        data = WSCorrection.move_wrong_scheme_messages(user, data, prev_coded_dir_path)
+    else:
+        log.info("Not moving WS messages (because the 'MoveWSMessages' key in the pipeline configuration "
+                 "json was set to 'false')")
 
     log.info("Auto Coding Shows and Follow ups Messages...")
     data = AutoCodeShowAndFollowupsMessages.auto_code_show_and_followups_messages(user, data, icr_output_dir,
@@ -178,63 +182,76 @@ if __name__ == "__main__":
     log.info("Auto Coding Demogs...")
     data = AutoCodeDemogs.auto_code_demogs(user, data, phone_number_uuid_table, coded_dir_path)
 
-    log.info("Applying Manual Codes from Coda...")
-    data = ApplyManualCodes.apply_manual_codes(user, data, prev_coded_dir_path)
+    if pipeline_configuration.analysis_files_mode:
+        log.info("Running post labelling pipeline stages...")
+        log.info("Applying Manual Codes from Coda...")
+        data = ApplyManualCodes.apply_manual_codes(user, data, prev_coded_dir_path)
 
-    log.info("Generating Analysis CSVs...")
-    messages_data, individuals_data = AnalysisFile.generate(user, data, csv_by_message_output_path,
+        log.info("Generating Analysis CSVs...")
+        messages_data, individuals_data = AnalysisFile.generate(user, data, csv_by_message_output_path,
                                                             csv_by_individual_output_path)
 
-    log.info("Writing messages TracedData to file...")
-    IOUtils.ensure_dirs_exist_for_file(messages_json_output_path)
-    with open(messages_json_output_path, "w") as f:
-        TracedDataJsonIO.export_traced_data_iterable_to_jsonl(messages_data, f)
+        log.info("Writing messages TracedData to file...")
+        IOUtils.ensure_dirs_exist_for_file(messages_json_output_path)
+        with open(messages_json_output_path, "w") as f:
+            TracedDataJsonIO.export_traced_data_iterable_to_jsonl(messages_data, f)
 
-    log.info("Writing individuals TracedData to file...")
-    IOUtils.ensure_dirs_exist_for_file(individuals_json_output_path)
-    with open(individuals_json_output_path, "w") as f:
-        TracedDataJsonIO.export_traced_data_iterable_to_jsonl(individuals_data, f)
+        log.info("Writing individuals TracedData to file...")
+        IOUtils.ensure_dirs_exist_for_file(individuals_json_output_path)
+        with open(individuals_json_output_path, "w") as f:
+            TracedDataJsonIO.export_traced_data_iterable_to_jsonl(individuals_data, f)
 
-    # Upload to Google Drive, if requested.
-    # Note: This should happen as late as possible in order to reduce the risk of the remainder of the pipeline failing
-    # after a Drive upload has occurred. Failures could result in inconsistent outputs or outputs with no
-    # traced data log.
-    if pipeline_configuration.drive_upload is not None:
-        log.info("Uploading CSVs to Google Drive...")
+        # Upload to Google Drive, if requested.
+        # Note: This should happen as late as possible in order to reduce the risk of the remainder of the pipeline failing
+        # after a Drive upload has occurred. Failures could result in inconsistent outputs or outputs with no
+        # traced data log.
+        if pipeline_configuration.drive_upload is not None:
+            log.info("Uploading CSVs to Google Drive...")
 
-        production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
-        production_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.production_upload_path)
-        drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
-                                              target_file_name=production_csv_drive_file_name,
-                                              target_folder_is_shared_with_me=True)
+            production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
+            production_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.production_upload_path)
+            drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
+                                                  target_file_name=production_csv_drive_file_name,
+                                                  target_folder_is_shared_with_me=True)
 
-        messages_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_upload_path)
-        messages_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.messages_upload_path)
-        drive_client_wrapper.update_or_create(csv_by_message_output_path, messages_csv_drive_dir,
-                                              target_file_name=messages_csv_drive_file_name,
-                                              target_folder_is_shared_with_me=True)
+            messages_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_upload_path)
+            messages_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.messages_upload_path)
+            drive_client_wrapper.update_or_create(csv_by_message_output_path, messages_csv_drive_dir,
+                                                  target_file_name=messages_csv_drive_file_name,
+                                                  target_folder_is_shared_with_me=True)
 
-        individuals_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_upload_path)
-        individuals_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.individuals_upload_path)
-        drive_client_wrapper.update_or_create(csv_by_individual_output_path, individuals_csv_drive_dir,
-                                              target_file_name=individuals_csv_drive_file_name,
-                                              target_folder_is_shared_with_me=True)
+            individuals_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_upload_path)
+            individuals_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.individuals_upload_path)
+            drive_client_wrapper.update_or_create(csv_by_individual_output_path, individuals_csv_drive_dir,
+                                                  target_file_name=individuals_csv_drive_file_name,
+                                                  target_folder_is_shared_with_me=True)
 
-        traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_traced_data_upload_path)
-        traced_data_drive_file_name = os.path.basename(
-            pipeline_configuration.drive_upload.messages_traced_data_upload_path)
-        drive_client_wrapper.update_or_create(messages_json_output_path, traced_data_drive_dir,
-                                              target_file_name=traced_data_drive_file_name,
-                                              target_folder_is_shared_with_me=True)
+            traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_traced_data_upload_path)
+            traced_data_drive_file_name = os.path.basename(
+                pipeline_configuration.drive_upload.messages_traced_data_upload_path)
+            drive_client_wrapper.update_or_create(messages_json_output_path, traced_data_drive_dir,
+                                                  target_file_name=traced_data_drive_file_name,
+                                                  target_folder_is_shared_with_me=True)
 
-        traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
-        traced_data_drive_file_name = os.path.basename(
-            pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
-        drive_client_wrapper.update_or_create(individuals_json_output_path, traced_data_drive_dir,
-                                              target_file_name=traced_data_drive_file_name,
-                                              target_folder_is_shared_with_me=True)
+            traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
+            traced_data_drive_file_name = os.path.basename(
+                pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
+            drive_client_wrapper.update_or_create(individuals_json_output_path, traced_data_drive_dir,
+                                                  target_file_name=traced_data_drive_file_name,
+                                                  target_folder_is_shared_with_me=True)
+        else:
+            log.info("Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
+                     "'DriveUploadPaths')")
     else:
-        log.info("Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
-                 "'DriveUploadPaths')")
+
+        if pipeline_configuration.drive_upload is not None:
+            log.info("Uploading production file to Google Drive...")
+
+            production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
+            production_csv_drive_file_name = os.path.basename(
+                pipeline_configuration.drive_upload.production_upload_path)
+            drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
+                                                  target_file_name=production_csv_drive_file_name,
+                                                  target_folder_is_shared_with_me=True)
 
     log.info("Python script complete")
