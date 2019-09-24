@@ -22,6 +22,9 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Change to true when generating analysis files
+ANALYSIS_FILE_MODE=true
+
 # Check that the correct number of arguments were provided.
 if [[ $# -ne 12 ]]; then
     echo "Usage: ./docker-run-generate-outputs.sh
@@ -31,7 +34,6 @@ if [[ $# -ne 12 ]]; then
     <coded-output-dir> <messages-output-csv> <individuals-output-csv> <production-output-csv>"
     exit
 fi
-
 
 # Assign the program arguments to bash variables.
 USER=$1
@@ -95,17 +97,19 @@ docker cp "$container:/data/coded/." "$OUTPUT_CODED_DIR"
 mkdir -p "$(dirname "$OUTPUT_PRODUCTION_CSV")"
 docker cp "$container:/data/output-production.csv" "$OUTPUT_PRODUCTION_CSV"
 
-mkdir -p "$(dirname "$OUTPUT_MESSAGES_CSV")"
-docker cp "$container:/data/output-messages.csv" "$OUTPUT_MESSAGES_CSV"
+if [[ "$ANALYSIS_FILE_MODE" = true ]]; then
+    mkdir -p "$(dirname "$OUTPUT_MESSAGES_CSV")"
+    docker cp "$container:/data/output-messages.csv" "$OUTPUT_MESSAGES_CSV"
 
-mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_CSV")"
-docker cp "$container:/data/output-individuals.csv" "$OUTPUT_INDIVIDUALS_CSV"
+    mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_CSV")"
+    docker cp "$container:/data/output-individuals.csv" "$OUTPUT_INDIVIDUALS_CSV"
 
-mkdir -p "$(dirname "$OUTPUT_MESSAGES_JSONL")"
-docker cp "$container:/data/output-messages.jsonl" "$OUTPUT_MESSAGES_JSONL"
+    mkdir -p "$(dirname "$OUTPUT_MESSAGES_JSONL")"
+    docker cp "$container:/data/output-messages.jsonl" "$OUTPUT_MESSAGES_JSONL"
 
-mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
-docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
+    mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
+    docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
+fi
 
 if [[ "$PROFILE_CPU" = true ]]; then
     mkdir -p "$(dirname "$CPU_PROFILE_OUTPUT_PATH")"
