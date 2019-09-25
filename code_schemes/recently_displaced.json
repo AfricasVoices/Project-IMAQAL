@@ -4,90 +4,90 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
-      "CodeID": "code-2b565901",
-      "CodeType": "Normal",
-      "DisplayText": "yes",
-      "NumericValue": 1,
-      "StringValue": "yes",
       "Shortcut": "y",
+      "DisplayText": "yes",
       "VisibleInCoda": true,
+      "CodeID": "code-2b565901",
+      "NumericValue": 1,
+      "CodeType": "Normal",
       "MatchValues": [
         "yes"
-      ]
+      ],
+      "StringValue": "yes"
     },
     {
+      "StringValue": "no",
+      "Shortcut": "n",
+      "DisplayText": "no",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
       "CodeID": "code-d67739e0",
       "CodeType": "Normal",
-      "DisplayText": "no",
-      "Shortcut": "n",
-      "NumericValue": 2,
-      "StringValue": "no",
-      "VisibleInCoda": true,
       "MatchValues": [
         "no"
       ]
     },
     {
-      "CodeID": "code-NA-f93d3eb7",
-      "CodeType": "Control",
       "ControlCode": "NA",
       "DisplayText": "NA (missing)",
+      "VisibleInCoda": false,
+      "CodeID": "code-NA-f93d3eb7",
       "NumericValue": -10,
-      "StringValue": "NA",
-      "VisibleInCoda": false
+      "CodeType": "Control",
+      "StringValue": "NA"
     },
     {
+      "VisibleInCoda": false,
+      "NumericValue": -20,
       "CodeID": "code-NS-2c11b7c9",
       "CodeType": "Control",
-      "ControlCode": "NS",
-      "DisplayText": "NS (skip)",
-      "NumericValue": -20,
       "StringValue": "NS",
-      "VisibleInCoda": false
+      "ControlCode": "NS",
+      "DisplayText": "NS (skip)"
     },
     {
+      "NumericValue": -30,
       "CodeID": "code-NC-42f1d983",
       "CodeType": "Control",
+      "StringValue": "NC",
       "ControlCode": "NC",
       "DisplayText": "NC (not coded)",
-      "NumericValue": -30,
-      "StringValue": "NC",
       "VisibleInCoda": true
     },
     {
+      "VisibleInCoda": false,
+      "NumericValue": -40,
       "CodeID": "code-NR-5e3eee23",
       "CodeType": "Control",
-      "ControlCode": "NR",
-      "DisplayText": "NR (not reviewed)",
-      "NumericValue": -40,
       "StringValue": "NR",
-      "VisibleInCoda": false
+      "ControlCode": "NR",
+      "DisplayText": "NR (not reviewed)"
     },
     {
+      "VisibleInCoda": false,
+      "NumericValue": -50,
       "CodeID": "code-NIC-99631cb8",
       "CodeType": "Control",
-      "ControlCode": "NIC",
-      "DisplayText": "NIC (not internally consistent)",
-      "NumericValue": -50,
       "StringValue": "NIC",
-      "VisibleInCoda": false
+      "ControlCode": "NIC",
+      "DisplayText": "NIC (not internally consistent)"
     },
     {
-      "CodeID": "code-STOP-08b832a8",
-      "CodeType": "Control",
-      "ControlCode": "STOP",
       "DisplayText": "STOP",
+      "VisibleInCoda": true,
+      "CodeID": "code-STOP-08b832a8",
       "NumericValue": -90,
+      "CodeType": "Control",
       "StringValue": "STOP",
-      "VisibleInCoda": true
+      "ControlCode": "STOP"
     },
     {
+      "NumericValue": -100,
       "CodeID": "code-WS-adb25603b7af",
       "CodeType": "Control",
+      "StringValue": "WS",
       "ControlCode": "WS",
       "DisplayText": "WS (wrong scheme)",
-      "NumericValue": -100,
-      "StringValue": "WS",
       "VisibleInCoda": true
     },
     {

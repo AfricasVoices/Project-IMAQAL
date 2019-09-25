@@ -1,259 +1,259 @@
 {
-    "SchemeID": "Scheme-07dfc611",
-    "Name": "Mogadishu Sub-District",
-    "Version": "0.0.0.2",
-    "Codes": [
-      {
-        "CodeID": "code-d170504a",
-        "CodeType": "Normal",
-        "DisplayText": "boondheere",
-        "StringValue": "boondheere",
-        "NumericValue": 1,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "boondheere"
-        ]
-      },
-      {
-        "CodeID": "code-6a343003",
-        "CodeType": "Normal",
-        "DisplayText": "cabdlcasiis",
-        "StringValue": "cabdlcasiis",
-        "NumericValue": 2,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "cabdlcasiis"
-        ]
-      },
-      {
-        "CodeID": "code-d43c2e7a",
-        "CodeType": "Normal",
-        "DisplayText": "daynile",
-        "StringValue": "daynile",
-        "NumericValue": 3,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "daynile"
-        ]
-      },
-      {
-        "CodeID": "code-e72eee9b",
-        "CodeType": "Normal",
-        "DisplayText": "dharkenley",
-        "StringValue": "dharkenley",
-        "NumericValue": 4,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "dharkenley"
-        ]
-      },
-      {
-        "CodeID": "code-1333e076",
-        "CodeType": "Normal",
-        "DisplayText": "heliwa",
-        "StringValue": "heliwa",
-        "NumericValue": 5,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "heliwa"
-        ]
-      },
-      {
-        "CodeID": "code-ae4b5ca2",
-        "CodeType": "Normal",
-        "DisplayText": "hodan",
-        "StringValue": "hodan",
-        "NumericValue": 6,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "hodan"
-        ]
-      },
-      {
-        "CodeID": "code-f8845af1",
-        "CodeType": "Normal",
-        "DisplayText": "hawl wadaag",
-        "StringValue": "hawl wadaag",
-        "NumericValue": 7,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "hawl wadaag"
-        ]
-      },
-      {
-        "CodeID": "code-156f94ee",
-        "CodeType": "Normal",
-        "DisplayText": "karaan",
-        "StringValue": "karaan",
-        "NumericValue": 8,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "karaan"
-        ]
-      },
-      {
-        "CodeID": "code-15b664b5",
-        "CodeType": "Normal",
-        "DisplayText": "kaxda",
-        "StringValue": "kaxda",
-        "NumericValue": 17,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "kaxda"
-        ]
-      },
-      {
-        "CodeID": "code-22f2f7d6",
-        "CodeType": "Normal",
-        "DisplayText": "shangaani",
-        "StringValue": "shangaani",
-        "NumericValue": 9,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "shangaani"
-        ]
-      },
-      {
-        "CodeID": "code-ea1d62ae",
-        "CodeType": "Normal",
-        "DisplayText": "shibis",
-        "StringValue": "shibis",
-        "NumericValue": 10,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "shibis"
-        ]
-      },
-      {
-        "CodeID": "code-b425d5db",
-        "CodeType": "Normal",
-        "DisplayText": "waaberi",
-        "StringValue": "waaberi",
-        "NumericValue": 11,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "waaberi"
-        ]
-      },
-      {
-        "CodeID": "code-eb4fdeb3",
-        "CodeType": "Normal",
-        "DisplayText": "wadajir",
-        "StringValue": "wadajir",
-        "NumericValue": 12,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "wadajir"
-        ]
-      },
-      {
-        "CodeID": "code-818d857f",
-        "CodeType": "Normal",
-        "DisplayText": "wardhiigleey",
-        "StringValue": "wardhiigleey",
-        "NumericValue": 13,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "wardhiigleey"
-        ]
-      },
-      {
-        "CodeID": "code-d618fa3a",
-        "CodeType": "Normal",
-        "DisplayText": "xamar jaabjab",
-        "StringValue": "xamar jaabjab",
-        "NumericValue": 14,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "xamar jaabjab"
-        ]
-      },
-      {
-        "CodeID": "code-2e3cedff",
-        "CodeType": "Normal",
-        "DisplayText": "xamar weyne",
-        "StringValue": "xamar weyne",
-        "NumericValue": 15,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "xamar weyne"
-        ]
-      },
-      {
-        "CodeID": "code-d16d73ca",
-        "CodeType": "Normal",
-        "DisplayText": "yaaqshid",
-        "StringValue": "yaaqshid",
-        "NumericValue": 16,
-        "VisibleInCoda": true,
-        "MatchValues": [
-          "yaaqshid"
-        ]
-      },
-      {
-        "CodeID": "code-NA-f93d3eb7",
-        "CodeType": "Control",
-        "ControlCode": "NA",
-        "DisplayText": "NA (missing)",
-        "NumericValue": -10,
-        "StringValue": "NA",
-        "VisibleInCoda": false
-      },
-      {
-        "CodeID": "code-NS-2c11b7c9",
-        "CodeType": "Control",
-        "ControlCode": "NS",
-        "DisplayText": "NS (skip)",
-        "NumericValue": -20,
-        "StringValue": "NS",
-        "VisibleInCoda": false
-      },
-      {
-        "CodeID": "code-NC-42f1d983",
-        "CodeType": "Control",
-        "ControlCode": "NC",
-        "DisplayText": "NC (not coded)",
-        "NumericValue": -30,
-        "StringValue": "NC",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-NR-5e3eee23",
-        "CodeType": "Control",
-        "ControlCode": "NR",
-        "DisplayText": "NR (not reviewed)",
-        "NumericValue": -40,
-        "StringValue": "NR",
-        "VisibleInCoda": false
-      },
-      {
-        "CodeID": "code-NIC-99631cb8",
-        "CodeType": "Control",
-        "ControlCode": "NIC",
-        "DisplayText": "NIC (not internally consistent)",
-        "NumericValue": -50,
-        "StringValue": "NIC",
-        "VisibleInCoda": false
-      },
-      {
-        "CodeID": "code-STOP-08b832a8",
-        "CodeType": "Control",
-        "ControlCode": "STOP",
-        "DisplayText": "STOP",
-        "NumericValue": -90,
-        "StringValue": "STOP",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-WS-adb25603b7af",
-        "CodeType": "Control",
-        "ControlCode": "WS",
-        "DisplayText": "WS (wrong scheme)",
-        "NumericValue": -100,
-        "StringValue": "WS",
-        "VisibleInCoda": true
-      },
-      {
+  "SchemeID": "Scheme-07dfc611",
+  "Name": "Mogadishu Sub-District",
+  "Version": "0.0.0.2",
+  "Codes": [
+    {
+      "DisplayText": "boondheere",
+      "VisibleInCoda": true,
+      "CodeID": "code-d170504a",
+      "NumericValue": 1,
+      "MatchValues": [
+        "boondheere"
+      ],
+      "CodeType": "Normal",
+      "StringValue": "boondheere"
+    },
+    {
+      "DisplayText": "cabdlcasiis",
+      "VisibleInCoda": true,
+      "CodeID": "code-6a343003",
+      "NumericValue": 2,
+      "MatchValues": [
+        "cabdlcasiis"
+      ],
+      "CodeType": "Normal",
+      "StringValue": "cabdlcasiis"
+    },
+    {
+      "NumericValue": 3,
+      "CodeID": "code-d43c2e7a",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "daynile"
+      ],
+      "StringValue": "daynile",
+      "DisplayText": "daynile",
+      "VisibleInCoda": true
+    },
+    {
+      "DisplayText": "dharkenley",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-e72eee9b",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "dharkenley"
+      ],
+      "StringValue": "dharkenley"
+    },
+    {
+      "DisplayText": "heliwa",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-1333e076",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "heliwa"
+      ],
+      "StringValue": "heliwa"
+    },
+    {
+      "NumericValue": 6,
+      "CodeID": "code-ae4b5ca2",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "hodan"
+      ],
+      "StringValue": "hodan",
+      "DisplayText": "hodan",
+      "VisibleInCoda": true
+    },
+    {
+      "StringValue": "hawl wadaag",
+      "DisplayText": "hawl wadaag",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-f8845af1",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "hawl wadaag"
+      ]
+    },
+    {
+      "DisplayText": "karaan",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-156f94ee",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "karaan"
+      ],
+      "StringValue": "karaan"
+    },
+    {
+      "DisplayText": "kaxda",
+      "VisibleInCoda": true,
+      "NumericValue": 17,
+      "CodeID": "code-15b664b5",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "kaxda"
+      ],
+      "StringValue": "kaxda"
+    },
+    {
+      "NumericValue": 9,
+      "CodeID": "code-22f2f7d6",
+      "MatchValues": [
+        "shangaani"
+      ],
+      "CodeType": "Normal",
+      "StringValue": "shangaani",
+      "DisplayText": "shangaani",
+      "VisibleInCoda": true
+    },
+    {
+      "DisplayText": "shibis",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-ea1d62ae",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "shibis"
+      ],
+      "StringValue": "shibis"
+    },
+    {
+      "StringValue": "waaberi",
+      "DisplayText": "waaberi",
+      "VisibleInCoda": true,
+      "CodeID": "code-b425d5db",
+      "NumericValue": 11,
+      "MatchValues": [
+        "waaberi"
+      ],
+      "CodeType": "Normal"
+    },
+    {
+      "StringValue": "wadajir",
+      "DisplayText": "wadajir",
+      "VisibleInCoda": true,
+      "NumericValue": 12,
+      "CodeID": "code-eb4fdeb3",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "wadajir"
+      ]
+    },
+    {
+      "DisplayText": "wardhiigleey",
+      "VisibleInCoda": true,
+      "NumericValue": 13,
+      "CodeID": "code-818d857f",
+      "MatchValues": [
+        "wardhiigleey"
+      ],
+      "CodeType": "Normal",
+      "StringValue": "wardhiigleey"
+    },
+    {
+      "DisplayText": "xamar jaabjab",
+      "VisibleInCoda": true,
+      "NumericValue": 14,
+      "CodeID": "code-d618fa3a",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "xamar jaabjab"
+      ],
+      "StringValue": "xamar jaabjab"
+    },
+    {
+      "NumericValue": 15,
+      "CodeID": "code-2e3cedff",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "xamar weyne"
+      ],
+      "StringValue": "xamar weyne",
+      "DisplayText": "xamar weyne",
+      "VisibleInCoda": true
+    },
+    {
+      "VisibleInCoda": true,
+      "NumericValue": 16,
+      "CodeID": "code-d16d73ca",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "yaaqshid"
+      ],
+      "StringValue": "yaaqshid",
+      "DisplayText": "yaaqshid"
+    },
+    {
+      "NumericValue": -10,
+      "CodeID": "code-NA-f93d3eb7",
+      "CodeType": "Control",
+      "StringValue": "NA",
+      "ControlCode": "NA",
+      "DisplayText": "NA (missing)",
+      "VisibleInCoda": false
+    },
+    {
+      "ControlCode": "NS",
+      "DisplayText": "NS (skip)",
+      "VisibleInCoda": false,
+      "NumericValue": -20,
+      "CodeID": "code-NS-2c11b7c9",
+      "CodeType": "Control",
+      "StringValue": "NS"
+    },
+    {
+      "StringValue": "NC",
+      "ControlCode": "NC",
+      "DisplayText": "NC (not coded)",
+      "VisibleInCoda": true,
+      "NumericValue": -30,
+      "CodeID": "code-NC-42f1d983",
+      "CodeType": "Control"
+    },
+    {
+      "ControlCode": "NR",
+      "DisplayText": "NR (not reviewed)",
+      "VisibleInCoda": false,
+      "NumericValue": -40,
+      "CodeID": "code-NR-5e3eee23",
+      "CodeType": "Control",
+      "StringValue": "NR"
+    },
+    {
+      "NumericValue": -50,
+      "CodeID": "code-NIC-99631cb8",
+      "CodeType": "Control",
+      "StringValue": "NIC",
+      "ControlCode": "NIC",
+      "DisplayText": "NIC (not internally consistent)",
+      "VisibleInCoda": false
+    },
+    {
+      "StringValue": "STOP",
+      "ControlCode": "STOP",
+      "DisplayText": "STOP",
+      "VisibleInCoda": true,
+      "NumericValue": -90,
+      "CodeID": "code-STOP-08b832a8",
+      "CodeType": "Control"
+    },
+    {
+      "ControlCode": "WS",
+      "DisplayText": "WS (wrong scheme)",
+      "VisibleInCoda": true,
+      "NumericValue": -100,
+      "CodeID": "code-WS-adb25603b7af",
+      "CodeType": "Control",
+      "StringValue": "WS"
+    },
+    {
       "CodeID": "code-CE-016c1e22",
       "CodeType": "Control",
       "ControlCode": "CE",
@@ -262,7 +262,7 @@
       "StringValue": "CE",
       "VisibleInCoda": false
     },
-      {
+    {
       "CodeID": "code-PB-a434a800",
       "CodeType": "Meta",
       "MetaCode": "push_back",
@@ -307,5 +307,5 @@
       "StringValue": "opt_in",
       "VisibleInCoda": true
     }
-    ]
-  }
+  ]
+}
