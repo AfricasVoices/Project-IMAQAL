@@ -7,6 +7,7 @@ from core_data_modules.cleaners.location_tools import SomaliaLocations
 from core_data_modules.traced_data import Metadata
 from core_data_modules.traced_data.io import TracedDataCodaV2IO
 from core_data_modules.util import TimeUtils
+from core_data_modules.data_models.scheme import CodeTypes
 
 from src.lib import PipelineConfiguration
 from src.lib.pipeline_configuration import CodeSchemes
@@ -44,7 +45,7 @@ class ApplyManualCodes(object):
 
             # If a control code was found, set all other location keys to that control code,
             # otherwise convert the provided location to the other locations in the hierarchy.
-            if location_code.code_type == "Control":
+            if location_code.code_type == CodeTypes.CONTROL:
                 for plan in PipelineConfiguration.LOCATION_CODING_PLANS:
                     td.append_data({
                         plan.coded_field: CleaningUtils.make_label_from_cleaner_code(
@@ -53,7 +54,17 @@ class ApplyManualCodes(object):
                             Metadata.get_call_location()
                         ).to_dict()
                     }, Metadata(user, Metadata.get_call_location(), time.time()))
+            elif location_code.code_type == CodeTypes.META:
+                for plan in PipelineConfiguration.LOCATION_CODING_PLANS:
+                    td.append_data({
+                        plan.coded_field: CleaningUtils.make_label_from_cleaner_code(
+                            plan.code_scheme,
+                            plan.code_scheme.get_code_with_meta_code(location_code.meta_code),
+                            Metadata.get_call_location()
+                        ).to_dict()
+                    }, Metadata(user, Metadata.get_call_location(), time.time()))
             else:
+                assert location_code.code_type == CodeTypes.NORMAL
                 location = location_code.match_values[0]
 
                 td.append_data({

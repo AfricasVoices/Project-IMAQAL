@@ -312,6 +312,61 @@
             ]
         },
         {
+        "DisplayText": "s01mag16",
+        "VisibleInCoda": true,
+        "NumericValue": 30,
+        "CodeID": "code-4d4e1ac9",
+        "CodeType": "Normal",
+        "StringValue": "s01mag16",
+        "MatchValues": [
+          "s01mag16"
+        ]
+      },
+      {
+        "DisplayText": "s01mag17",
+        "VisibleInCoda": true,
+        "NumericValue": 31,
+        "CodeID": "code-3c592378",
+        "CodeType": "Normal",
+        "StringValue": "s01mag17",
+        "MatchValues": [
+          "s01mag17"
+        ]
+      },
+      {
+        "DisplayText": "s01mag18",
+        "VisibleInCoda": true,
+        "NumericValue": 32,
+        "CodeID": "code-8b9fc454",
+        "CodeType": "Normal",
+        "StringValue": "s01mag18",
+        "MatchValues": [
+          "s01mag18"
+        ]
+      },
+      {
+        "DisplayText": "s01mag19",
+        "VisibleInCoda": true,
+        "NumericValue": 33,
+        "CodeID": "code-7007a173",
+        "CodeType": "Normal",
+        "StringValue": "s01mag19",
+        "MatchValues": [
+          "s01mag19"
+        ]
+      },
+      {
+        "DisplayText": "s01mag20",
+        "VisibleInCoda": true,
+        "NumericValue": 34,
+        "CodeID": "code-94bd4fa7",
+        "CodeType": "Normal",
+        "StringValue": "s01mag20",
+        "MatchValues": [
+          "s01mag20"
+        ]
+      },
+        {
             "CodeID": "code-NR-5e3eee23",
             "CodeType": "Control",
             "ControlCode": "NR",

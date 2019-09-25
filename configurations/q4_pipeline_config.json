@@ -1,0 +1,94 @@
+{
+  "RapidProDomain": "textit.in",
+  "RapidProTokenFileURL": "gs://avf-credentials/imaqal-text-it-token.txt",
+  "RapidProTestContactUUIDs": [
+    "fad44f22-235a-4821-9780-dfef09076fe1",
+    "3903ad8e-284e-48a0-881b-89c0b06b9334",
+    "45939459-e4d5-4ad6-8650-3e7134b9a035"
+  ],
+  "RecoveryCSVURLs": ["gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_drama_s01e06_de_identified.csv",
+    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_15_de_identified.csv",
+    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_15_wednesday_de_identified.csv"],
+  "PhoneNumberUuidTable": {
+    "FirebaseCredentialsFileURL": "gs://avf-credentials/avf-id-infrastructure-firebase-adminsdk-6xps8-b9173f2bfd.json",
+    "TableName": "IMAQAL"
+  },
+  "ActivationFlowNames": [
+    "mag_s01e08_activation",
+    "mag_s01e09_activation",
+    "mag_s01e10_activation",
+    "mag_s01e11_activation",
+    "mag_s01e12_activation",
+    "mag_s01e13_activation"
+  ],
+  "DemogFlowNames":[
+    "imaqal_demog"
+  ],
+  "FollowUpFlowNames":[
+    "imaqal_s01_follow_up_w2",
+    "mag_s01_w8_follow_up",
+    "mag_s01_w10_follow_up"
+  ],
+  "RapidProKeyRemappings": [
+    {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
+
+    {"RapidProKey": "Rqa_Mag_S01E08 (Value) - mag_s01e08_activation", "PipelineKey": "rqa_s01mag08_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E09 (Value) - mag_s01e09_activation", "PipelineKey": "rqa_s01mag09_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E10 (Value) - mag_s01e10_activation", "PipelineKey": "rqa_s01mag10_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E11 (Value) - mag_s01e11_activation", "PipelineKey": "rqa_s01mag11_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E12 (Value) - mag_s01e12_activation", "PipelineKey": "rqa_s01mag12_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E13 (Value) - mag_s01e13_activation", "PipelineKey": "rqa_s01mag13_raw", "IsActivationMessage": true},
+
+    {"RapidProKey": "Rqa_Mag_S01E08 (Run ID) - mag_s01e08_activation", "PipelineKey": "rqa_s01mag08_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E09 (Run ID) - mag_s01e09_activation", "PipelineKey": "rqa_s01mag09_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E10 (Run ID) - mag_s01e10_activation", "PipelineKey": "rqa_s01mag10_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E11 (Run ID) - mag_s01e11_activation", "PipelineKey": "rqa_s01mag11_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E12 (Run ID) - mag_s01e12_activation", "PipelineKey": "rqa_s01mag12_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E13 (Run ID) - mag_s01e13_activation", "PipelineKey": "rqa_s01mag13_run_id"},
+
+    {"RapidProKey": "message", "PipelineKey": "recovered_raw", "IsActivationMessage": true},
+    {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
+    {"RapidProKey": "run_id", "PipelineKey": "recovered_run_id"},
+
+    {"RapidProKey": "Rqa_Mag_S01E08 (Time) - mag_s01e08_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E09 (Time) - mag_s01e09_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E10 (Time) - mag_s01e10_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E11 (Time) - mag_s01e11_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E12 (Time) - mag_s01e12_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E13 (Time) - mag_s01e13_activation", "PipelineKey": "sent_on"},
+
+    {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Young_People (Time) - mag_s01_w10_follow_up", "PipelineKey": "sent_on"},
+
+    {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
+    {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
+    {"RapidProKey": "Age (Value) - imaqal_demog", "PipelineKey": "age_raw"},
+    {"RapidProKey": "Age (Time) - imaqal_demog", "PipelineKey": "age_time"},
+    {"RapidProKey": "Recently_Displaced (Value) - imaqal_demog", "PipelineKey": "recently_displaced_raw"},
+    {"RapidProKey": "Recently_Displaced (Time) - imaqal_demog", "PipelineKey": "recently_displaced_time"},
+    {"RapidProKey": "Household_Language (Value) - imaqal_demog", "PipelineKey": "household_language_raw"},
+    {"RapidProKey": "Household_Language (Time) - imaqal_demog", "PipelineKey": "household_language_time"},
+    {"RapidProKey": "District (Value) - imaqal_demog", "PipelineKey": "location_raw"},
+    {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"},
+
+    {"RapidProKey": "Women_Participation (Value) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_raw"},
+    {"RapidProKey": "Women_Participation (Run ID) - imaqal_s01_follow_up_w2", "PipelineKey": "women_participation_run_id"},
+    {"RapidProKey": "Minority_Clan (Value) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_raw"},
+    {"RapidProKey": "Minority_Clan (Run ID) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_run_id"},
+    {"RapidProKey": "Young_People (Value) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_raw"},
+    {"RapidProKey": "Young_People (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"}
+  ],
+  "PipelineName": "q4_pipeline",
+  "MoveWSMessages": false,
+  "GenerateAnalysisFiles": false,
+  "DriveUpload": {
+    "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
+    "ProductionUploadPath": "imaqal_analysis_outputs/quarter_four/imaqal_s01_production.csv",
+    "MessagesUploadPath": "imaqal_analysis_outputs/quarter_four/imaqal_s01_messages.csv",
+    "IndividualsUploadPath": "imaqal_analysis_outputs/quarter_four/imaqal_s01_individuals.csv",
+    "MessagesTracedDataUploadPath": "imaqal_analysis_outputs/quarter_four/imaqal_s01_messages_traced_data.json",
+    "IndividualsTracedDataUploadPath": "imaqal_analysis_outputs/quarter_four/imaqal_s01_individuals_traced_data.json"
+  },
+  "MemoryProfileUploadURLPrefix": "gs://avf-pipeline-logs-performance-nearline/2019/IMAQAL/memory-"
+}

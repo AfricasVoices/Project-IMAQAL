@@ -155,13 +155,16 @@ if __name__ == "__main__":
                                                    coalesced_demog_datasets)
 
     # Infer which RQA coding plans to use from the pipeline name.
-    if pipeline_configuration.pipeline_name == "quarter_four":
-        log.info("Running quarter four pipeline")
-        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.QUARTER_FOUR_RQA_CODING_PLANS
+    if pipeline_configuration.pipeline_name == "q4_pipeline":
+        log.info("Running Q4 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q4_RQA_CODING_PLANS
+    elif pipeline_configuration.pipeline_name == "q5_pipeline":
+        log.info("Running Q5 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q5_RQA_CODING_PLANS
     else:
-        assert pipeline_configuration.pipeline_name == "all_quarters", "PipelineName must be either 'a quartely pipeline name' or 'all_quarters'"
-        log.info("Running Main Pipeline")
-        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.ALL_QUARTERS_RQA_CODING_PLANS
+        assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
+        log.info("Running full Pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.FULL_PIPELINE_RQA_CODING_PLANS
 
     log.info("Translating Rapid Pro Keys...")
     data = TranslateRapidProKeys.translate_rapid_pro_keys(user, data, pipeline_configuration, prev_coded_dir_path)
