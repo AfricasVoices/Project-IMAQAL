@@ -14,6 +14,8 @@
     "TableName": "IMAQAL"
   },
   "ActivationFlowNames": [
+    "mag_s01e14_activation",
+    "mag_s01e15_activation",
     "mag_s01e16_activation",
     "mag_s01e17_activation",
     "mag_s01e18_activation",
@@ -31,12 +33,16 @@
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
 
+    {"RapidProKey": "Rqa_Mag_S01E14 (Value) - mag_s01e14_activation", "PipelineKey": "rqa_s01mag14_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S01E15 (Value) - mag_s01e15_activation", "PipelineKey": "rqa_s01mag15_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E16 (Value) - mag_s01e16_activation", "PipelineKey": "rqa_s01mag16_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E17 (Value) - mag_s01e17_activation", "PipelineKey": "rqa_s01mag17_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E18 (Value) - mag_s01e18_activation", "PipelineKey": "rqa_s01mag18_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E19 (Value) - mag_s01e19_activation", "PipelineKey": "rqa_s01mag19_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E20 (Value) - mag_s01e20_activation", "PipelineKey": "rqa_s01mag20_raw", "IsActivationMessage": true},
 
+    {"RapidProKey": "Rqa_Mag_S01E14 (Run ID) - mag_s01e14_activation", "PipelineKey": "rqa_s01mag14_run_id"},
+    {"RapidProKey": "Rqa_Mag_S01E15 (Run ID) - mag_s01e15_activation", "PipelineKey": "rqa_s01mag15_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E16 (Run ID) - mag_s01e16_activation", "PipelineKey": "rqa_s01mag16_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E17 (Run ID) - mag_s01e17_activation", "PipelineKey": "rqa_s01mag17_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E18 (Run ID) - mag_s01e18_activation", "PipelineKey": "rqa_s01mag18_run_id"},
@@ -47,6 +53,8 @@
     {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
     {"RapidProKey": "run_id", "PipelineKey": "recovered_run_id"},
 
+    {"RapidProKey": "Rqa_Mag_S01E14 (Time) - mag_s01e14_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S01E15 (Time) - mag_s01e15_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E16 (Time) - mag_s01e16_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E17 (Time) - mag_s01e17_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E18 (Time) - mag_s01e18_activation", "PipelineKey": "sent_on"},
