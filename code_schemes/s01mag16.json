@@ -4,6 +4,94 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "DisplayText": "working with leadership",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-6f6d7b8d",
+      "CodeType": "Normal",
+      "StringValue": "working_with_leadership"
+    },
+    {
+      "DisplayText": "social integration and interaction",
+      "VisibleInCoda": true,
+      "NumericValue": 1,
+      "CodeID": "code-564a832f",
+      "CodeType": "Normal",
+      "StringValue": "social_integration_and_interaction"
+    },
+    {
+      "DisplayText": "their own country",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-5d173ef4",
+      "CodeType": "Normal",
+      "StringValue": "their_own_country"
+    },
+    {
+      "DisplayText": "if they work in union",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-eb8ade45",
+      "CodeType": "Normal",
+      "StringValue": "if_they_work_in_union"
+    },
+    {
+      "DisplayText": "fight for representation",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-dca3ec29",
+      "CodeType": "Normal",
+      "StringValue": "fight_for_representation"
+    },
+    {
+      "DisplayText": "create jobs for IDPs",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-7f7a1166",
+      "CodeType": "Normal",
+      "StringValue": "create_jobs_for_IDPs"
+    },
+    {
+      "DisplayText": "IDPs should use their skills",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-a4eddc7b",
+      "CodeType": "Normal",
+      "StringValue": "IDPs_should_use_their_skills"
+    },
+    {
+      "DisplayText": "awareness creation",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-6af46156",
+      "CodeType": "Normal",
+      "StringValue": "awareness_creation"
+    },
+    {
+      "DisplayText": "no role for them",
+      "VisibleInCoda": true,
+      "NumericValue": 8,
+      "CodeID": "code-fbcb2553",
+      "CodeType": "Normal",
+      "StringValue": "no_role_for_them"
+    },
+    {
+      "DisplayText": "stop discrimination",
+      "VisibleInCoda": true,
+      "NumericValue": 9,
+      "CodeID": "code-378d2254",
+      "CodeType": "Normal",
+      "StringValue": "stop_discrimination"
+    },
+    {
+      "DisplayText": "other",
+      "VisibleInCoda": true,
+      "NumericValue": 10,
+      "CodeID": "code-0edbd0a8",
+      "CodeType": "Normal",
+      "StringValue": "other"
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
@@ -74,6 +162,51 @@
       "NumericValue": -110,
       "StringValue": "CE",
       "VisibleInCoda": false
+    },
+    {
+      "CodeID": "code-PB-a434a800",
+      "CodeType": "Meta",
+      "MetaCode": "push_back",
+      "DisplayText": "push back",
+      "NumericValue": -100000,
+      "StringValue": "push_back",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-SQ-5e8f0122",
+      "CodeType": "Meta",
+      "MetaCode": "showtime_question",
+      "DisplayText": "showtime question",
+      "NumericValue": -100030,
+      "StringValue": "showtime_question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-Q-a5d3700d",
+      "CodeType": "Meta",
+      "MetaCode": "question",
+      "DisplayText": "question",
+      "NumericValue": -100010,
+      "StringValue": "question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-G-97cb3199",
+      "CodeType": "Meta",
+      "MetaCode": "greeting",
+      "DisplayText": "greeting",
+      "NumericValue": -100020,
+      "StringValue": "greeting",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-OI-c5f1d054",
+      "CodeType": "Meta",
+      "MetaCode": "opt-in",
+      "DisplayText": "opt-in",
+      "NumericValue": -100040,
+      "StringValue": "opt_in",
+      "VisibleInCoda": true
     }
   ]
 }
