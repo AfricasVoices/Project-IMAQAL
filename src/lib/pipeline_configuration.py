@@ -406,7 +406,7 @@ class PipelineConfiguration(object):
                    analysis_file_key="rqa_s01mag20_",
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag20"),
                    cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG20),
+                   code_scheme=CodeSchemes.S01MAG20)
     ]
 
     Q4_RQA_CODING_PLANS =[
@@ -477,8 +477,10 @@ class PipelineConfiguration(object):
                    analysis_file_key="rqa_s01mag13_",
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag13"),
                    cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG13),
+                   code_scheme=CodeSchemes.S01MAG13)
+    ]
 
+    Q5_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01mag14_raw",
                    coded_field="rqa_s01mag14_coded",
                    time_field="sent_on",
@@ -500,9 +502,7 @@ class PipelineConfiguration(object):
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag15"),
                    cleaner=None,
                    code_scheme=CodeSchemes.S01MAG15),
-    ]
 
-    Q5_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01mag16_raw",
                    coded_field="rqa_s01mag16_coded",
                    time_field="sent_on",
