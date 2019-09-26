@@ -24,18 +24,19 @@ done
 
 
 # Check that the correct number of arguments were provided.
-if [[ $# -ne 4 ]]; then
+if [[ $# -ne 5 ]]; then
     echo "Usage: ./docker-run-generate-analysis-graphs.sh
     [--profile-cpu <profile-output-path>]
-    <user> <messages-traced-data> <individuals-traced-data> <output-dir>"
+    <user> <messages-traced-data> <individuals-traced-data> <output-dir> <pipeline-configuration-file-path>"
     exit
 fi
 
 # Assign the program arguments to bash variables.
 USER=$1
-INPUT_MESSAGES_TRACED_DATA=$2
-INPUT_INDIVIDUALS_TRACED_DATA=$3
-OUTPUT_DIR=$4
+PIPELINE_CONFIGURATION=$2
+INPUT_MESSAGES_TRACED_DATA=$3
+INPUT_INDIVIDUALS_TRACED_DATA=$4
+OUTPUT_DIR=$5
 
 # Build an image for this pipeline stage.
 docker build --build-arg INSTALL_CPU_PROFILER="$PROFILE_CPU" -t "$IMAGE_NAME" .
@@ -48,12 +49,14 @@ fi
 CMD="pipenv run $PROFILE_CPU_CMD python -u generate_analysis_graphs.py \
     \"$USER\" \
     /data/messages-traced-data.jsonl /data/individuals-traced-data.jsonl /data/output-graphs \
+    /data/pipeline_configuration.json \
 "
 container="$(docker container create ${SYS_PTRACE_CAPABILITY} -w /app "$IMAGE_NAME" /bin/bash -c "$CMD")"
 
 # Copy input data into the container
 docker cp "$INPUT_MESSAGES_TRACED_DATA" "$container:/data/messages-traced-data.jsonl"
 docker cp "$INPUT_INDIVIDUALS_TRACED_DATA" "$container:/data/individuals-traced-data.jsonl"
+docker cp "$PIPELINE_CONFIGURATION" "$container:/data/pipeline_configuration.json"
 
 # Run the container
 docker start -a -i "$container"
