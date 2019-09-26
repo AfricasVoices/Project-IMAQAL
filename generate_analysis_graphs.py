@@ -24,6 +24,8 @@ if __name__ == "__main__":
                         help="Path to a JSON file to read the TracedData of the messages data from")
     parser.add_argument("output_dir", metavar="output-dir",
                         help="Directory to write the output graphs to")
+    parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
+                        help="Path to the pipeline configuration json file"),
 
     args = parser.parse_args()
 
@@ -31,8 +33,14 @@ if __name__ == "__main__":
     messages_json_input_path = args.messages_json_input_path
     individuals_json_input_path = args.individuals_json_input_path
     output_dir = args.output_dir
+    pipeline_configuration_file_path = args.pipeline_configuration_file_path
 
     IOUtils.ensure_dirs_exist(output_dir)
+
+    # Load the pipeline configuration file
+    log.info("Loading Pipeline Configuration File...")
+    with open(pipeline_configuration_file_path) as f:
+        pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
 
     # Read the messages dataset
     log.info(f"Loading the messages dataset from {messages_json_input_path}...")
@@ -45,6 +53,18 @@ if __name__ == "__main__":
     with open(individuals_json_input_path) as f:
         individuals = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
     log.info(f"Loaded {len(individuals)} individuals")
+
+    # Infer which RQA coding plans to use from the pipeline name.
+    if pipeline_configuration.pipeline_name == "q4_pipeline":
+        log.info("Running Q4 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q4_RQA_CODING_PLANS
+    elif pipeline_configuration.pipeline_name == "q5_pipeline":
+        log.info("Running Q5 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q5_RQA_CODING_PLANS
+    else:
+        assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
+        log.info("Running full Pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.FULL_PIPELINE_RQA_CODING_PLANS
 
     # Compute the number of messages in each show and graph
     log.info(f"Graphing the number of messages received in response to each show...")

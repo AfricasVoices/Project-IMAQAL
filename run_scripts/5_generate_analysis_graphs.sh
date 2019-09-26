@@ -36,5 +36,5 @@ mkdir -p "$DATA_ROOT/Outputs"
 cd ..
 ./docker-run-generate-analysis-graphs.sh ${CPU_PROFILE_ARG} ${MEMORY_PROFILE_ARG} \
     "$USER" "$DATA_ROOT/Outputs/messages_traced_data.jsonl" \
-    "$DATA_ROOT/Outputs/individuals_traced_data.jsonl" "$DATA_ROOT/Outputs/"
+    "$DATA_ROOT/Outputs/individuals_traced_data.jsonl" "$DATA_ROOT/Outputs/" "$PIPELINE_CONFIGURATION"
     
