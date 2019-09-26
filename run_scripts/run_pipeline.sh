@@ -32,7 +32,10 @@ RUN_ID=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 ./4_coda_add.sh "$CODA_PUSH_CREDENTIALS_PATH" "$CODA_TOOLS_ROOT" "$DATA_ROOT"
 
-./5_backup_data_root.sh "$DATA_ROOT" "$DATA_BACKUPS_DIR" "$RUN_ID"
+./5_generate_analysis_graphs.sh --profile-memory "$PERFORMANCE_LOGS_DIR/memory-$RUN_ID.profile" \
+    "$USER" "$PIPELINE_CONFIGURATION" "$DATA_ROOT"
 
-./6_upload_logs.sh "$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION" "$RUN_ID" \
+./6_backup_data_root.sh "$DATA_ROOT" "$DATA_BACKUPS_DIR" "$RUN_ID"
+
+./7_upload_logs.sh "$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION" "$RUN_ID" \
     "$PERFORMANCE_LOGS_DIR/memory-$RUN_ID.profile"
