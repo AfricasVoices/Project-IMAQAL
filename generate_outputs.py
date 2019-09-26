@@ -53,6 +53,9 @@ if __name__ == "__main__":
     parser.add_argument("production_csv_output_path", metavar="production-csv-output-path",
                         help="Path to a CSV file to write raw message and demographic responses to, for use in "
                              "radio show production"),
+    parser.add_argument("auto_coding_json_output_path", metavar="auto-coding-json-output-path",
+                        help="Path to a JSON file to write the TracedData associated with auto-coding stage of the pipeline"),
+    parser.add_argument("generate_analysis_files", help="determines if to generate analysis files or not. Set to true/false")
 
     args = parser.parse_args()
 
@@ -74,6 +77,9 @@ if __name__ == "__main__":
     csv_by_message_output_path = args.csv_by_message_output_path
     csv_by_individual_output_path = args.csv_by_individual_output_path
     production_csv_output_path = args.production_csv_output_path
+    auto_coding_json_output_path = args.auto_coding_json_output_path
+    generate_analysis_files = args.generate_analysis_files
+
 
     # Load the pipeline configuration file
     log.info("Loading Pipeline Configuration File...")
@@ -185,7 +191,7 @@ if __name__ == "__main__":
     log.info("Auto Coding Demogs...")
     data = AutoCodeDemogs.auto_code_demogs(user, data, phone_number_uuid_table, coded_dir_path)
 
-    if pipeline_configuration.analysis_files_mode:
+    if generate_analysis_files == "true":
         log.info("Running post labelling pipeline stages...")
         log.info("Applying Manual Codes from Coda...")
         data = ApplyManualCodes.apply_manual_codes(user, data, prev_coded_dir_path)
@@ -247,7 +253,13 @@ if __name__ == "__main__":
                      "'DriveUploadPaths')")
     else:
 
+        assert generate_analysis_files == "false", "generate analysis files must be either true or false"
+        log.info("Writing Auto-Coding TracedData to file...")
+        IOUtils.ensure_dirs_exist_for_file(auto_coding_json_output_path)
+        with open(auto_coding_json_output_path, "w") as f:
+            TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
         if pipeline_configuration.drive_upload is not None:
+            # TODO: upload auto-coding traced data file to drive ?
             log.info("Uploading production file to Google Drive...")
 
             production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)

@@ -22,16 +22,14 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Change to true when generating analysis files
-ANALYSIS_FILE_MODE=true
-
 # Check that the correct number of arguments were provided.
-if [[ $# -ne 12 ]]; then
+if [[ $# -ne 14 ]]; then
     echo "Usage: ./docker-run-generate-outputs.sh
     [--profile-cpu <cpu-profile-output-path>] [--profile-memory <memory-profile-output-path>]
     <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path>
     <raw-data-dir> <prev-coded-dir> <messages-json-output-path> <individual-json-output-path> <icr-output-dir>
-    <coded-output-dir> <messages-output-csv> <individuals-output-csv> <production-output-csv>"
+    <coded-output-dir> <messages-output-csv> <individuals-output-csv> <production-output-csv>
+    <auto-coding-json-output-path>"
     exit
 fi
 
@@ -48,6 +46,8 @@ OUTPUT_CODED_DIR=$9
 OUTPUT_MESSAGES_CSV=${10}
 OUTPUT_INDIVIDUALS_CSV=${11}
 OUTPUT_PRODUCTION_CSV=${12}
+OUTPUT_AUTO_CODING_TRACED_JSONL=${13}
+GENERATE_ANALYSIS_FILES=${14}
 
 # Build an image for this pipeline stage.
 docker build --build-arg INSTALL_CPU_PROFILER="$PROFILE_CPU" --build-arg INSTALL_MEMORY_PROFILER="$PROFILE_MEMORY" -t "$IMAGE_NAME" .
@@ -65,7 +65,8 @@ CMD="pipenv run $PROFILE_CPU_CMD $PROFILE_MEMORY_CMD python -u generate_outputs.
     \"$USER\" /credentials/google-cloud-credentials.json /data/pipeline_configuration.json \
     /data/raw-data /data/prev-coded /data/output-messages.jsonl /data/output-individuals.jsonl \
     /data/output-icr /data/coded \
-    /data/output-messages.csv /data/output-individuals.csv /data/output-production.csv
+    /data/output-messages.csv /data/output-individuals.csv /data/output-production.csv /data/auto-coding-traced-data.jsonl \
+    "$GENERATE_ANALYSIS_FILES"
 "
 container="$(docker container create ${SYS_PTRACE_CAPABILITY} -w /app "$IMAGE_NAME" /bin/bash -c "$CMD")"
 
@@ -88,27 +89,39 @@ fi
 docker start -a -i "$container"
 
 # Copy the output data back out of the container
+echo "copying icr files to "$OUTPUT_ICR_DIR" "
 mkdir -p "$OUTPUT_ICR_DIR"
 docker cp "$container:/data/output-icr/." "$OUTPUT_ICR_DIR"
 
+echo "copying auto-coded messages to "$OUTPUT_CODED_DIR" "
 mkdir -p "$OUTPUT_CODED_DIR"
 docker cp "$container:/data/coded/." "$OUTPUT_CODED_DIR"
 
+echo "copying production file to "$OUTPUT_PRODUCTION_CSV" "
 mkdir -p "$(dirname "$OUTPUT_PRODUCTION_CSV")"
 docker cp "$container:/data/output-production.csv" "$OUTPUT_PRODUCTION_CSV"
 
-if [[ "$ANALYSIS_FILE_MODE" = true ]]; then
+if [[ $GENERATE_ANALYSIS_FILES = "true" ]]; then
+    echo "copying output-messages.csv to "$OUTPUT_MESSAGES_CSV" "
     mkdir -p "$(dirname "$OUTPUT_MESSAGES_CSV")"
     docker cp "$container:/data/output-messages.csv" "$OUTPUT_MESSAGES_CSV"
 
+    echo "copying output-individuals.csv to "$OUTPUT_INDIVIDUALS_CSV" "
     mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_CSV")"
     docker cp "$container:/data/output-individuals.csv" "$OUTPUT_INDIVIDUALS_CSV"
 
+    echo "copying traced messages.jsonl to "$OUTPUT_MESSAGES_JSONL" "
     mkdir -p "$(dirname "$OUTPUT_MESSAGES_JSONL")"
     docker cp "$container:/data/output-messages.jsonl" "$OUTPUT_MESSAGES_JSONL"
 
+    echo "copying traced individuals.jsonl to "$OUTPUT_INDIVIDUALS_JSONL" "
     mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
     docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
+
+elif [[ $GENERATE_ANALYSIS_FILES = "false" ]]; then
+    echo "copying auto-coding-traced-data.jsonl to "$OUTPUT_AUTO_CODING_TRACED_JSONL" "
+    mkdir -p "$(dirname "$OUTPUT_AUTO_CODING_TRACED_JSONL")"
+    docker cp "$container:/data/auto-coding-traced-data.jsonl" "$OUTPUT_AUTO_CODING_TRACED_JSONL"
 fi
 
 if [[ "$PROFILE_CPU" = true ]]; then

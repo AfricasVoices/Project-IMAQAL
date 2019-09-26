@@ -85,7 +85,6 @@
   ],
   "PipelineName": "q5_pipeline",
   "MoveWSMessages": false,
-  "GenerateAnalysisFiles": false,
   "DriveUpload": {
     "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
     "ProductionUploadPath": "imaqal_analysis_outputs/quarter_five/imaqal_s01_production.csv",
