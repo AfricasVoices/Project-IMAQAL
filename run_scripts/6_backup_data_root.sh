@@ -3,7 +3,7 @@
 set -e
 
 if [[ $# -ne 3 ]]; then
-    echo "Usage: ./5_backup_data_root <data-root> <data-backups-dir> <run-id>"
+    echo "Usage: ./6_backup_data_root <data-root> <data-backups-dir> <run-id>"
     echo "Backs-up the data root directory to a compressed file in a backups directory"
     echo "The directory is gzipped and given the name 'data-<run-id>-<git-HEAD-hash>'"
     exit
