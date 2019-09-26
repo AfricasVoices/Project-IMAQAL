@@ -367,6 +367,17 @@
         ]
       },
         {
+            "DisplayText": "decisions minority clan",
+            "VisibleInCoda": true,
+            "NumericValue": 35,
+            "CodeID": "code-5b57a1de",
+            "CodeType": "Normal",
+            "StringValue": "decisions_minority_clan",
+            "MatchValues": [
+                "decisions_minority_clan"
+            ]
+        },
+        {
             "CodeID": "code-NR-5e3eee23",
             "CodeType": "Control",
             "ControlCode": "NR",
