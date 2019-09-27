@@ -151,6 +151,49 @@ if __name__ == "__main__":
         chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.html")
         chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.png", scale_factor=IMG_SCALE_FACTOR)
 
+    # Plot the per-season distribution of responses for each RQA and Follow up question, per individual
+    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+        log.info(f"Graphing the distribution of codes for {plan.analysis_file_key}...")
+        label_counts = OrderedDict()
+        for code in plan.code_scheme.codes:
+            label_counts[code.string_value] = 0
+
+        for ind in individuals:
+            for code in plan.code_scheme.codes:
+                if ind[f'{plan.analysis_file_key}{code.string_value}'] == Codes.MATRIX_1:
+                    label_counts[code.string_value] += 1
+
+        chart = altair.Chart(
+            altair.Data(values=[{"label": k, "count": v} for k, v in label_counts.items()])
+        ).mark_bar().encode(
+            x=altair.X("label:N", title="Label", sort=list(label_counts.keys())),
+            y=altair.Y("count:Q", title="Number of Individuals")
+        ).properties(
+            title=f"Season Distribution: {plan.analysis_file_key}"
+        )
+        chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.html")
+        chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.png", scale_factor=IMG_SCALE_FACTOR)
+
+        if plan.binary_code_scheme is not None:
+            label_counts = OrderedDict()
+            for code in plan.binary_code_scheme.codes:
+                label_counts[code.string_value] = 0
+
+            for ind in individuals:
+                label_counts[ind[plan.binary_analysis_file_key]] += 1
+
+            chart = altair.Chart(
+                altair.Data(values=[{"label": k, "count": v} for k, v in label_counts.items()])
+            ).mark_bar().encode(
+                x=altair.X("label:N", title="Label", sort=list(label_counts.keys())),
+                y=altair.Y("count:Q", title="Number of Individuals")
+            ).properties(
+                title=f"Season Distribution: {plan.binary_analysis_file_key}"
+            )
+            chart.save(f"{output_dir}/season_distribution_{plan.binary_analysis_file_key}.html")
+            chart.save(f"{output_dir}/season_distribution_{plan.binary_analysis_file_key}.png",
+                       scale_factor=IMG_SCALE_FACTOR)
+
     # Compute the number of UIDs with manually labelled relevant messages per show
     log.info("Graphing the No. of UIDs with relevant messages per show...")
     relevant_uids_per_show = {}
