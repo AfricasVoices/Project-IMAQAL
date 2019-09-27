@@ -53,6 +53,11 @@ DATASETS=(
     "s01mag13"
     "s01mag14"
     "s01mag15"
+    "s01mag16"
+    "s01mag17"
+    "s01mag18"
+    "s01mag19"
+    "s01mag20"
 
     "gender"
     "location"

@@ -47,7 +47,8 @@
   "FollowUpFlowNames":[
     "imaqal_s01_follow_up_w2",
     "mag_s01_w8_follow_up",
-    "mag_s01_w10_follow_up"
+    "mag_s01_w10_follow_up",
+    "mag_s01_w18_follow_up"
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
@@ -137,6 +138,7 @@
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
     {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Young_People (Time) - mag_s01_w10_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Decisions_Minority_Clan (Time) - mag_s01_w18_follow_up", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
@@ -154,7 +156,9 @@
     {"RapidProKey": "Minority_Clan (Value) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_raw"},
     {"RapidProKey": "Minority_Clan (Run ID) - mag_s01_w8_follow_up", "PipelineKey": "minority_clan_issues_run_id"},
     {"RapidProKey": "Young_People (Value) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_raw"},
-    {"RapidProKey": "Young_People (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"}
+    {"RapidProKey": "Young_People (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"},
+    {"RapidProKey": "Decisions_Minority_Clan (Value) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_raw"},
+    {"RapidProKey": "Decisions_Minority_Clan (Run ID) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_run_id"}
   ],
   "PipelineName": "full_pipeline",
   "MoveWSMessages": false,
