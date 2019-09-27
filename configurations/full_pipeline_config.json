@@ -161,7 +161,7 @@
     {"RapidProKey": "Decisions_Minority_Clan (Run ID) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_run_id"}
   ],
   "PipelineName": "full_pipeline",
-  "MoveWSMessages": false,
+  "MoveWSMessages": true,
   "DriveUpload": {
     "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
     "ProductionUploadPath": "imaqal_analysis_outputs/imaqal_s01_production.csv",
