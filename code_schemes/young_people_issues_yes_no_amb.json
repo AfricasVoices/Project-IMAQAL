@@ -107,6 +107,51 @@
         "NumericValue": -110,
         "StringValue": "CE",
         "VisibleInCoda": false
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": -100000,
+        "CodeID": "code-PB-a434a800",
+        "CodeType": "Meta",
+        "MetaCode": "push_back",
+        "StringValue": "push_back",
+        "DisplayText": "push back"
+      },
+      {
+        "NumericValue": -100030,
+        "CodeID": "code-SQ-5e8f0122",
+        "CodeType": "Meta",
+        "MetaCode": "showtime_question",
+        "StringValue": "showtime_question",
+        "DisplayText": "showtime question",
+        "VisibleInCoda": true
+      },
+      {
+        "NumericValue": -100010,
+        "CodeID": "code-Q-a5d3700d",
+        "CodeType": "Meta",
+        "MetaCode": "question",
+        "StringValue": "question",
+        "DisplayText": "question",
+        "VisibleInCoda": true
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": -100020,
+        "CodeID": "code-G-97cb3199",
+        "CodeType": "Meta",
+        "MetaCode": "greeting",
+        "StringValue": "greeting",
+        "DisplayText": "greeting"
+      },
+      {
+        "DisplayText": "opt-in",
+        "VisibleInCoda": true,
+        "NumericValue": -100040,
+        "CodeID": "code-OI-c5f1d054",
+        "CodeType": "Meta",
+        "MetaCode": "opt-in",
+        "StringValue": "opt_in"
       }
     ]
   }
