@@ -28,7 +28,7 @@ if __name__ == "__main__":
                              "credentials bucket")
     parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
                         help="Path to the pipeline configuration json file"),
-    parser.add_argument("pipeline_run_mode", help="whether to generate analysis files or not",choices=["all-stages","auto-code-only"])
+    parser.add_argument("pipeline_run_mode", help="whether to generate analysis files or not", choices=["all-stages", "auto-code-only"])
 
     parser.add_argument("raw_data_dir", metavar="raw-data-dir",
                         help="Path to a directory containing the raw data files exported by fetch_raw_data.py")
@@ -233,18 +233,18 @@ if __name__ == "__main__":
                                                   target_file_name=individuals_csv_drive_file_name,
                                                   target_folder_is_shared_with_me=True)
 
-            traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_traced_data_upload_path)
-            traced_data_drive_file_name = os.path.basename(
+            messages_traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_traced_data_upload_path)
+            messages_traced_data_drive_file_name = os.path.basename(
                 pipeline_configuration.drive_upload.messages_traced_data_upload_path)
-            drive_client_wrapper.update_or_create(messages_json_output_path, traced_data_drive_dir,
-                                                  target_file_name=traced_data_drive_file_name,
+            drive_client_wrapper.update_or_create(messages_json_output_path, messages_traced_data_drive_dir,
+                                                  target_file_name=messages_traced_data_drive_file_name,
                                                   target_folder_is_shared_with_me=True)
 
-            traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
-            traced_data_drive_file_name = os.path.basename(
+            individuals_traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
+            individuals_traced_data_drive_file_name = os.path.basename(
                 pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
-            drive_client_wrapper.update_or_create(individuals_json_output_path, traced_data_drive_dir,
-                                                  target_file_name=traced_data_drive_file_name,
+            drive_client_wrapper.update_or_create(individuals_json_output_path, individuals_traced_data_drive_dir,
+                                                  target_file_name=individuals_traced_data_drive_file_name,
                                                   target_folder_is_shared_with_me=True)
         else:
             log.info("Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
