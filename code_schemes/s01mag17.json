@@ -4,6 +4,110 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-de06af2d",
+      "CodeType": "Normal",
+      "DisplayText": "women belong to the house",
+      "NumericValue": 1,
+      "StringValue": "women_belong_to_the_house",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ce941f45",
+      "CodeType": "Normal",
+      "DisplayText": "women are weak",
+      "NumericValue": 2,
+      "StringValue": "women_are_weak",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-3a47ab28",
+      "CodeType": "Normal",
+      "DisplayText": "women are the backbone of the society",
+      "NumericValue": 3,
+      "StringValue": "women_are_the_backbone_of_the_society",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-3afc3f87",
+      "CodeType": "Normal",
+      "DisplayText": "given them jobs",
+      "NumericValue": 4,
+      "StringValue": "given_them_jobs",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-0faca0d5",
+      "CodeType": "Normal",
+      "DisplayText": "religion does not allow",
+      "NumericValue": 5,
+      "StringValue": "religion_does_not_allow",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-be7cb2dd",
+      "CodeType": "Normal",
+      "DisplayText": "inclusive politics",
+      "NumericValue": 6,
+      "StringValue": "inclusive_politics",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-2d7164aa",
+      "CodeType": "Normal",
+      "DisplayText": "women should work together",
+      "NumericValue": 7,
+      "StringValue": "women_should_work_together",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-de67c2c5",
+      "CodeType": "Normal",
+      "DisplayText": "encourage and inspire women",
+      "NumericValue": 8,
+      "StringValue": "encourage_and_inspire_women",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6c55fdbc",
+      "CodeType": "Normal",
+      "DisplayText": "regard and support them",
+      "NumericValue": 9,
+      "StringValue": "regard_and_support_them",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-489c4d72",
+      "CodeType": "Normal",
+      "DisplayText": "raise awareness",
+      "NumericValue": 10,
+      "StringValue": "raise_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-b8e13d5b",
+      "CodeType": "Normal",
+      "DisplayText": "give women their rights",
+      "NumericValue": 11,
+      "StringValue": "give_women_their_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-aa379c2c",
+      "CodeType": "Normal",
+      "DisplayText": "educate women",
+      "NumericValue": 12,
+      "StringValue": "educate_women",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-c80dc397",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 13,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
