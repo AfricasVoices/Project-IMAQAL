@@ -64,6 +64,7 @@ DATASETS=(
     "age"
     "recently_displaced"
     "household_language"
+    "decisions_minority_clan"
     )
 
 cd "$CODA_V2_ROOT/data_tools"
