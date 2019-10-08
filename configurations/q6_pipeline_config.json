@@ -93,11 +93,11 @@
   "MoveWSMessages": false,
   "DriveUpload": {
     "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
-    "ProductionUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s01_production.csv",
-    "MessagesUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s01_messages.csv",
-    "IndividualsUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s01_individuals.csv",
-    "MessagesTracedDataUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s01_messages_traced_data.json",
-    "IndividualsTracedDataUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s01_individuals_traced_data.json",
+    "ProductionUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s02_production.csv",
+    "MessagesUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s02_messages.csv",
+    "IndividualsUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s02_individuals.csv",
+    "MessagesTracedDataUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s02_messages_traced_data.json",
+    "IndividualsTracedDataUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s02_individuals_traced_data.json",
     "AnalysisGraphsDir": "imaqal_analysis_outputs/analysis_graphs"
   },
   "MemoryProfileUploadURLPrefix": "gs://avf-pipeline-logs-performance-nearline/2019/IMAQAL/memory-"
