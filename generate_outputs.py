@@ -165,6 +165,9 @@ if __name__ == "__main__":
     elif pipeline_configuration.pipeline_name == "q5_pipeline":
         log.info("Running Q5 pipeline")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q5_RQA_CODING_PLANS
+    elif pipeline_configuration.pipeline_name == "q6_pipeline":
+        log.info("Running Q6 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q6_RQA_CODING_PLANS
     else:
         assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
         log.info("Running full Pipeline")

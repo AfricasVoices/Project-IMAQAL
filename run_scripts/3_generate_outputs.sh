@@ -39,6 +39,6 @@ cd ..
 ./docker-run-generate-outputs.sh ${CPU_PROFILE_ARG} ${MEMORY_PROFILE_ARG} \
     "$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION" "$PIPELINE_RUN_MODE" \
     "$DATA_ROOT/Raw Data" "$DATA_ROOT/Coded Coda Files/" "$DATA_ROOT/Outputs/ICR/" "$DATA_ROOT/Outputs/Coda Files/" \
-    "$DATA_ROOT/Outputs/imaqal_s01_production.csv" "$DATA_ROOT/Outputs/auto-coding-traced-data.jsonl" \
-    "$DATA_ROOT/Outputs/imaqal_s01_messages.csv" "$DATA_ROOT/Outputs/imaqal_s01_individuals.csv" \
+    "$DATA_ROOT/Outputs/imaqal_production.csv" "$DATA_ROOT/Outputs/auto_coding_traced_data.jsonl" \
+    "$DATA_ROOT/Outputs/imaqal_messages.csv" "$DATA_ROOT/Outputs/imaqal_individuals.csv" \
     "$DATA_ROOT/Outputs/messages_traced_data.jsonl" "$DATA_ROOT/Outputs/individuals_traced_data.jsonl" \
