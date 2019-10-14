@@ -43,10 +43,12 @@ DATASETS=(
 
 DATA_ROOT=$1
 
+mkdir -p "$DATA_ROOT/Clean Coda Files"
+
 cd ..
 for DATASET in ${DATASETS[@]}
 do
     echo "Filtering out noise messages in ${DATASET}..."
 
-    pipenv run python filter_noise_messages.py "$DATA_ROOT/Outputs/Coda Files/$DATASET.json"
+    pipenv run python filter_noise_messages.py "$DATA_ROOT/Outputs/Coda Files/$DATASET.json" "$DATA_ROOT/Outputs/Clean Coda Files/$DATASET.json"
 done
