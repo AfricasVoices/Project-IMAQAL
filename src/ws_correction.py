@@ -176,11 +176,11 @@ class WSCorrection(object):
                     log.debug(f"{_plan.raw_field}: {td.get(_plan.raw_field)}")
                     log.debug(f"{_plan.time_field}: {td.get(_plan.time_field)}")
 
-            # Find all the demog and follow up survey data being moved.
+            # Find all the demog data being moved.
             # (Note: we only need to check one td in this group because all the demographics are the same)
             td = group[0]
-            demog_and_follow_up_survey_moves = dict()  # of source_field -> target_field
-            for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+            demog_moves = dict()  # of source_field -> target_field
+            for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
                 if plan.raw_field not in td:
                     continue
                 ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
@@ -189,16 +189,16 @@ class WSCorrection(object):
                     if ws_code.code_id in ws_code_to_raw_field_map:
                         log.debug(
                             f"Detected redirect from {plan.raw_field} -> {ws_code_to_raw_field_map.get(ws_code.code_id,ws_code.code_id)} for message {td[plan.raw_field]}")
-                        demog_and_follow_up_survey_moves[plan.raw_field] = ws_code_to_raw_field_map[ws_code.code_id]
+                        demog_moves[plan.raw_field] = ws_code_to_raw_field_map[ws_code.code_id]
                     else:
                         if (ws_code.code_id, ws_code.display_text) not in unknown_target_code_counts:
                             unknown_target_code_counts[(ws_code.code_id, ws_code.display_text)] = 0
                         unknown_target_code_counts[(ws_code.code_id, ws_code.display_text)] += 1
 
-            # Find all the RQA data being moved.
-            rqa_moves = dict()  # of (index in group, source_field) -> target_field
+            # Find all the RQA and follow up surveys data being moved.
+            rqa_and_follow_up_survey_moves = dict()  # of (index in group, source_field) -> target_field
             for i, td in enumerate(group):
-                for plan in PipelineConfiguration.RQA_CODING_PLANS:
+                for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
                     if plan.raw_field not in td:
                         continue
                     ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
@@ -206,105 +206,106 @@ class WSCorrection(object):
                     if ws_code.code_type == "Normal":
                         if ws_code.code_id in ws_code_to_raw_field_map:
                             log.debug(f"Detected redirect from ({i}, {plan.raw_field}) -> {ws_code_to_raw_field_map.get(ws_code.code_id, ws_code.code_id)} for message {td[plan.raw_field]}")
-                            rqa_moves[(i, plan.raw_field)] = ws_code_to_raw_field_map[ws_code.code_id]
+                            rqa_and_follow_up_survey_moves[(i, plan.raw_field)] = ws_code_to_raw_field_map[ws_code.code_id]
                         else:
                             if (ws_code.code_id, ws_code.display_text) not in unknown_target_code_counts:
                                 unknown_target_code_counts[(ws_code.code_id, ws_code.display_text)] = 0
                             unknown_target_code_counts[(ws_code.code_id, ws_code.display_text)] += 1
 
-            # Build a dictionary of the demog and follow up survey fields that haven't been moved, and clear fields for those which have.
-            demogs_and_follow_up_survey_updates = dict()  # of raw_field -> updated value
+            # Build a dictionary of the demog fields that haven't been moved, and clear fields for those which have.
+            demogs_updates = dict()  # of raw_field -> updated value
             for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-                if plan.raw_field in demog_and_follow_up_survey_moves.keys():
+                if plan.raw_field in demog_moves.keys():
                     # Data is moving
-                    demogs_and_follow_up_survey_updates[plan.raw_field] = []
+                    demogs_updates[plan.raw_field] = []
                 elif plan.raw_field in td:
                     # Data is not moving
-                    demogs_and_follow_up_survey_updates[plan.raw_field] = [
+                    demogs_updates[plan.raw_field] = [
                         _WSUpdate(td[plan.raw_field], td[plan.time_field], plan.raw_field)]
 
-            # Build a list of the rqa fields that haven't been moved.
-            rqa_updates = []  # of (field, value)
+            # Build a list of the rqa and follow up surveys fields that haven't been moved.
+            rqa_and_follow_up_updates = []  # of (field, value)
             for i, td in enumerate(group):
                 for plan in PipelineConfiguration.RQA_CODING_PLANS:
                     if plan.raw_field in td:
-                        if (i, plan.raw_field) in rqa_moves.keys():
+                        if (i, plan.raw_field) in rqa_and_follow_up_survey_moves.keys():
                             # Data is moving
                             pass
                         else:
                             # Data is not moving
-                            rqa_updates.append(
+                            rqa_and_follow_up_updates.append(
                                 (plan.raw_field, _WSUpdate(td[plan.raw_field], td[plan.time_field], plan.raw_field)))
 
-            # Add data moving from follow up survey and demog fields to the relevant demog/follow_up_survey/rqa_updates
-            raw_demog_and_follow_up_survey_fields = {plan.raw_field for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS}
-            raw_rqa_fields = {plan.raw_field for plan in PipelineConfiguration.RQA_CODING_PLANS}
+            # Add data moving from demog fields to the relevant demog/follow_up_survey/rqa_updates
+            raw_demog_fields = {plan.raw_field for plan in PipelineConfiguration.DEMOG_CODING_PLANS}
+            raw_rqa_and_follow_up_fields = {plan.raw_field for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS}
             for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-                if plan.raw_field not in demog_and_follow_up_survey_moves:
+                if plan.raw_field not in demog_moves:
                     continue
-                target_field = demog_and_follow_up_survey_moves[plan.raw_field]
+                target_field = demog_moves[plan.raw_field]
                 update = _WSUpdate(td[plan.raw_field], td[plan.time_field], plan.raw_field)
-                if target_field in raw_demog_and_follow_up_survey_fields:
-                    demogs_and_follow_up_survey_updates[target_field] = demogs_and_follow_up_survey_updates.get(target_field, []) + [update]
+                if target_field in raw_demog_fields:
+                    demogs_updates[target_field] = demogs_updates.get(target_field, []) + [update]
                 else:
-                    assert target_field in raw_rqa_fields, f"Raw field '{target_field}' not in any coding plan"
-                    rqa_updates.append((target_field, update))
+                    assert target_field in raw_rqa_and_follow_up_fields, f"Raw field '{target_field}' not in any coding plan"
+                    rqa_and_follow_up_updates.append((target_field, update))
 
-            # Add data moving from follow up survey and demog fields to the relevant demog/follow_up_survey/rqa_updates
-            for (i, source_field), target_field in rqa_moves.items():
+            # Add data moving from  demog fields to the relevant demog/follow_up_survey/rqa_updates
+            for (i, source_field), target_field in rqa_and_follow_up_survey_moves.items():
                 for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
                     if plan.raw_field == source_field:
                         _td = group[i]
                         update = _WSUpdate(_td[plan.raw_field], _td[plan.time_field], plan.raw_field)
-                        if target_field in raw_demog_and_follow_up_survey_fields:
-                            demogs_and_follow_up_survey_updates[target_field] = demogs_and_follow_up_survey_updates.get(target_field, []) + [update]
+                        if target_field in raw_demog_fields:
+                            demogs_updates[target_field] = demogs_updates.get(target_field, []) + [update]
                         else:
-                            assert target_field in raw_rqa_fields, f"Raw field '{target_field}' not in any coding plan"
-                            rqa_updates.append((target_field, update))
+                            assert target_field in raw_rqa_and_follow_up_fields, f"Raw field '{target_field}' not in any coding plan"
+                            rqa_and_follow_up_updates.append((target_field, update))
 
             # Re-format the demog and follow-up survey updates to a form suitable for use by the rest of the pipeline
-            flattened_demog_and_follow_up_survey_updates = {}
-            for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-                if plan.raw_field in demogs_and_follow_up_survey_updates:
-                    plan_updates = demogs_and_follow_up_survey_updates[plan.raw_field]
+            flattened_demog_updates = {}
+            for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
+                if plan.raw_field in demogs_updates:
+                    plan_updates = demogs_updates[plan.raw_field]
 
                     if len(plan_updates) > 0:
-                        flattened_demog_and_follow_up_survey_updates[plan.raw_field] = "; ".join([u.message for u in plan_updates])
-                        flattened_demog_and_follow_up_survey_updates[plan.time_field] = sorted([u.sent_on for u in plan_updates])[0]
-                        flattened_demog_and_follow_up_survey_updates[f"{plan.raw_field}_source"] = "; ".join(
+                        flattened_demog_updates[plan.raw_field] = "; ".join([u.message for u in plan_updates])
+                        flattened_demog_updates[plan.time_field] = sorted([u.sent_on for u in plan_updates])[0]
+                        flattened_demog_updates[f"{plan.raw_field}_source"] = "; ".join(
                             [u.source for u in plan_updates])
                     else:
-                        flattened_demog_and_follow_up_survey_updates[plan.raw_field] = None
-                        flattened_demog_and_follow_up_survey_updates[plan.time_field] = None
-                        flattened_demog_and_follow_up_survey_updates[f"{plan.raw_field}_source"] = None
+                        flattened_demog_updates[plan.raw_field] = None
+                        flattened_demog_updates[plan.time_field] = None
+                        flattened_demog_updates[f"{plan.raw_field}_source"] = None
 
-            # Hide the demogs and follow up survey keys currently in the TracedData which have had data moved away.
-            td.hide_keys({k for k, v in flattened_demog_and_follow_up_survey_updates.items() if v is None}.intersection(td.keys()),
+            # Hide the demogs keys currently in the TracedData which have had data moved away.
+            td.hide_keys({k for k, v in flattened_demog_updates.items() if v is None}.intersection(td.keys()),
                          Metadata(user, Metadata.get_call_location(), time.time()))
 
             # Update with the corrected demogs and follow up surveys data
-            td.append_data({k: v for k, v in flattened_demog_and_follow_up_survey_updates.items() if v is not None},
+            td.append_data({k: v for k, v in flattened_demog_updates.items() if v is not None},
                            Metadata(user, Metadata.get_call_location(), time.time()))
 
             # Hide all the RQA fields (they will be added back, in turn, in the next step).
             td.hide_keys({plan.raw_field for plan in PipelineConfiguration.RQA_CODING_PLANS}.intersection(td.keys()),
                          Metadata(user, Metadata.get_call_location(), time.time()))
 
-            # For each rqa message, create a copy of this td, append the rqa message, and add this to the
+            # For each rqa and follow up message, create a copy of this td, append the rqa or follow up message, and add this to the
             # list of TracedData.
-            for target_field, update in rqa_updates:
-                rqa_dict = {
+            for target_field, update in rqa_and_follow_up_updates:
+                rqa_and_follow_up_survey_dict = {
                     target_field: update.message,
                     "sent_on": update.sent_on,
                     f"{target_field}_source": update.source
                 }
 
                 corrected_td = td.copy()
-                corrected_td.append_data(rqa_dict, Metadata(user, Metadata.get_call_location(), time.time()))
+                corrected_td.append_data(rqa_and_follow_up_survey_dict, Metadata(user, Metadata.get_call_location(), time.time()))
                 corrected_data.append(corrected_td)
 
                 log.debug(f"----------Created TracedData--------------")
-                for _plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS:
+                for _plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS + \
+                             PipelineConfiguration.DEMOG_CODING_PLANS:
                     log.debug(f"{_plan.raw_field}: {corrected_td.get(_plan.raw_field)}")
                     log.debug(f"{_plan.time_field}: {corrected_td.get(_plan.time_field)}")
 
