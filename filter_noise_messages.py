@@ -31,4 +31,4 @@ if __name__ == "__main__":
 
     # Output all RQA and Follow Up surveys messages which aren't noise to Coda
     with open(clean_coded_dir_path, 'w') as f:
-        json.dump(not_noise,f, indent=2)
+        json.dump(not_noise, f, indent=2)
