@@ -507,7 +507,7 @@ class PipelineConfiguration(object):
     # TODO: Add Q6 to the full pipeline RQA coding plans, by uncommenting the following:
     # FULL_PIPELINE_RQA_CODING_PLANS += Q6_RQA_CODING_PLANS
 
-    FOLLOW_UP_CODING_PLANS = [
+    FULL_PIPELINE_RQA_CODING_PLANS += [
         CodingPlan(raw_field="women_participation_raw",
                    coded_field="women_participation_coded",
                    time_field="sent_on",
@@ -563,6 +563,10 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.DECISIONS_MINORITY_CLAN_YES_NO_AMB,
                    binary_coded_field="decisions_minority_clan_yes_no_amb_coded",
                    binary_analysis_file_key="decisions_minority_clan_yes_no_amb")
+    ]
+
+    FOLLOW_UP_CODING_PLANS = [
+
     ]
 
     LOCATION_CODING_PLANS = [
