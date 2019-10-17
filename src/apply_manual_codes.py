@@ -10,7 +10,7 @@ from core_data_modules.util import TimeUtils
 from core_data_modules.data_models.scheme import CodeTypes
 
 from src.lib import PipelineConfiguration
-from src.lib.pipeline_configuration import CodeSchemes
+from src.lib import CodeSchemes
 
 
 class ApplyManualCodes(object):
