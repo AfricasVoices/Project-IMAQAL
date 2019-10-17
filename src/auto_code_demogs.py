@@ -9,7 +9,7 @@ from core_data_modules.util import IOUtils
 
 from src.lib.pipeline_configuration import PipelineConfiguration
 from src.lib.message_filters import MessageFilters
-from src.lib.code_schemes import CodeSchemes
+from src.lib import CodeSchemes
 
 
 class AutoCodeDemogs(object):

@@ -5,7 +5,7 @@ from core_data_modules.cleaners import somali, Codes
 from core_data_modules.data_models import validators
 from dateutil.parser import isoparse
 
-from src.lib.code_schemes import CodeSchemes
+from src.lib import CodeSchemes
 
 class CodingPlan(object):
     def __init__(self, raw_field, coded_field, coda_filename, cleaner=None, code_scheme=None, time_field=None,
