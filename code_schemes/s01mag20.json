@@ -4,6 +4,86 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-5fa0f2b1",
+      "CodeType": "Normal",
+      "DisplayText": "create awareness",
+      "NumericValue": 0,
+      "StringValue": "create_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-c9bbc16c",
+      "CodeType": "Normal",
+      "DisplayText": "voice for the voiceless",
+      "NumericValue": 1,
+      "StringValue": "voice_for_the_voiceless",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-d32333c1",
+      "CodeType": "Normal",
+      "DisplayText": "provides support and encouragement",
+      "NumericValue": 2,
+      "StringValue": "provides_support_and_encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-7545eb83",
+      "CodeType": "Normal",
+      "DisplayText": "enables change through solutions",
+      "NumericValue": 3,
+      "StringValue": "enables_change_through_solutions",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-99cab067",
+      "CodeType": "Normal",
+      "DisplayText": "advocates for equality and justice",
+      "NumericValue": 4,
+      "StringValue": "advocates_for_equality_and_justice",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-d922b3a3",
+      "CodeType": "Normal",
+      "DisplayText": "plays a vital role",
+      "NumericValue": 5,
+      "StringValue": "plays_a_vital_role",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-591c6477",
+      "CodeType": "Normal",
+      "DisplayText": "inclusive discussions",
+      "NumericValue": 6,
+      "StringValue": "inclusive_discussions",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ead2a09b",
+      "CodeType": "Normal",
+      "DisplayText": "individual interactions",
+      "NumericValue": 7,
+      "StringValue": "individual_interactions",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-b6f59fa6",
+      "CodeType": "Normal",
+      "DisplayText": "illiteracy",
+      "NumericValue": 8,
+      "StringValue": "illiteracy",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-9a312846",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 9,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
