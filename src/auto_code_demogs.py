@@ -7,8 +7,9 @@ from core_data_modules.traced_data import Metadata
 from core_data_modules.traced_data.io import TracedDataCodaV2IO
 from core_data_modules.util import IOUtils
 
-from src.lib.pipeline_configuration import CodeSchemes, PipelineConfiguration
+from src.lib.pipeline_configuration import PipelineConfiguration
 from src.lib.message_filters import MessageFilters
+from src.lib.code_schemes import CodeSchemes
 
 
 class AutoCodeDemogs(object):

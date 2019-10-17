@@ -8,7 +8,7 @@ from core_data_modules.traced_data.util import FoldTracedData
 from core_data_modules.util import TimeUtils
 
 from src.lib import PipelineConfiguration, AnalysisKeys
-from src.lib.pipeline_configuration import CodeSchemes
+from src.lib.code_schemes import CodeSchemes
 
 
 class ConsentUtils(object):
