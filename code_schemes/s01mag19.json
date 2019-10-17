@@ -4,6 +4,94 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-44f6f92d",
+      "CodeType": "Normal",
+      "DisplayText": "economic development",
+      "NumericValue": 1,
+      "StringValue": "economic_development",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-0fa67b10",
+      "CodeType": "Normal",
+      "DisplayText": "success for the community",
+      "NumericValue": 2,
+      "StringValue": "success_for_the_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-c55403b6",
+      "CodeType": "Normal",
+      "DisplayText": "unity and progress",
+      "NumericValue": 3,
+      "StringValue": "unity_and_progress",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-bfdbdf3f",
+      "CodeType": "Normal",
+      "DisplayText": "reduced irregular migration",
+      "NumericValue": 4,
+      "StringValue": "reduced_irregular_migration",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-29643d18",
+      "CodeType": "Normal",
+      "DisplayText": "improved peace and security",
+      "NumericValue": 5,
+      "StringValue": "improved_peace_and_security",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6e90888d",
+      "CodeType": "Normal",
+      "DisplayText": "boost youth's confidence",
+      "NumericValue": 6,
+      "StringValue": "boost_youths_confidence",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-7a5db1de",
+      "CodeType": "Normal",
+      "DisplayText": "clannism will end",
+      "NumericValue": 7,
+      "StringValue": "clannism_will_end",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-45779e5d",
+      "CodeType": "Normal",
+      "DisplayText": "youth will take responsibility",
+      "NumericValue": 8,
+      "StringValue": "youth_will_take_responsibility",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-689af97d",
+      "CodeType": "Normal",
+      "DisplayText": "new ideas",
+      "NumericValue": 9,
+      "StringValue": "new_ideas",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-48bacb4a",
+      "CodeType": "Normal",
+      "DisplayText": "integration and interaction",
+      "NumericValue": 10,
+      "StringValue": "integration_and_interaction",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-aebc8233",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 11,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",

@@ -367,11 +367,22 @@
             ]
         },
         {
+            "DisplayText": "decisions minority clan",
+            "VisibleInCoda": true,
+            "NumericValue": 35,
+            "CodeID": "code-5b57a1de",
+            "CodeType": "Normal",
+            "StringValue": "decisions_minority_clan",
+            "MatchValues": [
+                "decisions_minority_clan"
+            ]
+        },
+        {
             "CodeID": "code-ecbf2545",
             "CodeType": "Normal",
             "DisplayText": "s02e08",
             "StringValue": "s02e08",
-            "NumericValue": 35,
+            "NumericValue": 36,
             "VisibleInCoda": true,
             "MatchValues": [
                 "s02e08"
@@ -382,7 +393,7 @@
             "CodeType": "Normal",
             "DisplayText": "s02e09",
             "StringValue": "s02e09",
-            "NumericValue": 36,
+            "NumericValue": 37,
             "VisibleInCoda": true,
             "MatchValues": [
                 "s02e09"
@@ -393,7 +404,7 @@
             "CodeType": "Normal",
             "DisplayText": "s02e10",
             "StringValue": "s02e10",
-            "NumericValue": 37,
+            "NumericValue": 38,
             "VisibleInCoda": true,
             "MatchValues": [
                 "s02e10"
@@ -404,18 +415,7 @@
             "CodeType": "Normal",
             "DisplayText": "s02e11",
             "StringValue": "s02e11",
-            "NumericValue": 38,
-            "VisibleInCoda": true,
-            "MatchValues": [
-                "s02e11"
-            ]
-        },
-        {
-            "CodeID": "code-8005a3e4",
-            "CodeType": "Normal",
-            "DisplayText": "s02e11",
-            "StringValue": "s02e11",
-            "NumericValue": 38,
+            "NumericValue": 39,
             "VisibleInCoda": true,
             "MatchValues": [
                 "s02e11"
@@ -426,7 +426,7 @@
             "CodeType": "Normal",
             "DisplayText": "s02e12",
             "StringValue": "s02e12",
-            "NumericValue": 39,
+            "NumericValue": 40,
             "VisibleInCoda": true,
             "MatchValues": [
                 "s02e12"
@@ -437,7 +437,7 @@
             "CodeType": "Normal",
             "DisplayText": "s02e13",
             "StringValue": "s02e13",
-            "NumericValue": 40,
+            "NumericValue": 41,
             "VisibleInCoda": true,
             "MatchValues": [
                 "s02e13"
@@ -448,21 +448,10 @@
             "CodeType": "Normal",
             "DisplayText": "s02e14",
             "StringValue": "s02e14",
-            "NumericValue": 41,
+            "NumericValue": 42,
             "VisibleInCoda": true,
             "MatchValues": [
                 "s02e14"
-            ]
-        },
-        {
-            "DisplayText": "decisions minority clan",
-            "VisibleInCoda": true,
-            "NumericValue": 35,
-            "CodeID": "code-5b57a1de",
-            "CodeType": "Normal",
-            "StringValue": "decisions_minority_clan",
-            "MatchValues": [
-                "decisions_minority_clan"
             ]
         },
         {

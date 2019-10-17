@@ -4,6 +4,86 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-00d4a523",
+      "CodeType": "Normal",
+      "DisplayText": "raise awareness",
+      "NumericValue": 1,
+      "StringValue": "raise_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-45773e56",
+      "CodeType": "Normal",
+      "DisplayText": "integration and intermarriage with the community",
+      "NumericValue": 2,
+      "StringValue": "integration_and_intermarriage_with_the_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-46236558",
+      "CodeType": "Normal",
+      "DisplayText": "encourage minorities to join politics",
+      "NumericValue": 3,
+      "StringValue": "encourage_minorities_to_join_politics",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-7ce56749",
+      "CodeType": "Normal",
+      "DisplayText": "educate the people on islam",
+      "NumericValue": 4,
+      "StringValue": "educate_the_people_on_islam",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-5516e9ea",
+      "CodeType": "Normal",
+      "DisplayText": "ensure minorities are respected",
+      "NumericValue": 5,
+      "StringValue": "ensure_minorities_are_respected",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-b35bd009",
+      "CodeType": "Normal",
+      "DisplayText": "unifying the whole community/instill unity within the community",
+      "NumericValue": 6,
+      "StringValue": "unifying_the_whole_community_instill_unity_within_the_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-883ac105",
+      "CodeType": "Normal",
+      "DisplayText": "educate on equality among the community",
+      "NumericValue": 7,
+      "StringValue": "educate_on_equality_among_the_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-bfe438a1",
+      "CodeType": "Normal",
+      "DisplayText": "religious leaders are the cause of every evil",
+      "NumericValue": 8,
+      "StringValue": "religious_leaders_are_the_cause_of_every_evil",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-8697da71",
+      "CodeType": "Normal",
+      "DisplayText": "lead by example to show clannism is bad",
+      "NumericValue": 9,
+      "StringValue": "lead_by_example_to_show_clannism_is_bad",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-74ba01d5",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 10,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
