@@ -4,6 +4,86 @@
     "SchemeID": "Scheme-a8e52401",
     "Codes": [
       {
+        "VisibleInCoda": true,
+        "NumericValue": 0,
+        "CodeID": "code-cbeface6",
+        "CodeType": "Normal",
+        "StringValue": "part_of_the_society",
+        "DisplayText": "part of the society"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 1,
+        "CodeID": "code-7be03d23",
+        "CodeType": "Normal",
+        "StringValue": "free_and_fair_elections",
+        "DisplayText": "free and fair elections"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 2,
+        "CodeID": "code-e770363d",
+        "CodeType": "Normal",
+        "StringValue": "if_they_fight_for_their_rights",
+        "DisplayText": "if they fight for their rights"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 3,
+        "CodeID": "code-6d6fe4dd",
+        "CodeType": "Normal",
+        "StringValue": "they_are_productive",
+        "DisplayText": "they are productive"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 4,
+        "CodeID": "code-fc5d2229",
+        "CodeType": "Normal",
+        "StringValue": "through_self_encouragement",
+        "DisplayText": "through self encouragement"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 5,
+        "CodeID": "code-037454df",
+        "CodeType": "Normal",
+        "StringValue": "through_cooperation_and_unity",
+        "DisplayText": "through cooperation and unity"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 6,
+        "CodeID": "code-923fee58",
+        "CodeType": "Normal",
+        "StringValue": "through_inter_marriage_and_awareness_creation",
+        "DisplayText": "through inter marriage and awareness creation"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 7,
+        "CodeID": "code-0c0be4fb",
+        "CodeType": "Normal",
+        "StringValue": "justice_and_good_governance",
+        "DisplayText": "justice and good governance"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 8,
+        "CodeID": "code-55d33352",
+        "CodeType": "Normal",
+        "StringValue": "lack_of_political_representation",
+        "DisplayText": "lack of political representation"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 9,
+        "CodeID": "code-089360d9",
+        "CodeType": "Normal",
+        "StringValue": "discrimination",
+        "DisplayText": "discrimination"
+      },
+      {
         "StringValue": "NA",
         "ControlCode": "NA",
         "DisplayText": "NA (missing)",
