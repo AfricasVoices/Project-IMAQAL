@@ -56,8 +56,8 @@
         "NumericValue": 6,
         "CodeID": "code-923fee58",
         "CodeType": "Normal",
-        "StringValue": "through_inter_marriage_and_awareness_creation",
-        "DisplayText": "through inter marriage and awareness creation"
+        "StringValue": "through_intermarriage_and_awareness_creation",
+        "DisplayText": "through intermarriage and awareness creation"
       },
       {
         "VisibleInCoda": true,
@@ -82,6 +82,14 @@
         "CodeType": "Normal",
         "StringValue": "discrimination",
         "DisplayText": "discrimination"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 10,
+        "CodeID": "code-9e5d3f80",
+        "CodeType": "Normal",
+        "StringValue": "other",
+        "DisplayText": "other"
       },
       {
         "StringValue": "NA",
