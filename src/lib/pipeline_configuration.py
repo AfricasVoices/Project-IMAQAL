@@ -188,7 +188,10 @@ class PipelineConfiguration(object):
                    analysis_file_key="rqa_s01mag20_",
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag20"),
                    cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG20)
+                   code_scheme=CodeSchemes.S01MAG20,
+                   binary_code_scheme = CodeSchemes.S01MAG20_YES_NO_AMB,
+                   binary_coded_field = "rqa_s01mag20_yes_no_amb_coded",
+                   binary_analysis_file_key = "rqa_s01mag20_yes_no_amb")
     ]
 
     Q6_RQA_CODING_PLANS = [
