@@ -2,69 +2,10 @@ import json
 from urllib.parse import urlparse
 
 from core_data_modules.cleaners import somali, Codes
-from core_data_modules.data_models import Scheme, validators
+from core_data_modules.data_models import validators
 from dateutil.parser import isoparse
 
-
-def _open_scheme(filename):
-    with open(f"code_schemes/{filename}", "r") as f:
-        firebase_map = json.load(f)
-        return Scheme.from_firebase_map(firebase_map)
-
-
-class CodeSchemes(object):
-    S01E01 = _open_scheme("s01e01.json")
-    S01E02 = _open_scheme("s01e02.json")
-    S01E02_YES_NO_AMB = _open_scheme("s01e02_yes_no_amb.json")
-    S01E03 = _open_scheme("s01e03.json")
-    S01E03_YES_NO_AMB = _open_scheme("s01e03_yes_no_amb.json")
-    S01E04 = _open_scheme("s01e04.json")
-    S01E05 = _open_scheme("s01e05.json")
-    S01E05_YES_NO_AMB = _open_scheme("s01e05_yes_no_amb.json")
-    S01E06 = _open_scheme("s01e06.json")
-    S01E07 = _open_scheme("s01e07.json")
-    S01E07_YES_NO_AMB = _open_scheme("s01e07_yes_no_amb.json")
-    S01MAG03 = _open_scheme("s01mag03.json")
-    S01MAG03_YES_NO_AMB = _open_scheme("s01mag03_yes_no_amb.json")
-    S01MAG04 = _open_scheme("s01mag04.json")
-    S01MAG05 = _open_scheme("s01mag05.json")
-    S01MAG05_YES_NO_AMB = _open_scheme("s01mag05_yes_no_amb.json")
-    S01MAG06 = _open_scheme("s01mag06.json")
-    S01MAG06_YES_NO_AMB = _open_scheme("s01mag06_yes_no_amb.json")
-    S01MAG07 = _open_scheme("s01mag07.json")
-    S01MAG07_YES_NO_AMB = _open_scheme("s01mag07_yes_no_amb.json")
-    S01MAG08 = _open_scheme("s01mag08.json")
-    S01MAG09 = _open_scheme("s01mag09.json")
-    S01MAG09_YES_NO_AMB = _open_scheme("s01mag09_yes_no_amb.json")
-    # TODO Update this once data structure doc is updated.
-    S01MAG10 = _open_scheme("s01mag10.json")
-    S01MAG11 = _open_scheme("s01mag11.json")
-    S01MAG12 = _open_scheme("s01mag12.json")
-    S01MAG13 = _open_scheme("s01mag13.json")
-    S01MAG14 = _open_scheme("s01mag14.json")
-    S01MAG15 = _open_scheme("s01mag15.json")
-
-    WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
-    WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")
-    MINORITY_CLAN_ISSUES = _open_scheme("minority_clan_issues.json")
-    MINORITY_CLAN_ISSUES_YES_NO_AMB = _open_scheme("minority_clan_issues_yes_no_amb.json")
-    YOUNG_PEOPLE_ISSUES = _open_scheme("young_people_issues.json")
-    YOUNG_PEOPLE_ISSUES_YES_NO_AMB = _open_scheme("young_people_issues_yes_no_amb.json")
-
-    AGE = _open_scheme("age.json")
-    RECENTLY_DISPLACED = _open_scheme("recently_displaced.json")
-    HOUSEHOLD_LANGUAGE = _open_scheme("household_language.json")
-    GENDER = _open_scheme("gender.json")
-
-    SOMALIA_OPERATOR = _open_scheme("somalia_operator.json")
-    SOMALIA_DISTRICT = _open_scheme("somalia_district.json")
-    MOGADISHU_SUB_DISTRICT = _open_scheme("mogadishu_sub_district.json")
-    SOMALIA_REGION = _open_scheme("somalia_region.json")
-    SOMALIA_STATE = _open_scheme("somalia_state.json")
-    SOMALIA_ZONE = _open_scheme("somalia_zone.json")
-
-    WS_CORRECT_DATASET = _open_scheme("ws_correct_dataset.json")
-
+from src.lib import CodeSchemes
 
 class CodingPlan(object):
     def __init__(self, raw_field, coded_field, coda_filename, cleaner=None, code_scheme=None, time_field=None,
@@ -100,7 +41,236 @@ class PipelineConfiguration(object):
 
     RQA_CODING_PLANS = None
 
-    ALL_QUARTERS_RQA_CODING_PLANS = [
+    Q4_RQA_CODING_PLANS = [
+        CodingPlan(raw_field="rqa_s01mag08_raw",
+                   coded_field="rqa_s01mag08_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag08.json",
+                   icr_filename="s01mag08.csv",
+                   run_id_field="rqa_s01mag08_run_id",
+                   analysis_file_key="rqa_s01mag08_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag08"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG08),
+
+        CodingPlan(raw_field="rqa_s01mag09_raw",
+                   coded_field="rqa_s01mag09_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag09.json",
+                   icr_filename="s01mag09.csv",
+                   run_id_field="rqa_s01mag09_run_id",
+                   analysis_file_key="rqa_s01mag09_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag09"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG09,
+                   binary_code_scheme=CodeSchemes.S01MAG09_YES_NO_AMB,
+                   binary_coded_field="rqa_s01mag09_yes_no_amb_coded",
+                   binary_analysis_file_key="rqa_s01mag09_yes_no_amb"),
+
+        CodingPlan(raw_field="rqa_s01mag10_raw",
+                   coded_field="rqa_s01mag10_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag10.json",
+                   icr_filename="s01mag10.csv",
+                   run_id_field="rqa_s01mag10_run_id",
+                   analysis_file_key="rqa_s01mag10_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag10"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG10),
+
+        CodingPlan(raw_field="rqa_s01mag11_raw",
+                   coded_field="rqa_s01mag11_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag11.json",
+                   icr_filename="s01mag11.csv",
+                   run_id_field="rqa_s01mag11_run_id",
+                   analysis_file_key="rqa_s01mag11_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag11"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG11),
+
+        CodingPlan(raw_field="rqa_s01mag12_raw",
+                   coded_field="rqa_s01mag12_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag12.json",
+                   icr_filename="s01mag12.csv",
+                   run_id_field="rqa_s01mag12_run_id",
+                   analysis_file_key="rqa_s01mag12_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag12"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG12),
+
+        CodingPlan(raw_field="rqa_s01mag13_raw",
+                   coded_field="rqa_s01mag13_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag13.json",
+                   icr_filename="s01mag13.csv",
+                   run_id_field="rqa_s01mag13_run_id",
+                   analysis_file_key="rqa_s01mag13_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag13"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG13)
+    ]
+
+    Q5_RQA_CODING_PLANS = [
+        CodingPlan(raw_field="rqa_s01mag14_raw",
+                   coded_field="rqa_s01mag14_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag14.json",
+                   icr_filename="s01mag14.csv",
+                   run_id_field="rqa_s01mag14_run_id",
+                   analysis_file_key="rqa_s01mag14_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag14"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG14),
+
+        CodingPlan(raw_field="rqa_s01mag15_raw",
+                   coded_field="rqa_s01mag15_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag15.json",
+                   icr_filename="s01mag15.csv",
+                   run_id_field="rqa_s01mag15_run_id",
+                   analysis_file_key="rqa_s01mag15_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag15"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG15),
+
+        CodingPlan(raw_field="rqa_s01mag16_raw",
+                   coded_field="rqa_s01mag16_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag16.json",
+                   icr_filename="s01mag16.csv",
+                   run_id_field="rqa_s01mag16_run_id",
+                   analysis_file_key="rqa_s01mag16_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag16"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG16),
+
+        CodingPlan(raw_field="rqa_s01mag17_raw",
+                   coded_field="rqa_s01mag17_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag17.json",
+                   icr_filename="s01mag17.csv",
+                   run_id_field="rqa_s01mag17_run_id",
+                   analysis_file_key="rqa_s01mag17_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag17"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG17),
+
+        CodingPlan(raw_field="rqa_s01mag18_raw",
+                   coded_field="rqa_s01mag18_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag18.json",
+                   icr_filename="s01mag18.csv",
+                   run_id_field="rqa_s01mag18_run_id",
+                   analysis_file_key="rqa_s01mag18_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag18"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG18),
+
+        CodingPlan(raw_field="rqa_s01mag19_raw",
+                   coded_field="rqa_s01mag19_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag19.json",
+                   icr_filename="s01mag19.csv",
+                   run_id_field="rqa_s01mag19_run_id",
+                   analysis_file_key="rqa_s01mag19_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag19"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG19),
+
+        CodingPlan(raw_field="rqa_s01mag20_raw",
+                   coded_field="rqa_s01mag20_coded",
+                   time_field="sent_on",
+                   coda_filename="s01mag20.json",
+                   icr_filename="s01mag20.csv",
+                   run_id_field="rqa_s01mag20_run_id",
+                   analysis_file_key="rqa_s01mag20_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag20"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S01MAG20)
+    ]
+
+    Q6_RQA_CODING_PLANS = [
+        CodingPlan(raw_field="rqa_s02e08_raw",
+                   coded_field="rqa_s02e08_coded",
+                   time_field="sent_on",
+                   coda_filename="s02e08.json",
+                   icr_filename="s02e08.csv",
+                   run_id_field="rqa_s02e08_run_id",
+                   analysis_file_key="rqa_s02e08_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e08"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S02E08),
+
+        CodingPlan(raw_field="rqa_s02e09_raw",
+                   coded_field="rqa_s02e09_coded",
+                   time_field="sent_on",
+                   coda_filename="s02e09.json",
+                   icr_filename="s02e09.csv",
+                   run_id_field="rqa_s02e09_run_id",
+                   analysis_file_key="rqa_s02e09_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e09"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S02E09),
+
+        CodingPlan(raw_field="rqa_s02e10_raw",
+                   coded_field="rqa_s02e10_coded",
+                   time_field="sent_on",
+                   coda_filename="s02e10.json",
+                   icr_filename="s02e10.csv",
+                   run_id_field="rqa_s02e10_run_id",
+                   analysis_file_key="rqa_s02e10_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e10"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S02E10),
+
+        CodingPlan(raw_field="rqa_s02e11_raw",
+                   coded_field="rqa_s02e11_coded",
+                   time_field="sent_on",
+                   coda_filename="s02e11.json",
+                   icr_filename="s02e11.csv",
+                   run_id_field="rqa_s02e11_run_id",
+                   analysis_file_key="rqa_s02e11_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e11"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S02E11),
+
+        CodingPlan(raw_field="rqa_s02e12_raw",
+                   coded_field="rqa_s02e12_coded",
+                   time_field="sent_on",
+                   coda_filename="s02e12.json",
+                   icr_filename="s02e12.csv",
+                   run_id_field="rqa_s02e12_run_id",
+                   analysis_file_key="rqa_s02e12_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e12"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S02E12),
+
+        CodingPlan(raw_field="rqa_s02e13_raw",
+                   coded_field="rqa_s02e13_coded",
+                   time_field="sent_on",
+                   coda_filename="s02e13.json",
+                   icr_filename="s02e13.csv",
+                   run_id_field="rqa_s02e13_run_id",
+                   analysis_file_key="rqa_s02e13_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e13"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S02E13),
+
+        CodingPlan(raw_field="rqa_s02e14_raw",
+                   coded_field="rqa_s02e14_coded",
+                   time_field="sent_on",
+                   coda_filename="s02e14.json",
+                   icr_filename="s02e14.csv",
+                   run_id_field="rqa_s02e14_run_id",
+                   analysis_file_key="rqa_s02e14_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e14"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.S02E14)
+    ]
+
+    FULL_PIPELINE_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01e01_raw",
                    coded_field="rqa_s01e01_coded",
                    time_field="sent_on",
@@ -256,194 +426,13 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.S01MAG07_YES_NO_AMB,
                    binary_coded_field="rqa_s01mag07_yes_no_amb_coded",
                    binary_analysis_file_key="rqa_s01mag07_yes_no_amb"),
-
-        CodingPlan(raw_field="rqa_s01mag08_raw",
-                   coded_field="rqa_s01mag08_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag08.json",
-                   icr_filename="s01mag08.csv",
-                   run_id_field="rqa_s01mag08_run_id",
-                   analysis_file_key="rqa_s01mag08_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag08"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG08),
-
-        CodingPlan(raw_field="rqa_s01mag09_raw",
-                   coded_field="rqa_s01mag09_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag09.json",
-                   icr_filename="s01mag09.csv",
-                   run_id_field="rqa_s01mag09_run_id",
-                   analysis_file_key="rqa_s01mag09_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag09"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG09,
-                   binary_code_scheme=CodeSchemes.S01MAG09_YES_NO_AMB,
-                   binary_coded_field="rqa_s01mag09_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01mag09_yes_no_amb"),
-
-        CodingPlan(raw_field="rqa_s01mag10_raw",
-                   coded_field="rqa_s01mag10_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag10.json",
-                   icr_filename="s01mag10.csv",
-                   run_id_field="rqa_s01mag10_run_id",
-                   analysis_file_key="rqa_s01mag10_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag10"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG10),
-
-        CodingPlan(raw_field="rqa_s01mag11_raw",
-                   coded_field="rqa_s01mag11_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag11.json",
-                   icr_filename="s01mag11.csv",
-                   run_id_field="rqa_s01mag11_run_id",
-                   analysis_file_key="rqa_s01mag11_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag11"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG11),
-
-        CodingPlan(raw_field="rqa_s01mag12_raw",
-                   coded_field="rqa_s01mag12_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag12.json",
-                   icr_filename="s01mag12.csv",
-                   run_id_field="rqa_s01mag12_run_id",
-                   analysis_file_key="rqa_s01mag12_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag12"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG12),
-
-        CodingPlan(raw_field="rqa_s01mag13_raw",
-                   coded_field="rqa_s01mag13_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag13.json",
-                   icr_filename="s01mag13.csv",
-                   run_id_field="rqa_s01mag13_run_id",
-                   analysis_file_key="rqa_s01mag13_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag13"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG13),
-
-        CodingPlan(raw_field="rqa_s01mag14_raw",
-                   coded_field="rqa_s01mag14_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag14.json",
-                   icr_filename="s01mag14.csv",
-                   run_id_field="rqa_s01mag14_run_id",
-                   analysis_file_key="rqa_s01mag14_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag14"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG14),
-
-        CodingPlan(raw_field="rqa_s01mag15_raw",
-                   coded_field="rqa_s01mag15_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag15.json",
-                   icr_filename="s01mag15.csv",
-                   run_id_field="rqa_s01mag15_run_id",
-                   analysis_file_key="rqa_s01mag15_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag15"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG15),
     ]
-
-    QUARTER_FOUR_RQA_CODING_PLANS =[
-        CodingPlan(raw_field="rqa_s01mag08_raw",
-                   coded_field="rqa_s01mag08_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag08.json",
-                   icr_filename="s01mag08.csv",
-                   run_id_field="rqa_s01mag08_run_id",
-                   analysis_file_key="rqa_s01mag08_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag08"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG08),
-
-        CodingPlan(raw_field="rqa_s01mag09_raw",
-                   coded_field="rqa_s01mag09_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag09.json",
-                   icr_filename="s01mag09.csv",
-                   run_id_field="rqa_s01mag09_run_id",
-                   analysis_file_key="rqa_s01mag09_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag09"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG09,
-                   binary_code_scheme=CodeSchemes.S01MAG09_YES_NO_AMB,
-                   binary_coded_field="rqa_s01mag09_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01mag09_yes_no_amb"),
-
-        CodingPlan(raw_field="rqa_s01mag10_raw",
-                   coded_field="rqa_s01mag10_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag10.json",
-                   icr_filename="s01mag10.csv",
-                   run_id_field="rqa_s01mag10_run_id",
-                   analysis_file_key="rqa_s01mag10_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag10"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG10),
-
-        CodingPlan(raw_field="rqa_s01mag11_raw",
-                   coded_field="rqa_s01mag11_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag11.json",
-                   icr_filename="s01mag11.csv",
-                   run_id_field="rqa_s01mag11_run_id",
-                   analysis_file_key="rqa_s01mag11_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag11"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG11),
-
-        CodingPlan(raw_field="rqa_s01mag12_raw",
-                   coded_field="rqa_s01mag12_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag12.json",
-                   icr_filename="s01mag12.csv",
-                   run_id_field="rqa_s01mag12_run_id",
-                   analysis_file_key="rqa_s01mag12_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag12"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG12),
-
-        CodingPlan(raw_field="rqa_s01mag13_raw",
-                   coded_field="rqa_s01mag13_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag13.json",
-                   icr_filename="s01mag13.csv",
-                   run_id_field="rqa_s01mag13_run_id",
-                   analysis_file_key="rqa_s01mag13_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag13"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG13),
-
-        CodingPlan(raw_field="rqa_s01mag14_raw",
-                   coded_field="rqa_s01mag14_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag14.json",
-                   icr_filename="s01mag14.csv",
-                   run_id_field="rqa_s01mag14_run_id",
-                   analysis_file_key="rqa_s01mag14_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag14"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG14),
-
-        CodingPlan(raw_field="rqa_s01mag15_raw",
-                   coded_field="rqa_s01mag15_coded",
-                   time_field="sent_on",
-                   coda_filename="s01mag15.json",
-                   icr_filename="s01mag15.csv",
-                   run_id_field="rqa_s01mag15_run_id",
-                   analysis_file_key="rqa_s01mag15_",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag15"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG15),
-    ]
+    FULL_PIPELINE_RQA_CODING_PLANS += Q4_RQA_CODING_PLANS
+    FULL_PIPELINE_RQA_CODING_PLANS += Q5_RQA_CODING_PLANS
+    # TODO: Add Q6 to the full pipeline RQA coding plans, by uncommenting the following:
+    # FULL_PIPELINE_RQA_CODING_PLANS += Q6_RQA_CODING_PLANS
 
     FOLLOW_UP_CODING_PLANS = [
-
         CodingPlan(raw_field="women_participation_raw",
                    coded_field="women_participation_coded",
                    time_field="sent_on",
@@ -485,10 +474,23 @@ class PipelineConfiguration(object):
                    binary_code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES_YES_NO_AMB,
                    binary_coded_field="young_people_issues_yes_no_amb_coded",
                    binary_analysis_file_key="young_people_issues_yes_no_amb"),
+
+        CodingPlan(raw_field="decisions_minority_clan_raw",
+                   coded_field="decisions_minority_clan_coded",
+                   time_field="sent_on",
+                   coda_filename="decisions_minority_clan.json",
+                   icr_filename="decisions_minority_clan.csv",
+                   run_id_field="decisions_minority_clan_run_id",
+                   analysis_file_key="decisions_minority_clan_",
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("decisions_minority_clan"),
+                   cleaner=None,
+                   code_scheme=CodeSchemes.DECISIONS_MINORITY_CLAN,
+                   binary_code_scheme=CodeSchemes.DECISIONS_MINORITY_CLAN_YES_NO_AMB,
+                   binary_coded_field="decisions_minority_clan_yes_no_amb_coded",
+                   binary_analysis_file_key="decisions_minority_clan_yes_no_amb")
     ]
 
     LOCATION_CODING_PLANS = [
-
         CodingPlan(raw_field="location_raw",
                    id_field="location_raw_id",
                    coded_field="mogadishu_sub_district_coded",
@@ -595,7 +597,7 @@ class PipelineConfiguration(object):
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
                  follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                 memory_profile_upload_url_prefix, recovery_csv_urls=None, pipeline_name=None, drive_upload=None):
+                 memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls=None, pipeline_name=None, drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
         :type rapid_pro_domain: str
@@ -616,6 +618,8 @@ class PipelineConfiguration(object):
                                                  This prefix will be appended by the id of the pipeline run (provided
                                                  as a command line argument), and the ".profile" file extension.
         :type memory_profile_upload_url_prefix: str
+        :param move_ws_messages: Whether to move messages labelled as Wrong Scheme to the correct dataset.
+        :type move_ws_messages: bool
         :param rapid_pro_key_remappings: List of rapid_pro_key -> pipeline_key remappings.
         :type rapid_pro_key_remappings: list of RapidProKeyRemapping
         :param pipeline_name: The name of the pipeline to run.
@@ -633,6 +637,7 @@ class PipelineConfiguration(object):
         self.phone_number_uuid_table = phone_number_uuid_table
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
         self.memory_profile_upload_url_prefix = memory_profile_upload_url_prefix
+        self.move_ws_messages = move_ws_messages
         self.recovery_csv_urls = recovery_csv_urls
         self.pipeline_name = pipeline_name
         self.drive_upload = drive_upload
@@ -656,6 +661,8 @@ class PipelineConfiguration(object):
 
         memory_profile_upload_url_prefix = configuration_dict["MemoryProfileUploadURLPrefix"]
 
+        move_ws_messages = configuration_dict["MoveWSMessages"]
+
         recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
 
         pipeline_name = configuration_dict.get("PipelineName")
@@ -665,7 +672,7 @@ class PipelineConfiguration(object):
 
         return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
                    follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                   memory_profile_upload_url_prefix, recovery_csv_urls, pipeline_name, drive_upload_paths)
+                   memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls, pipeline_name, drive_upload_paths)
 
     @classmethod
     def from_configuration_file(cls, f):
@@ -710,6 +717,8 @@ class PipelineConfiguration(object):
 
         if self.pipeline_name is not None:
             validators.validate_string(self.pipeline_name, "pipeline_name")
+
+        validators.validate_bool(self.move_ws_messages, "move_ws_messages")
 
         if self.drive_upload is not None:
             assert isinstance(self.drive_upload, DriveUpload), \
@@ -776,7 +785,8 @@ class RapidProKeyRemapping(object):
 
 class DriveUpload(object):
     def __init__(self, drive_credentials_file_url, production_upload_path, messages_upload_path,
-                 individuals_upload_path, messages_traced_data_upload_path, individuals_traced_data_upload_path):
+                 individuals_upload_path, messages_traced_data_upload_path, individuals_traced_data_upload_path,
+                 analysis_graphs_dir):
         """
         :param drive_credentials_file_url: GS URL to the private credentials file for the Drive service account to use
                                            to upload the output files.
@@ -797,6 +807,9 @@ class DriveUpload(object):
                                                     upload the serialized individuals TracedData from this pipeline
                                                     run to.
         :type individuals_traced_data_upload_path: str
+        :param analysis_graphs_dir: Directory in the Drive service account's "Shared with Me" directory to upload the
+                                    analysis graphs from this pipeline run to.
+        :type analysis_graphs_dir: str
         """
         self.drive_credentials_file_url = drive_credentials_file_url
         self.production_upload_path = production_upload_path
@@ -804,6 +817,7 @@ class DriveUpload(object):
         self.individuals_upload_path = individuals_upload_path
         self.messages_traced_data_upload_path = messages_traced_data_upload_path
         self.individuals_traced_data_upload_path = individuals_traced_data_upload_path
+        self.analysis_graphs_dir = analysis_graphs_dir
 
         self.validate()
 
@@ -815,9 +829,11 @@ class DriveUpload(object):
         individuals_upload_path = configuration_dict["IndividualsUploadPath"]
         messages_traced_data_upload_path = configuration_dict["MessagesTracedDataUploadPath"]
         individuals_traced_data_upload_path = configuration_dict["IndividualsTracedDataUploadPath"]
+        analysis_graphs_dir = configuration_dict["AnalysisGraphsDir"]
 
         return cls(drive_credentials_file_url, production_upload_path, messages_upload_path,
-                   individuals_upload_path, messages_traced_data_upload_path, individuals_traced_data_upload_path)
+                   individuals_upload_path, messages_traced_data_upload_path, individuals_traced_data_upload_path,
+                   analysis_graphs_dir)
 
     def validate(self):
         validators.validate_string(self.drive_credentials_file_url, "drive_credentials_file_url")
@@ -829,3 +845,4 @@ class DriveUpload(object):
         validators.validate_string(self.individuals_upload_path, "individuals_upload_path")
         validators.validate_string(self.messages_traced_data_upload_path, "messages_traced_data_upload_path")
         validators.validate_string(self.individuals_traced_data_upload_path, "individuals_traced_data_upload_path")
+        validators.validate_string(self.analysis_graphs_dir, "analysis_graphs_dir")

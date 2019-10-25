@@ -1,142 +1,150 @@
 {
-  "SchemeID": "Scheme-e3290e1f",
-  "Name": "Household Language",
-  "Version": "0.0.0.2",
+  "SchemeID": "Scheme-4c5ba547",
+  "Name": "S01MAG20",
+  "Version": "0.0.0.1",
   "Codes": [
     {
-      "DisplayText": "somali",
-      "VisibleInCoda": true,
-      "NumericValue": 1,
-      "CodeID": "code-23cf3616",
+      "CodeID": "code-5fa0f2b1",
       "CodeType": "Normal",
-      "StringValue": "somali"
-    },
-    {
-      "VisibleInCoda": true,
-      "NumericValue": 2,
-      "CodeID": "code-83d97143",
-      "CodeType": "Normal",
-      "StringValue": "mother-tongue",
-      "DisplayText": "mother-tongue"
-    },
-    {
-      "DisplayText": "english",
-      "VisibleInCoda": true,
-      "NumericValue": 3,
-      "CodeID": "code-ee4f6f30",
-      "CodeType": "Normal",
-      "StringValue": "english"
-    },
-    {
-      "StringValue": "kiswahili",
-      "DisplayText": "kiswahili",
-      "VisibleInCoda": true,
-      "NumericValue": 4,
-      "CodeID": "code-cf7da7d2",
-      "CodeType": "Normal"
-    },
-    {
-      "DisplayText": "arabic",
-      "VisibleInCoda": true,
-      "NumericValue": 5,
-      "CodeID": "code-92844263",
-      "CodeType": "Normal",
-      "StringValue": "arabic"
-    },
-    {
-      "StringValue": "maimai",
-      "DisplayText": "maimai",
-      "VisibleInCoda": true,
-      "NumericValue": 6,
-      "CodeID": "code-f61048db",
-      "CodeType": "Normal"
-    },
-    {
-      "CodeType": "Normal",
-      "StringValue": "barawe",
-      "DisplayText": "barawe",
-      "VisibleInCoda": true,
-      "NumericValue": 7,
-      "CodeID": "code-b190b739"
-    },
-    {
-      "VisibleInCoda": true,
-      "NumericValue": 8,
-      "CodeID": "code-49087f30",
-      "CodeType": "Normal",
-      "StringValue": "other",
-      "DisplayText": "other"
-    },
-    {
-      "CodeID": "code-2405e210",
-      "NumericValue": 100,
-      "CodeType": "Normal",
-      "StringValue": "multiple_languages",
-      "DisplayText": "multiple languages",
+      "DisplayText": "create awareness",
+      "NumericValue": 0,
+      "StringValue": "create_awareness",
       "VisibleInCoda": true
     },
     {
-      "DisplayText": "NA (missing)",
-      "VisibleInCoda": false,
-      "NumericValue": -10,
+      "CodeID": "code-c9bbc16c",
+      "CodeType": "Normal",
+      "DisplayText": "voice for the voiceless",
+      "NumericValue": 1,
+      "StringValue": "voice_for_the_voiceless",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-d32333c1",
+      "CodeType": "Normal",
+      "DisplayText": "provides support and encouragement",
+      "NumericValue": 2,
+      "StringValue": "provides_support_and_encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-7545eb83",
+      "CodeType": "Normal",
+      "DisplayText": "enables change through solutions",
+      "NumericValue": 3,
+      "StringValue": "enables_change_through_solutions",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-99cab067",
+      "CodeType": "Normal",
+      "DisplayText": "advocates for equality and justice",
+      "NumericValue": 4,
+      "StringValue": "advocates_for_equality_and_justice",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-d922b3a3",
+      "CodeType": "Normal",
+      "DisplayText": "plays a vital role",
+      "NumericValue": 5,
+      "StringValue": "plays_a_vital_role",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-591c6477",
+      "CodeType": "Normal",
+      "DisplayText": "inclusive discussions",
+      "NumericValue": 6,
+      "StringValue": "inclusive_discussions",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ead2a09b",
+      "CodeType": "Normal",
+      "DisplayText": "individual interactions",
+      "NumericValue": 7,
+      "StringValue": "individual_interactions",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-b6f59fa6",
+      "CodeType": "Normal",
+      "DisplayText": "illiteracy",
+      "NumericValue": 8,
+      "StringValue": "illiteracy",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-9a312846",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 9,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
+      "ControlCode": "NA",
+      "DisplayText": "NA (missing)",
+      "NumericValue": -10,
       "StringValue": "NA",
-      "ControlCode": "NA"
-    },
-    {
-      "DisplayText": "NS (skip)",
-      "VisibleInCoda": false,
-      "NumericValue": -20,
-      "CodeID": "code-NS-2c11b7c9",
-      "CodeType": "Control",
-      "StringValue": "NS",
-      "ControlCode": "NS"
-    },
-    {
-      "CodeID": "code-NC-42f1d983",
-      "NumericValue": -30,
-      "CodeType": "Control",
-      "StringValue": "NC",
-      "ControlCode": "NC",
-      "DisplayText": "NC (not coded)",
-      "VisibleInCoda": true
-    },
-    {
-      "VisibleInCoda": false,
-      "NumericValue": -40,
-      "CodeID": "code-NR-5e3eee23",
-      "CodeType": "Control",
-      "StringValue": "NR",
-      "ControlCode": "NR",
-      "DisplayText": "NR (not reviewed)"
-    },
-    {
-      "NumericValue": -50,
-      "CodeID": "code-NIC-99631cb8",
-      "CodeType": "Control",
-      "StringValue": "NIC",
-      "ControlCode": "NIC",
-      "DisplayText": "NIC (not internally consistent)",
       "VisibleInCoda": false
     },
     {
-      "NumericValue": -90,
-      "CodeID": "code-STOP-08b832a8",
+      "CodeID": "code-NS-2c11b7c9",
       "CodeType": "Control",
-      "StringValue": "STOP",
-      "ControlCode": "STOP",
-      "DisplayText": "STOP",
+      "ControlCode": "NS",
+      "DisplayText": "NS (skip)",
+      "NumericValue": -20,
+      "StringValue": "NS",
+      "VisibleInCoda": false
+    },
+    {
+      "CodeID": "code-NC-42f1d983",
+      "CodeType": "Control",
+      "ControlCode": "NC",
+      "DisplayText": "NC (not coded)",
+      "NumericValue": -30,
+      "StringValue": "NC",
       "VisibleInCoda": true
     },
     {
-      "ControlCode": "WS",
-      "DisplayText": "WS (wrong scheme)",
-      "VisibleInCoda": true,
-      "NumericValue": -100,
+      "CodeID": "code-NR-5e3eee23",
+      "CodeType": "Control",
+      "ControlCode": "NR",
+      "DisplayText": "NR (not reviewed)",
+      "NumericValue": -40,
+      "StringValue": "NR",
+      "VisibleInCoda": false
+    },
+    {
+      "CodeID": "code-NIC-99631cb8",
+      "CodeType": "Control",
+      "ControlCode": "NIC",
+      "DisplayText": "NIC (not internally consistent)",
+      "NumericValue": -50,
+      "StringValue": "NIC",
+      "VisibleInCoda": false
+    },
+    {
+      "CodeID": "code-STOP-08b832a8",
+      "CodeType": "Control",
+      "ControlCode": "STOP",
+      "DisplayText": "STOP",
+      "NumericValue": -90,
+      "StringValue": "STOP",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-WS-adb25603b7af",
       "CodeType": "Control",
-      "StringValue": "WS"
+      "ControlCode": "WS",
+      "DisplayText": "WS (wrong scheme)",
+      "NumericValue": -100,
+      "StringValue": "WS",
+      "VisibleInCoda": true
     },
     {
       "CodeID": "code-CE-016c1e22",
@@ -194,4 +202,3 @@
     }
   ]
 }
-

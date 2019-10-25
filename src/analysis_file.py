@@ -8,7 +8,7 @@ from core_data_modules.traced_data.util import FoldTracedData
 from core_data_modules.util import TimeUtils
 
 from src.lib import PipelineConfiguration, AnalysisKeys
-from src.lib.pipeline_configuration import CodeSchemes
+from src.lib import CodeSchemes
 
 
 class ConsentUtils(object):
@@ -176,7 +176,12 @@ class AnalysisFile(object):
             "radio_magazine_participation_s01mag12",
             "radio_magazine_participation_s01mag13",
             "radio_magazine_participation_s01mag14",
-            "radio_magazine_participation_s01mag15"
+            "radio_magazine_participation_s01mag15",
+            "radio_magazine_participation_s01mag16",
+            "radio_magazine_participation_s01mag17",
+            "radio_magazine_participation_s01mag18",
+            "radio_magazine_participation_s01mag19",
+            "radio_magazine_participation_s01mag20"
         ]
 
         # Export to CSV

@@ -7,9 +7,10 @@ from core_data_modules.cleaners.location_tools import SomaliaLocations
 from core_data_modules.traced_data import Metadata
 from core_data_modules.traced_data.io import TracedDataCodaV2IO
 from core_data_modules.util import TimeUtils
+from core_data_modules.data_models.scheme import CodeTypes
 
 from src.lib import PipelineConfiguration
-from src.lib.pipeline_configuration import CodeSchemes
+from src.lib import CodeSchemes
 
 
 class ApplyManualCodes(object):
@@ -44,7 +45,7 @@ class ApplyManualCodes(object):
 
             # If a control code was found, set all other location keys to that control code,
             # otherwise convert the provided location to the other locations in the hierarchy.
-            if location_code.code_type == "Control":
+            if location_code.code_type == CodeTypes.CONTROL:
                 for plan in PipelineConfiguration.LOCATION_CODING_PLANS:
                     td.append_data({
                         plan.coded_field: CleaningUtils.make_label_from_cleaner_code(
@@ -53,7 +54,17 @@ class ApplyManualCodes(object):
                             Metadata.get_call_location()
                         ).to_dict()
                     }, Metadata(user, Metadata.get_call_location(), time.time()))
+            elif location_code.code_type == CodeTypes.META:
+                for plan in PipelineConfiguration.LOCATION_CODING_PLANS:
+                    td.append_data({
+                        plan.coded_field: CleaningUtils.make_label_from_cleaner_code(
+                            plan.code_scheme,
+                            plan.code_scheme.get_code_with_meta_code(location_code.meta_code),
+                            Metadata.get_call_location()
+                        ).to_dict()
+                    }, Metadata(user, Metadata.get_call_location(), time.time()))
             else:
+                assert location_code.code_type == CodeTypes.NORMAL
                 location = location_code.match_values[0]
 
                 td.append_data({
@@ -200,12 +211,12 @@ class ApplyManualCodes(object):
 
                 td.append_data(nc_dict, Metadata(user, Metadata.get_call_location(), time.time()))
 
-        # Synchronise the control codes between the binary and reasons schemes:
-        # Some RQA datasets have a binary scheme, which is always labelled, and a reasons scheme, which is only labelled
+        # Synchronise the meta and control codes between the binary and reasons schemes:
+        # Some RQA and Follow ups datasets have a binary scheme, which is always labelled, and a reasons scheme, which is only labelled
         # if there is an additional reason given. Importing those two schemes separately above caused the labels in
         # each scheme to go out of sync with each other, e.g. reasons can be NR when the binary *was* reviewed.
         # This block updates the reasons scheme in cases where only a binary label was set, by assigning the
-        # label 'NC' if the binary label was set to a normal code, otherwise to be the same control code as the binary.
+        # label 'NC' if the binary label was set to a normal code, otherwise to be the same control code or meta code as the binary.
         for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
             rqa_and_follow_up_messages = [td for td in data if plan.raw_field in td]
             if plan.binary_code_scheme is not None:
@@ -226,6 +237,18 @@ class ApplyManualCodes(object):
                         if binary_code.code_type == "Control":
                             control_code = binary_code.control_code
                             reasons_code = plan.code_scheme.get_code_with_control_code(control_code)
+
+                            reasons_label = CleaningUtils.make_label_from_cleaner_code(
+                                plan.code_scheme, reasons_code,
+                                Metadata.get_call_location(), origin_name="Pipeline Code Synchronisation")
+
+                            td.append_data(
+                                {plan.coded_field: [reasons_label.to_dict()]},
+                                Metadata(user, Metadata.get_call_location(), TimeUtils.utc_now_as_iso_string())
+                            )
+                        elif binary_code.code_type == "Meta":
+                            meta_code = binary_code.meta_code
+                            reasons_code = plan.code_scheme.get_code_with_meta_code(meta_code)
 
                             reasons_label = CleaningUtils.make_label_from_cleaner_code(
                                 plan.code_scheme, reasons_code,
