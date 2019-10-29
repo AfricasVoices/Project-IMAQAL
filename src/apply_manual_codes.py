@@ -7,7 +7,7 @@ from core_data_modules.cleaners.location_tools import SomaliaLocations
 from core_data_modules.traced_data import Metadata
 from core_data_modules.traced_data.io import TracedDataCodaV2IO
 from core_data_modules.util import TimeUtils
-from core_data_modules.data_models.scheme import CodeTypes
+from core_data_modules.data_models.code_scheme import CodeTypes
 
 from src.lib import PipelineConfiguration
 from src.lib import CodeSchemes
@@ -30,7 +30,7 @@ class ApplyManualCodes(object):
             location_code = None
 
             for plan in PipelineConfiguration.LOCATION_CODING_PLANS:
-                coda_code = plan.code_scheme.get_code_with_id(td[plan.coded_field]["CodeID"])
+                coda_code = plan.code_scheme.get_code_with_code_id(td[plan.coded_field]["CodeID"])
                 if location_code is not None:
                     if not (coda_code.code_id == location_code.code_id or coda_code.control_code == Codes.NOT_REVIEWED):
                         location_code = CodeSchemes.MOGADISHU_SUB_DISTRICT.get_code_with_control_code(
@@ -97,7 +97,7 @@ class ApplyManualCodes(object):
 
             # If the location is not coded, set the zone from the operator
             if location_code.control_code == Codes.NOT_CODED:
-                operator = CodeSchemes.SOMALIA_OPERATOR.get_code_with_id(td["operator_coded"]["CodeID"]).match_values[0]
+                operator = CodeSchemes.SOMALIA_OPERATOR.get_code_with_code_id(td["operator_coded"]["CodeID"]).match_values[0]
                 td.append_data({
                     "zone_coded": CleaningUtils.make_label_from_cleaner_code(
                         CodeSchemes.SOMALIA_ZONE,
@@ -222,7 +222,7 @@ class ApplyManualCodes(object):
             if plan.binary_code_scheme is not None:
                 for td in rqa_and_follow_up_messages:
                     binary_label = td[plan.binary_coded_field]
-                    binary_code = plan.binary_code_scheme.get_code_with_id(binary_label["CodeID"])
+                    binary_code = plan.binary_code_scheme.get_code_with_code_id(binary_label["CodeID"])
 
                     binary_label_present = binary_label["CodeID"] != \
                                            plan.binary_code_scheme.get_code_with_control_code(

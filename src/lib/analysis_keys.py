@@ -10,7 +10,7 @@ class AnalysisKeys(object):
             matrix_d = dict()
 
             for label in td.get(coded_key, []):
-                matrix_d[f"{matrix_prefix}{scheme.get_code_with_id(label['CodeID']).string_value}"] = Codes.MATRIX_1
+                matrix_d[f"{matrix_prefix}{scheme.get_code_with_code_id(label['CodeID']).string_value}"] = Codes.MATRIX_1
 
             for key in all_matrix_keys:
                 if key not in matrix_d:

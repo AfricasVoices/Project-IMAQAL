@@ -28,7 +28,7 @@ class AutoCodeDemogs(object):
         for td in data:
             if "mogadishu_sub_district_coded" in td:
                 mogadishu_code_id = td["mogadishu_sub_district_coded"]["CodeID"]
-                if CodeSchemes.MOGADISHU_SUB_DISTRICT.get_code_with_id(mogadishu_code_id).code_type == "Normal":
+                if CodeSchemes.MOGADISHU_SUB_DISTRICT.get_code_with_code_id(mogadishu_code_id).code_type == "Normal":
                     nc_label = CleaningUtils.make_label_from_cleaner_code(
                         CodeSchemes.MOGADISHU_SUB_DISTRICT,
                         CodeSchemes.MOGADISHU_SUB_DISTRICT.get_code_with_control_code(Codes.NOT_CODED),

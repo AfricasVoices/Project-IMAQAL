@@ -59,10 +59,10 @@ class WSCorrection(object):
             for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
                 rqa_and_follow_up_codes = []
                 for label in td.get(f"{plan.coded_field}_WS", []):
-                    rqa_and_follow_up_codes.append(plan.code_scheme.get_code_with_id(label["CodeID"]))
+                    rqa_and_follow_up_codes.append(plan.code_scheme.get_code_with_code_id(label["CodeID"]))
                 if plan.binary_code_scheme is not None and f"{plan.binary_coded_field}_WS" in td:
                     label = td[f"{plan.binary_coded_field}_WS"]
-                    rqa_and_follow_up_codes.append(plan.binary_code_scheme.get_code_with_id(label["CodeID"]))
+                    rqa_and_follow_up_codes.append(plan.binary_code_scheme.get_code_with_code_id(label["CodeID"]))
 
                 has_ws_code_in_code_scheme = False
                 for code in rqa_and_follow_up_codes:
@@ -71,7 +71,7 @@ class WSCorrection(object):
 
                 has_ws_code_in_ws_scheme = False
                 if f"{plan.coded_field}_WS_correct_dataset" in td:
-                    has_ws_code_in_ws_scheme = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
+                    has_ws_code_in_ws_scheme = CodeSchemes.WS_CORRECT_DATASET.get_code_with_code_id(
                         td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"]).code_type == "Normal"
 
                 if has_ws_code_in_code_scheme != has_ws_code_in_ws_scheme:
@@ -95,12 +95,12 @@ class WSCorrection(object):
 
                 has_ws_code_in_code_scheme = False
                 if f"{plan.coded_field}_WS" in td:
-                    has_ws_code_in_code_scheme = plan.code_scheme.get_code_with_id(
+                    has_ws_code_in_code_scheme = plan.code_scheme.get_code_with_code_id(
                         td[f"{plan.coded_field}_WS"]["CodeID"]).control_code == Codes.WRONG_SCHEME
 
                 has_ws_code_in_ws_scheme = False
                 if f"{plan.coded_field}_WS_correct_dataset" in td:
-                    has_ws_code_in_ws_scheme = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
+                    has_ws_code_in_ws_scheme = CodeSchemes.WS_CORRECT_DATASET.get_code_with_code_id(
                         td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"]).code_type == "Normal"
 
                 if has_ws_code_in_code_scheme != has_ws_code_in_ws_scheme:
@@ -121,7 +121,7 @@ class WSCorrection(object):
             for plan in PipelineConfiguration.LOCATION_CODING_PLANS:
                 if f"{plan.coded_field}_WS" in td:
                     label = td[f"{plan.coded_field}_WS"]
-                    location_codes.append(plan.code_scheme.get_code_with_id(label["CodeID"]))
+                    location_codes.append(plan.code_scheme.get_code_with_code_id(label["CodeID"]))
 
             has_ws_code_in_code_scheme = False
             for code in location_codes:
@@ -131,7 +131,7 @@ class WSCorrection(object):
             has_ws_code_in_ws_scheme = False
             for plan in PipelineConfiguration.LOCATION_CODING_PLANS:
                 if f"{plan.coded_field}_WS_correct_dataset" in td:
-                    if CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
+                    if CodeSchemes.WS_CORRECT_DATASET.get_code_with_code_id(
                             td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"]).code_type == "Normal":
                         has_ws_code_in_ws_scheme = True
 
@@ -183,7 +183,7 @@ class WSCorrection(object):
             for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
                 if plan.raw_field not in td:
                     continue
-                ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
+                ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_code_id(
                     td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"])
                 if ws_code.code_type == "Normal":
                     if ws_code.code_id in ws_code_to_raw_field_map:
@@ -201,7 +201,7 @@ class WSCorrection(object):
                 for plan in PipelineConfiguration.RQA_CODING_PLANS:
                     if plan.raw_field not in td:
                         continue
-                    ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_id(
+                    ws_code = CodeSchemes.WS_CORRECT_DATASET.get_code_with_code_id(
                         td[f"{plan.coded_field}_WS_correct_dataset"]["CodeID"])
                     if ws_code.code_type == "Normal":
                         if ws_code.code_id in ws_code_to_raw_field_map:

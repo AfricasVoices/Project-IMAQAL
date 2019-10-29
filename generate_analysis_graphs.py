@@ -205,12 +205,12 @@ if __name__ == "__main__":
             if msg["consent_withdrawn"] == Codes.TRUE:
                 continue
             if plan.binary_code_scheme is not None:
-                binary_coda_code = plan.binary_code_scheme.get_code_with_id(msg[plan.binary_coded_field]["CodeID"])
-                reason_coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
+                binary_coda_code = plan.binary_code_scheme.get_code_with_code_id(msg[plan.binary_coded_field]["CodeID"])
+                reason_coda_code = plan.code_scheme.get_code_with_code_id(msg[plan.coded_field][0]["CodeID"])
                 if binary_coda_code.code_type == "normal"  or reason_coda_code.code_type == "normal":
                     relevant_uids_per_show[plan.raw_field] += 1
             else:
-                coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
+                coda_code = plan.code_scheme.get_code_with_code_id(msg[plan.coded_field][0]["CodeID"])
                 if coda_code.code_type == "normal":
                     relevant_uids_per_show[plan.raw_field] += 1
     chart = altair.Chart(

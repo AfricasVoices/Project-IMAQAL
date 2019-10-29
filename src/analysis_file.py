@@ -26,7 +26,7 @@ class ConsentUtils(object):
         :rtype: bool
         """
         for plan in coding_plans:
-            if plan.code_scheme.get_code_with_id(td[plan.coded_field]["CodeID"]).control_code == Codes.STOP:
+            if plan.code_scheme.get_code_with_code_id(td[plan.coded_field]["CodeID"]).control_code == Codes.STOP:
                 return True
         return False
 
@@ -102,7 +102,7 @@ class AnalysisFile(object):
         # Convert demog codes to their string values
         for td in data:
             td.append_data(
-                {plan.analysis_file_key: plan.code_scheme.get_code_with_id(td[plan.coded_field]["CodeID"]).string_value
+                {plan.analysis_file_key: plan.code_scheme.get_code_with_code_id(td[plan.coded_field]["CodeID"]).string_value
                  for plan in PipelineConfiguration.DEMOG_CODING_PLANS
                  if plan.analysis_file_key is not None},
                 Metadata(user, Metadata.get_call_location(), time.time())
@@ -111,7 +111,7 @@ class AnalysisFile(object):
         # Convert the operator code to its string value
         for td in data:
             td.append_data(
-                {"operator": CodeSchemes.SOMALIA_OPERATOR.get_code_with_id(
+                {"operator": CodeSchemes.SOMALIA_OPERATOR.get_code_with_code_id(
                     td["operator_coded"]["CodeID"]).string_value},
                 Metadata(user, Metadata.get_call_location(), time.time())
             )
@@ -120,7 +120,7 @@ class AnalysisFile(object):
         for td in data:
             td.append_data(
                 {plan.binary_analysis_file_key:
-                     plan.binary_code_scheme.get_code_with_id(td[plan.binary_coded_field]["CodeID"]).string_value
+                     plan.binary_code_scheme.get_code_with_code_id(td[plan.binary_coded_field]["CodeID"]).string_value
                  for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS if
                  plan.binary_code_scheme is not None},
                 Metadata(user, Metadata.get_call_location(), time.time())
