@@ -45,6 +45,7 @@ class CodeSchemes(object):
     S01MAG18 = _open_scheme("s01mag18.json")
     S01MAG19 = _open_scheme("s01mag19.json")
     S01MAG20 = _open_scheme("s01mag20.json")
+    S01MAG20_YES_NO_AMB = _open_scheme('s01mag20_yes_no_amb.json')
 
     S02E08 = _open_scheme("s02e08.json")
     S02E09 = _open_scheme("s02e09.json")
