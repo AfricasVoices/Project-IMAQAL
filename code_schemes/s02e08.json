@@ -3,7 +3,78 @@
   "Name": "S02E08",
   "Version": "0.0.0.1",
   "Codes": [
-
+    {
+      "CodeID": "code-5f175696",
+      "CodeType": "Normal",
+      "DisplayText": "create awareness",
+      "NumericValue": 0,
+      "StringValue": "create_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-c6375bdd",
+      "CodeType": "Normal",
+      "DisplayText": "opportunities for the youth",
+      "NumericValue": 1,
+      "StringValue": "opportunities_for_the_youth",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-c8e38522",
+      "CodeType": "Normal",
+      "DisplayText": "ensure fairness and equality",
+      "NumericValue": 2,
+      "StringValue": "ensure_fairness_and_equality",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-d81e0b52",
+      "CodeType": "Normal",
+      "DisplayText": "consultation or inclusion in decision making",
+      "NumericValue": 3,
+      "StringValue": "consultation_or_inclusion_in_decision_making",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-129eb72c",
+      "CodeType": "Normal",
+      "DisplayText": "stop discrimination or clannism",
+      "NumericValue": 4,
+      "StringValue": "stop_discrimination_or_clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-da1956f3",
+      "CodeType": "Normal",
+      "DisplayText": "fight corruption",
+      "NumericValue": 5,
+      "StringValue": "fight_corruption",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-61aed2fb",
+      "CodeType": "Normal",
+      "DisplayText": "prioritize education",
+      "NumericValue": 6,
+      "StringValue": "prioritize_education",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-0a988504",
+      "CodeType": "Normal",
+      "DisplayText": "encouragement",
+      "NumericValue": 7,
+      "StringValue": "encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-2b888dbd",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 8,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
