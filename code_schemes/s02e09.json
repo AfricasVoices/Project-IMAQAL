@@ -3,7 +3,118 @@
   "Name": "S02E09",
   "Version": "0.0.0.1",
   "Codes": [
-
+    {
+      "CodeID": "code-a9873d15",
+      "CodeType": "Normal",
+      "DisplayText": "women are the backbone of the society",
+      "NumericValue": 0,
+      "StringValue": "women_are_the_backbone_of_the_society",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-26669d3c",
+      "CodeType": "Normal",
+      "DisplayText": "women have a role to play",
+      "NumericValue": 1,
+      "StringValue": "women_have_a_role_to_play",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-2d2a34f8",
+      "CodeType": "Normal",
+      "DisplayText": "women are part of the community",
+      "NumericValue": 2,
+      "StringValue": "women_are_part_of_the_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-06dc6ff2",
+      "CodeType": "Normal",
+      "DisplayText": "community is aware",
+      "NumericValue": 3,
+      "StringValue": "community_is_aware",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e691a12e",
+      "CodeType": "Normal",
+      "DisplayText": "creation of awareness",
+      "NumericValue": 4,
+      "StringValue": "creation_of_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-0ace6e70",
+      "CodeType": "Normal",
+      "DisplayText": "affects the whole community",
+      "NumericValue": 5,
+      "StringValue": "affects_the_whole_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-bbe9df8d",
+      "CodeType": "Normal",
+      "DisplayText": "rape",
+      "NumericValue": 6,
+      "StringValue": "rape",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-3f09822c",
+      "CodeType": "Normal",
+      "DisplayText": "lack of awareness",
+      "NumericValue": 7,
+      "StringValue": "lack_of_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-b87dd616",
+      "CodeType": "Normal",
+      "DisplayText": "violation of women's rights",
+      "NumericValue": 8,
+      "StringValue": "violation_of_women_s_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ce661fdb",
+      "CodeType": "Normal",
+      "DisplayText": "discrimination",
+      "NumericValue": 9,
+      "StringValue": "discrimination",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-368fe46b",
+      "CodeType": "Normal",
+      "DisplayText": "the community doesn't understand women",
+      "NumericValue": 10,
+      "StringValue": "the_community_doesn_t_understand_women",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-f4de8869",
+      "CodeType": "Normal",
+      "DisplayText": "exclusion",
+      "NumericValue": 11,
+      "StringValue": "exclusion",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-f9b8b888",
+      "CodeType": "Normal",
+      "DisplayText": "lack of justice",
+      "NumericValue": 12,
+      "StringValue": "lack_of_justice",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-a0403022",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 13,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
