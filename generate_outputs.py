@@ -10,7 +10,7 @@ from storage.google_cloud import google_cloud_utils
 from storage.google_drive import drive_client_wrapper
 
 from src import CombineRawDatasets, TranslateRapidProKeys, \
-    AutoCodeShowAndFollowupsMessages, ProductionFile, AutoCodeDemogs, ApplyManualCodes, AnalysisFile, WSCorrection
+    AutoCode, ProductionFile, ApplyManualCodes, AnalysisFile, WSCorrection
 
 from src.lib import PipelineConfiguration
 
@@ -126,37 +126,23 @@ if __name__ == "__main__":
             recovery_datasets.append(messages)
 
     # Load Follow up Surveys
-    follow_up_survey_datasets = []
-    for i, follow_up_name in enumerate(pipeline_configuration.follow_up_flow_names):
-        raw_follow_up_path = f"{raw_data_dir}/{follow_up_name}.jsonl"
-        log.info(f"Loading {raw_follow_up_path}...")
-        with open(raw_follow_up_path, "r") as f:
-            messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-        log.info(f"Loaded {len(messages)} runs")
-        follow_up_survey_datasets.append(messages)
-
-    log.info("Loading demographics")
-    demog_datasets = []
-    for i, demog_flow_name in enumerate(pipeline_configuration.demog_flow_names):
-        raw_demog_path = f"{raw_data_dir}/{demog_flow_name}.jsonl"
-        log.info(f"Loading {raw_demog_path}...")
-        with open(raw_demog_path, "r") as f:
+    log.info("Loading demographics and follow up surveys")
+    survey_datasets = []
+    for i, survey_flow_name in enumerate(pipeline_configuration.survey_flow_names):
+        raw_survey_up_path = f"{raw_data_dir}/{survey_flow_name}.jsonl"
+        log.info(f"Loading {raw_survey_up_path}...")
+        with open(raw_survey_up_path, "r") as f:
             contacts = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
         log.info(f"Loaded {len(contacts)} contacts")
-        demog_datasets.append(contacts)
+        survey_datasets.append(contacts)
 
     # Add survey data to the messages
     log.info("Combining Datasets...")
-    coalesced_demog_datasets = []
-    for dataset in demog_datasets:
-        coalesced_demog_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
+    coalesced_survey_datasets = []
+    for dataset in survey_datasets:
+        coalesced_survey_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
 
-    coalesced_follow_up_datasets = []
-    for dataset in follow_up_survey_datasets:
-        coalesced_follow_up_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
-
-    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_follow_up_datasets,
-                                                   coalesced_demog_datasets)
+    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_survey_datasets)
 
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
@@ -183,14 +169,11 @@ if __name__ == "__main__":
         log.info("Not moving WS messages (because the 'MoveWSMessages' key in the pipeline configuration "
                  "json was set to 'false')")
 
-    log.info("Auto Coding Shows and Follow ups Messages...")
-    data = AutoCodeShowAndFollowupsMessages.auto_code_show_and_followups_messages(user, data, icr_output_dir,
-                                                                                  coded_dir_path)
+    log.info("Auto Coding Messages...")
+    data = AutoCode.auto_code(user, data, phone_number_uuid_table, icr_output_dir, coded_dir_path)
+
     log.info("Exporting production CSV...")
     data = ProductionFile.generate(data, production_csv_output_path)
-
-    log.info("Auto Coding Demogs...")
-    data = AutoCodeDemogs.auto_code_demogs(user, data, phone_number_uuid_table, coded_dir_path)
 
     if pipeline_run_mode == "all-stages":
         log.info("Running post labelling pipeline stages...")
@@ -199,7 +182,7 @@ if __name__ == "__main__":
 
         log.info("Generating Analysis CSVs...")
         messages_data, individuals_data = AnalysisFile.generate(user, data, csv_by_message_output_path,
-                                                            csv_by_individual_output_path)
+                                                                csv_by_individual_output_path)
 
         log.info("Writing messages TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(messages_json_output_path)

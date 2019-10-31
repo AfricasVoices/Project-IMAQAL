@@ -12,6 +12,7 @@ from storage.google_cloud import google_cloud_utils
 from storage.google_drive import drive_client_wrapper
 
 from src.lib import PipelineConfiguration
+from src.lib.pipeline_configuration import CodingModes
 
 Logger.set_project_name("IMAQAL")
 log = Logger(__name__)
@@ -26,15 +27,14 @@ if __name__ == "__main__":
                         help="Path to a Google Cloud service account credentials file to use to access the "
                              "credentials bucket")
     parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
-                        help="Path to the pipeline configuration json file"),
+                       help="Path to the pipeline configuration json file")
 
     parser.add_argument("messages_json_input_path", metavar="messages-json-input-path",
-                        help="Path to a JSON file to read the TracedData of the messages data from")
+                        help="Path to a JSONL file to read the TracedData of the messages data from")
     parser.add_argument("individuals_json_input_path", metavar="individuals-json-input-path",
-                        help="Path to a JSON file to read the TracedData of the messages data from")
+                        help="Path to a JSONL file to read the TracedData of the messages data from")
     parser.add_argument("output_dir", metavar="output-dir",
                         help="Directory to write the output graphs to")
-
 
     args = parser.parse_args()
 
@@ -78,6 +78,9 @@ if __name__ == "__main__":
     elif pipeline_configuration.pipeline_name == "q5_pipeline":
         log.info("Running Q5 pipeline")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q5_RQA_CODING_PLANS
+    elif pipeline_configuration.pipeline_name == "q6_pipeline":
+        log.info("Running Q6 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q6_RQA_CODING_PLANS
     else:
         assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
         log.info("Running full Pipeline")
@@ -128,59 +131,26 @@ if __name__ == "__main__":
     chart.save(f"{output_dir}/individuals_per_show.png", scale_factor=IMG_SCALE_FACTOR)
 
     # Plot the per-season distribution of responses for each survey question, per individual
-    for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
-        if plan.analysis_file_key is None:
-            continue
+    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS +\
+                PipelineConfiguration.RQA_CODING_PLANS:
+        for cc in plan.coding_configurations:
+            if cc.analysis_file_key is None:
+                continue
 
-        log.info(f"Graphing the distribution of codes for {plan.analysis_file_key}...")
-        label_counts = OrderedDict()
-        for code in plan.code_scheme.codes:
-            label_counts[code.string_value] = 0
-
-        for ind in individuals:
-            label_counts[ind[plan.analysis_file_key]] += 1
-
-        chart = altair.Chart(
-            altair.Data(values=[{"label": k, "count": v} for k, v in label_counts.items()])
-        ).mark_bar().encode(
-            x=altair.X("label:N", title="Label", sort=list(label_counts.keys())),
-            y=altair.Y("count:Q", title="Number of Individuals")
-        ).properties(
-            title=f"Season Distribution: {plan.analysis_file_key}"
-        )
-        chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.html")
-        chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.png", scale_factor=IMG_SCALE_FACTOR)
-
-    # Plot the per-season distribution of responses for each RQA and Follow up question, per individual
-    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-        log.info(f"Graphing the distribution of codes for {plan.analysis_file_key}...")
-        label_counts = OrderedDict()
-        for code in plan.code_scheme.codes:
-            label_counts[code.string_value] = 0
-
-        for ind in individuals:
-            for code in plan.code_scheme.codes:
-                if ind[f'{plan.analysis_file_key}{code.string_value}'] == Codes.MATRIX_1:
-                    label_counts[code.string_value] += 1
-
-        chart = altair.Chart(
-            altair.Data(values=[{"label": k, "count": v} for k, v in label_counts.items()])
-        ).mark_bar().encode(
-            x=altair.X("label:N", title="Label", sort=list(label_counts.keys())),
-            y=altair.Y("count:Q", title="Number of Individuals")
-        ).properties(
-            title=f"Season Distribution: {plan.analysis_file_key}"
-        )
-        chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.html")
-        chart.save(f"{output_dir}/season_distribution_{plan.analysis_file_key}.png", scale_factor=IMG_SCALE_FACTOR)
-
-        if plan.binary_code_scheme is not None:
+            log.info(f"Graphing the distribution of codes for {cc.analysis_file_key}...")
             label_counts = OrderedDict()
-            for code in plan.binary_code_scheme.codes:
+            for code in cc.code_scheme.codes:
                 label_counts[code.string_value] = 0
 
-            for ind in individuals:
-                label_counts[ind[plan.binary_analysis_file_key]] += 1
+            if cc.coding_mode == CodingModes.SINGLE:
+                for ind in individuals:
+                    label_counts[ind[cc.analysis_file_key]] += 1
+            else:
+                assert cc.coding_mode == CodingModes.MULTIPLE
+                for ind in individuals:
+                    for code in cc.code_scheme.codes:
+                        if ind[f"{cc.analysis_file_key}{code.string_value}"] == Codes.MATRIX_1:
+                            label_counts[code.string_value] += 1
 
             chart = altair.Chart(
                 altair.Data(values=[{"label": k, "count": v} for k, v in label_counts.items()])
@@ -188,41 +158,12 @@ if __name__ == "__main__":
                 x=altair.X("label:N", title="Label", sort=list(label_counts.keys())),
                 y=altair.Y("count:Q", title="Number of Individuals")
             ).properties(
-                title=f"Season Distribution: {plan.binary_analysis_file_key}"
+                title=f"Season Distribution: {cc.analysis_file_key}"
             )
-            chart.save(f"{output_dir}/season_distribution_{plan.binary_analysis_file_key}.html")
-            chart.save(f"{output_dir}/season_distribution_{plan.binary_analysis_file_key}.png",
-                       scale_factor=IMG_SCALE_FACTOR)
+            chart.save(f"{output_dir}/season_distribution_{cc.analysis_file_key}.html")
+            chart.save(f"{output_dir}/season_distribution_{cc.analysis_file_key}.png", scale_factor=IMG_SCALE_FACTOR)
 
-    # Compute the number of UIDs with manually labelled relevant messages per show
-    log.info("Graphing the No. of UIDs with relevant messages per show...")
-    relevant_uids_per_show = {}
-
-    for plan in PipelineConfiguration.RQA_CODING_PLANS:
-        relevant_uids_per_show[plan.raw_field] = 0
-    for msg in messages:
-        for plan in PipelineConfiguration.RQA_CODING_PLANS:
-            if msg["consent_withdrawn"] == Codes.TRUE:
-                continue
-            if plan.binary_code_scheme is not None:
-                binary_coda_code = plan.binary_code_scheme.get_code_with_id(msg[plan.binary_coded_field]["CodeID"])
-                reason_coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
-                if binary_coda_code.code_type == "normal"  or reason_coda_code.code_type == "normal":
-                    relevant_uids_per_show[plan.raw_field] += 1
-            else:
-                coda_code = plan.code_scheme.get_code_with_id(msg[plan.coded_field][0]["CodeID"])
-                if coda_code.code_type == "normal":
-                    relevant_uids_per_show[plan.raw_field] += 1
-    chart = altair.Chart(
-        altair.Data(values=[{"show": k, "count": v} for k, v in relevant_uids_per_show.items()])
-    ).mark_bar().encode(
-        x=altair.X("show:N", title="Show", sort=list(relevant_uids_per_show.keys())),
-        y=altair.Y("count:Q", title="Number of UID(s)")
-    ).properties(
-        title="UIDs with relevant messages per Show"
-    )
-    chart.save(f"{output_dir}/relevant_uid_per_show.html")
-    chart.save(f"{output_dir}/relevant_uid_per_show.png", scale_factor=IMG_SCALE_FACTOR)
+    #TODO: refactor relevant messages per show and add it back
 
     if pipeline_configuration.drive_upload is not None:
         log.info("Uploading graphs to Drive...")
