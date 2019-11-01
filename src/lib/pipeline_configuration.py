@@ -792,53 +792,6 @@ class PipelineConfiguration(object):
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
 
-    LOCATION_CODING_PLANS = [
-        CodingPlan(raw_field="location_raw",
-                   time_field="location_time",
-                   coda_filename="location.json",
-                   coding_configurations=[
-                       CodingConfiguration(
-                           coding_mode=CodingModes.SINGLE,
-                           code_scheme=CodeSchemes.MOGADISHU_SUB_DISTRICT,
-                           folding_mode=FoldingModes.ASSERT_EQUAL,
-                           cleaner=somali.DemographicCleaner.clean_mogadishu_sub_district,
-                           coded_field="mogadishu_sub_district_coded"
-                       ),
-                       CodingConfiguration(
-                           coding_mode=CodingModes.SINGLE,
-                           code_scheme=CodeSchemes.SOMALIA_DISTRICT,
-                           cleaner=somali.DemographicCleaner.clean_somalia_district,
-                           folding_mode=FoldingModes.ASSERT_EQUAL,
-                           coded_field="district_coded",
-                           analysis_file_key="district"
-                       ),
-                       CodingConfiguration(
-                           coding_mode=CodingModes.SINGLE,
-                           code_scheme=CodeSchemes.SOMALIA_REGION,
-                           folding_mode=FoldingModes.ASSERT_EQUAL,
-                           coded_field="region_coded",
-                           analysis_file_key="region",
-                       ),
-                       CodingConfiguration(
-                           coding_mode=CodingModes.SINGLE,
-                           code_scheme=CodeSchemes.SOMALIA_STATE,
-                           folding_mode=FoldingModes.ASSERT_EQUAL,
-                           coded_field="state_coded",
-                           analysis_file_key="state"
-                       ),
-                       CodingConfiguration(
-                           coding_mode=CodingModes.SINGLE,
-                           code_scheme=CodeSchemes.SOMALIA_ZONE,
-                           folding_mode=FoldingModes.ASSERT_EQUAL,
-                           coded_field="zone_coded",
-                           analysis_file_key="zone",
-                       )
-                   ],
-                   code_imputation_function=code_imputation_functions.impute_somalia_location_codes,
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
-                   raw_field_folding_mode=FoldingModes.ASSERT_EQUAL),
-    ]
-
     @staticmethod
     def clean_age_with_range_filter(text):
         """
@@ -849,6 +802,14 @@ class PipelineConfiguration(object):
             return str(age)
             # TODO: Once the cleaners are updated to not return Codes.NOT_CODED, this should be updated to still return
             #       NC in the case where age is an int but is out of range
+        else:
+            return Codes.NOT_CODED
+
+    @staticmethod
+    def clean_district_if_no_mogadishu_sub_district(text):
+        mogadishu_sub_district = somali.DemographicCleaner.clean_mogadishu_sub_district(text)
+        if mogadishu_sub_district == Codes.NOT_CODED:
+            return somali.DemographicCleaner.clean_somalia_district(text)
         else:
             return Codes.NOT_CODED
 
@@ -915,9 +876,53 @@ class PipelineConfiguration(object):
                    ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("hh language"),
                    raw_field_folding_mode=FoldingModes.ASSERT_EQUAL),
+
+        CodingPlan(raw_field="location_raw",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.MOGADISHU_SUB_DISTRICT,
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           cleaner=somali.DemographicCleaner.clean_mogadishu_sub_district,
+                           coded_field="mogadishu_sub_district_coded"
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.SOMALIA_DISTRICT,
+                           cleaner=lambda text: PipelineConfiguration.clean_district_if_no_mogadishu_sub_district(text),
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           coded_field="district_coded",
+                           analysis_file_key="district"
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.SOMALIA_REGION,
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           coded_field="region_coded",
+                           analysis_file_key="region",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.SOMALIA_STATE,
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           coded_field="state_coded",
+                           analysis_file_key="state"
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.SOMALIA_ZONE,
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           coded_field="zone_coded",
+                           analysis_file_key="zone",
+                       )
+                   ],
+                   code_imputation_function=code_imputation_functions.impute_somalia_location_codes,
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
+                   raw_field_folding_mode=FoldingModes.ASSERT_EQUAL)
     ]
 
-    DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, survey_flow_names,
                  rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
