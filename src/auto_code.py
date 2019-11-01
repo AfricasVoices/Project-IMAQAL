@@ -168,7 +168,7 @@ class AutoCode(object):
 
     @classmethod
     def auto_code(cls, user, data, phone_number_uuid_table, icr_output_dir, coda_output_dir):
-        data = cls.filter_messages(user, data,)
+        data = cls.filter_messages(user, data)
 
         cls.run_cleaners(user,phone_number_uuid_table, data)
         cls.export_coda(user, data, coda_output_dir)
