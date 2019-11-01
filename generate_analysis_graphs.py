@@ -132,7 +132,7 @@ if __name__ == "__main__":
 
     # Plot the per-season distribution of responses for each survey question, per individual
     for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS +\
-                PipelineConfiguration.RQA_CODING_PLANS:
+                PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
         for cc in plan.coding_configurations:
             if cc.analysis_file_key is None:
                 continue
