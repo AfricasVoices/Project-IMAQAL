@@ -27,7 +27,7 @@ if __name__ == "__main__":
                         help="Path to a Google Cloud service account credentials file to use to access the "
                              "credentials bucket")
     parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
-                       help="Path to the pipeline configuration json file")
+                        help="Path to the pipeline configuration json file")
 
     parser.add_argument("messages_json_input_path", metavar="messages-json-input-path",
                         help="Path to a JSONL file to read the TracedData of the messages data from")
