@@ -105,20 +105,6 @@ class AutoCode(object):
                     CleaningUtils.apply_cleaner_to_traced_data_iterable(user, data, plan.raw_field, cc.coded_field,
                                                                         cc.cleaner, cc.code_scheme)
 
-            # For any locations where the cleaners assigned a code to a sub district, set the district code to NC
-            # (this is because only one column should have a value set in Coda)
-            for td in data:
-                if "mogadishu_sub_district_coded" in td:
-                    mogadishu_code_id = td["mogadishu_sub_district_coded"]["CodeID"]
-                    if CodeSchemes.MOGADISHU_SUB_DISTRICT.get_code_with_id(mogadishu_code_id).code_type == "Normal":
-                        nc_label = CleaningUtils.make_label_from_cleaner_code(
-                            CodeSchemes.MOGADISHU_SUB_DISTRICT,
-                            CodeSchemes.MOGADISHU_SUB_DISTRICT.get_code_with_control_code(Codes.NOT_CODED),
-                            Metadata.get_call_location(),
-                        )
-                        td.append_data({"district_coded": nc_label.to_dict()},
-                                       Metadata(user, Metadata.get_call_location(), time.time()))
-
         # Create a look-up table of uuids to phone numbers for all the uuids in the dataset
         uuids = set()
         for td in data:
