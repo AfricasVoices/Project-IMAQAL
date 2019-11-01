@@ -62,7 +62,7 @@ class MessageFilters(object):
                           The values must be strings in ISO 8601 format.
         :type time_keys: set of str
         :param start_time_inclusive: Inclusive start time of the time range to keep.
-                           Messages sent before this time will be dropped.
+                                     Messages sent before this time will be dropped.
         :type start_time_inclusive: datetime.datetime
         :param end_time_inclusive: Exclusive end time of the time range to keep.
                          Messages sent after this time will be dropped.
