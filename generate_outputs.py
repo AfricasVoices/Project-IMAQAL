@@ -169,7 +169,7 @@ if __name__ == "__main__":
         log.info("Not moving WS messages (because the 'MoveWSMessages' key in the pipeline configuration "
                  "json was set to 'false')")
 
-    log.info("Auto Coding Messages...")
+    log.info("Auto Coding...")
     data = AutoCode.auto_code(user, data, phone_number_uuid_table, icr_output_dir, coded_dir_path)
 
     log.info("Exporting production CSV...")
