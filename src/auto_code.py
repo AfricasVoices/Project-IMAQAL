@@ -75,6 +75,10 @@ class AutoCode(object):
         data = MessageFilters.filter_time_range(data, time_keys, PipelineConfiguration.PROJECT_START_DATE,
                                                 PipelineConfiguration.PROJECT_END_DATE)
 
+        return data
+
+    @classmethod
+    def tag_noise(cls, user, data):
         # Tag RQA messages which are noise as being noise
         rqa_keys = []
         for plan in PipelineConfiguration.RQA_CODING_PLANS:
@@ -86,15 +90,6 @@ class AutoCode(object):
                 if rqa_key in td and not somali.DemographicCleaner.is_noise(td[rqa_key], min_length=10):
                     is_noise = False
             td.append_data({cls.NOISE_KEY: is_noise}, Metadata(user, Metadata.get_call_location(), time.time()))
-
-
-        # Filter for messages which aren't noise (in order to export to Coda and export for ICR)
-        data = MessageFilters.filter_noise(data, cls.NOISE_KEY, lambda x: x)
-
-        # Label each message with channel keys
-        Channels.set_channel_keys(user, data, cls.SENT_ON_KEY)
-
-        return data
 
     @classmethod
     def run_cleaners(cls, user, phone_number_uuid_table, data):
@@ -130,10 +125,23 @@ class AutoCode(object):
                            Metadata(user, Metadata.get_call_location(), time.time()))
 
     @classmethod
-    def export_coda(cls, user, data, coda_output_dir):
+    def export_coda(cls, user, data, not_noise, coda_output_dir):
         IOUtils.ensure_dirs_exist(coda_output_dir)
-        for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS + \
-                    PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+        for plan in PipelineConfiguration.RQA_CODING_PLANS:
+            if plan.coda_filename is None:
+                continue
+
+            TracedDataCodaV2IO.compute_message_ids(user, not_noise, plan.raw_field, plan.id_field)
+
+            coda_output_path = path.join(coda_output_dir, plan.coda_filename)
+            with open(coda_output_path, "w") as f:
+                TracedDataCodaV2IO.export_traced_data_iterable_to_coda_2(
+                    not_noise, plan.raw_field, plan.time_field, plan.id_field,
+                    {cc.coded_field: cc.code_scheme for cc in plan.coding_configurations},
+                    f
+                )
+
+        for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
             if plan.coda_filename is None:
                 continue
 
@@ -170,10 +178,19 @@ class AutoCode(object):
     def auto_code(cls, user, data, phone_number_uuid_table, icr_output_dir, coda_output_dir):
         data = cls.filter_messages(user, data)
 
-        cls.run_cleaners(user,phone_number_uuid_table, data)
-        cls.export_coda(user, data, coda_output_dir)
+        # TODO: Reactivate if requested to compare TV intervention and radio engagement in s02Magazine(December 2019)
+        # Label each message with channel keys
+        # Channels.set_channel_keys(user, data, cls.SENT_ON_KEY)
+
+        cls.run_cleaners(user, phone_number_uuid_table, data)
+
+        cls.tag_noise(user, data)
+
+        # Filter for messages which aren't noise (in order to export to Coda and export for ICR)
+        not_noise = MessageFilters.filter_noise(data, cls.NOISE_KEY, lambda x: x)
+
+        cls.export_coda(user, data, not_noise, coda_output_dir)
         cls.export_icr(data, icr_output_dir)
         cls.log_empty_string_stats(data)
 
         return data
-
