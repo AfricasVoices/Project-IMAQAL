@@ -1,4 +1,5 @@
 import time
+import sys
 from os import path
 
 from core_data_modules.cleaners import Codes
@@ -74,6 +75,8 @@ class ApplyManualCodes(object):
 
     @classmethod
     def apply_manual_codes(cls, user, data, coda_input_dir):
+        # TODO: Investigate/address the cause of this.
+        sys.setrecursionlimit(15000)
         # Merge manually coded data into the cleaned dataset
         for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS +\
                     PipelineConfiguration.DEMOG_CODING_PLANS:
