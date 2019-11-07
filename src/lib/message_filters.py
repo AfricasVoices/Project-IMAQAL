@@ -72,9 +72,8 @@ class MessageFilters(object):
         """
         # De-duplicate time_keys
         assert isinstance(time_keys, set)
-        time_keys = time_keys
 
-        # Validate the input data
+        # Validate the input data to ensure that each message object only contains one of the time_keys.
         for td in messages:
             matching_time_keys = 0
             for time_key in time_keys:
