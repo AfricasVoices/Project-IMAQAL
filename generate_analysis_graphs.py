@@ -131,7 +131,7 @@ if __name__ == "__main__":
     chart.save(f"{output_dir}/individuals_per_show.png", scale_factor=IMG_SCALE_FACTOR)
 
     # Plot the per-season distribution of responses for each survey question, per individual
-    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS +\
+    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS + \
                 PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
         for cc in plan.coding_configurations:
             if cc.analysis_file_key is None:
