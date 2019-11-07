@@ -126,6 +126,7 @@ class AutoCode(object):
 
     @classmethod
     def export_coda(cls, user, data, not_noise, coda_output_dir):
+        #Exporting not_noise rqa Coda files for manual labelling and verification
         IOUtils.ensure_dirs_exist(coda_output_dir)
         for plan in PipelineConfiguration.RQA_CODING_PLANS:
             if plan.coda_filename is None:
@@ -141,6 +142,7 @@ class AutoCode(object):
                     f
                 )
 
+        #Exporting survey Coda files for manual labelling and verification
         for plan in PipelineConfiguration.DEMOG_CODING_PLANS + PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
             if plan.coda_filename is None:
                 continue
