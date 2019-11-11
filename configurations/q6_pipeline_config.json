@@ -29,7 +29,9 @@
     "imaqal_s01_follow_up_w2",
     "mag_s01_w8_follow_up",
     "mag_s01_w10_follow_up",
-    "mag_s01_w18_follow_up"
+    "mag_s01_w18_follow_up",
+    "imaqal_s02_w22_follow_up",
+    "imaqal_s02_w24_follow_up"
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
@@ -66,6 +68,8 @@
     {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Young_People (Time) - mag_s01_w10_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Decisions_Minority_Clan (Time) - mag_s01_w18_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Time) - imaqal_s01_follow_up_w22", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Time) - imaqal_s01_follow_up_w24", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
@@ -85,7 +89,11 @@
     {"RapidProKey": "Young_People (Value) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_raw"},
     {"RapidProKey": "Young_People (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"},
     {"RapidProKey": "Decisions_Minority_Clan (Value) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_raw"},
-    {"RapidProKey": "Decisions_Minority_Clan (Run ID) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_run_id"}
+    {"RapidProKey": "Decisions_Minority_Clan (Run ID) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_run_id"},
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Value) - imaqal_s01_follow_up_w22", "PipelineKey": "women_decision_making_opportunities_raw"},
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Run ID) - imaqal_s01_follow_up_w22", "PipelineKey": "women_decision_making_opportunities_run_id"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Value) - imaqal_s01_follow_up_w24", "PipelineKey": "idps_decision_making_opportunities_raw"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Run ID) - imaqal_s01_follow_up_w24", "PipelineKey": "idps_decision_making_opportunities_run_id"}
   ],
   "PipelineName": "q6_pipeline",
   "MoveWSMessages": false,
