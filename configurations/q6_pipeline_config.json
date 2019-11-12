@@ -7,9 +7,6 @@
     "45939459-e4d5-4ad6-8650-3e7134b9a035"
   ],
   "RecoveryCSVURLs": [
-    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_drama_s01e06_de_identified.csv",
-    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_15_de_identified.csv",
-    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_15_wednesday_de_identified.csv"
   ],
   "PhoneNumberUuidTable": {
     "FirebaseCredentialsFileURL": "gs://avf-credentials/avf-id-infrastructure-firebase-adminsdk-6xps8-b9173f2bfd.json",
@@ -68,8 +65,8 @@
     {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Young_People (Time) - mag_s01_w10_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Decisions_Minority_Clan (Time) - mag_s01_w18_follow_up", "PipelineKey": "sent_on"},
-    {"RapidProKey": "Women_Decision_Making_Opportunities (Time) - imaqal_s01_follow_up_w22", "PipelineKey": "sent_on"},
-    {"RapidProKey": "Idps_Decision_Making_Opportunities (Time) - imaqal_s01_follow_up_w24", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Time) - imaqal_s02_w22_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Time) - imaqal_s02_w24_follow_up", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
@@ -90,10 +87,10 @@
     {"RapidProKey": "Young_People (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"},
     {"RapidProKey": "Decisions_Minority_Clan (Value) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_raw"},
     {"RapidProKey": "Decisions_Minority_Clan (Run ID) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_run_id"},
-    {"RapidProKey": "Women_Decision_Making_Opportunities (Value) - imaqal_s01_follow_up_w22", "PipelineKey": "women_decision_making_opportunities_raw"},
-    {"RapidProKey": "Women_Decision_Making_Opportunities (Run ID) - imaqal_s01_follow_up_w22", "PipelineKey": "women_decision_making_opportunities_run_id"},
-    {"RapidProKey": "Idps_Decision_Making_Opportunities (Value) - imaqal_s01_follow_up_w24", "PipelineKey": "idps_decision_making_opportunities_raw"},
-    {"RapidProKey": "Idps_Decision_Making_Opportunities (Run ID) - imaqal_s01_follow_up_w24", "PipelineKey": "idps_decision_making_opportunities_run_id"}
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Value) - imaqal_s02_w22_follow_up", "PipelineKey": "women_decision_making_opportunities_raw"},
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Run ID) - imaqal_s02_w22_follow_up", "PipelineKey": "women_decision_making_opportunities_run_id"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Value) - imaqal_s02_w24_follow_up", "PipelineKey": "idps_decision_making_opportunities_raw"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Run ID) - imaqal_s02_w24_follow_up", "PipelineKey": "idps_decision_making_opportunities_run_id"}
   ],
   "PipelineName": "q6_pipeline",
   "MoveWSMessages": false,
