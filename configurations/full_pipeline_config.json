@@ -13,7 +13,7 @@
     "TableName": "IMAQAL"
   },
   "ActivationFlowNames": [
-    "mag_s01e15_activation"
+    "mag_s01e16_activation"
   ],
   "SurveyFlowNames":[
     "imaqal_demog"
