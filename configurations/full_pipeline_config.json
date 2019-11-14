@@ -6,48 +6,18 @@
     "3903ad8e-284e-48a0-881b-89c0b06b9334",
     "45939459-e4d5-4ad6-8650-3e7134b9a035"
   ],
-  "RecoveryCSVURLs": ["gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_drama_s01e06_de_identified.csv",
-    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_15_de_identified.csv",
-    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_15_wednesday_de_identified.csv"],
+  "RecoveryCSVURLs": [
+    ],
   "PhoneNumberUuidTable": {
     "FirebaseCredentialsFileURL": "gs://avf-credentials/avf-id-infrastructure-firebase-adminsdk-6xps8-b9173f2bfd.json",
     "TableName": "IMAQAL"
   },
   "ActivationFlowNames": [
-    "imaqal_s01e01_activation",
-    "imaqal_s01e02_activation",
-    "imaqal_s01e03_activation",
-    "imaqal_s01e04_activation",
-    "imaqal_s01e05_activation",
-    "imaqal_s01e06_activation",
-    "imaqal_s01e07_activation",
-    "mag_s01e03_activation",
-    "mag_s01e04_activation",
-    "mag_s01e05_activation",
-    "mag_s01e06_activation",
-    "mag_s01e07_activation",
-    "mag_s01e08_activation",
-    "mag_s01e09_activation",
-    "mag_s01e10_activation",
-    "mag_s01e11_activation",
-    "mag_s01e12_activation",
-    "mag_s01e13_activation",
-    "mag_s01e14_activation",
-    "mag_s01e15_activation",
-    "mag_s01e16_activation",
-    "mag_s01e17_activation",
-    "mag_s01e18_activation",
-    "mag_s01e19_activation",
-    "mag_s01e20_activation"
+    "mag_s01e10_activation"
   ],
   "SurveyFlowNames":[
-    "imaqal_demog",
-    "imaqal_s01_follow_up_w2",
-    "mag_s01_w8_follow_up",
-    "mag_s01_w10_follow_up",
-    "mag_s01_w18_follow_up",
-    "imaqal_s02_w22_follow_up",
-    "imaqal_s02_w24_follow_up"
+    "imaqal_demog"
+
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},

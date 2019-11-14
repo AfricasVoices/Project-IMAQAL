@@ -193,7 +193,7 @@ if __name__ == "__main__":
         IOUtils.ensure_dirs_exist_for_file(individuals_json_output_path)
         with open(individuals_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(individuals_data, f)
-
+        '''
         # Upload to Google Drive, if requested.
         # Note: This should happen as late as possible in order to reduce the risk of the remainder of the pipeline failing
         # after a Drive upload has occurred. Failures could result in inconsistent outputs or outputs with no
@@ -232,16 +232,18 @@ if __name__ == "__main__":
             drive_client_wrapper.update_or_create(individuals_json_output_path, individuals_traced_data_drive_dir,
                                                   target_file_name=individuals_traced_data_drive_file_name,
                                                   target_folder_is_shared_with_me=True)
+        
         else:
             log.info("Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
                      "'DriveUploadPaths')")
     else:
 
         assert pipeline_run_mode == "auto-code-only", "generate analysis files must be either auto-code-only or all-stages"
-        log.info("Writing Auto-Coding TracedData to file...")
-        IOUtils.ensure_dirs_exist_for_file(auto_coding_json_output_path)
-        with open(auto_coding_json_output_path, "w") as f:
-            TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
+        #log.info("Writing Auto-Coding TracedData to file...")
+        #IOUtils.ensure_dirs_exist_for_file(auto_coding_json_output_path)
+        #with open(auto_coding_json_output_path, "w") as f:
+            #TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
+
         if pipeline_configuration.drive_upload is not None:
             # TODO: upload auto-coding traced data file to drive ?
             log.info("Uploading production file to Google Drive...")
@@ -252,5 +254,5 @@ if __name__ == "__main__":
             drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
                                                   target_file_name=production_csv_drive_file_name,
                                                   target_folder_is_shared_with_me=True)
-
+    '''
     log.info("Python script complete")
