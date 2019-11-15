@@ -86,5 +86,54 @@ if __name__ == "__main__":
         participants_per_show_ws.write(row, col + 1, participants)
         row += 1
 
+    # For each uid generate a sustained engagement map that contains : no of shows participated , their manually
+    # coded demographics and a matrix representation of the shows they have participated in
+    # (1 for show they participated and 0 otherwise.)
+    sustained_engagement_map = {}
+    for uid in engagement_map.keys():
+        basic_str = f" {len(engagement_map[uid]['shows'])}, {engagement_map[uid]['demog']['gender']}," \
+            f" {engagement_map[uid]['demog']['age']}, {engagement_map[uid]['demog']['recently_displaced']}, "
+
+        show_mapping = ""
+        for show_name in all_show_names:
+            if show_name in engagement_map[uid]["shows"]:
+                show_mapping = show_mapping + "1, "
+            else:
+                show_mapping = show_mapping + "0, "
+
+        compound_str = basic_str + show_mapping
+        sustained_engagement_map[uid] = [compound_str]
+
+    log.info(f'Computing repeat_non_cumulative_engagement work sheet ...' )
+    # Compute the number of individuals who participated exactly 1 to <number of RQAs> times.
+    # An individual is considered to have participated if they sent a message and didn't opt-out, regardless of the
+    # relevance of any of their messages.
+    repeat_non_cumulative_engagement = OrderedDict()
+    for i in range(1, len(all_show_names) + 1):
+        repeat_non_cumulative_engagement[i] = {
+            "No. of participants": 0,
+            "% of participants": None
+        }
+        for k, v in sustained_engagement_map.items():
+            for item in v:
+                if item[1] == f'{i}':
+                    repeat_non_cumulative_engagement[i]["No. of participants"] += 1
+
+    # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times.
+    for rp in repeat_non_cumulative_engagement.values():
+        rp["% of participants"] = round(rp["No. of participants"] / len(cumulative_participants) * 100, 1)
+
+    log.info(f'Writing repeat_non_cumulative_engagement work sheet ...' )
+    # Write repeat non cumulative engagement in the engagement excel work-book under uids_per_show sheet
+    repeat_non_cumulative_engagement_ws = engagement_workbook.add_worksheet('rp_non_cumulative_engagement')
+    repeat_non_cumulative_engagement_ws.write('A1', 'No. of participants', bold_headers)
+    repeat_non_cumulative_engagement_ws.write('B1', '% of participants', bold_headers)
+    row = 1
+    col = 0
+    for k, v in repeat_non_cumulative_engagement.items():
+        repeat_non_cumulative_engagement_ws.write(row, col, v['No. of participants'])
+        repeat_non_cumulative_engagement_ws.write(row, col + 1, v['% of participants'])
+        row += 1
+
     # Close workbook
     engagement_workbook.close()
