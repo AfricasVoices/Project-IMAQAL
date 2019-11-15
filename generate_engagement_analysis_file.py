@@ -135,5 +135,40 @@ if __name__ == "__main__":
         repeat_non_cumulative_engagement_ws.write(row, col + 1, v['% of participants'])
         row += 1
 
+    log.info(f'Computing repeat_cumulative_engagement work sheet ...')
+    # Compute the number of individuals who participated each possible number of times, from 1 to <number of RQAs>
+    # An individual is considered to have participated if they sent a message and didn't opt-out, regardless of the
+    # relevance of any of their messages.
+    repeat_cumulative_engagement = OrderedDict()
+    for i in range(1, len(all_show_names) + 1):
+        repeat_cumulative_engagement[i] = {
+            "Episodes Participated In": i,
+            "No. of participants": 0,
+            "% of participants": None
+        }
+
+    for uid in engagement_map.keys():
+        weeks_participated = 0
+        for show in all_show_names:
+            if show in engagement_map[uid]["shows"]:
+                weeks_participated += 1
+                repeat_cumulative_engagement[weeks_participated]["No. of participants"] += 1
+
+    # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times.
+    for rp in repeat_cumulative_engagement.values():
+        rp["% of participants"] = round(rp["No. of participants"] / len(cumulative_participants) * 100, 1)
+
+    log.info(f'Writing repeat_cumulative_engagement work sheet ...')
+    # Write repeat cumulative engagement in the engagement excel work-book under uids_per_show sheet
+    repeat_cumulative_engagement_ws = engagement_workbook.add_worksheet('rp_cumulative_engagement')
+    repeat_cumulative_engagement_ws.write('A1', 'No. of participants', bold_headers)
+    repeat_cumulative_engagement_ws.write('B1', '% of participants', bold_headers)
+    row = 1
+    col = 0
+    for k, v in repeat_cumulative_engagement.items():
+        repeat_cumulative_engagement_ws.write(row, col, v['No. of participants'])
+        repeat_cumulative_engagement_ws.write(row, col + 1, v['% of participants'])
+        row += 1
+
     # Close workbook
     engagement_workbook.close()
