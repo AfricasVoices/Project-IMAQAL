@@ -5,25 +5,45 @@ from core_data_modules.cleaners import somali, Codes
 from core_data_modules.data_models import validators
 from dateutil.parser import isoparse
 
-from src.lib import CodeSchemes
+from src.lib import CodeSchemes, code_imputation_functions
+
+
+class CodingModes(object):
+    SINGLE = "SINGLE"
+    MULTIPLE = "MULTIPLE"
+
+
+class FoldingModes(object):
+    ASSERT_EQUAL = "ASSERT_EQUAL"
+    YES_NO_AMB = "YES_NO_AMB"
+    CONCATENATE = "CONCATENATE"
+    MATRIX = "MATRIX"
+
+
+class CodingConfiguration(object):
+    def __init__(self, coding_mode, code_scheme, coded_field, folding_mode, analysis_file_key=None, cleaner=None):
+        assert coding_mode in {CodingModes.SINGLE, CodingModes.MULTIPLE}
+
+        self.coding_mode = coding_mode
+        self.code_scheme = code_scheme
+        self.coded_field = coded_field
+        self.analysis_file_key = analysis_file_key
+        self.folding_mode = folding_mode
+        self.cleaner = cleaner
+
 
 class CodingPlan(object):
-    def __init__(self, raw_field, coded_field, coda_filename, cleaner=None, code_scheme=None, time_field=None,
-                 run_id_field=None, icr_filename=None, analysis_file_key=None, id_field=None, ws_code=None,
-                 binary_code_scheme=None, binary_coded_field=None, binary_analysis_file_key=None):
+    def __init__(self, raw_field, coding_configurations, raw_field_folding_mode, coda_filename=None, ws_code=None,
+                 time_field=None, run_id_field=None, icr_filename=None, id_field=None, code_imputation_function=None):
         self.raw_field = raw_field
-        self.coded_field = coded_field
-        self.coda_filename = coda_filename
-        self.icr_filename = icr_filename
-        self.cleaner = cleaner
-        self.code_scheme = code_scheme
         self.time_field = time_field
         self.run_id_field = run_id_field
+        self.coda_filename = coda_filename
+        self.icr_filename = icr_filename
+        self.coding_configurations = coding_configurations
+        self.code_imputation_function = code_imputation_function
         self.ws_code = ws_code
-        self.analysis_file_key = analysis_file_key
-        self.binary_code_scheme = binary_code_scheme
-        self.binary_coded_field = binary_coded_field
-        self.binary_analysis_file_key = binary_analysis_file_key
+        self.raw_field_folding_mode = raw_field_folding_mode
 
         if id_field is None:
             id_field = "{}_id".format(self.raw_field)
@@ -43,506 +63,733 @@ class PipelineConfiguration(object):
 
     Q4_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01mag08_raw",
-                   coded_field="rqa_s01mag08_coded",
                    time_field="sent_on",
                    coda_filename="s01mag08.json",
                    icr_filename="s01mag08.csv",
                    run_id_field="rqa_s01mag08_run_id",
-                   analysis_file_key="rqa_s01mag08_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                            coding_mode=CodingModes.MULTIPLE,
+                            code_scheme=CodeSchemes.S01MAG08,
+                            folding_mode=FoldingModes.MATRIX,
+                            coded_field="rqa_s01mag08_coded",
+                            analysis_file_key="rqa_s01mag08_",
+                       )
+                  ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag08"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG08),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
 
         CodingPlan(raw_field="rqa_s01mag09_raw",
-                   coded_field="rqa_s01mag09_coded",
                    time_field="sent_on",
                    coda_filename="s01mag09.json",
                    icr_filename="s01mag09.csv",
                    run_id_field="rqa_s01mag09_run_id",
-                   analysis_file_key="rqa_s01mag09_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01MAG09_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01mag09_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01mag09_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG09,
+                           folding_mode=FoldingModes.MATRIX,
+                           analysis_file_key="rqa_s01mag09_",
+                           coded_field="rqa_s01mag09_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag09"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG09,
-                   binary_code_scheme=CodeSchemes.S01MAG09_YES_NO_AMB,
-                   binary_coded_field="rqa_s01mag09_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01mag09_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag10_raw",
-                   coded_field="rqa_s01mag10_coded",
                    time_field="sent_on",
                    coda_filename="s01mag10.json",
                    icr_filename="s01mag10.csv",
                    run_id_field="rqa_s01mag10_run_id",
-                   analysis_file_key="rqa_s01mag10_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG10,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag10_coded",
+                           analysis_file_key="rqa_s01mag10_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag10"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG10),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag11_raw",
-                   coded_field="rqa_s01mag11_coded",
                    time_field="sent_on",
                    coda_filename="s01mag11.json",
                    icr_filename="s01mag11.csv",
                    run_id_field="rqa_s01mag11_run_id",
-                   analysis_file_key="rqa_s01mag11_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG11,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag11_coded",
+                           analysis_file_key="rqa_s01mag11_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag11"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG11),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag12_raw",
-                   coded_field="rqa_s01mag12_coded",
                    time_field="sent_on",
                    coda_filename="s01mag12.json",
                    icr_filename="s01mag12.csv",
                    run_id_field="rqa_s01mag12_run_id",
-                   analysis_file_key="rqa_s01mag12_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG12,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag12_coded",
+                           analysis_file_key="rqa_s01mag12_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag12"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG12),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag13_raw",
-                   coded_field="rqa_s01mag13_coded",
                    time_field="sent_on",
                    coda_filename="s01mag13.json",
                    icr_filename="s01mag13.csv",
                    run_id_field="rqa_s01mag13_run_id",
-                   analysis_file_key="rqa_s01mag13_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG13,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag13_coded",
+                           analysis_file_key="rqa_s01mag13_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag13"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG13)
+                   raw_field_folding_mode=FoldingModes.CONCATENATE)
     ]
 
     Q5_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01mag14_raw",
-                   coded_field="rqa_s01mag14_coded",
                    time_field="sent_on",
                    coda_filename="s01mag14.json",
                    icr_filename="s01mag14.csv",
                    run_id_field="rqa_s01mag14_run_id",
-                   analysis_file_key="rqa_s01mag14_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG14,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag14_coded",
+                           analysis_file_key="rqa_s01mag14_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag14"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG14),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag15_raw",
-                   coded_field="rqa_s01mag15_coded",
                    time_field="sent_on",
                    coda_filename="s01mag15.json",
                    icr_filename="s01mag15.csv",
                    run_id_field="rqa_s01mag15_run_id",
-                   analysis_file_key="rqa_s01mag15_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG15,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag15_coded",
+                           analysis_file_key="rqa_s01mag15_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag15"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG15),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag16_raw",
-                   coded_field="rqa_s01mag16_coded",
                    time_field="sent_on",
                    coda_filename="s01mag16.json",
                    icr_filename="s01mag16.csv",
                    run_id_field="rqa_s01mag16_run_id",
-                   analysis_file_key="rqa_s01mag16_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG16,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag16_coded",
+                           analysis_file_key="rqa_s01mag16_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag16"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG16),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag17_raw",
-                   coded_field="rqa_s01mag17_coded",
                    time_field="sent_on",
                    coda_filename="s01mag17.json",
                    icr_filename="s01mag17.csv",
                    run_id_field="rqa_s01mag17_run_id",
-                   analysis_file_key="rqa_s01mag17_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG17,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag17_coded",
+                           analysis_file_key="rqa_s01mag17_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag17"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG17),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag18_raw",
-                   coded_field="rqa_s01mag18_coded",
                    time_field="sent_on",
                    coda_filename="s01mag18.json",
                    icr_filename="s01mag18.csv",
                    run_id_field="rqa_s01mag18_run_id",
-                   analysis_file_key="rqa_s01mag18_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG18,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag18_coded",
+                           analysis_file_key="rqa_s01mag18_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag18"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG18),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag19_raw",
-                   coded_field="rqa_s01mag19_coded",
                    time_field="sent_on",
                    coda_filename="s01mag19.json",
                    icr_filename="s01mag19.csv",
                    run_id_field="rqa_s01mag19_run_id",
-                   analysis_file_key="rqa_s01mag19_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG19,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag19_coded",
+                           analysis_file_key="rqa_s01mag19_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag19"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG19),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag20_raw",
-                   coded_field="rqa_s01mag20_coded",
                    time_field="sent_on",
                    coda_filename="s01mag20.json",
                    icr_filename="s01mag20.csv",
                    run_id_field="rqa_s01mag20_run_id",
-                   analysis_file_key="rqa_s01mag20_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01MAG20_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01mag20_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01mag20_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG20,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag20_coded",
+                           analysis_file_key="rqa_s01mag20_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag20"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG20,
-                   binary_code_scheme = CodeSchemes.S01MAG20_YES_NO_AMB,
-                   binary_coded_field = "rqa_s01mag20_yes_no_amb_coded",
-                   binary_analysis_file_key = "rqa_s01mag20_yes_no_amb")
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
 
     Q6_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s02e08_raw",
-                   coded_field="rqa_s02e08_coded",
                    time_field="sent_on",
                    coda_filename="s02e08.json",
                    icr_filename="s02e08.csv",
                    run_id_field="rqa_s02e08_run_id",
-                   analysis_file_key="rqa_s02e08_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02E08,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02e08_coded",
+                           analysis_file_key="rqa_s02e08_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e08"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S02E08),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s02e09_raw",
-                   coded_field="rqa_s02e09_coded",
                    time_field="sent_on",
                    coda_filename="s02e09.json",
                    icr_filename="s02e09.csv",
                    run_id_field="rqa_s02e09_run_id",
-                   analysis_file_key="rqa_s02e09_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S02E09_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s02e09_yes_no_amb_coded",
+                           analysis_file_key="rqa_s02e09_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02E09,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02e09_coded",
+                           analysis_file_key="rqa_s02e09_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e09"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S02E09),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s02e10_raw",
-                   coded_field="rqa_s02e10_coded",
                    time_field="sent_on",
                    coda_filename="s02e10.json",
                    icr_filename="s02e10.csv",
                    run_id_field="rqa_s02e10_run_id",
-                   analysis_file_key="rqa_s02e10_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02E10,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02e10_coded",
+                           analysis_file_key="rqa_s02e10_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e10"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S02E10),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s02e11_raw",
-                   coded_field="rqa_s02e11_coded",
                    time_field="sent_on",
                    coda_filename="s02e11.json",
                    icr_filename="s02e11.csv",
                    run_id_field="rqa_s02e11_run_id",
-                   analysis_file_key="rqa_s02e11_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02E11,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02e11_coded",
+                           analysis_file_key="rqa_s02e11_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e11"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S02E11),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s02e12_raw",
-                   coded_field="rqa_s02e12_coded",
                    time_field="sent_on",
                    coda_filename="s02e12.json",
                    icr_filename="s02e12.csv",
                    run_id_field="rqa_s02e12_run_id",
-                   analysis_file_key="rqa_s02e12_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02E12,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02e12_coded",
+                           analysis_file_key="rqa_s02e12_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e12"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S02E12),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s02e13_raw",
-                   coded_field="rqa_s02e13_coded",
                    time_field="sent_on",
                    coda_filename="s02e13.json",
                    icr_filename="s02e13.csv",
                    run_id_field="rqa_s02e13_run_id",
-                   analysis_file_key="rqa_s02e13_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02E13,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02e13_coded",
+                           analysis_file_key="rqa_s02e13_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e13"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S02E13),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s02e14_raw",
-                   coded_field="rqa_s02e14_coded",
                    time_field="sent_on",
                    coda_filename="s02e14.json",
                    icr_filename="s02e14.csv",
                    run_id_field="rqa_s02e14_run_id",
-                   analysis_file_key="rqa_s02e14_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02E14,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02e14_coded",
+                           analysis_file_key="rqa_s02e14_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e14"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S02E14)
+                   raw_field_folding_mode=FoldingModes.CONCATENATE)
     ]
 
     FULL_PIPELINE_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_s01e01_raw",
-                   coded_field="rqa_s01e01_coded",
                    time_field="sent_on",
                    coda_filename="s01e01.json",
                    icr_filename="s01e01.csv",
                    run_id_field="rqa_s01e01_run_id",
-                   analysis_file_key="rqa_s01e01_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01E01,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01e01_coded",
+                           analysis_file_key="rqa_s01e01_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e01"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01E01),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01e02_raw",
-                   coded_field="rqa_s01e02_coded",
                    time_field="sent_on",
                    coda_filename="s01e02.json",
                    icr_filename="s01e02.csv",
                    run_id_field="rqa_s01e02_run_id",
-                   analysis_file_key="rqa_s01e02_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01E02_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01e02_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01e02_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01E02,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01e02_coded",
+                           analysis_file_key="rqa_s01e02_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e02"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01E02,
-                   binary_code_scheme=CodeSchemes.S01E02_YES_NO_AMB,
-                   binary_coded_field="rqa_s01e02_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01e02_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01e03_raw",
-                   coded_field="rqa_s01e03_coded",
                    time_field="sent_on",
                    coda_filename="s01e03.json",
                    icr_filename="s01e03.csv",
                    run_id_field="rqa_s01e03_run_id",
-                   analysis_file_key="rqa_s01e03_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01E03_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01e03_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01e03_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01E03,
+                           folding_mode=FoldingModes.MATRIX,
+                           analysis_file_key="rqa_s01e03_",
+                           coded_field="rqa_s01e03_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e03"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01E03,
-                   binary_code_scheme=CodeSchemes.S01E03_YES_NO_AMB,
-                   binary_coded_field="rqa_s01e03_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01e03_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01e04_raw",
-                   coded_field="rqa_s01e04_coded",
                    time_field="sent_on",
                    coda_filename="s01e04.json",
                    icr_filename="s01e04.csv",
                    run_id_field="rqa_s01e04_run_id",
-                   analysis_file_key="rqa_s01e04_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01E04,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01e04_coded",
+                           analysis_file_key="rqa_s01e04_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e04"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01E04),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01e05_raw",
-                   coded_field="rqa_s01e05_coded",
                    time_field="sent_on",
                    coda_filename="s01e05.json",
                    icr_filename="s01e05.csv",
                    run_id_field="rqa_s01e05_run_id",
-                   analysis_file_key="rqa_s01e05_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01E05_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01e05_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01e05_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01E05,
+                           folding_mode=FoldingModes.MATRIX,
+                           analysis_file_key="rqa_s01e05_",
+                           coded_field="rqa_s01e05_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e05"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01E05,
-                   binary_code_scheme=CodeSchemes.S01E05_YES_NO_AMB,
-                   binary_coded_field="rqa_s01e05_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01e05_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01e06_raw",
-                   coded_field="rqa_s01e06_coded",
                    time_field="sent_on",
                    coda_filename="s01e06.json",
                    icr_filename="s01e06.csv",
                    run_id_field="rqa_s01e06_run_id",
-                   analysis_file_key="rqa_s01e06_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01E06,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01e06_coded",
+                           analysis_file_key="rqa_s01e06_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e06"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01E06),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01e07_raw",
-                   coded_field="rqa_s01e07_coded",
                    time_field="sent_on",
                    coda_filename="s01e07.json",
                    icr_filename="s01e07.csv",
                    run_id_field="rqa_s01e07_run_id",
-                   analysis_file_key="rqa_s01e07_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01E07_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01e07_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01e07_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01E07,
+                           folding_mode=FoldingModes.MATRIX,
+                           analysis_file_key="rqa_s01e07_",
+                           coded_field="rqa_s01e07_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e07"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01E07,
-                   binary_code_scheme=CodeSchemes.S01E07_YES_NO_AMB,
-                   binary_coded_field="rqa_s01e07_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01e07_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag03_raw",
-                   coded_field="rqa_s01mag03_coded",
                    time_field="sent_on",
                    coda_filename="s01mag03.json",
                    icr_filename="s01mag03.csv",
                    run_id_field="rqa_s01mag03_run_id",
-                   analysis_file_key="rqa_s01mag03_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01MAG03_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01mag03_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01mag03_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG03,
+                           folding_mode=FoldingModes.MATRIX,
+                           analysis_file_key="rqa_s01mag03_",
+                           coded_field="rqa_s01mag03_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag03"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG03,
-                   binary_code_scheme=CodeSchemes.S01MAG03_YES_NO_AMB,
-                   binary_coded_field="rqa_s01mag03_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01mag03_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag04_raw",
-                   coded_field="rqa_s01mag04_coded",
                    time_field="sent_on",
                    coda_filename="s01mag04.json",
                    icr_filename="s01mag04.csv",
                    run_id_field="rqa_s01mag04_run_id",
-                   analysis_file_key="rqa_s01mag04_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG04,
+                           folding_mode=FoldingModes.MATRIX,
+                           analysis_file_key="rqa_s01mag04_",
+                           coded_field="rqa_s01mag04_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag04"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG04),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag05_raw",
-                   coded_field="rqa_s01mag05_coded",
                    time_field="sent_on",
                    coda_filename="s01mag05.json",
                    icr_filename="s01mag05.csv",
                    run_id_field="rqa_s01mag05_run_id",
-                   analysis_file_key="rqa_s01mag05_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           code_scheme=CodeSchemes.S01MAG05_YES_NO_AMB,
+                           coded_field="rqa_s01mag05_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01mag05_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG05,
+                           analysis_file_key="rqa_s01mag05_",
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag05_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag05"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG05,
-                   binary_code_scheme=CodeSchemes.S01MAG05_YES_NO_AMB,
-                   binary_coded_field="rqa_s01mag05_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01mag05_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag06_raw",
-                   coded_field="rqa_s01mag06_coded",
                    time_field="sent_on",
                    coda_filename="s01mag06.json",
                    icr_filename="s01mag06.csv",
                    run_id_field="rqa_s01mag06_run_id",
-                   analysis_file_key="rqa_s01mag06_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01MAG06_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01mag06_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01mag06_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG06,
+                           folding_mode=FoldingModes.MATRIX,
+                           analysis_file_key="rqa_s01mag06_",
+                           coded_field="rqa_s01mag06_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag06"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG06,
-                   binary_code_scheme=CodeSchemes.S01MAG06_YES_NO_AMB,
-                   binary_coded_field="rqa_s01mag06_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01mag06_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="rqa_s01mag07_raw",
-                   coded_field="rqa_s01mag07_coded",
                    time_field="sent_on",
                    coda_filename="s01mag07.json",
                    icr_filename="s01mag07.csv",
                    run_id_field="rqa_s01mag07_run_id",
-                   analysis_file_key="rqa_s01mag07_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S01MAG07_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s01mag07_yes_no_amb_coded",
+                           analysis_file_key="rqa_s01mag07_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S01MAG07,
+                           analysis_file_key="rqa_s01mag07_",
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s01mag07_coded",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag07"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.S01MAG07,
-                   binary_code_scheme=CodeSchemes.S01MAG07_YES_NO_AMB,
-                   binary_coded_field="rqa_s01mag07_yes_no_amb_coded",
-                   binary_analysis_file_key="rqa_s01mag07_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE)
     ]
     FULL_PIPELINE_RQA_CODING_PLANS += Q4_RQA_CODING_PLANS
     FULL_PIPELINE_RQA_CODING_PLANS += Q5_RQA_CODING_PLANS
-    # TODO: Add Q6 to the full pipeline RQA coding plans, by uncommenting the following:
-    # FULL_PIPELINE_RQA_CODING_PLANS += Q6_RQA_CODING_PLANS
+    FULL_PIPELINE_RQA_CODING_PLANS += Q6_RQA_CODING_PLANS
 
     FOLLOW_UP_CODING_PLANS = [
         CodingPlan(raw_field="women_participation_raw",
-                   coded_field="women_participation_coded",
                    time_field="sent_on",
                    coda_filename="women_participation.json",
                    icr_filename="women_participation.csv",
                    run_id_field="women_participation_run_id",
-                   analysis_file_key="women_participation_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="women_participation_yes_no_amb_coded",
+                           analysis_file_key="women_participation_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.WOMEN_PARTICIPATION,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="women_participation_coded",
+                           analysis_file_key="women_participation_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("women_participation"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.WOMEN_PARTICIPATION,
-                   binary_code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
-                   binary_coded_field="women_participation_yes_no_amb_coded",
-                   binary_analysis_file_key="women_participation_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="minority_clan_issues_raw",
-                   coded_field="minority_clan_issues_coded",
                    time_field="sent_on",
                    coda_filename="minority_clan_issues.json",
                    icr_filename="minority_clan_issues.csv",
                    run_id_field="minority_clan_issues_run_id",
-                   analysis_file_key="minority_clan_issues_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.MINORITY_CLAN_ISSUES_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="minority_clan_issues_yes_no_amb_coded",
+                           analysis_file_key="minority_clan_issues_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.MINORITY_CLAN_ISSUES,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="minority_clan_issues_coded",
+                           analysis_file_key="minority_clan_issues_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("minority_clan_issues"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.MINORITY_CLAN_ISSUES,
-                   binary_code_scheme=CodeSchemes.MINORITY_CLAN_ISSUES_YES_NO_AMB,
-                   binary_coded_field="minority_clan_issues_yes_no_amb_coded",
-                   binary_analysis_file_key="minority_clan_issues_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="young_people_issues_raw",
-                   coded_field="young_people_issues_coded",
                    time_field="sent_on",
                    coda_filename="young_people_issues.json",
                    icr_filename="young_people_issues.csv",
                    run_id_field="young_people_issues_run_id",
-                   analysis_file_key="young_people_issues_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="young_people_issues_yes_no_amb_coded",
+                           analysis_file_key="young_people_issues_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="young_people_issues_coded",
+                           analysis_file_key="young_people_issues_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("young_people_issues"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES,
-                   binary_code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES_YES_NO_AMB,
-                   binary_coded_field="young_people_issues_yes_no_amb_coded",
-                   binary_analysis_file_key="young_people_issues_yes_no_amb"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
 
         CodingPlan(raw_field="decisions_minority_clan_raw",
-                   coded_field="decisions_minority_clan_coded",
                    time_field="sent_on",
                    coda_filename="decisions_minority_clan.json",
                    icr_filename="decisions_minority_clan.csv",
                    run_id_field="decisions_minority_clan_run_id",
-                   analysis_file_key="decisions_minority_clan_",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.DECISIONS_MINORITY_CLAN_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="decisions_minority_clan_yes_no_amb_coded",
+                           analysis_file_key="decisions_minority_clan_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.DECISIONS_MINORITY_CLAN,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="decisions_minority_clan_coded",
+                           analysis_file_key="decisions_minority_clan_",
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("decisions_minority_clan"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.DECISIONS_MINORITY_CLAN,
-                   binary_code_scheme=CodeSchemes.DECISIONS_MINORITY_CLAN_YES_NO_AMB,
-                   binary_coded_field="decisions_minority_clan_yes_no_amb_coded",
-                   binary_analysis_file_key="decisions_minority_clan_yes_no_amb")
-    ]
-
-    LOCATION_CODING_PLANS = [
-        CodingPlan(raw_field="location_raw",
-                   id_field="location_raw_id",
-                   coded_field="mogadishu_sub_district_coded",
-                   time_field="location_time",
-                   coda_filename="location.json",
-                   analysis_file_key=None,
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.MOGADISHU_SUB_DISTRICT),
-
-        CodingPlan(raw_field="location_raw",
-                   id_field="location_raw_id",
-                   coded_field="district_coded",
-                   time_field="location_time",
-                   coda_filename="location.json",
-                   analysis_file_key="district",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
-                   cleaner=somali.DemographicCleaner.clean_somalia_district,
-                   code_scheme=CodeSchemes.SOMALIA_DISTRICT),
-
-        CodingPlan(raw_field="location_raw",
-                   id_field="location_raw_id",
-                   coded_field="region_coded",
-                   time_field="location_time",
-                   coda_filename="location.json",
-                   analysis_file_key="region",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.SOMALIA_REGION),
-
-        CodingPlan(raw_field="location_raw",
-                   id_field="location_raw_id",
-                   coded_field="state_coded",
-                   time_field="location_time",
-                   coda_filename="location.json",
-                   analysis_file_key="state",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.SOMALIA_STATE),
-
-        CodingPlan(raw_field="location_raw",
-                   id_field="location_raw_id",
-                   coded_field="zone_coded",
-                   time_field="location_time",
-                   coda_filename="location.json",
-                   analysis_file_key="zone",
-                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.SOMALIA_ZONE),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
 
     @staticmethod
@@ -558,49 +805,129 @@ class PipelineConfiguration(object):
         else:
             return Codes.NOT_CODED
 
+    @staticmethod
+    def clean_district_if_no_mogadishu_sub_district(text):
+        mogadishu_sub_district = somali.DemographicCleaner.clean_mogadishu_sub_district(text)
+        if mogadishu_sub_district == Codes.NOT_CODED:
+            return somali.DemographicCleaner.clean_somalia_district(text)
+        else:
+            return Codes.NOT_CODED
+
     DEMOG_CODING_PLANS = [
         CodingPlan(raw_field="gender_raw",
-                   coded_field="gender_coded",
                    time_field="gender_time",
                    coda_filename="gender.json",
-                   analysis_file_key="gender",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.GENDER,
+                           cleaner=somali.DemographicCleaner.clean_gender,
+                           coded_field="gender_coded",
+                           analysis_file_key="gender",
+                           folding_mode=FoldingModes.ASSERT_EQUAL
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("gender"),
-                   cleaner=somali.DemographicCleaner.clean_gender,
-                   code_scheme=CodeSchemes.GENDER),
+                   raw_field_folding_mode=FoldingModes.ASSERT_EQUAL),
 
         CodingPlan(raw_field="age_raw",
-                   coded_field="age_coded",
                    time_field="age_time",
                    coda_filename="age.json",
-                   analysis_file_key="age",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.AGE,
+                           cleaner=lambda text: PipelineConfiguration.clean_age_with_range_filter(text),
+                           coded_field="age_coded",
+                           analysis_file_key="age",
+                           folding_mode=FoldingModes.ASSERT_EQUAL
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("age"),
-                   cleaner=lambda text: PipelineConfiguration.clean_age_with_range_filter(text),
-                   code_scheme=CodeSchemes.AGE),
+                   raw_field_folding_mode=FoldingModes.ASSERT_EQUAL),
 
         CodingPlan(raw_field="recently_displaced_raw",
-                   coded_field="recently_displaced_coded",
                    time_field="recently_displaced_time",
                    coda_filename="recently_displaced.json",
-                   analysis_file_key="recently_displaced",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.RECENTLY_DISPLACED,
+                           cleaner=somali.DemographicCleaner.clean_yes_no,
+                           coded_field="recently_displaced_coded",
+                           analysis_file_key="recently_displaced",
+                           folding_mode=FoldingModes.ASSERT_EQUAL
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("recently displaced"),
-                   cleaner=somali.DemographicCleaner.clean_yes_no,
-                   code_scheme=CodeSchemes.RECENTLY_DISPLACED),
+                   raw_field_folding_mode=FoldingModes.ASSERT_EQUAL),
 
         CodingPlan(raw_field="household_language_raw",
-                   coded_field="household_language_coded",
                    time_field="household_language_time",
                    coda_filename="household_language.json",
-                   analysis_file_key="household_language",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.HOUSEHOLD_LANGUAGE,
+                           coded_field="household_language_coded",
+                           analysis_file_key="household_language",
+                           folding_mode=FoldingModes.ASSERT_EQUAL
+                       )
+                   ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("hh language"),
-                   cleaner=None,
-                   code_scheme=CodeSchemes.HOUSEHOLD_LANGUAGE),
+                   raw_field_folding_mode=FoldingModes.ASSERT_EQUAL),
+
+        CodingPlan(raw_field="location_raw",
+                   time_field="location_time",
+                   coda_filename="location.json",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.MOGADISHU_SUB_DISTRICT,
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           cleaner=somali.DemographicCleaner.clean_mogadishu_sub_district,
+                           coded_field="mogadishu_sub_district_coded"
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.SOMALIA_DISTRICT,
+                           cleaner=lambda text: PipelineConfiguration.clean_district_if_no_mogadishu_sub_district(text),
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           coded_field="district_coded",
+                           analysis_file_key="district"
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.SOMALIA_REGION,
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           coded_field="region_coded",
+                           analysis_file_key="region",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.SOMALIA_STATE,
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           coded_field="state_coded",
+                           analysis_file_key="state"
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.SOMALIA_ZONE,
+                           folding_mode=FoldingModes.ASSERT_EQUAL,
+                           coded_field="zone_coded",
+                           analysis_file_key="zone",
+                       )
+                   ],
+                   code_imputation_function=code_imputation_functions.impute_somalia_location_codes,
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("location"),
+                   raw_field_folding_mode=FoldingModes.ASSERT_EQUAL)
     ]
 
-    DEMOG_CODING_PLANS.extend(LOCATION_CODING_PLANS)
 
-    def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
-                 follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                 memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls=None, pipeline_name=None, drive_upload=None):
+    def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, survey_flow_names,
+                 rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
+                 memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls=None, pipeline_name=None,
+                 drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
         :type rapid_pro_domain: str
@@ -634,8 +961,7 @@ class PipelineConfiguration(object):
         self.rapid_pro_domain = rapid_pro_domain
         self.rapid_pro_token_file_url = rapid_pro_token_file_url
         self.activation_flow_names = activation_flow_names
-        self.demog_flow_names = demog_flow_names
-        self.follow_up_flow_names = follow_up_flow_names
+        self.survey_flow_names = survey_flow_names
         self.rapid_pro_test_contact_uuids = rapid_pro_test_contact_uuids
         self.phone_number_uuid_table = phone_number_uuid_table
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
@@ -652,8 +978,7 @@ class PipelineConfiguration(object):
         rapid_pro_domain = configuration_dict["RapidProDomain"]
         rapid_pro_token_file_url = configuration_dict["RapidProTokenFileURL"]
         activation_flow_names = configuration_dict["ActivationFlowNames"]
-        demog_flow_names = configuration_dict["DemogFlowNames"]
-        follow_up_flow_names = configuration_dict["FollowUpFlowNames"]
+        survey_flow_names = configuration_dict["SurveyFlowNames"]
         rapid_pro_test_contact_uuids = configuration_dict["RapidProTestContactUUIDs"]
 
         phone_number_uuid_table = PhoneNumberUuidTable.from_configuration_dict(configuration_dict["PhoneNumberUuidTable"])
@@ -673,9 +998,10 @@ class PipelineConfiguration(object):
         if "DriveUpload" in configuration_dict:
             drive_upload_paths = DriveUpload.from_configuration_dict(configuration_dict["DriveUpload"])
 
-        return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, demog_flow_names,
-                   follow_up_flow_names, rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                   memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls, pipeline_name, drive_upload_paths)
+        return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, survey_flow_names,
+                   rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
+                   memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls, pipeline_name,
+                   drive_upload_paths)
 
     @classmethod
     def from_configuration_file(cls, f):
@@ -689,13 +1015,9 @@ class PipelineConfiguration(object):
         for i, activation_flow_name in enumerate(self.activation_flow_names):
             validators.validate_string(activation_flow_name, f"activation_flow_names[{i}]")
 
-        validators.validate_list(self.follow_up_flow_names, "follow_up_flow_names")
-        for i, follow_up_flow_name in enumerate(self.follow_up_flow_names):
-            validators.validate_string(follow_up_flow_name, f"survey_follow_up_flow_names[{i}")
-
-        validators.validate_list(self.follow_up_flow_names, "demog_flow_names")
-        for i, demog_flow_name in enumerate(self.follow_up_flow_names):
-            validators.validate_string(demog_flow_name, f"demog_flow_names[{i}")
+        validators.validate_list(self.survey_flow_names, "survey_flow_names")
+        for i, survey_flow_name in enumerate(self.survey_flow_names):
+            validators.validate_string(survey_flow_name, f"survey_flow_names[{i}")
 
         validators.validate_list(self.rapid_pro_test_contact_uuids, "rapid_pro_test_contact_uuids")
         for i, contact_uuid in enumerate(self.rapid_pro_test_contact_uuids):
