@@ -4,6 +4,70 @@
     "SchemeID": "Scheme-753e254b",
     "Codes": [
       {
+        "CodeID": "code-2db8a6ae",
+        "CodeType": "Normal",
+        "DisplayText": "women are the backbone of the society",
+        "NumericValue": 0,
+        "StringValue": "women_are_the_backbone_of_the_society",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-62e6d74c",
+        "CodeType": "Normal",
+        "DisplayText": "women are part of the society",
+        "NumericValue": 1,
+        "StringValue": "women_are_part_of_the_society",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-022375ee",
+        "CodeType": "Normal",
+        "DisplayText": "women are capable",
+        "NumericValue": 2,
+        "StringValue": "women_are_capable",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-97576f10",
+        "CodeType": "Normal",
+        "DisplayText": "encouragement",
+        "NumericValue": 3,
+        "StringValue": "encouragement",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-063fa72d",
+        "CodeType": "Normal",
+        "DisplayText": "not given opportunity",
+        "NumericValue": 4,
+        "StringValue": "not_given_opportunity",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-93fa5fa3",
+        "CodeType": "Normal",
+        "DisplayText": "exclusion and discrimination",
+        "NumericValue": 5,
+        "StringValue": "exclusion_and_discrimination",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-52584aa5",
+        "CodeType": "Normal",
+        "DisplayText": "bad decision makers",
+        "NumericValue": 6,
+        "StringValue": "bad_decision_makers",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-3398a075",
+        "CodeType": "Normal",
+        "DisplayText": "other",
+        "NumericValue": 7,
+        "StringValue": "other",
+        "VisibleInCoda": true
+      },
+      {
         "CodeID": "code-NA-f93d3eb7",
         "CodeType": "Control",
         "ControlCode": "NA",
