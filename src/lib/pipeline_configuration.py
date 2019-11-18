@@ -790,6 +790,55 @@ class PipelineConfiguration(object):
                    ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("decisions_minority_clan"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="women_decision_making_opportunities_raw",
+                   time_field="sent_on",
+                   coda_filename="women_decision_making_opportunities.json",
+                   icr_filename="women_decision_making_opportunities.csv",
+                   run_id_field="women_decision_making_opportunities_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="women_decision_making_opportunities_yes_no_amb_coded",
+                           analysis_file_key="women_decision_making_opportunities_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.WOMEN_PARTICIPATION,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="women_decision_making_opportunities_clan_coded",
+                           analysis_file_key="women_decision_making_opportunities_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value(
+                       "women_decision_making_opportunities"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="idps_decision_making_opportunities_raw",
+                   time_field="sent_on",
+                   coda_filename="idps_decision_making_opportunities.json",
+                   icr_filename="idps_decision_making_opportunities.csv",
+                   run_id_field="idps_decision_making_opportunities_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.IDPS_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="idps_decision_making_opportunities_yes_no_amb_coded",
+                           analysis_file_key="idps_decision_making_opportunities_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.IDPS_DECISION_MAKING_OPPORTUNITIES,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="idps_decision_making_opportunities_clan_coded",
+                           analysis_file_key="idps_decision_making_opportunities_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("idps_decision_making_opportunities"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
 
     @staticmethod
