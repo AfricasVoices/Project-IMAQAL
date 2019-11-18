@@ -3,7 +3,86 @@
   "Name": "S02E12",
   "Version": "0.0.0.1",
   "Codes": [
-
+    {
+      "CodeID": "code-6594bb02",
+      "CodeType": "Normal",
+      "DisplayText": "be just to women",
+      "NumericValue": 0,
+      "StringValue": "be_just_to_women",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-dc004f3d",
+      "CodeType": "Normal",
+      "DisplayText": "encourage women",
+      "NumericValue": 1,
+      "StringValue": "encourage_women",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-25b3f55d",
+      "CodeType": "Normal",
+      "DisplayText": "support women's education and employment",
+      "NumericValue": 2,
+      "StringValue": "support_women_s_education_and_employment",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-b5283244",
+      "CodeType": "Normal",
+      "DisplayText": "help their women with domestic chores",
+      "NumericValue": 3,
+      "StringValue": "help_their_women_with_domestic_chores",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-b53568a8",
+      "CodeType": "Normal",
+      "DisplayText": "raise awareness",
+      "NumericValue": 4,
+      "StringValue": "raise_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-9806115d",
+      "CodeType": "Normal",
+      "DisplayText": "protect women's right",
+      "NumericValue": 5,
+      "StringValue": "protect_women_s_right",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-1e915175",
+      "CodeType": "Normal",
+      "DisplayText": "women are the backbone of the community",
+      "NumericValue": 6,
+      "StringValue": "women_are_the_backbone_of_the_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-8604278b",
+      "CodeType": "Normal",
+      "DisplayText": "give women opportunities",
+      "NumericValue": 7,
+      "StringValue": "give_women_opportunities",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-33aba01f",
+      "CodeType": "Normal",
+      "DisplayText": "love for their women",
+      "NumericValue": 8,
+      "StringValue": "love_for_their_women",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-094a0931",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 9,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
