@@ -3,7 +3,78 @@
   "Name": "S02E10",
   "Version": "0.0.0.1",
   "Codes": [
-
+    {
+      "CodeID": "code-33514dfd",
+      "CodeType": "Normal",
+      "DisplayText": "stop clannism",
+      "NumericValue": 0,
+      "StringValue": "stop_clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-0c08cca5",
+      "CodeType": "Normal",
+      "DisplayText": "provide fair justice systems",
+      "NumericValue": 1,
+      "StringValue": "provide_fair_justice_systems",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e8be887b",
+      "CodeType": "Normal",
+      "DisplayText": "follow the teachings of the religion",
+      "NumericValue": 2,
+      "StringValue": "follow_the_teachings_of_the_religion",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-a3e4305e",
+      "CodeType": "Normal",
+      "DisplayText": "education",
+      "NumericValue": 3,
+      "StringValue": "education ",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-cf488e97",
+      "CodeType": "Normal",
+      "DisplayText": "it is wrong",
+      "NumericValue": 4,
+      "StringValue": "it_is_wrong",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-c0d7849e",
+      "CodeType": "Normal",
+      "DisplayText": "community integration and interaction",
+      "NumericValue": 5,
+      "StringValue": "community_integration_and_interaction",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-9f1004dc",
+      "CodeType": "Normal",
+      "DisplayText": "good governance",
+      "NumericValue": 6,
+      "StringValue": "good_governance",
+      "VisibleInCoda": true
+    },
+     {
+      "CodeID": "code-c0d5d727",
+      "CodeType": "Normal",
+      "DisplayText": "provide peace and security",
+      "NumericValue": 7,
+      "StringValue": "provide_peace_and_security",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-fee052a1",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 8,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
