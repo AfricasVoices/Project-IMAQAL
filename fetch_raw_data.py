@@ -72,9 +72,8 @@ if __name__ == "__main__":
         with open(contacts_log_path, "a") as contacts_log_file:
             raw_contacts = rapid_pro.get_raw_contacts(raw_export_log_file=contacts_log_file)
 
-    # Download all the runs for each of the radio shows
-    for flow in pipeline_configuration.activation_flow_names + \
-            pipeline_configuration.demog_flow_names + pipeline_configuration.follow_up_flow_names:
+    # Download all the runs for each of the rqa and survey flows
+    for flow in pipeline_configuration.activation_flow_names + pipeline_configuration.survey_flow_names:
         runs_log_path = f"{raw_data_dir}/{flow}_log.jsonl"
         raw_runs_path = f"{raw_data_dir}/{flow}_raw.json"
         traced_runs_output_path = f"{raw_data_dir}/{flow}.jsonl"
