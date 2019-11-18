@@ -13,11 +13,41 @@
     "TableName": "IMAQAL"
   },
   "ActivationFlowNames": [
-    "imaqal_s02e10_activation"
+    "imaqal_s01e01_activation",
+    "imaqal_s01e02_activation",
+    "imaqal_s01e03_activation",
+    "imaqal_s01e04_activation",
+    "imaqal_s01e05_activation",
+    "imaqal_s01e06_activation",
+    "imaqal_s01e07_activation",
+    "mag_s01e03_activation",
+    "mag_s01e04_activation",
+    "mag_s01e05_activation",
+    "mag_s01e06_activation",
+    "mag_s01e07_activation",
+    "mag_s01e08_activation",
+    "mag_s01e09_activation",
+    "mag_s01e10_activation",
+    "mag_s01e11_activation",
+    "mag_s01e12_activation",
+    "mag_s01e13_activation",
+    "mag_s01e14_activation",
+    "mag_s01e15_activation",
+    "mag_s01e16_activation",
+    "mag_s01e17_activation",
+    "mag_s01e18_activation",
+    "mag_s01e19_activation",
+    "mag_s01e20_activation",
+    "imaqal_s02e08_activation",
+    "imaqal_s02e09_activation",
+    "imaqal_s02e10_activation",
+    "imaqal_s02e11_activation",
+    "imaqal_s02e12_activation",
+    "imaqal_s02e13_activation",
+    "imaqal_s02e14_activation"
   ],
   "SurveyFlowNames":[
     "imaqal_demog"
-
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
@@ -117,7 +147,7 @@
     {"RapidProKey": "Rqa_Mag_S01E18 (Time) - mag_s01e18_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E19 (Time) - mag_s01e19_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E20 (Time) - mag_s01e20_activation", "PipelineKey": "sent_on"},
-     {"RapidProKey": "Rqa_S02E08 (Time) - imaqal_s02e08_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S02E08 (Time) - imaqal_s02e08_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_S02E09 (Time) - imaqal_s02e09_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_S02E10 (Time) - imaqal_s02e10_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_S02E11 (Time) - imaqal_s02e11_activation", "PipelineKey": "sent_on"},
