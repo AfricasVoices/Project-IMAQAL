@@ -1,87 +1,40 @@
 {
-  "SchemeID": "Scheme-f4a6af07",
-  "Name": "S02E08",
   "Version": "0.0.0.1",
+  "Name": "S02E09 Yes/No/Amb",
+  "SchemeID": "Scheme-ad03603c",
   "Codes": [
-  {
-      "DisplayText": "create awareness",
+    {
+      "DisplayText": "Yes",
       "VisibleInCoda": true,
       "NumericValue": 0,
-      "CodeID": "code-5f175696",
+      "CodeID": "code-e4d9ab4b",
       "CodeType": "Normal",
-      "StringValue": "create_awareness"
+      "MatchValues": [
+        "yes"
+      ],
+      "StringValue": "yes"
     },
     {
-      "DisplayText": "opportunities for the youth",
-      "VisibleInCoda": true,
       "NumericValue": 1,
-      "CodeID": "code-c6375bdd",
+      "CodeID": "code-5d28ffc5",
       "CodeType": "Normal",
-      "StringValue": "opportunities_for_the_youth"
+      "MatchValues": [
+        "no"
+      ],
+      "StringValue": "no",
+      "DisplayText": "No",
+      "VisibleInCoda": true
     },
     {
-      "DisplayText": "ensure fairness and equality",
-      "VisibleInCoda": true,
       "NumericValue": 2,
-      "CodeID": "code-c8e38522",
+      "CodeID": "code-34174dca",
       "CodeType": "Normal",
-      "StringValue": "ensure_fairness_and_equality"
-    },
-    {
-      "NumericValue": 3,
-      "CodeID": "code-d81e0b52",
-      "CodeType": "Normal",
-      "StringValue": "consultation_or_inclusion_in_decision_making",
-      "DisplayText": "consultation or inclusion in decision making",
-      "VisibleInCoda": true
-    },
-    {
-      "DisplayText": "stop discrimination or clannism",
+      "MatchValues": [
+        "ambivalent"
+      ],
+      "StringValue": "ambivalent",
       "VisibleInCoda": true,
-      "NumericValue": 4,
-      "CodeID": "code-129eb72c",
-      "CodeType": "Normal",
-      "StringValue": "stop_discrimination_or_clannism"
-    },
-    {
-      "DisplayText": "fight corruption",
-      "VisibleInCoda": true,
-      "NumericValue": 5,
-      "CodeID": "code-da1956f3",
-      "CodeType": "Normal",
-      "StringValue": "fight_corruption"
-    },
-    {
-      "NumericValue": 6,
-      "CodeID": "code-61aed2fb",
-      "CodeType": "Normal",
-      "StringValue": "prioritize_education",
-      "DisplayText": "prioritize education",
-      "VisibleInCoda": true
-    },
-    {
-      "NumericValue": 7,
-      "CodeID": "code-0a988504",
-      "CodeType": "Normal",
-      "StringValue": "encouragement",
-      "DisplayText": "encouragement",
-      "VisibleInCoda": true
-    },
-    {
-      "StringValue": "other",
-      "DisplayText": "other",
-      "VisibleInCoda": true,
-      "NumericValue": 8,
-      "CodeID": "code-2b888dbd",
-      "CodeType": "Normal"
-    },
-    {
-      "StringValue": "nothing",
-      "DisplayText": "nothing",
-      "VisibleInCoda": true,
-      "NumericValue": 9,
-      "CodeID": "code-ac0b8e0a",
-      "CodeType": "Normal"
+      "DisplayText": "Ambivalent"
     },
     {
       "CodeID": "code-NA-f93d3eb7",
@@ -155,7 +108,7 @@
       "StringValue": "CE",
       "VisibleInCoda": false
     },
-    {
+      {
       "CodeID": "code-PB-a434a800",
       "CodeType": "Meta",
       "MetaCode": "push_back",
