@@ -4,7 +4,7 @@
     "SchemeID": "Scheme-66e619a7",
     "Codes": [
         {
-        "DisplayText": "Yes",
+        "DisplayText": "yes",
         "VisibleInCoda": true,
         "NumericValue": 0,
         "CodeID": "code-407174b9",
@@ -22,7 +22,7 @@
           "no"
         ],
         "StringValue": "no",
-        "DisplayText": "No",
+        "DisplayText": "no",
         "VisibleInCoda": true
       },
       {
