@@ -1,0 +1,188 @@
+{
+    "Version": "0.0.0.1",
+    "Name": "Women Decision Making Opportunities",
+    "SchemeID": "Scheme-753e254b",
+    "Codes": [
+      {
+        "CodeID": "code-2db8a6ae",
+        "CodeType": "Normal",
+        "DisplayText": "women are the backbone of the society",
+        "NumericValue": 0,
+        "StringValue": "women_are_the_backbone_of_the_society",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-62e6d74c",
+        "CodeType": "Normal",
+        "DisplayText": "women are part of the society",
+        "NumericValue": 1,
+        "StringValue": "women_are_part_of_the_society",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-022375ee",
+        "CodeType": "Normal",
+        "DisplayText": "women are capable",
+        "NumericValue": 2,
+        "StringValue": "women_are_capable",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-97576f10",
+        "CodeType": "Normal",
+        "DisplayText": "encouragement",
+        "NumericValue": 3,
+        "StringValue": "encouragement",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-063fa72d",
+        "CodeType": "Normal",
+        "DisplayText": "not given opportunity",
+        "NumericValue": 4,
+        "StringValue": "not_given_opportunity",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-93fa5fa3",
+        "CodeType": "Normal",
+        "DisplayText": "exclusion and discrimination",
+        "NumericValue": 5,
+        "StringValue": "exclusion_and_discrimination",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-52584aa5",
+        "CodeType": "Normal",
+        "DisplayText": "bad decision makers",
+        "NumericValue": 6,
+        "StringValue": "bad_decision_makers",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-3398a075",
+        "CodeType": "Normal",
+        "DisplayText": "other",
+        "NumericValue": 7,
+        "StringValue": "other",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-NA-f93d3eb7",
+        "CodeType": "Control",
+        "ControlCode": "NA",
+        "DisplayText": "NA (missing)",
+        "NumericValue": -10,
+        "StringValue": "NA",
+        "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-NS-2c11b7c9",
+        "CodeType": "Control",
+        "ControlCode": "NS",
+        "DisplayText": "NS (skip)",
+        "NumericValue": -20,
+        "StringValue": "NS",
+        "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-NC-42f1d983",
+        "CodeType": "Control",
+        "ControlCode": "NC",
+        "DisplayText": "NC (not coded)",
+        "NumericValue": -30,
+        "StringValue": "NC",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-NR-5e3eee23",
+        "CodeType": "Control",
+        "ControlCode": "NR",
+        "DisplayText": "NR (not reviewed)",
+        "NumericValue": -40,
+        "StringValue": "NR",
+        "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-NIC-99631cb8",
+        "CodeType": "Control",
+        "ControlCode": "NIC",
+        "DisplayText": "NIC (not internally consistent)",
+        "NumericValue": -50,
+        "StringValue": "NIC",
+        "VisibleInCoda": false
+      },
+      {
+        "CodeID": "code-STOP-08b832a8",
+        "CodeType": "Control",
+        "ControlCode": "STOP",
+        "DisplayText": "STOP",
+        "NumericValue": -90,
+        "StringValue": "STOP",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-WS-adb25603b7af",
+        "CodeType": "Control",
+        "ControlCode": "WS",
+        "DisplayText": "WS (wrong scheme)",
+        "NumericValue": -100,
+        "StringValue": "WS",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-CE-016c1e22",
+        "CodeType": "Control",
+        "ControlCode": "CE",
+        "DisplayText": "CE (coding error)",
+        "NumericValue": -110,
+        "StringValue": "CE",
+        "VisibleInCoda": false
+      },
+      {
+      "CodeID": "code-PB-a434a800",
+      "CodeType": "Meta",
+      "MetaCode": "push_back",
+      "DisplayText": "push back",
+      "NumericValue": -100000,
+      "StringValue": "push_back",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-SQ-5e8f0122",
+      "CodeType": "Meta",
+      "MetaCode": "showtime_question",
+      "DisplayText": "showtime question",
+      "NumericValue": -100030,
+      "StringValue": "showtime_question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-Q-a5d3700d",
+      "CodeType": "Meta",
+      "MetaCode": "question",
+      "DisplayText": "question",
+      "NumericValue": -100010,
+      "StringValue": "question",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-G-97cb3199",
+      "CodeType": "Meta",
+      "MetaCode": "greeting",
+      "DisplayText": "greeting",
+      "NumericValue": -100020,
+      "StringValue": "greeting",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-OI-c5f1d054",
+      "CodeType": "Meta",
+      "MetaCode": "opt-in",
+      "DisplayText": "opt-in",
+      "NumericValue": -100040,
+      "StringValue": "opt_in",
+      "VisibleInCoda": true
+    }
+    ]
+  }

@@ -455,6 +455,28 @@
             ]
         },
         {
+            "CodeID": "code-1a487e5d",
+            "CodeType": "Normal",
+            "DisplayText": "idps decision making opportunities",
+            "StringValue": "idps_decision_making_opportunities",
+            "NumericValue": 43,
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "idps_decision_making_opportunities"
+            ]
+        },
+        {
+            "CodeID": "code-057336a7",
+            "CodeType": "Normal",
+            "DisplayText": "women decision making opportunities",
+            "StringValue": "women_decision_making_opportunities",
+            "NumericValue": 44,
+            "VisibleInCoda": true,
+            "MatchValues": [
+                "women_decision_making_opportunities"
+            ]
+        },
+        {
             "CodeID": "code-NR-5e3eee23",
             "CodeType": "Control",
             "ControlCode": "NR",

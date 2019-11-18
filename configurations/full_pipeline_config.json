@@ -38,14 +38,23 @@
     "mag_s01e17_activation",
     "mag_s01e18_activation",
     "mag_s01e19_activation",
-    "mag_s01e20_activation"
+    "mag_s01e20_activation",
+    "imaqal_s02e08_activation",
+    "imaqal_s02e09_activation",
+    "imaqal_s02e10_activation",
+    "imaqal_s02e11_activation",
+    "imaqal_s02e12_activation",
+    "imaqal_s02e13_activation",
+    "imaqal_s02e14_activation"
   ],
   "SurveyFlowNames":[
     "imaqal_demog",
     "imaqal_s01_follow_up_w2",
     "mag_s01_w8_follow_up",
     "mag_s01_w10_follow_up",
-    "mag_s01_w18_follow_up"
+    "mag_s01_w18_follow_up",
+    "imaqal_s02_w22_follow_up",
+    "imaqal_s02_w24_follow_up"
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
@@ -75,6 +84,13 @@
     {"RapidProKey": "Rqa_Mag_S01E18 (Value) - mag_s01e18_activation", "PipelineKey": "rqa_s01mag18_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E19 (Value) - mag_s01e19_activation", "PipelineKey": "rqa_s01mag19_raw", "IsActivationMessage": true},
     {"RapidProKey": "Rqa_Mag_S01E20 (Value) - mag_s01e20_activation", "PipelineKey": "rqa_s01mag20_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S02E08 (Value) - imaqal_s02e08_activation", "PipelineKey": "rqa_s02e08_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S02E09 (Value) - imaqal_s02e09_activation", "PipelineKey": "rqa_s02e09_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S02E10 (Value) - imaqal_s02e10_activation", "PipelineKey": "rqa_s02e10_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S02E11 (Value) - imaqal_s02e11_activation", "PipelineKey": "rqa_s02e11_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S02E12 (Value) - imaqal_s02e12_activation", "PipelineKey": "rqa_s02e12_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S02E13 (Value) - imaqal_s02e13_activation", "PipelineKey": "rqa_s02e13_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_S02E14 (Value) - imaqal_s02e14_activation", "PipelineKey": "rqa_s02e14_raw", "IsActivationMessage": true},
 
     {"RapidProKey": "Rqa_S01E01 (Run ID) - imaqal_s01e01_activation", "PipelineKey": "rqa_s01e01_run_id"},
     {"RapidProKey": "Rqa_S01E02 (Run ID) - imaqal_s01e02_activation", "PipelineKey": "rqa_s01e02_run_id"},
@@ -101,6 +117,13 @@
     {"RapidProKey": "Rqa_Mag_S01E18 (Run ID) - mag_s01e18_activation", "PipelineKey": "rqa_s01mag18_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E19 (Run ID) - mag_s01e19_activation", "PipelineKey": "rqa_s01mag19_run_id"},
     {"RapidProKey": "Rqa_Mag_S01E20 (Run ID) - mag_s01e20_activation", "PipelineKey": "rqa_s01mag20_run_id"},
+    {"RapidProKey": "Rqa_S02E08 (Run ID) - imaqal_s02e08_activation", "PipelineKey": "rqa_s02e08_run_id"},
+    {"RapidProKey": "Rqa_S02E09 (Run ID) - imaqal_s02e09_activation", "PipelineKey": "rqa_s02e09_run_id"},
+    {"RapidProKey": "Rqa_S02E10 (Run ID) - imaqal_s02e10_activation", "PipelineKey": "rqa_s02e10_run_id"},
+    {"RapidProKey": "Rqa_S02E11 (Run ID) - imaqal_s02e11_activation", "PipelineKey": "rqa_s02e11_run_id"},
+    {"RapidProKey": "Rqa_S02E12 (Run ID) - imaqal_s02e12_activation", "PipelineKey": "rqa_s02e12_run_id"},
+    {"RapidProKey": "Rqa_S02E13 (Run ID) - imaqal_s02e13_activation", "PipelineKey": "rqa_s02e13_run_id"},
+    {"RapidProKey": "Rqa_S02E14 (Run ID) - imaqal_s02e14_activation", "PipelineKey": "rqa_s02e14_run_id"},
 
     {"RapidProKey": "message", "PipelineKey": "recovered_raw", "IsActivationMessage": true},
     {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
@@ -131,11 +154,20 @@
     {"RapidProKey": "Rqa_Mag_S01E18 (Time) - mag_s01e18_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E19 (Time) - mag_s01e19_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S01E20 (Time) - mag_s01e20_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S02E08 (Time) - imaqal_s02e08_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S02E09 (Time) - imaqal_s02e09_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S02E10 (Time) - imaqal_s02e10_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S02E11 (Time) - imaqal_s02e11_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S02E12 (Time) - imaqal_s02e12_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S02E13 (Time) - imaqal_s02e13_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_S02E14 (Time) - imaqal_s02e14_activation", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Women_Participation (Time) - imaqal_s01_follow_up_w2", "PipelineKey": "sent_on"},
     {"RapidProKey": "Minority_Clan (Time) - mag_s01_w8_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Young_People (Time) - mag_s01_w10_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Decisions_Minority_Clan (Time) - mag_s01_w18_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Time) - imaqal_s02_w22_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Time) - imaqal_s02_w24_follow_up", "PipelineKey": "sent_on"},
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
@@ -155,7 +187,11 @@
     {"RapidProKey": "Young_People (Value) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_raw"},
     {"RapidProKey": "Young_People (Run ID) - mag_s01_w10_follow_up", "PipelineKey": "young_people_issues_run_id"},
     {"RapidProKey": "Decisions_Minority_Clan (Value) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_raw"},
-    {"RapidProKey": "Decisions_Minority_Clan (Run ID) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_run_id"}
+    {"RapidProKey": "Decisions_Minority_Clan (Run ID) - mag_s01_w18_follow_up", "PipelineKey": "decisions_minority_clan_run_id"},
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Value) - imaqal_s02_w22_follow_up", "PipelineKey": "women_decision_making_opportunities_raw"},
+    {"RapidProKey": "Women_Decision_Making_Opportunities (Run ID) - imaqal_s02_w22_follow_up", "PipelineKey": "women_decision_making_opportunities_run_id"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Value) - imaqal_s02_w24_follow_up", "PipelineKey": "idps_decision_making_opportunities_raw"},
+    {"RapidProKey": "Idps_Decision_Making_Opportunities (Run ID) - imaqal_s02_w24_follow_up", "PipelineKey": "idps_decision_making_opportunities_run_id"}
   ],
   "PipelineName": "full_pipeline",
   "MoveWSMessages": true,
