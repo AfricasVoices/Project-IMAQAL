@@ -42,3 +42,4 @@ cd ..
     "$DATA_ROOT/Outputs/imaqal_production.csv" "$DATA_ROOT/Outputs/auto_coding_traced_data.jsonl" \
     "$DATA_ROOT/Outputs/imaqal_messages.csv" "$DATA_ROOT/Outputs/imaqal_individuals.csv" \
     "$DATA_ROOT/Outputs/messages_traced_data.jsonl" "$DATA_ROOT/Outputs/individuals_traced_data.jsonl" \
+    "$DATA_ROOT/Outputs/messages_traced_data_history.jsonl" "$DATA_ROOT/Outputs/individuals_traced_data_history.jsonl"

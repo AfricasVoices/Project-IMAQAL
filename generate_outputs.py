@@ -55,6 +55,12 @@ if __name__ == "__main__":
                         help="Path to a JSONL file to write the TracedData associated with the messages analysis file")
     parser.add_argument("individuals_json_output_path", metavar="individuals-json-output-path",
                         help="Path to a JSON file to write the TracedData associated with the individuals analysis file")
+    parser.add_argument("messages_history_json_output_path", metavar="messages-history-json-output-path",
+                        help="Path to a JSON file to flush the messages TracedData history to before writing that "
+                             "TracedData to <messages-json-output-path>")
+    parser.add_argument("individuals_history_json_output_path", metavar="individuals-history-json-output-path",
+                        help="Path to a JSON file to flush the individuals TracedData history to before writing that "
+                             "TracedData to <individuals-json-output-path>")
 
     args = parser.parse_args()
 
@@ -76,6 +82,8 @@ if __name__ == "__main__":
     auto_coding_json_output_path = args.auto_coding_json_output_path
     csv_by_message_output_path = args.csv_by_message_output_path
     csv_by_individual_output_path = args.csv_by_individual_output_path
+    messages_history_json_output_path = args.messages_history_json_output_path
+    individuals_history_json_output_path = args.individuals_history_json_output_path
     messages_json_output_path = args.messages_json_output_path
     individuals_json_output_path = args.individuals_json_output_path
 
@@ -184,10 +192,18 @@ if __name__ == "__main__":
         messages_data, individuals_data = AnalysisFile.generate(user, data, csv_by_message_output_path,
                                                                 csv_by_individual_output_path)
 
-        log.info("Writing messages TracedData to file...")
+        log.info("Flushing messages TracedData history...")
+        IOUtils.ensure_dirs_exist_for_file(messages_history_json_output_path)
+        TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, messages_history_json_output_path)
+
+        log.info("Writing latest messages TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(messages_json_output_path)
         with open(messages_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(messages_data, f)
+
+        log.info("Flushing individuals TracedData history...")
+        IOUtils.ensure_dirs_exist_for_file(individuals_history_json_output_path)
+        TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, individuals_history_json_output_path)
 
         log.info("Writing individuals TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(individuals_json_output_path)

@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-CoreDataModules = {editable = true,ref = "v0.12.0",git = "https://www.github.com/AfricasVoices/CoreDataModules"}
+CoreDataModules = {editable = true,ref = "flush-history-recompute-sha",git = "https://www.github.com/AfricasVoices/CoreDataModules"}
 PipelineInfrastructure = {editable = true,ref = "v0.0.3",git = "https://www.github.com/AfricasVoices/PipelineInfrastructure"}
 RapidProTools = {editable = true,git = "https://www.github.com/AfricasVoices/RapidProTools",ref = "v0.3.0"}
 pytz = "*"
