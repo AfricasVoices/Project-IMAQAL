@@ -1,11 +1,11 @@
 import json
 
-from core_data_modules.data_models import Scheme
+from core_data_modules.data_models import CodeScheme
 
 def _open_scheme(filename):
     with open(f"code_schemes/{filename}", "r") as f:
         firebase_map = json.load(f)
-        return Scheme.from_firebase_map(firebase_map)
+        return CodeScheme.from_firebase_map(firebase_map)
 
 
 class CodeSchemes(object):
@@ -49,6 +49,7 @@ class CodeSchemes(object):
 
     S02E08 = _open_scheme("s02e08.json")
     S02E09 = _open_scheme("s02e09.json")
+    S02E09_YES_NO_AMB = _open_scheme("s02e09_yes_no_amb.json")
     S02E10 = _open_scheme("s02e10.json")
     S02E11 = _open_scheme("s02e11.json")
     S02E12 = _open_scheme("s02e12.json")
@@ -63,6 +64,10 @@ class CodeSchemes(object):
     YOUNG_PEOPLE_ISSUES_YES_NO_AMB = _open_scheme("young_people_issues_yes_no_amb.json")
     DECISIONS_MINORITY_CLAN = _open_scheme("decisions_minority_clan.json")
     DECISIONS_MINORITY_CLAN_YES_NO_AMB = _open_scheme("decisions_minority_clan_yes_no_amb.json")
+    WOMEN_DECISION_MAKING_OPPORTUNITIES= _open_scheme("women_decision_making_opportunities.json")
+    WOMEN_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB= _open_scheme("women_decision_making_opportunities_yes_no_amb.json")
+    IDPS_DECISION_MAKING_OPPORTUNITIES = _open_scheme("idps_decision_making_opportunities.json")
+    IDPS_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB = _open_scheme("idps_decision_making_opportunities_yes_no_amb.json")
 
     AGE = _open_scheme("age.json")
     RECENTLY_DISPLACED = _open_scheme("recently_displaced.json")
