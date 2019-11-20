@@ -19,7 +19,8 @@ if __name__ == "__main__":
     parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
                         help="Path to the pipeline configuration json file"),
     parser.add_argument("demog_map_json_input_dir", metavar="demog-map-json-input-dir",
-                        help="Path to a directory to read per episode demog map .json files ")
+                        help="Path to a directory to read per episode demog map .json files"
+                             " the files should be in the format <rqa_raw_field>_demog_map.json")
     parser.add_argument("engagement_csv_output_dir", metavar="engagement-csv-output-dir",
                         help="Directory to write engagement CSV files to")
 
@@ -31,11 +32,11 @@ if __name__ == "__main__":
     demog_map_json_input_dir = args.demog_map_json_input_dir
     engagement_csv_output_dir = args.engagement_csv_output_dir
 
-    engagement_map = {} # Participants shows and demogs data
-    all_show_names = [] # All project show names
-    participants_per_show = OrderedDict()
-    unique_participants = set()
-    cumulative_participants = []
+    engagement_map = {}  # Participants shows and demogs data
+    all_show_names = []  # All project show names
+    participants_per_show = OrderedDict() # of rqa_raw_field -> int
+    uuids = set()  # unique uids that participated in the entire project
+    cumulative_uids = []  # uids that participated in each radio show
 
     # Load the pipeline configuration file
     log.info("Loading Pipeline Configuration File...")
@@ -68,39 +69,39 @@ if __name__ == "__main__":
             data = json.load(f)
         log.info(f"Loaded {len(data)} {rqa_raw_field} uids ")
 
-        if rqa_raw_field not in all_show_names: # Not using a set to preserve the sort order of the file names
-            all_show_names.append(rqa_raw_field)
+        all_show_names.append(rqa_raw_field)
         participants_per_show[f"{rqa_raw_field}"] = len(data.keys())
 
-        for uid in data.keys():
+        for uid, demogs in data.items():
             demog = data[uid]
 
             if uid not in engagement_map:
-                engagement_map[uid] = {}
-                engagement_map[uid]["demog"] = demog
-                engagement_map[uid]["shows"] = []
+                engagement_map[uid] = {
+                    "demog": demog,
+                    "shows": []
+                }
 
             engagement_map[uid]["shows"].append(rqa_raw_field)
-            unique_participants.add(uid)
-            cumulative_participants.append(uid)
+            uuids.add(uid)
+            cumulative_uids.append(uid)
 
     # Export the engagement counts to their respective csv file.
-    log.info(f'Writing Total Unique Participants Csv ...')
+    log.info(f'Writing total project unique participants Csv ...')
     with open(f"{engagement_csv_output_dir}/unique_participants.csv", "w") as f:
         headers = ["Unique Participants"]
         writer = csv.writer(f, fieldnames=headers)
         writer.writeheader()
-        writer.writerows(len(unique_participants))
+        writer.writerows(len(uuids))
 
-    log.info(f'Writing Total Cumulative Participants Csv ...')
+    log.info(f'Writing total project cumulative participants Csv ...')
     with open(f"{engagement_csv_output_dir}/cumulative_participants.csv", "w") as f:
         headers = ["Cumulative Participants"]
         writer = csv.writer(f, fieldnames=headers)
         writer.writeheader()
-        writer.writerows(len(cumulative_participants))
+        writer.writerows(len(cumulative_uids))
 
-    log.info(f'Writing Total Cumulative Unique Participants Csv ...')
-    with open(f"{engagement_csv_output_dir}/cumulative_unique_participants.csv", "w") as f:
+    log.info(f'Writing total cumulative participants per show Csv ...')
+    with open(f"{engagement_csv_output_dir}/cumulative_participants.csv", "w") as f:
         headers = ["Radio Show", "Total Participants"]
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
