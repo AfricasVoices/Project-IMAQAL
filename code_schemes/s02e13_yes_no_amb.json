@@ -1,87 +1,40 @@
 {
-  "SchemeID": "Scheme-082d2486",
-  "Name": "S02E13",
   "Version": "0.0.0.1",
+  "Name": "S02E13 Yes/No/Amb",
+  "SchemeID": "Scheme-53d2e307",
   "Codes": [
     {
-      "CodeID": "code-8dd74b78",
-      "CodeType": "Normal",
-      "DisplayText": "girls have more skills",
+      "DisplayText": "yes",
+      "VisibleInCoda": true,
       "NumericValue": 0,
-      "StringValue": "girls_have_more_skills",
-      "VisibleInCoda": true
+      "CodeID": "code-c16e124d",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "yes"
+      ],
+      "StringValue": "yes"
     },
     {
-      "CodeID": "code-ee52d969",
-      "CodeType": "Normal",
-      "DisplayText": "girls are good decision makers",
       "NumericValue": 1,
-      "StringValue": "girls_are_good_decision_makers",
+      "CodeID": "code-1f28e4a5",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "no"
+      ],
+      "StringValue": "no",
+      "DisplayText": "no",
       "VisibleInCoda": true
     },
     {
-      "CodeID": "code-2944c59e",
-      "CodeType": "Normal",
-      "DisplayText": "girls have patience",
       "NumericValue": 2,
-      "StringValue": "girls_have_patience",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-5891ec4b",
+      "CodeID": "code-b853ba1d",
       "CodeType": "Normal",
-      "DisplayText": "girls are kind",
-      "NumericValue": 3,
-      "StringValue": "girls_are_kind",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-0921185c",
-      "CodeType": "Normal",
-      "DisplayText": "girls put in more effort",
-      "NumericValue": 4,
-      "StringValue": "girls_put_in_more_effort",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-ca5f3134",
-      "CodeType": "Normal",
-      "DisplayText": "backbone of the society",
-      "NumericValue": 5,
-      "StringValue": "backbone_of_the_society",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-d51e4750",
-      "CodeType": "Normal",
-      "DisplayText": "girls are weak",
-      "NumericValue": 6,
-      "StringValue": "girls_are_weak",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-1be55c40",
-      "CodeType": "Normal",
-      "DisplayText": "girls are regarded lesser",
-      "NumericValue": 7,
-      "StringValue": "girls_are_regarded_lesser",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-f4ab7db4",
-      "CodeType": "Normal",
-      "DisplayText": "role of the religion",
-      "NumericValue": 8,
-      "StringValue": "role_of_the_religion",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-a67ba8d2",
-      "CodeType": "Normal",
-      "DisplayText": "other",
-      "NumericValue": 9,
-      "StringValue": "other",
-      "VisibleInCoda": true
+      "MatchValues": [
+        "ambivalent"
+      ],
+      "StringValue": "ambivalent",
+      "VisibleInCoda": true,
+      "DisplayText": "ambivalent"
     },
     {
       "CodeID": "code-NA-f93d3eb7",
