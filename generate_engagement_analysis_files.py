@@ -32,12 +32,6 @@ if __name__ == "__main__":
     demog_map_json_input_dir = args.demog_map_json_input_dir
     engagement_csv_output_dir = args.engagement_csv_output_dir
 
-    engagement_map = {}  # Participants shows and demogs data
-    all_show_names = []  # All project show names
-    participants_per_show = OrderedDict() # of rqa_raw_field -> int
-    uuids = set()  # unique uids that participated in the entire project
-    cumulative_uids = []  # uids that participated in each radio show
-
     # Load the pipeline configuration file
     log.info("Loading Pipeline Configuration File...")
     with open(pipeline_configuration_file_path) as f:
@@ -64,6 +58,11 @@ if __name__ == "__main__":
         rqa_raw_fields.append(plan.raw_field)
 
     log.info(f'Generating engagement map, unique participants and cumulative participants ...' )
+    engagement_map = {}  # of uid -> name of shows participated in and their demographics data
+    all_show_names = []  # All project show names
+    uuids = set()  # unique uids that participated in the entire project
+    cumulative_uids = []  # uids that participated in each radio show
+    participants_per_show = OrderedDict()  # of rqa_raw_field -> sum of total uids who participated
     for rqa_raw_field in rqa_raw_fields:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
             data = json.load(f)
