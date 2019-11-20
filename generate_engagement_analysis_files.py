@@ -87,23 +87,63 @@ if __name__ == "__main__":
     # Export the engagement counts to their respective csv file.
     log.info(f'Writing Total Unique Participants Csv ...')
     with open(f"{engagement_csv_output_dir}/unique_participants.csv", "w") as f:
-        headers = ["Unique Participants"]
-        writer = csv.writer(f, fieldnames=headers)
-        writer.writeheader()
-        writer.writerows(len(unique_participants))
+        writer = csv.writer(f)
+        writer.writerow([len(unique_participants)])
 
     log.info(f'Writing Total Cumulative Participants Csv ...')
     with open(f"{engagement_csv_output_dir}/cumulative_participants.csv", "w") as f:
-        headers = ["Cumulative Participants"]
-        writer = csv.writer(f, fieldnames=headers)
-        writer.writeheader()
-        writer.writerows(len(cumulative_participants))
+        writer = csv.writer(f)
+        writer.writerow([len(cumulative_participants)])
 
-    log.info(f'Writing Total Cumulative Unique Participants Csv ...')
-    with open(f"{engagement_csv_output_dir}/cumulative_unique_participants.csv", "w") as f:
-        headers = ["Radio Show", "Total Participants"]
+    log.info(f'Writing participants per show CSV ...')
+    with open(f"{engagement_csv_output_dir}/participants_per_show.csv", "w") as f:
+        writer = csv.writer(f,)
+        writer.writerows(participants_per_show.items())
+
+    # For each uid generate a sustained engagement map that contains : no of shows participated , their manually
+    # coded demographics and a matrix representation of the shows they have participated in
+    # (1 for show they participated and 0 otherwise.)
+    sustained_engagement_map = {}
+    for uid in engagement_map.keys():
+        basic_str = f" {len(engagement_map[uid]['shows'])}, {engagement_map[uid]['demog']['gender']}," \
+            f" {engagement_map[uid]['demog']['age']}, {engagement_map[uid]['demog']['recently_displaced']}, "
+
+        show_mapping = ""
+        for show_name in all_show_names:
+            if show_name in engagement_map[uid]["shows"]:
+                show_mapping = show_mapping + "1, "
+            else:
+                show_mapping = show_mapping + "0, "
+
+        compound_str = basic_str + show_mapping
+        sustained_engagement_map[uid] = [compound_str]
+
+    log.info(f'Computing repeat_non_cumulative_engagement ...' )
+    # Compute the number of individuals who participated exactly 1 to <number of RQAs> times.
+    # An individual is considered to have participated if they sent a message and didn't opt-out, regardless of the
+    # relevance of any of their messages.
+    repeat_non_cumulative_engagement = OrderedDict()
+    for i in range(1, len(all_show_names) + 1):
+        repeat_non_cumulative_engagement[i] = {
+            "Repeat No": i,
+            "No. of participants": 0,
+            "% of participants": None
+        }
+        for k, v in sustained_engagement_map.items():
+            for item in v:
+                if item[1] == f'{i}':
+                    repeat_non_cumulative_engagement[i]["No. of participants"] += 1
+
+    # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times.
+    for rp in repeat_non_cumulative_engagement.values():
+        rp["% of participants"] = round(rp["No. of participants"] / len(cumulative_participants) * 100, 1)
+
+    log.info(f'Writing repeat_non_cumulative_engagement csv ...' )
+    # Write repeat non cumulative engagement in the engagement CSV
+    with open(f"{engagement_csv_output_dir}/rp_non_cumulative_engagement.csv", "w") as f:
+        headers = ["Repeat No", "No. of participants", "% of participants"]
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
 
-        for show_participation in participants_per_show.values():
-            writer.writerow(show_participation)
+        for row in repeat_non_cumulative_engagement.values():
+            writer.writerow(row)
