@@ -22,10 +22,8 @@
     "mag_s01e19_activation",
     "mag_s01e20_activation"
   ],
-  "DemogFlowNames":[
-    "imaqal_demog"
-  ],
-  "FollowUpFlowNames":[
+  "SurveyFlowNames":[
+    "imaqal_demog",
     "imaqal_s01_follow_up_w2",
     "mag_s01_w8_follow_up",
     "mag_s01_w10_follow_up",

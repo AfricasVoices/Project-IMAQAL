@@ -58,6 +58,8 @@ DATASETS=(
     "minority_clan_issues"
     "young_people_issues"
     "decisions_minority_clan"
+    "women_decision_making_opportunities"
+    "idps_decision_making_opportunities"
 )
 
 cd "$CODA_V2_ROOT/data_tools"
