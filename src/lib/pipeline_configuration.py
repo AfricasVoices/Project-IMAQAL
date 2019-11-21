@@ -367,6 +367,13 @@ class PipelineConfiguration(object):
                    run_id_field="rqa_s02e11_run_id",
                    coding_configurations=[
                        CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S02E11_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s02e11_yes_no_amb_coded",
+                           analysis_file_key="rqa_s02e11_yes_no_amb",
+                       ),
+                       CodingConfiguration(
                            coding_mode=CodingModes.MULTIPLE,
                            code_scheme=CodeSchemes.S02E11,
                            folding_mode=FoldingModes.MATRIX,
@@ -383,6 +390,13 @@ class PipelineConfiguration(object):
                    icr_filename="s02e12.csv",
                    run_id_field="rqa_s02e12_run_id",
                    coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S02E13_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s02e13_yes_no_amb_coded",
+                           analysis_file_key="rqa_s02e13_yes_no_amb",
+                       ),
                        CodingConfiguration(
                            coding_mode=CodingModes.MULTIPLE,
                            code_scheme=CodeSchemes.S02E12,

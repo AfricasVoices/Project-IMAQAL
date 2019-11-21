@@ -52,8 +52,10 @@ class CodeSchemes(object):
     S02E09_YES_NO_AMB = _open_scheme("s02e09_yes_no_amb.json")
     S02E10 = _open_scheme("s02e10.json")
     S02E11 = _open_scheme("s02e11.json")
+    S02E11_YES_NO_AMB = _open_scheme("s02e11_yes_no_amb.json")
     S02E12 = _open_scheme("s02e12.json")
     S02E13 = _open_scheme("s02e13.json")
+    S02E13_YES_NO_AMB = _open_scheme("s02e13_yes_no_amb.json")
     S02E14 = _open_scheme("s02e14.json")
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
