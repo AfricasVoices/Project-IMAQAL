@@ -19,7 +19,7 @@ if __name__ == "__main__":
     parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
                         help="Path to the pipeline configuration json file"),
     parser.add_argument("demog_map_json_input_dir", metavar="demog-map-json-input-dir",
-                        help="Path to a directory to read per episode demog map .json files"
+                        help="Path to a directory to read per episode demog map .json files. "
                              " the files should be in the format <rqa_raw_field>_demog_map.json")
     parser.add_argument("engagement_csv_output_dir", metavar="engagement-csv-output-dir",
                         help="Directory to write engagement CSV files to")
