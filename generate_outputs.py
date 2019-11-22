@@ -1,6 +1,6 @@
 import argparse
 import json
-import os
+import os ,random
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
@@ -151,6 +151,8 @@ if __name__ == "__main__":
         coalesced_survey_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
 
     data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_survey_datasets)
+
+    data = random.sample(data, 500)
 
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
