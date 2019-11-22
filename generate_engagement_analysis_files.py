@@ -12,8 +12,8 @@ log = Logger(__name__)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generates engagement data stored in multiple CSV sheets for analysis"
-                                                 " and visualization")
+    parser = argparse.ArgumentParser(description="Computes engagement data and stores it in multiple CSV sheets for"
+                                                 "analysis and visualization")
 
     parser.add_argument("user", help="User launching this program")
     parser.add_argument("pipeline_configuration_file_path", metavar="pipeline-configuration-file",
@@ -57,10 +57,10 @@ if __name__ == "__main__":
     for plan in PipelineConfiguration.RQA_CODING_PLANS:
         rqa_raw_fields.append(plan.raw_field)
 
-    log.info(f'Generating engagement map, unique participants and cumulative participants ...' )
+    log.info(f'Computing unique, lifetime-active and per-show participants ...' )
     engagement_map = {}  # of uid -> name of shows participated in and their demographics data
     uuids = set()  # unique uids that participated in the entire project
-    cumulative_uids = []  # uids that participated in each radio show
+    lifetime_active_uuids = []  # uids that participated in each radio show
     participants_per_show = OrderedDict()  # of rqa_raw_field -> sum of total uids who participated
     for rqa_raw_field in rqa_raw_fields:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
@@ -77,31 +77,27 @@ if __name__ == "__main__":
                     "demog": demog,
                     "shows": []
                 }
+                assert demogs == engagement_map[uid]['demog'] , f"{demogs} not equal to {engagement_map[uid]['demog']}" \
+                    f" for {uid}"
 
             engagement_map[uid]["shows"].append(rqa_raw_field)
             uuids.add(uid)
-            cumulative_uids.append(uid)
+            lifetime_active_uuids.append(uid)
 
     # Export the engagement counts to their respective csv file.
-    log.info(f'Writing total project unique participants Csv ...')
+    log.info(f'Writing unique participants csv ...')
     with open(f"{engagement_csv_output_dir}/unique_participants.csv", "w") as f:
-        headers = ["Unique Participants"]
-        writer = csv.writer(f, fieldnames=headers)
-        writer.writeheader()
-        writer.writerows(len(uuids))
+        writer = csv.writer(f)
+        writer.writerow([len(uuids)])
 
-    log.info(f'Writing total project cumulative participants Csv ...')
-    with open(f"{engagement_csv_output_dir}/cumulative_participants.csv", "w") as f:
-        headers = ["Cumulative Participants"]
-        writer = csv.writer(f, fieldnames=headers)
-        writer.writeheader()
-        writer.writerows(len(cumulative_uids))
+    log.info(f'Writing lifetime active participants csv ...')
+    with open(f"{engagement_csv_output_dir}/lifetime_active_participants.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerow([len(lifetime_active_uuids)])
 
-    log.info(f'Writing total cumulative participants per show Csv ...')
-    with open(f"{engagement_csv_output_dir}/cumulative_participants.csv", "w") as f:
-        headers = ["Radio Show", "Total Participants"]
-        writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
-        writer.writeheader()
+    log.info(f'Writing show participation csv ...')
+    with open(f"{engagement_csv_output_dir}/show_participation.csv", "w") as f:
+        writer = csv.writer(f)
 
-        for show_participation in participants_per_show.values():
-            writer.writerow(show_participation)
+        for row in participants_per_show.items():
+            writer.writerow(row)
