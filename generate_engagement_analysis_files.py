@@ -59,7 +59,6 @@ if __name__ == "__main__":
 
     log.info(f'Generating engagement map, unique participants and cumulative participants ...' )
     engagement_map = {}  # of uid -> name of shows participated in and their demographics data
-    all_show_names = []  # All project show names
     uuids = set()  # unique uids that participated in the entire project
     cumulative_uids = []  # uids that participated in each radio show
     participants_per_show = OrderedDict()  # of rqa_raw_field -> sum of total uids who participated
@@ -68,7 +67,6 @@ if __name__ == "__main__":
             data = json.load(f)
         log.info(f"Loaded {len(data)} {rqa_raw_field} uids ")
 
-        all_show_names.append(rqa_raw_field)
         participants_per_show[f"{rqa_raw_field}"] = len(data.keys())
 
         for uid, demogs in data.items():
