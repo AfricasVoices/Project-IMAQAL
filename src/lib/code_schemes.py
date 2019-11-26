@@ -67,7 +67,7 @@ class CodeSchemes(object):
     S02MAG27 = _open_scheme("s02mag27.json")
     S02MAG28 = _open_scheme("s02mag28.json")
     S02MAG29 = _open_scheme("s02mag29.json")
-    S02MAG30 = _open_scheme("s02mag20.json")
+    S02MAG30 = _open_scheme("s02mag30.json")
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
     WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")
