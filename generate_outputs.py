@@ -162,6 +162,9 @@ if __name__ == "__main__":
     elif pipeline_configuration.pipeline_name == "q6_pipeline":
         log.info("Running Q6 pipeline")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q6_RQA_CODING_PLANS
+    elif pipeline_configuration.pipeline_name == "q7_pipeline":
+        log.info("Running Q7 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q7_RQA_CODING_PLANS
     else:
         assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
         log.info("Running full Pipeline")
@@ -259,9 +262,7 @@ if __name__ == "__main__":
         with open(auto_coding_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
         if pipeline_configuration.drive_upload is not None:
-            # TODO: upload auto-coding traced data file to drive ?
             log.info("Uploading production file to Google Drive...")
-
             production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
             production_csv_drive_file_name = os.path.basename(
                 pipeline_configuration.drive_upload.production_upload_path)
