@@ -156,7 +156,10 @@ if __name__ == "__main__":
     # Compute:
     #  - % Relevant Messages, by computing Relevant Messages / Total Messages * 100, to 1 decimal place.
     for count in engagement_counts.values():
-        count["% Relevant Messages"] = round(count["Relevant Messages"] / count["Total Messages"] * 100, 1)
+        if count["Relevant Messages"] == 0:
+            count["% Relevant Messages"] = '-'
+        else:
+            count["% Relevant Messages"] = round(count["Relevant Messages"] / count["Total Messages"] * 100, 1)
 
     # Export the engagement counts to a csv.
     with open(f"{output_dir}/engagement_counts.csv", "w") as f:
@@ -194,7 +197,10 @@ if __name__ == "__main__":
     # Percentages are computed after excluding individuals who opted out.
     total_individuals = len([td for td in individuals if td["consent_withdrawn"] == Codes.FALSE])
     for rp in repeat_participations.values():
-        rp["% of Individuals"] = round(rp["Number of Individuals"] / total_individuals * 100, 1)
+        if rp["Number of Individuals"] == 0:
+            rp["% of Individuals"] = '-'
+        else:
+            rp["% of Individuals"] = round(rp["Number of Individuals"] / total_individuals * 100, 1)
 
     # Export the participation frequency data to a csv
     with open(f"{output_dir}/repeat_participations.csv", "w") as f:
