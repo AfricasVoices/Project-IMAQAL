@@ -67,12 +67,6 @@ if __name__ == "__main__":
         messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
     log.info(f"Loaded {len(messages)} messages")
 
-    # Read the individuals dataset
-    log.info(f"Loading the individuals dataset from {individuals_json_input_path}...")
-    with open(individuals_json_input_path) as f:
-        individuals = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-    log.info(f"Loaded {len(individuals)} individuals")
-
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
         log.info("Running Q4 pipeline")
@@ -97,14 +91,12 @@ if __name__ == "__main__":
             "Episode": plan.raw_field,
             "Total Messages": 0,
             "Relevant Messages": 0,
-            "Total Participants": 0,
             "% Relevant Messages": None
         }
     engagement_counts["Total"] = {
         "Episode": "Total",
         "Total Messages": 0,
         "Relevant Messages": 0,
-        "Total Participants": 0,
         "% Relevant Messages": None
     }
 
@@ -141,74 +133,21 @@ if __name__ == "__main__":
                     engagement_counts[plan.raw_field]["Relevant Messages"] += 1
                     engagement_counts["Total"]["Relevant Messages"] += 1
 
-    # Compute, per episode and across the season:
-    #  - Total Participants, by counting the number of consenting individuals objects that contain the raw_field key
-    #    each week.
-    for ind in individuals:
-        if ind["consent_withdrawn"] == Codes.FALSE:
-            engagement_counts["Total"]["Total Participants"] += 1
-            for plan in PipelineConfiguration.RQA_CODING_PLANS:
-                if ind.get(plan.raw_field, "") == "":
-                    continue
-
-                engagement_counts[plan.raw_field]["Total Participants"] += 1
-
-    # Compute:
-    #  - % Relevant Messages, by computing Relevant Messages / Total Messages * 100, to 1 decimal place.
+        # Compute:
+        #  - % Relevant Messages, by computing Relevant Messages / Total Messages * 100, to 1 decimal place.
     for count in engagement_counts.values():
         if count["Relevant Messages"] == 0:
             count["% Relevant Messages"] = '-'
         else:
             count["% Relevant Messages"] = round(count["Relevant Messages"] / count["Total Messages"] * 100, 1)
 
-    # Export the engagement counts to a csv.
-    with open(f"{output_dir}/engagement_counts.csv", "w") as f:
-        headers = ["Episode", "Total Messages", "Relevant Messages", "% Relevant Messages", "Total Participants"]
+        # Export the engagement counts to a csv.
+    with open(f"{output_dir}/messages_engagement_counts.csv", "w") as f:
+        headers = ["Episode", "Total Messages", "Relevant Messages", "% Relevant Messages",]
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
 
         for row in engagement_counts.values():
-            writer.writerow(row)
-
-    log.info("Computing the participation frequencies...")
-    repeat_participations = OrderedDict()
-    for i in range(1, len(PipelineConfiguration.RQA_CODING_PLANS) + 1):
-        repeat_participations[i] = {
-            "Episodes Participated In": i,
-            "Number of Individuals": 0,
-            "% of Individuals": None
-        }
-
-    # Compute the number of individuals who participated each possible number of times, from 1 to <number of RQAs>
-    # An individual is considered to have participated if they sent a message and didn't opt-out, regardless of the
-    # relevance of any of their messages.
-    for ind in individuals:
-        if ind["consent_withdrawn"] == Codes.FALSE:
-            weeks_participated = 0
-            for plan in PipelineConfiguration.RQA_CODING_PLANS:
-                if ind.get(plan.raw_field, "") == "":
-                    continue
-
-                weeks_participated += 1
-            assert weeks_participated != 0, f"Found individual '{ind['uid']}' with no participation in any week"
-            repeat_participations[weeks_participated]["Number of Individuals"] += 1
-
-    # Compute the percentage of individuals who participated each possible number of times.
-    # Percentages are computed after excluding individuals who opted out.
-    total_individuals = len([td for td in individuals if td["consent_withdrawn"] == Codes.FALSE])
-    for rp in repeat_participations.values():
-        if rp["Number of Individuals"] == 0:
-            rp["% of Individuals"] = '-'
-        else:
-            rp["% of Individuals"] = round(rp["Number of Individuals"] / total_individuals * 100, 1)
-
-    # Export the participation frequency data to a csv
-    with open(f"{output_dir}/repeat_participations.csv", "w") as f:
-        headers = ["Episodes Participated In", "Number of Individuals", "% of Individuals"]
-        writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
-        writer.writeheader()
-
-        for row in repeat_participations.values():
             writer.writerow(row)
 
     log.info("Graphing the per-episode engagement counts...")
@@ -223,51 +162,6 @@ if __name__ == "__main__":
         title="Messages per Episode"
     ).save(f"{output_dir}/messages_per_episode.png", scale_factor=IMG_SCALE_FACTOR)
 
-    # Graph the number of participants in each episode
-    altair.Chart(
-        altair.Data(values=[{"episode": x["Episode"], "count": x["Total Participants"]}
-                            for x in engagement_counts.values() if x["Episode"] != "Total"])
-    ).mark_bar().encode(
-        x=altair.X("episode:N", title="Episode"),
-        y=altair.Y("count:Q", title="Number of Participants")
-    ).properties(
-        title="Participants per Episode"
-    ).save(f"{output_dir}/participants_per_episode.png", scale_factor=IMG_SCALE_FACTOR)
-
-    # Plot the per-season distribution of responses for each survey question, per individual
-    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS + \
-                PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-        for cc in plan.coding_configurations:
-            if cc.analysis_file_key is None:
-                continue
-
-            log.info(f"Graphing the distribution of codes for {cc.analysis_file_key}...")
-            label_counts = OrderedDict()
-            for code in cc.code_scheme.codes:
-                label_counts[code.string_value] = 0
-
-            if cc.coding_mode == CodingModes.SINGLE:
-                for ind in individuals:
-                    label_counts[ind[cc.analysis_file_key]] += 1
-            else:
-                assert cc.coding_mode == CodingModes.MULTIPLE
-                for ind in individuals:
-                    for code in cc.code_scheme.codes:
-                        if ind[f"{cc.analysis_file_key}{code.string_value}"] == Codes.MATRIX_1:
-                            label_counts[code.string_value] += 1
-
-            chart = altair.Chart(
-                altair.Data(values=[{"label": k, "count": v} for k, v in label_counts.items()])
-            ).mark_bar().encode(
-                x=altair.X("label:N", title="Label", sort=list(label_counts.keys())),
-                y=altair.Y("count:Q", title="Number of Individuals")
-            ).properties(
-                title=f"Season Distribution: {cc.analysis_file_key}"
-            )
-            chart.save(f"{output_dir}/season_distribution_{cc.analysis_file_key}.html")
-            chart.save(f"{output_dir}/season_distribution_{cc.analysis_file_key}.png",
-                       scale_factor=IMG_SCALE_FACTOR)
-
     if pipeline_configuration.drive_upload is not None:
         # TODO : upload engagement csvs to an engagement csv folder
         log.info("Uploading graphs to Drive...")
@@ -280,3 +174,4 @@ if __name__ == "__main__":
         log.info(
             "Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
             "'DriveUploadPaths')")
+    
