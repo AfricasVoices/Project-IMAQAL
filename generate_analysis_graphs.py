@@ -4,6 +4,7 @@ import altair
 import glob
 import json
 import csv
+import sys
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
@@ -84,6 +85,7 @@ if __name__ == "__main__":
 
     # Compute the number of messages, individuals, and relevant messages per episode and overall.
     log.info("Computing the per-episode and per-season engagement counts...")
+    sys.setrecursionlimit(20000)
     engagement_counts = OrderedDict()
     for plan in PipelineConfiguration.RQA_CODING_PLANS:
         # TODO: Add another field to CodingPlan so that we can give the weeks better names than the raw_field
