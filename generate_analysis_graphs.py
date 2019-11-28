@@ -61,11 +61,11 @@ if __name__ == "__main__":
             google_cloud_credentials_file_path, pipeline_configuration.drive_upload.drive_credentials_file_url))
         drive_client_wrapper.init_client_from_info(credentials_info)
 
-    # Read the messages dataset
-    log.info(f"Loading the messages dataset from {messages_json_input_path}...")
-    with open(messages_json_input_path) as f:
-        messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-    log.info(f"Loaded {len(messages)} messages")
+    # Read the individuals dataset
+    log.info(f"Loading the individuals dataset from {individuals_json_input_path}...")
+    with open(individuals_json_input_path) as f:
+        individuals = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
+    log.info(f"Loaded {len(individuals)} individuals")
 
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
@@ -89,79 +89,68 @@ if __name__ == "__main__":
         # TODO: Add another field to CodingPlan so that we can give the weeks better names than the raw_field
         engagement_counts[plan.raw_field] = {
             "Episode": plan.raw_field,
-            "Total Messages": 0,
-            "Relevant Messages": 0,
-            "% Relevant Messages": None
+            "Total Participants": 0,
         }
     engagement_counts["Total"] = {
         "Episode": "Total",
-        "Total Messages": 0,
-        "Relevant Messages": 0,
-        "% Relevant Messages": None
+        "Total Participants": 0,
     }
 
     # Compute, per episode and across the season:
-    #  - Total Messages, by counting the number of consenting message objects that contain the raw_field key each week.
-    #  - Relevant Messages, by counting the number of consenting message objects which are coded with codes of type
-    #    CodeTypes.NORMAL. If a message was coded under multiple schemes, an additional assert is performed to ensure
-    #    the message was labelled with the same code type across all of those schemes.
-    for msg in messages:
-        if msg["consent_withdrawn"] == Codes.FALSE:
+    #  - Total Participants, by counting the number of consenting individuals objects that contain the raw_field key
+    #    each week.
+    for ind in individuals:
+        if ind["consent_withdrawn"] == Codes.FALSE:
+            engagement_counts["Total"]["Total Participants"] += 1
             for plan in PipelineConfiguration.RQA_CODING_PLANS:
-                if msg.get(plan.raw_field, "") == "":
+                if ind.get(plan.raw_field, "") == "":
                     continue
 
-                engagement_counts[plan.raw_field]["Total Messages"] += 1
-                engagement_counts["Total"]["Total Messages"] += 1
+                engagement_counts[plan.raw_field]["Total Participants"] += 1
 
-                # Check all the code schemes for this variable contain the same code type
-                codes = []
-                for cc in plan.coding_configurations:
-                    if cc.coding_mode == CodingModes.SINGLE:
-                        codes.append(cc.code_scheme.get_code_with_code_id(msg[cc.coded_field]["CodeID"]))
-                    else:
-                        assert cc.coding_mode == CodingModes.MULTIPLE
-                        for label in msg[cc.coded_field]:
-                            codes.append(cc.code_scheme.get_code_with_code_id(label["CodeID"]))
-
-                assert len(codes) > 0
-                code_type = codes[0].code_type
-                for code in codes:
-                    assert code.code_type == code_type
-
-                if code_type == CodeTypes.NORMAL:
-                    engagement_counts[plan.raw_field]["Relevant Messages"] += 1
-                    engagement_counts["Total"]["Relevant Messages"] += 1
-
-        # Compute:
-        #  - % Relevant Messages, by computing Relevant Messages / Total Messages * 100, to 1 decimal place.
-    for count in engagement_counts.values():
-        if count["Relevant Messages"] == 0:
-            count["% Relevant Messages"] = '-'
-        else:
-            count["% Relevant Messages"] = round(count["Relevant Messages"] / count["Total Messages"] * 100, 1)
-
-        # Export the engagement counts to a csv.
-    with open(f"{output_dir}/messages_engagement_counts.csv", "w") as f:
-        headers = ["Episode", "Total Messages", "Relevant Messages", "% Relevant Messages",]
+    # Export the engagement counts to a csv.
+    with open(f"{output_dir}/individuals_engagement_counts.csv", "w") as f:
+        headers = ["Episode", "Total Participants",]
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
 
         for row in engagement_counts.values():
             writer.writerow(row)
 
-    log.info("Graphing the per-episode engagement counts...")
-    # Graph the number of messages in each episode
-    altair.Chart(
-        altair.Data(values=[{"episode": x["Episode"], "count": x["Total Messages"]}
-                            for x in engagement_counts.values() if x["Episode"] != "Total"])
-    ).mark_bar().encode(
-        x=altair.X("episode:N", title="Episode"),
-        y=altair.Y("count:Q", title="Number of Messages")
-    ).properties(
-        title="Messages per Episode"
-    ).save(f"{output_dir}/messages_per_episode.png", scale_factor=IMG_SCALE_FACTOR)
+    # Plot the per-season distribution of responses for each survey question, per individual
+    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS + \
+                PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
+        for cc in plan.coding_configurations:
+            if cc.analysis_file_key is None:
+                continue
 
+            log.info(f"Graphing the distribution of codes for {cc.analysis_file_key}...")
+            label_counts = OrderedDict()
+            for code in cc.code_scheme.codes:
+                label_counts[code.string_value] = 0
+
+            if cc.coding_mode == CodingModes.SINGLE:
+                for ind in individuals:
+                    label_counts[ind[cc.analysis_file_key]] += 1
+            else:
+                assert cc.coding_mode == CodingModes.MULTIPLE
+                for ind in individuals:
+                    for code in cc.code_scheme.codes:
+                        if ind[f"{cc.analysis_file_key}{code.string_value}"] == Codes.MATRIX_1:
+                            label_counts[code.string_value] += 1
+
+            chart = altair.Chart(
+                altair.Data(values=[{"label": k, "count": v} for k, v in label_counts.items()])
+            ).mark_bar().encode(
+                x=altair.X("label:N", title="Label", sort=list(label_counts.keys())),
+                y=altair.Y("count:Q", title="Number of Individuals")
+            ).properties(
+                title=f"Season Distribution: {cc.analysis_file_key}"
+            )
+            chart.save(f"{output_dir}/season_distribution_{cc.analysis_file_key}.html")
+            chart.save(f"{output_dir}/season_distribution_{cc.analysis_file_key}.png",
+                       scale_factor=IMG_SCALE_FACTOR)
+    
     if pipeline_configuration.drive_upload is not None:
         # TODO : upload engagement csvs to an engagement csv folder
         log.info("Uploading graphs to Drive...")
@@ -174,4 +163,3 @@ if __name__ == "__main__":
         log.info(
             "Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
             "'DriveUploadPaths')")
-    
