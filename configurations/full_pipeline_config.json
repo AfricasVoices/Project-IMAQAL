@@ -204,5 +204,6 @@
     "IndividualsTracedDataUploadPath": "imaqal_analysis_outputs/imaqal_s01_individuals_traced_data.json",
     "AnalysisGraphsDir": "imaqal_analysis_outputs/analysis_graphs"
   },
-  "MemoryProfileUploadURLPrefix": "gs://avf-pipeline-logs-performance-nearline/2019/IMAQAL/memory-"
+  "MemoryProfileUploadURLPrefix": "gs://avf-pipeline-logs-performance-nearline/2019/IMAQAL/memory-",
+  "DataArchiveUploadURLPrefix": "gs://pipeline-execution-backup-archive/2019/IMAQAL/data-"
 }
