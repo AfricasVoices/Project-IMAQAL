@@ -1,0 +1,93 @@
+{
+  "RapidProDomain": "textit.in",
+  "RapidProTokenFileURL": "gs://avf-credentials/imaqal-text-it-token.txt",
+  "RapidProTestContactUUIDs": [
+    "fad44f22-235a-4821-9780-dfef09076fe1",
+    "3903ad8e-284e-48a0-881b-89c0b06b9334",
+    "45939459-e4d5-4ad6-8650-3e7134b9a035"
+  ],
+  "RecoveryCSVURLs": [
+  ],
+  "PhoneNumberUuidTable": {
+    "FirebaseCredentialsFileURL": "gs://avf-credentials/avf-id-infrastructure-firebase-adminsdk-6xps8-b9173f2bfd.json",
+    "TableName": "IMAQAL"
+  },
+  "ActivationFlowNames": [
+    "mag_s02e21_activation",
+    "mag_s02e22_activation",
+    "mag_s02e23_activation",
+    "mag_s02e24_activation",
+    "mag_s02e25_activation",
+    "mag_s02e26_activation",
+    "mag_s02e27_activation",
+    "mag_s02e28_activation",
+    "mag_s02e29_activation",
+    "mag_s02e30_activation"
+  ],
+  "SurveyFlowNames": [
+    "imaqal_demog"
+  ],
+  "RapidProKeyRemappings": [
+    {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
+
+    {"RapidProKey": "Rqa_Mag_S02E21 (Value) - mag_s02e21_activation", "PipelineKey": "rqa_s02mag21_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E22 (Value) - mag_s02e22_activation", "PipelineKey": "rqa_s02mag22_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E23 (Value) - mag_s02e23_activation", "PipelineKey": "rqa_s02mag23_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E24 (Value) - mag_s02e24_activation", "PipelineKey": "rqa_s02mag24_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E25 (Value) - mag_s02e25_activation", "PipelineKey": "rqa_s02mag25_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E26 (Value) - mag_s02e26_activation", "PipelineKey": "rqa_s02mag26_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E27 (Value) - mag_s02e27_activation", "PipelineKey": "rqa_s02mag27_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E28 (Value) - mag_s02e28_activation", "PipelineKey": "rqa_s02mag28_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E29 (Value) - mag_s02e29_activation", "PipelineKey": "rqa_s02mag29_raw", "IsActivationMessage": true},
+    {"RapidProKey": "Rqa_Mag_S02E30 (Value) - mag_s02e30_activation", "PipelineKey": "rqa_s02mag30_raw", "IsActivationMessage": true},
+
+    {"RapidProKey": "Rqa_Mag_S02E21 (Run ID) - mag_s02e21_activation", "PipelineKey": "rqa_s02mag21_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E22 (Run ID) - mag_s02e22_activation", "PipelineKey": "rqa_s02mag22_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E23 (Run ID) - mag_s02e23_activation", "PipelineKey": "rqa_s02mag23_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E24 (Run ID) - mag_s02e24_activation", "PipelineKey": "rqa_s02mag24_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E25 (Run ID) - mag_s02e25_activation", "PipelineKey": "rqa_s02mag25_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E26 (Run ID) - mag_s02e26_activation", "PipelineKey": "rqa_s02mag26_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E27 (Run ID) - mag_s02e27_activation", "PipelineKey": "rqa_s02mag27_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E28 (Run ID) - mag_s02e28_activation", "PipelineKey": "rqa_s02mag28_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E29 (Run ID) - mag_s02e29_activation", "PipelineKey": "rqa_s02mag29_run_id"},
+    {"RapidProKey": "Rqa_Mag_S02E30 (Run ID) - mag_s02e30_activation", "PipelineKey": "rqa_s02mag30_run_id"},
+
+    {"RapidProKey": "message", "PipelineKey": "recovered_raw", "IsActivationMessage": true},
+    {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
+    {"RapidProKey": "run_id", "PipelineKey": "recovered_run_id"},
+
+    {"RapidProKey": "Rqa_Mag_S02E21 (Time) - mag_s02e21_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E22 (Time) - mag_s02e22_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E23 (Time) - mag_s02e23_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E24 (Time) - mag_s02e24_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E25 (Time) - mag_s02e25_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E26 (Time) - mag_s02e26_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E27 (Time) - mag_s02e27_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E28 (Time) - mag_s02e28_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E29 (Time) - mag_s02e29_activation", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Rqa_Mag_S02E30 (Time) - mag_s02e30_activation", "PipelineKey": "sent_on"},
+
+    {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
+    {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
+    {"RapidProKey": "Age (Value) - imaqal_demog", "PipelineKey": "age_raw"},
+    {"RapidProKey": "Age (Time) - imaqal_demog", "PipelineKey": "age_time"},
+    {"RapidProKey": "Recently_Displaced (Value) - imaqal_demog", "PipelineKey": "recently_displaced_raw"},
+    {"RapidProKey": "Recently_Displaced (Time) - imaqal_demog", "PipelineKey": "recently_displaced_time"},
+    {"RapidProKey": "Household_Language (Value) - imaqal_demog", "PipelineKey": "household_language_raw"},
+    {"RapidProKey": "Household_Language (Time) - imaqal_demog", "PipelineKey": "household_language_time"},
+    {"RapidProKey": "District (Value) - imaqal_demog", "PipelineKey": "location_raw"},
+    {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"}
+  ],
+  "PipelineName": "q7_pipeline",
+  "MoveWSMessages": false,
+  "DriveUpload": {
+    "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
+    "ProductionUploadPath": "imaqal_analysis_outputs/quarter_seven/imaqal_s02_production.csv",
+    "MessagesUploadPath": "imaqal_analysis_outputs/quarter_seven/imaqal_s02_messages.csv",
+    "IndividualsUploadPath": "imaqal_analysis_outputs/quarter_seven/imaqal_s02_individuals.csv",
+    "MessagesTracedDataUploadPath": "imaqal_analysis_outputs/quarter_seven/imaqal_s02_messages_traced_data.json",
+    "IndividualsTracedDataUploadPath": "imaqal_analysis_outputs/quarter_seven/imaqal_s02_individuals_traced_data.json",
+    "AnalysisGraphsDir": "imaqal_analysis_outputs/quarter_seven/analysis_graphs"
+  },
+  "MemoryProfileUploadURLPrefix": "gs://avf-pipeline-logs-performance-nearline/2019/IMAQAL/memory-"
+}
