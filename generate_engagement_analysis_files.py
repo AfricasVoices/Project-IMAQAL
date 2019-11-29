@@ -38,18 +38,20 @@ if __name__ == "__main__":
         pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
 
     # Infer which RQA coding plans to use from the pipeline name.
+    # Starting from q4 pipeline since the pipeline was refactored into quarterly pipelines when the project had reached
+    # q4 reporting. Earlier episodes are covered in the full pipeline configurations
     if pipeline_configuration.pipeline_name == "q4_pipeline":
-        log.info("Running Q4 pipeline")
+        log.info("Extracting Q4 pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q4_RQA_CODING_PLANS
     elif pipeline_configuration.pipeline_name == "q5_pipeline":
-        log.info("Running Q5 pipeline")
+        log.info("Extracting Q5 pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q5_RQA_CODING_PLANS
     elif pipeline_configuration.pipeline_name == "q6_pipeline":
-        log.info("Running Q6 pipeline")
+        log.info("Extracting Q6 pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q6_RQA_CODING_PLANS
     else:
         assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
-        log.info("Running full Pipeline")
+        log.info("Extracting full pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.FULL_PIPELINE_RQA_CODING_PLANS
 
     # Create a list of rqa_raw_fields
