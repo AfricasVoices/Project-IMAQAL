@@ -36,7 +36,7 @@ if __name__ == "__main__":
     log.info("Loading Pipeline Configuration File...")
     with open(pipeline_configuration_file_path) as f:
         pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
-    '''        
+
     memory_profile_upload_location = f"{pipeline_configuration.memory_profile_upload_url_prefix}{run_id}.profile"
     log.info(f"Uploading the memory profile from {memory_profile_file_path} to "
              f"{memory_profile_upload_location}...")
@@ -44,7 +44,7 @@ if __name__ == "__main__":
         google_cloud_utils.upload_file_to_blob(
             google_cloud_credentials_file_path, memory_profile_upload_location, f
         )
-    '''
+
     data_archive_upload_location = f"{pipeline_configuration.data_archive_upload_url_prefix}{run_id}.tar.gzip"
     log.info(f"Uploading the data archive from {data_archive_file_path} to "
              f"{data_archive_upload_location}...")
