@@ -1,41 +1,8 @@
 {
+  "SchemeID": "Scheme-df70ee48",
+  "Name": "S02MAG23",
   "Version": "0.0.0.1",
-  "Name": "S02E11 Yes/No/Amb",
-  "SchemeID": "Scheme-0c4670d4",
   "Codes": [
-    {
-      "DisplayText": "Yes",
-      "VisibleInCoda": true,
-      "NumericValue": 0,
-      "CodeID": "code-5aed451f",
-      "CodeType": "Normal",
-      "MatchValues": [
-        "yes"
-      ],
-      "StringValue": "yes"
-    },
-    {
-      "NumericValue": 1,
-      "CodeID": "code-c8f98cbf",
-      "CodeType": "Normal",
-      "MatchValues": [
-        "no"
-      ],
-      "StringValue": "no",
-      "DisplayText": "No",
-      "VisibleInCoda": true
-    },
-    {
-      "NumericValue": 2,
-      "CodeID": "code-7edd0535",
-      "CodeType": "Normal",
-      "MatchValues": [
-        "ambivalent"
-      ],
-      "StringValue": "ambivalent",
-      "VisibleInCoda": true,
-      "DisplayText": "Ambivalent"
-    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",

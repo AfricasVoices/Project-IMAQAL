@@ -1,10 +1,10 @@
 {
     "Version": "0.0.0.1",
-    "Name": "Idps Decision Making Opportunities Yes/No/Amb",
-    "SchemeID": "Scheme-d1d9cd35",
+    "Name": "IDPs Decision Making Opportunities Yes/No/Amb",
+    "SchemeID": "Scheme-21d9cd35",
     "Codes": [
         {
-        "DisplayText": "Yes",
+        "DisplayText": "yes",
         "VisibleInCoda": true,
         "NumericValue": 0,
         "CodeID": "code-0912d874",
@@ -22,7 +22,7 @@
           "no"
         ],
         "StringValue": "no",
-        "DisplayText": "No",
+        "DisplayText": "no",
         "VisibleInCoda": true
       },
       {
@@ -33,7 +33,7 @@
           "ambivalent"
         ],
         "StringValue": "ambivalent",
-        "DisplayText": "Ambivalent",
+        "DisplayText": "ambivalent",
         "VisibleInCoda": true
       },
       {

@@ -33,7 +33,7 @@ class CodeSchemes(object):
     S01MAG08 = _open_scheme("s01mag08.json")
     S01MAG09 = _open_scheme("s01mag09.json")
     S01MAG09_YES_NO_AMB = _open_scheme("s01mag09_yes_no_amb.json")
-    # TODO Update this once data structure doc is updated.
+
     S01MAG10 = _open_scheme("s01mag10.json")
     S01MAG11 = _open_scheme("s01mag11.json")
     S01MAG12 = _open_scheme("s01mag12.json")
@@ -52,9 +52,22 @@ class CodeSchemes(object):
     S02E09_YES_NO_AMB = _open_scheme("s02e09_yes_no_amb.json")
     S02E10 = _open_scheme("s02e10.json")
     S02E11 = _open_scheme("s02e11.json")
+    S02E11_YES_NO_AMB = _open_scheme("s02e11_yes_no_amb.json")
     S02E12 = _open_scheme("s02e12.json")
     S02E13 = _open_scheme("s02e13.json")
+    S02E13_YES_NO_AMB = _open_scheme("s02e13_yes_no_amb.json")
     S02E14 = _open_scheme("s02e14.json")
+
+    S02MAG21 = _open_scheme("s02mag21.json")
+    S02MAG22 = _open_scheme("s02mag22.json")
+    S02MAG23 = _open_scheme("s02mag23.json")
+    S02MAG24 = _open_scheme("s02mag24.json")
+    S02MAG25 = _open_scheme("s02mag25.json")
+    S02MAG26 = _open_scheme("s02mag26.json")
+    S02MAG27 = _open_scheme("s02mag27.json")
+    S02MAG28 = _open_scheme("s02mag28.json")
+    S02MAG29 = _open_scheme("s02mag29.json")
+    S02MAG30 = _open_scheme("s02mag30.json")
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
     WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")

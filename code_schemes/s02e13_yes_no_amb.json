@@ -1,13 +1,13 @@
 {
   "Version": "0.0.0.1",
-  "Name": "S02E11 Yes/No/Amb",
-  "SchemeID": "Scheme-0c4670d4",
+  "Name": "S02E13 Yes/No/Amb",
+  "SchemeID": "Scheme-03d2e307",
   "Codes": [
     {
-      "DisplayText": "Yes",
+      "DisplayText": "yes",
       "VisibleInCoda": true,
       "NumericValue": 0,
-      "CodeID": "code-5aed451f",
+      "CodeID": "code-c16e124d",
       "CodeType": "Normal",
       "MatchValues": [
         "yes"
@@ -16,25 +16,25 @@
     },
     {
       "NumericValue": 1,
-      "CodeID": "code-c8f98cbf",
+      "CodeID": "code-1f28e4a5",
       "CodeType": "Normal",
       "MatchValues": [
         "no"
       ],
       "StringValue": "no",
-      "DisplayText": "No",
+      "DisplayText": "no",
       "VisibleInCoda": true
     },
     {
       "NumericValue": 2,
-      "CodeID": "code-7edd0535",
+      "CodeID": "code-b853ba1d",
       "CodeType": "Normal",
       "MatchValues": [
         "ambivalent"
       ],
       "StringValue": "ambivalent",
       "VisibleInCoda": true,
-      "DisplayText": "Ambivalent"
+      "DisplayText": "ambivalent"
     },
     {
       "CodeID": "code-NA-f93d3eb7",
