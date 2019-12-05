@@ -27,9 +27,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     user = args.user
+    pipeline_configuration_file_path = args.pipeline_configuration_file_path
     messages_json_input_path = args.messages_json_input_path
     demog_map_json_output_dir = args.demog_map_json_output_dir
-    pipeline_configuration_file_path = args.pipeline_configuration_file_path
 
     # Load the pipeline configuration file
     log.info("Loading Pipeline Configuration File...")
