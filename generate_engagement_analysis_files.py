@@ -62,7 +62,7 @@ if __name__ == "__main__":
     log.info(f'Computing unique, lifetime-active and per-show participants ...' )
     engagement_map = {}  # of uid -> name of shows participated in and their demographics data
     uuids = set()  # unique uids that participated in the entire project
-    lifetime_active_uuids = []  # uids that participated in each radio show
+    lifetime_activations_per_show = []  # uids that participated in each radio show
     participants_per_show = OrderedDict()  # of rqa_raw_field -> sum of total uids who participated
     for rqa_raw_field in rqa_raw_fields:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
             engagement_map[uid]["shows"].append(rqa_raw_field)
             uuids.add(uid)
-            lifetime_active_uuids.append(uid)
+            lifetime_activations_per_show.append(uid)
 
     # Export the engagement counts to their respective csv file.
     log.info(f'Writing unique participants csv ...')
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     log.info(f'Writing lifetime active participants csv ...')
     with open(f"{engagement_csv_output_dir}/lifetime_active_participants.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow([len(lifetime_active_uuids)])
+        writer.writerow([len(lifetime_activations_per_show)])
 
     log.info(f'Writing show participation csv ...')
     with open(f"{engagement_csv_output_dir}/show_participation.csv", "w") as f:
