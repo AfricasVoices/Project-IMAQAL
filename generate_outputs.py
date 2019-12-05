@@ -237,31 +237,16 @@ if __name__ == "__main__":
             drive_client_wrapper.update_or_create(csv_by_individual_output_path, individuals_csv_drive_dir,
                                                   target_file_name=individuals_csv_drive_file_name,
                                                   target_folder_is_shared_with_me=True)
-
-            messages_traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_traced_data_upload_path)
-            messages_traced_data_drive_file_name = os.path.basename(
-                pipeline_configuration.drive_upload.messages_traced_data_upload_path)
-            drive_client_wrapper.update_or_create(messages_json_output_path, messages_traced_data_drive_dir,
-                                                  target_file_name=messages_traced_data_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-
-            individuals_traced_data_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
-            individuals_traced_data_drive_file_name = os.path.basename(
-                pipeline_configuration.drive_upload.individuals_traced_data_upload_path)
-            drive_client_wrapper.update_or_create(individuals_json_output_path, individuals_traced_data_drive_dir,
-                                                  target_file_name=individuals_traced_data_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-        
         else:
             log.info("Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
                      "'DriveUploadPaths')")
     else:
 
         assert pipeline_run_mode == "auto-code-only", "generate analysis files must be either auto-code-only or all-stages"
-        #log.info("Writing Auto-Coding TracedData to file...")
-        #IOUtils.ensure_dirs_exist_for_file(auto_coding_json_output_path)
-        #with open(auto_coding_json_output_path, "w") as f:
-            #TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
+        log.info("Writing Auto-Coding TracedData to file...")
+        IOUtils.ensure_dirs_exist_for_file(auto_coding_json_output_path)
+        with open(auto_coding_json_output_path, "w") as f:
+            TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
 
         if pipeline_configuration.drive_upload is not None:
             log.info("Uploading production file to Google Drive...")

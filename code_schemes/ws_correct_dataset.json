@@ -545,7 +545,7 @@
         {
             "DisplayText": "s02mag27",
             "VisibleInCoda": true,
-            "NumericValue": 50,
+            "NumericValue": 51,
             "CodeID": "code-68afc5f5",
             "CodeType": "Normal",
             "StringValue": "s02mag27",
@@ -556,7 +556,7 @@
         {
             "DisplayText": "s02mag28",
             "VisibleInCoda": true,
-            "NumericValue": 51,
+            "NumericValue": 52,
             "CodeID": "code-2b087bd6",
             "CodeType": "Normal",
             "StringValue": "s02mag28",
@@ -567,7 +567,7 @@
         {
             "DisplayText": "s02mag29",
             "VisibleInCoda": true,
-            "NumericValue": 52,
+            "NumericValue": 53,
             "CodeID": "code-b3977063",
             "CodeType": "Normal",
             "StringValue": "s02mag29",
@@ -578,7 +578,7 @@
         {
             "DisplayText": "s02mag30",
             "VisibleInCoda": true,
-            "NumericValue": 53,
+            "NumericValue": 54,
             "CodeID": "code-f6d0e044",
             "CodeType": "Normal",
             "StringValue": "s02mag30",

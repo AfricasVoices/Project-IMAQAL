@@ -1162,7 +1162,7 @@ class PipelineConfiguration(object):
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, survey_flow_names,
                  rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                 memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls=None, pipeline_name=None,
+                 memory_profile_upload_url_prefix, data_archive_upload_url_prefix, move_ws_messages, recovery_csv_urls=None, pipeline_name=None,
                  drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
@@ -1184,6 +1184,8 @@ class PipelineConfiguration(object):
                                                  This prefix will be appended by the id of the pipeline run (provided
                                                  as a command line argument), and the ".profile" file extension.
         :type memory_profile_upload_url_prefix: str
+        :param data_archive_upload_url_prefix:The prefix of the GS URL to upload the data backup file to.
+        :type data_archive_upload_url_prefix: str
         :param move_ws_messages: Whether to move messages labelled as Wrong Scheme to the correct dataset.
         :type move_ws_messages: bool
         :param rapid_pro_key_remappings: List of rapid_pro_key -> pipeline_key remappings.
@@ -1202,6 +1204,7 @@ class PipelineConfiguration(object):
         self.phone_number_uuid_table = phone_number_uuid_table
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
         self.memory_profile_upload_url_prefix = memory_profile_upload_url_prefix
+        self.data_archive_upload_url_prefix = data_archive_upload_url_prefix
         self.move_ws_messages = move_ws_messages
         self.recovery_csv_urls = recovery_csv_urls
         self.pipeline_name = pipeline_name
@@ -1225,6 +1228,8 @@ class PipelineConfiguration(object):
 
         memory_profile_upload_url_prefix = configuration_dict["MemoryProfileUploadURLPrefix"]
 
+        data_archive_upload_url_prefix = configuration_dict["DataArchiveUploadURLPrefix"]
+
         move_ws_messages = configuration_dict["MoveWSMessages"]
 
         recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
@@ -1236,7 +1241,7 @@ class PipelineConfiguration(object):
 
         return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, survey_flow_names,
                    rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                   memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls, pipeline_name,
+                   memory_profile_upload_url_prefix, data_archive_upload_url_prefix, move_ws_messages, recovery_csv_urls, pipeline_name,
                    drive_upload_paths)
 
     @classmethod
@@ -1270,6 +1275,8 @@ class PipelineConfiguration(object):
             remapping.validate()
 
         validators.validate_string(self.memory_profile_upload_url_prefix, "memory_profile_upload_url_prefix")
+
+        validators.validate_string(self.data_archive_upload_url_prefix, "data_archive_upload_url_prefix")
 
         if self.recovery_csv_urls is not None:
             validators.validate_list(self.recovery_csv_urls, "recovery_csv_urls")
@@ -1346,8 +1353,7 @@ class RapidProKeyRemapping(object):
 
 class DriveUpload(object):
     def __init__(self, drive_credentials_file_url, production_upload_path, messages_upload_path,
-                 individuals_upload_path, messages_traced_data_upload_path, individuals_traced_data_upload_path,
-                 analysis_graphs_dir):
+                 individuals_upload_path, analysis_graphs_dir):
         """
         :param drive_credentials_file_url: GS URL to the private credentials file for the Drive service account to use
                                            to upload the output files.
@@ -1361,13 +1367,6 @@ class DriveUpload(object):
         :param individuals_upload_path: Path in the Drive service account's "Shared with Me" directory to upload the
                                         individuals analysis CSV to.
         :type individuals_upload_path: str
-        :param messages_traced_data_upload_path: Path in the Drive service account's "Shared with Me" directory to
-                                                 upload the serialized messages TracedData from this pipeline run to.
-        :type messages_traced_data_upload_path: str
-        :param individuals_traced_data_upload_path: Path in the Drive service account's "Shared with Me" directory to
-                                                    upload the serialized individuals TracedData from this pipeline
-                                                    run to.
-        :type individuals_traced_data_upload_path: str
         :param analysis_graphs_dir: Directory in the Drive service account's "Shared with Me" directory to upload the
                                     analysis graphs from this pipeline run to.
         :type analysis_graphs_dir: str
@@ -1376,8 +1375,6 @@ class DriveUpload(object):
         self.production_upload_path = production_upload_path
         self.messages_upload_path = messages_upload_path
         self.individuals_upload_path = individuals_upload_path
-        self.messages_traced_data_upload_path = messages_traced_data_upload_path
-        self.individuals_traced_data_upload_path = individuals_traced_data_upload_path
         self.analysis_graphs_dir = analysis_graphs_dir
 
         self.validate()
@@ -1388,13 +1385,10 @@ class DriveUpload(object):
         production_upload_path = configuration_dict["ProductionUploadPath"]
         messages_upload_path = configuration_dict["MessagesUploadPath"]
         individuals_upload_path = configuration_dict["IndividualsUploadPath"]
-        messages_traced_data_upload_path = configuration_dict["MessagesTracedDataUploadPath"]
-        individuals_traced_data_upload_path = configuration_dict["IndividualsTracedDataUploadPath"]
         analysis_graphs_dir = configuration_dict["AnalysisGraphsDir"]
 
         return cls(drive_credentials_file_url, production_upload_path, messages_upload_path,
-                   individuals_upload_path, messages_traced_data_upload_path, individuals_traced_data_upload_path,
-                   analysis_graphs_dir)
+                   individuals_upload_path, analysis_graphs_dir)
 
     def validate(self):
         validators.validate_string(self.drive_credentials_file_url, "drive_credentials_file_url")
@@ -1404,6 +1398,4 @@ class DriveUpload(object):
         validators.validate_string(self.production_upload_path, "production_upload_path")
         validators.validate_string(self.messages_upload_path, "messages_upload_path")
         validators.validate_string(self.individuals_upload_path, "individuals_upload_path")
-        validators.validate_string(self.messages_traced_data_upload_path, "messages_traced_data_upload_path")
-        validators.validate_string(self.individuals_traced_data_upload_path, "individuals_traced_data_upload_path")
         validators.validate_string(self.analysis_graphs_dir, "analysis_graphs_dir")
