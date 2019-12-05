@@ -1,5 +1,6 @@
 import argparse
 from collections import OrderedDict
+import altair
 import glob
 import json
 import csv
@@ -59,11 +60,12 @@ if __name__ == "__main__":
             google_cloud_credentials_file_path, pipeline_configuration.drive_upload.drive_credentials_file_url))
         drive_client_wrapper.init_client_from_info(credentials_info)
 
-    # Read the messages dataset
-    log.info(f"Loading the messages dataset from {messages_json_input_path}...")
-    with open(messages_json_input_path) as f:
-        messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-    log.info(f"Loaded {len(messages)} messages")
+
+    # Read the individuals dataset
+    log.info(f"Loading the individuals dataset from {individuals_json_input_path}...")
+    with open(individuals_json_input_path) as f:
+        individuals = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
+    log.info(f"Loaded {len(individuals)} individuals")
 
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
@@ -83,21 +85,22 @@ if __name__ == "__main__":
         log.info("Running full Pipeline")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.FULL_PIPELINE_RQA_CODING_PLANS
 
-    # Compute the number of messages in each show and graph
-    log.info(f"Graphing the number of messages received in response to each show...")
-    messages_per_show = OrderedDict()  # Of radio show index to messages count
+    # Compute the number of individuals in each show and graph
+    log.info(f"Graphing the number of individuals who responded to each show...")
+    individuals_per_show = OrderedDict()  # Of radio show index to individuals count
     for plan in PipelineConfiguration.RQA_CODING_PLANS:
-        messages_per_show[plan.raw_field] = 0
+        individuals_per_show[plan.raw_field] = 0
 
-    for msg in messages:
+    for ind in individuals:
         for plan in PipelineConfiguration.RQA_CODING_PLANS:
-            if msg.get(plan.raw_field, "") != "" and msg["consent_withdrawn"] == "false":
-                messages_per_show[plan.raw_field] += 1
+            if ind.get(plan.raw_field, "") != "" and ind["consent_withdrawn"] == "false":
+                individuals_per_show[plan.raw_field] += 1
 
     # Export the participation frequency data to a csv
-    with open(f"{output_dir}/messages_per_show.csv", "w") as f:
+    with open(f"{output_dir}/individuals_per_show.csv", "w") as f:
         writer = csv.writer(f, lineterminator="\n")
-        for row in messages_per_show.items():
+
+        for row in individuals_per_show.items():
             writer.writerow(row)
 
     if pipeline_configuration.drive_upload is not None:
