@@ -1,8 +1,8 @@
 import argparse
 from collections import OrderedDict
-import altair
 import glob
 import json
+import csv
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
@@ -65,12 +65,6 @@ if __name__ == "__main__":
         messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
     log.info(f"Loaded {len(messages)} messages")
 
-    # Read the individuals dataset
-    log.info(f"Loading the individuals dataset from {individuals_json_input_path}...")
-    with open(individuals_json_input_path) as f:
-        individuals = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-    log.info(f"Loaded {len(individuals)} individuals")
-
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
         log.info("Running Q4 pipeline")
@@ -81,6 +75,9 @@ if __name__ == "__main__":
     elif pipeline_configuration.pipeline_name == "q6_pipeline":
         log.info("Running Q6 pipeline")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q6_RQA_CODING_PLANS
+    elif pipeline_configuration.pipeline_name == "q7_pipeline":
+        log.info("Running Q7 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q7_RQA_CODING_PLANS
     else:
         assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
         log.info("Running full Pipeline")
@@ -97,77 +94,15 @@ if __name__ == "__main__":
             if msg.get(plan.raw_field, "") != "" and msg["consent_withdrawn"] == "false":
                 messages_per_show[plan.raw_field] += 1
 
-    chart = altair.Chart(
-        altair.Data(values=[{"show": k, "count": v} for k, v in messages_per_show.items()])
-    ).mark_bar().encode(
-        x=altair.X("show:N", title="Show", sort=list(messages_per_show.keys())),
-        y=altair.Y("count:Q", title="Number of Messages")
-    ).properties(
-        title="Messages per Show"
-    )
-    chart.save(f"{output_dir}/messages_per_show.html")
-    chart.save(f"{output_dir}/messages_per_show.png", scale_factor=IMG_SCALE_FACTOR)
-
-    # Compute the number of individuals in each show and graph
-    log.info(f"Graphing the number of individuals who responded to each show...")
-    individuals_per_show = OrderedDict()  # Of radio show index to individuals count
-    for plan in PipelineConfiguration.RQA_CODING_PLANS:
-        individuals_per_show[plan.raw_field] = 0
-
-    for ind in individuals:
-        for plan in PipelineConfiguration.RQA_CODING_PLANS:
-            if ind.get(plan.raw_field, "") != "" and ind["consent_withdrawn"] == "false":
-                individuals_per_show[plan.raw_field] += 1
-
-    chart = altair.Chart(
-        altair.Data(values=[{"show": k, "count": v} for k, v in individuals_per_show.items()])
-    ).mark_bar().encode(
-        x=altair.X("show:N", title="Show", sort=list(individuals_per_show.keys())),
-        y=altair.Y("count:Q", title="Number of Individuals")
-    ).properties(
-        title="Individuals per Show"
-    )
-    chart.save(f"{output_dir}/individuals_per_show.html")
-    chart.save(f"{output_dir}/individuals_per_show.png", scale_factor=IMG_SCALE_FACTOR)
-
-    # Plot the per-season distribution of responses for each survey question, per individual
-    for plan in PipelineConfiguration.RQA_CODING_PLANS + PipelineConfiguration.DEMOG_CODING_PLANS + \
-                PipelineConfiguration.FOLLOW_UP_CODING_PLANS:
-        for cc in plan.coding_configurations:
-            if cc.analysis_file_key is None:
-                continue
-
-            log.info(f"Graphing the distribution of codes for {cc.analysis_file_key}...")
-            label_counts = OrderedDict()
-            for code in cc.code_scheme.codes:
-                label_counts[code.string_value] = 0
-
-            if cc.coding_mode == CodingModes.SINGLE:
-                for ind in individuals:
-                    label_counts[ind[cc.analysis_file_key]] += 1
-            else:
-                assert cc.coding_mode == CodingModes.MULTIPLE
-                for ind in individuals:
-                    for code in cc.code_scheme.codes:
-                        if ind[f"{cc.analysis_file_key}{code.string_value}"] == Codes.MATRIX_1:
-                            label_counts[code.string_value] += 1
-
-            chart = altair.Chart(
-                altair.Data(values=[{"label": k, "count": v} for k, v in label_counts.items()])
-            ).mark_bar().encode(
-                x=altair.X("label:N", title="Label", sort=list(label_counts.keys())),
-                y=altair.Y("count:Q", title="Number of Individuals")
-            ).properties(
-                title=f"Season Distribution: {cc.analysis_file_key}"
-            )
-            chart.save(f"{output_dir}/season_distribution_{cc.analysis_file_key}.html")
-            chart.save(f"{output_dir}/season_distribution_{cc.analysis_file_key}.png", scale_factor=IMG_SCALE_FACTOR)
-
-    #TODO: refactor relevant messages per show and add it back
+    # Export the participation frequency data to a csv
+    with open(f"{output_dir}/messages_per_show.csv", "w") as f:
+        writer = csv.writer(f, lineterminator="\n")
+        for row in messages_per_show.items():
+            writer.writerow(row)
 
     if pipeline_configuration.drive_upload is not None:
-        log.info("Uploading graphs to Drive...")
-        paths_to_upload = glob.glob(f"{output_dir}/*.png")
+        log.info("Uploading csvs to Drive...")
+        paths_to_upload = glob.glob(f"{output_dir}/*.csv")
         for i, path in enumerate(paths_to_upload):
             log.info(f"Uploading graph {i + 1}/{len(paths_to_upload)}: {path}...")
             drive_client_wrapper.update_or_create(path, pipeline_configuration.drive_upload.analysis_graphs_dir,
