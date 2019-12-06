@@ -4,6 +4,7 @@ import altair
 import glob
 import json
 import csv
+import sys
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
@@ -87,6 +88,7 @@ if __name__ == "__main__":
 
     # Compute the number of individuals in each show and graph
     log.info(f"Graphing the number of individuals who responded to each show...")
+    sys.setrecursionlimit(20000)
     individuals_per_show = OrderedDict()  # Of radio show index to individuals count
     for plan in PipelineConfiguration.RQA_CODING_PLANS:
         individuals_per_show[plan.raw_field] = 0
