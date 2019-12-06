@@ -92,8 +92,8 @@ if __name__ == "__main__":
         writer = csv.writer(f)
         writer.writerow([len(uuids)])
 
-    log.info(f'Writing lifetime active participants csv ...')
-    with open(f"{engagement_csv_output_dir}/lifetime_active_participants.csv", "w") as f:
+    log.info(f'Writing lifetime activations per show csv ...')
+    with open(f"{engagement_csv_output_dir}/lifetime_activations_per_show.csv", "w") as f:
         writer = csv.writer(f)
         writer.writerow([len(lifetime_activations_per_show)])
 
