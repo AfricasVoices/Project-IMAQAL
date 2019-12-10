@@ -38,18 +38,20 @@ if __name__ == "__main__":
         pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
 
     # Infer which RQA coding plans to use from the pipeline name.
+    # Starting from q4 pipeline since the pipeline was refactored into quarterly pipelines when the project had reached
+    # q4 reporting. Earlier episodes are covered in the full pipeline configurations
     if pipeline_configuration.pipeline_name == "q4_pipeline":
-        log.info("Running Q4 pipeline")
+        log.info("Extracting Q4 pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q4_RQA_CODING_PLANS
     elif pipeline_configuration.pipeline_name == "q5_pipeline":
-        log.info("Running Q5 pipeline")
+        log.info("Extracting Q5 pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q5_RQA_CODING_PLANS
     elif pipeline_configuration.pipeline_name == "q6_pipeline":
-        log.info("Running Q6 pipeline")
+        log.info("Extracting Q6 pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q6_RQA_CODING_PLANS
     else:
         assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
-        log.info("Running full Pipeline")
+        log.info("Extracting full pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.FULL_PIPELINE_RQA_CODING_PLANS
 
     # Create a list of rqa_raw_fields
@@ -57,10 +59,10 @@ if __name__ == "__main__":
     for plan in PipelineConfiguration.RQA_CODING_PLANS:
         rqa_raw_fields.append(plan.raw_field)
 
-    log.info(f'Computing unique, lifetime-active and per-show participants ...' )
+    log.info(f'Computing unique, lifetime_activations_per_show and per-show participants ...' )
     engagement_map = {}  # of uid -> name of shows participated in and their demographics data
-    uuids = set()  # unique uids that participated in the entire project
-    lifetime_active_uuids = []  # uids that participated in each radio show
+    unique_uids = set()  # unique uids that participated in the entire project
+    lifetime_activations_per_show = []  # uids that participated in each radio show for the entire project
     participants_per_show = OrderedDict()  # of rqa_raw_field -> sum of total uids who participated
     for rqa_raw_field in rqa_raw_fields:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
@@ -81,22 +83,22 @@ if __name__ == "__main__":
                     f" for {uid}"
 
             engagement_map[uid]["shows"].append(rqa_raw_field)
-            uuids.add(uid)
-            lifetime_active_uuids.append(uid)
+            unique_uids.add(uid)
+            lifetime_activations_per_show.append(uid)
 
     # Export the engagement counts to their respective csv file.
     log.info(f'Writing unique participants csv ...')
     with open(f"{engagement_csv_output_dir}/unique_participants.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow([len(uuids)])
+        writer.writerow([len(unique_uids)])
 
-    log.info(f'Writing lifetime active participants csv ...')
-    with open(f"{engagement_csv_output_dir}/lifetime_active_participants.csv", "w") as f:
+    log.info(f'Writing lifetime activations per show csv ...')
+    with open(f"{engagement_csv_output_dir}/lifetime_activations_per_show.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow([len(lifetime_active_uuids)])
+        writer.writerow([len(lifetime_activations_per_show)])
 
     log.info(f'Writing show participation csv ...')
-    with open(f"{engagement_csv_output_dir}/show_participation.csv", "w") as f:
+    with open(f"{engagement_csv_output_dir}/participants_per_show.csv", "w") as f:
         writer = csv.writer(f)
 
         for row in participants_per_show.items():
