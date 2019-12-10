@@ -59,10 +59,10 @@ if __name__ == "__main__":
     for plan in PipelineConfiguration.RQA_CODING_PLANS:
         rqa_raw_fields.append(plan.raw_field)
 
-    log.info(f'Computing unique, lifetime-active and per-show participants ...' )
+    log.info(f'Computing unique, lifetime_activations_per_show and per-show participants ...' )
     engagement_map = {}  # of uid -> name of shows participated in and their demographics data
-    uuids = set()  # unique uids that participated in the entire project
-    lifetime_activations_per_show = []  # uids that participated in each radio show
+    unique_uids = set()  # unique uids that participated in the entire project
+    lifetime_activations_per_show = []  # uids that participated in each radio show for the entire project
     participants_per_show = OrderedDict()  # of rqa_raw_field -> sum of total uids who participated
     for rqa_raw_field in rqa_raw_fields:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
@@ -83,14 +83,14 @@ if __name__ == "__main__":
                     f" for {uid}"
 
             engagement_map[uid]["shows"].append(rqa_raw_field)
-            uuids.add(uid)
+            unique_uids.add(uid)
             lifetime_activations_per_show.append(uid)
 
     # Export the engagement counts to their respective csv file.
     log.info(f'Writing unique participants csv ...')
     with open(f"{engagement_csv_output_dir}/unique_participants.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow([len(uuids)])
+        writer.writerow([len(unique_uids)])
 
     log.info(f'Writing lifetime activations per show csv ...')
     with open(f"{engagement_csv_output_dir}/lifetime_activations_per_show.csv", "w") as f:
