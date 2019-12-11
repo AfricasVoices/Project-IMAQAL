@@ -4,6 +4,78 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-9d39da72",
+      "CodeType": "Normal",
+      "DisplayText": "create awareness",
+      "NumericValue": 0,
+      "StringValue": "create_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6b8c909b",
+      "CodeType": "Normal",
+      "DisplayText": "corruption or bribery",
+      "NumericValue": 1,
+      "StringValue": "corruption_or_bribery",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e7397b67",
+      "CodeType": "Normal",
+      "DisplayText": "follow the religion",
+      "NumericValue": 2,
+      "StringValue": "follow_the_religion",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-71b89401",
+      "CodeType": "Normal",
+      "DisplayText": "xeer and culture",
+      "NumericValue": 3,
+      "StringValue": "xeer_and_culture",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-5e897444",
+      "CodeType": "Normal",
+      "DisplayText": "lack of fair justice system",
+      "NumericValue": 4,
+      "StringValue": "lack_of_fair_justice_system",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-a1b98948",
+      "CodeType": "Normal",
+      "DisplayText": "unfair traditional elders",
+      "NumericValue": 5,
+      "StringValue": "unfair_traditional_elders",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-354dba52",
+      "CodeType": "Normal",
+      "DisplayText": "stigmatization or shame",
+      "NumericValue": 6,
+      "StringValue": "stigmatization_or_shame",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e50a2970",
+      "CodeType": "Normal",
+      "DisplayText": "clannism",
+      "NumericValue": 7,
+      "StringValue": "clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-213e521f",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 8,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
