@@ -58,10 +58,10 @@ if __name__ == "__main__":
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.FULL_PIPELINE_RQA_CODING_PLANS
 
     rqa_raw_fields =[]
-    messages_per_show = OrderedDict()  # Of radio show index to messages count
+    messages_per_show_with_optins = OrderedDict()  # Of radio show index to messages count for the participants who opted in
     for plan in PipelineConfiguration.RQA_CODING_PLANS:
         rqa_raw_fields.append(plan.raw_field)
-        messages_per_show[plan.raw_field] = 0
+        messages_per_show_with_optins[plan.raw_field] = 0
 
     for rqa_raw_field in rqa_raw_fields:
         # Read the messages dataset
@@ -73,9 +73,12 @@ if __name__ == "__main__":
         demog_map = dict()
         sys.setrecursionlimit(20000)
         for msg in messages:
-            if msg.get(rqa_raw_field, "") != "" and msg["consent_withdrawn"] == "false":
+            if msg.get(rqa_raw_field, "") != "":
+                continue
+
+            if msg["consent_withdrawn"] == Codes.FALSE:
                 # Compute the number of messages in each show
-                messages_per_show[rqa_raw_field] += 1
+                messages_per_show_with_optins[rqa_raw_field] += 1
 
                 if msg["uid"] in demog_map.keys():
                     continue
@@ -94,9 +97,13 @@ if __name__ == "__main__":
         with open(f'{output_dir}/{rqa_raw_field}_demog_map.json', "w") as f:
             json.dump(demog_map, f)
 
-    log.info(f'Writing messages_per_show csv')
-    # Export the no. of messages per frequency data to a csv
-    with open(f"{output_dir}/messages_per_show.csv", "w") as f:
+    log.info(f'Writing messages_per_show with optins csv')
+    # Export the no. of messages for consented participants per frequency data to a csv
+    with open(f"{output_dir}/messages_per_show_with_optins.csv", "w") as f:
+        headers = ["Show", "No. of messages with opt-ins",]
+        header_writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
+        header_writer.writeheader()
+
         writer = csv.writer(f, lineterminator="\n")
-        for row in messages_per_show.items():
+        for row in messages_per_show_with_optins.items():
             writer.writerow(row)
