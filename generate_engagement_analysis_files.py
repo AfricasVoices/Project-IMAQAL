@@ -63,13 +63,13 @@ if __name__ == "__main__":
     engagement_map = {}  # of uid -> name of shows participated in and their demographics data.
     total_participants_with_optins= set()  # total of participants who sent a message and also opted in.
     total_activations_with_optins = []  # sum of total of every time consented participants interacts throughout a project.
-    activations_per_show_with_optins = OrderedDict()  # of rqa_raw_field -> sum of total of every time consented participants interact in an episode.
+    uids_per_show_with_optins = OrderedDict()  # of rqa_raw_field -> sum of total of every time consented participants interact in an episode.
     for rqa_raw_field in rqa_raw_fields:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
             data = json.load(f)
         log.info(f"Loaded {len(data)} {rqa_raw_field} uids ")
 
-        activations_per_show_with_optins[f"{rqa_raw_field}"] = len(data.keys())
+        uids_per_show_with_optins[f"{rqa_raw_field}"] = len(data.keys())
 
         for uid, demogs in data.items():
             demog = data[uid]
@@ -97,9 +97,9 @@ if __name__ == "__main__":
         writer = csv.writer(f)
         writer.writerow([len(total_activations_with_optins)])
 
-    log.info(f'Writing activations_per_show_with_optins ...')
-    with open(f"{engagement_csv_output_dir}/activations_per_show_with_optins.csv", "w") as f:
+    log.info(f'Writing uids_per_show_with_optins ...')
+    with open(f"{engagement_csv_output_dir}/uids_per_show_with_optins.csv", "w") as f:
         writer = csv.writer(f)
 
-        for row in activations_per_show_with_optins.items():
+        for row in uids_per_show_with_optins.items():
             writer.writerow(row)
