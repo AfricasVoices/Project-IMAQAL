@@ -130,21 +130,21 @@ if __name__ == "__main__":
     for i in range(1, len(rqa_raw_fields) + 1):
         repeat_engagement[i] = {
             "Repeat No": i,
-            "No. of participants": 0,
-            "% of participants": None
+            "No. of participants with opt-ins": 0,
+            "% of participants with opt-ins": None
         }
         for k, v in sustained_engagement_map.items():
             for item in v:
                 if item[1] == f'{i}':
-                    repeat_engagement[i]["No. of participants"] += 1
+                    repeat_engagement[i]["No. of participants with opt-ins"] += 1
 
-    # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times.
+    # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times over total participants with optins.
     for rp in repeat_engagement.values():
         rp["% of participants"] = round(rp["No. of participants"] / len(total_participants_with_optins) * 100, 1)
 
     log.info(f'Writing repeat_engagement csv ...' )
     with open(f"{engagement_csv_output_dir}/repeat_engagement.csv", "w") as f:
-        headers = ["Repeat No", "No. of participants", "% of participants"]
+        headers = ["Repeat No", "No. of participants with opt-ins", "% of participants with opt-ins"]
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
 
