@@ -122,13 +122,13 @@ if __name__ == "__main__":
         compound_str = basic_str + show_mapping
         sustained_engagement_map[uid] = [compound_str]
 
-    log.info(f'Computing exact repeat engagement / uuids ...' )
-    # Compute the number of individuals who participated exactly 1 to <number of RQAs> times.
-    # An individual is considered to have participated if they sent a message and didn't opt-out, regardless of the
+    log.info(f'Computing repeat engagement / total_participants_with_optins ...' )
+    # Compute the number of consented individuals who participated exactly 1 to <number of RQAs> times.
+    # A consented individual is considered to have participated if they sent a message, regardless of the
     # relevance of any of their messages.
-    exact_repeat_engagement = OrderedDict()
+    repeat_engagement = OrderedDict()
     for i in range(1, len(rqa_raw_fields) + 1):
-        exact_repeat_engagement[i] = {
+        repeat_engagement[i] = {
             "Repeat No": i,
             "No. of participants": 0,
             "% of participants": None
@@ -136,18 +136,17 @@ if __name__ == "__main__":
         for k, v in sustained_engagement_map.items():
             for item in v:
                 if item[1] == f'{i}':
-                    exact_repeat_engagement[i]["No. of participants"] += 1
+                    repeat_engagement[i]["No. of participants"] += 1
 
     # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times.
-    for rp in exact_repeat_engagement.values():
-        rp["% of participants"] = round(rp["No. of participants"] / len(uuids) * 100, 1)
+    for rp in repeat_engagement.values():
+        rp["% of participants"] = round(rp["No. of participants"] / len(total_participants_with_optins) * 100, 1)
 
-    log.info(f'Writing exact_repeat_engagement csv ...' )
-    # Write exact repeat engagement CSV
-    with open(f"{engagement_csv_output_dir}/exact_repeat_engagement.csv", "w") as f:
+    log.info(f'Writing repeat_engagement csv ...' )
+    with open(f"{engagement_csv_output_dir}/repeat_engagement.csv", "w") as f:
         headers = ["Repeat No", "No. of participants", "% of participants"]
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
 
-        for row in exact_repeat_engagement.values():
+        for row in repeat_engagement.values():
             writer.writerow(row)
