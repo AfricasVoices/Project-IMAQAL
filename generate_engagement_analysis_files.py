@@ -60,16 +60,16 @@ if __name__ == "__main__":
         rqa_raw_fields.append(plan.raw_field)
 
     log.info(f'Computing unique, lifetime_activations_per_show and per-show participants ...' )
-    engagement_map = {}  # of uid -> name of shows participated in and their demographics data
-    unique_uids = set()  # unique uids that participated in the entire project
-    lifetime_activations_per_show = []  # uids that participated in each radio show for the entire project
-    participants_per_show = OrderedDict()  # of rqa_raw_field -> sum of total uids who participated
+    engagement_map = {}  # of uid -> name of shows participated in and their demographics data.
+    total_participants_with_optins= set()  # total of participants who sent a message and also opted in.
+    total_activations_with_optins = []  # sum of total of every time consented participants interacts throughout a project.
+    activations_per_show_with_optins = OrderedDict()  # of rqa_raw_field -> sum of total of every time consented participants interact in an episode.
     for rqa_raw_field in rqa_raw_fields:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
             data = json.load(f)
         log.info(f"Loaded {len(data)} {rqa_raw_field} uids ")
 
-        participants_per_show[f"{rqa_raw_field}"] = len(data.keys())
+        activations_per_show_with_optins[f"{rqa_raw_field}"] = len(data.keys())
 
         for uid, demogs in data.items():
             demog = data[uid]
@@ -83,25 +83,25 @@ if __name__ == "__main__":
                     f" for {uid}"
 
             engagement_map[uid]["shows"].append(rqa_raw_field)
-            unique_uids.add(uid)
-            lifetime_activations_per_show.append(uid)
+            total_participants_with_optins.add(uid)
+            total_activations_with_optins.append(uid)
 
     # Export the engagement counts to their respective csv file.
-    log.info(f'Writing unique participants csv ...')
-    with open(f"{engagement_csv_output_dir}/unique_participants.csv", "w") as f:
+    log.info(f'Writing total participants with optins csv ...')
+    with open(f"{engagement_csv_output_dir}/total_participants_with_optins.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow([len(unique_uids)])
+        writer.writerow([len(total_participants_with_optins)])
 
-    log.info(f'Writing lifetime activations per show csv ...')
-    with open(f"{engagement_csv_output_dir}/lifetime_activations_per_show.csv", "w") as f:
+    log.info(f'Writing total activations with opt-ins csv ...')
+    with open(f"{engagement_csv_output_dir}/total_activations_with_optins.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow([len(lifetime_activations_per_show)])
+        writer.writerow([len(total_activations_with_optins)])
 
-    log.info(f'Writing show participation csv ...')
-    with open(f"{engagement_csv_output_dir}/participants_per_show.csv", "w") as f:
+    log.info(f'Writing activations_per_show_with_optins ...')
+    with open(f"{engagement_csv_output_dir}/activations_per_show_with_optins.csv", "w") as f:
         writer = csv.writer(f)
 
-        for row in participants_per_show.items():
+        for row in activations_per_show_with_optins.items():
             writer.writerow(row)
 
     # For each uid generate a sustained engagement map that contains : no of shows participated , their manually
