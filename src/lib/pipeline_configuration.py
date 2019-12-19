@@ -1026,6 +1026,55 @@ class PipelineConfiguration(object):
                    ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("idps_decision_making_opportunities"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="idps_minority_clan_decision_making_opportunities_raw",
+                   time_field="sent_on",
+                   coda_filename="idps_minority_clan_decision_making_opportunities.json",
+                   icr_filename="idps_minority_clan_decision_making_opportunities.csv",
+                   run_id_field="idps_minority_clan_decision_making_opportunities_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.IDPS_MINORITY_CLAN_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="idps_minority_clan_decision_making_opportunities_yes_no_amb_coded",
+                           analysis_file_key="idps_minority_clan_decision_making_opportunities_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.IDPS_MINORITY_CLAN_DECISION_MAKING_OPPORTUNITIES,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="idps_minority_clan_decision_making_opportunities_clan_coded",
+                           analysis_file_key="idps_minority_clan_decision_making_opportunities_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value(
+                       "idps_minority_clan_decision_making_opportunities"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="young_people_issues_two_raw",
+                   time_field="sent_on",
+                   coda_filename="young_people_issues_two.json",
+                   icr_filename="young_people_issues_two.csv",
+                   run_id_field="young_people_issues_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES_TWO_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="young_people_issues_two_yes_no_amb_coded",
+                           analysis_file_key="young_people_issues_two_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES_TWO,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="young_people_issues_two_coded",
+                           analysis_file_key="young_people_issues_two_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("young_people_issues_two"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
 
     @staticmethod

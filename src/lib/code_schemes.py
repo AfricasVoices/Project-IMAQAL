@@ -80,7 +80,11 @@ class CodeSchemes(object):
     WOMEN_DECISION_MAKING_OPPORTUNITIES= _open_scheme("women_decision_making_opportunities.json")
     WOMEN_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB= _open_scheme("women_decision_making_opportunities_yes_no_amb.json")
     IDPS_DECISION_MAKING_OPPORTUNITIES = _open_scheme("idps_decision_making_opportunities.json")
-    IDPS_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB = _open_scheme("idps_decision_making_opportunities_yes_no_amb.json")
+    IDPS_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB = _open_scheme("idps_minority_clan_decision_making_opportunities_yes_no_amb.json")
+    IDPS_MINORITY_CLAN_DECISION_MAKING_OPPORTUNITIES = _open_scheme("idps_minority_clan_decision_making_opportunities.json")
+    IDPS_MINORITY_CLAN_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB = _open_scheme("idps_decision_making_opportunities_yes_no_amb.json")
+    YOUNG_PEOPLE_ISSUES_TWO = _open_scheme("young_people_issues_two.json")
+    YOUNG_PEOPLE_ISSUES_TWO_YES_NO_AMB = _open_scheme("young_people_issues_two_yes_no_amb.json")
 
     AGE = _open_scheme("age.json")
     RECENTLY_DISPLACED = _open_scheme("recently_displaced.json")

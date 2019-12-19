@@ -26,7 +26,9 @@
     "mag_s02e30_activation"
   ],
   "SurveyFlowNames": [
-    "imaqal_demog"
+    "imaqal_demog",
+    "mag_s02_w31_follow_up",
+    "mag_s02_w33_follow_up"
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
@@ -57,6 +59,9 @@
     {"RapidProKey": "received_on", "PipelineKey": "sent_on"},
     {"RapidProKey": "run_id", "PipelineKey": "recovered_run_id"},
 
+    {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Time) - imaqal_s02_w31_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Young_People_Issues_Two (Time) - mag_s02_w33_follow_up", "PipelineKey": "sent_on"},
+
     {"RapidProKey": "Rqa_Mag_S02E21 (Time) - mag_s02e21_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S02E22 (Time) - mag_s02e22_activation", "PipelineKey": "sent_on"},
     {"RapidProKey": "Rqa_Mag_S02E23 (Time) - mag_s02e23_activation", "PipelineKey": "sent_on"},
@@ -77,7 +82,12 @@
     {"RapidProKey": "Household_Language (Value) - imaqal_demog", "PipelineKey": "household_language_raw"},
     {"RapidProKey": "Household_Language (Time) - imaqal_demog", "PipelineKey": "household_language_time"},
     {"RapidProKey": "District (Value) - imaqal_demog", "PipelineKey": "location_raw"},
-    {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"}
+    {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"},
+
+    {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Value) - imaqal_s02_w31_follow_up", "PipelineKey": "idps_minority_clan_decision_making_opportunities_raw"},
+    {"RapidProKey": "Young_People_Issues_Two (Value) - mag_s02_w33_follow_up", "PipelineKey": "young_people_issues_two_raw"},
+    {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Run ID) - imaqal_s02_w31_follow_up", "PipelineKey": "idps_minority_clan_decision_making_opportunities_run_id"},
+    {"RapidProKey": "Young_People_Issues_Two (Run ID) - mag_s02_w33_follow_up", "PipelineKey": "young_people_issues_two_run_id"}
   ],
   "PipelineName": "q7_pipeline",
   "MoveWSMessages": false,
