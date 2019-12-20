@@ -4,6 +4,78 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-bf337a16",
+      "CodeType": "Normal",
+      "DisplayText": "encouragement",
+      "NumericValue": 0,
+      "StringValue": "encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-eb06020b",
+      "CodeType": "Normal",
+      "DisplayText": "access to quality education",
+      "NumericValue": 1,
+      "StringValue": "access_to_quality_education",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-96d466cf",
+      "CodeType": "Normal",
+      "DisplayText": "give girls their rights",
+      "NumericValue": 2,
+      "StringValue": "give_girls_their_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-51e010a3",
+      "CodeType": "Normal",
+      "DisplayText": "awareness creation",
+      "NumericValue": 3,
+      "StringValue": "awareness_creation",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-a46e9e5e",
+      "CodeType": "Normal",
+      "DisplayText": "give them support",
+      "NumericValue": 4,
+      "StringValue": "give_them_support",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-89ead947",
+      "CodeType": "Normal",
+      "DisplayText": "create jobs for girls",
+      "NumericValue": 5,
+      "StringValue": "create_jobs_for_girls",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-571f0924",
+      "CodeType": "Normal",
+      "DisplayText": "provide peace and stability",
+      "NumericValue": 6,
+      "StringValue": "provide_peace_and_stability",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-19ddfaa8",
+      "CodeType": "Normal",
+      "DisplayText": "girls belong to the house",
+      "NumericValue": 7,
+      "StringValue": "girls_belong_to_the_house",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-590a1cfe",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 8,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
