@@ -38,7 +38,7 @@ if [[ $PIPELINE_RUN_MODE == "all-stages" ]]; then
         "$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION" "$DATA_ROOT"
 fi
 
-./6_backup_data_root.sh "$DATA_ROOT" "$DATA_BACKUPS_DIR/data-$RUN_ID.tar.gzip"
+#./6_backup_data_root.sh "$DATA_ROOT" "$DATA_BACKUPS_DIR/data-$RUN_ID.tar.gzip"
 
 ./7_upload_logs.sh "$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION" "$RUN_ID" \
     "$PERFORMANCE_LOGS_DIR/memory-$RUN_ID.profile" "$DATA_BACKUPS_DIR/data-$RUN_ID.tar.gzip"
