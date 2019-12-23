@@ -101,6 +101,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag09_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag09"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -297,6 +298,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s01mag20_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag20"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
@@ -340,6 +342,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s02e09_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e09"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -381,6 +384,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s02e11_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e11"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -405,6 +409,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s02e12_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e12"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -654,6 +659,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s01e02_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e02"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -678,6 +684,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01e03_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e03"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -719,6 +726,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01e05_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e05"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -760,6 +768,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01e07_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e07"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -784,6 +793,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag03_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag03"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -825,6 +835,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag05_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag05"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -849,6 +860,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag06_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag06"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -873,6 +885,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag07_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag07"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE)
     ]
@@ -903,6 +916,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="women_participation_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("women_participation"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -927,6 +941,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="minority_clan_issues_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("minority_clan_issues"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -951,6 +966,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="young_people_issues_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("young_people_issues"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -975,6 +991,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="decisions_minority_clan_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("decisions_minority_clan"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -999,6 +1016,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="women_decision_making_opportunities_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value(
                        "women_decision_making_opportunities"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
@@ -1024,6 +1042,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="idps_decision_making_opportunities_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("idps_decision_making_opportunities"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -1048,6 +1067,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="idps_minority_clan_decision_making_opportunities_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value(
                        "idps_minority_clan_decision_making_opportunities"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
@@ -1056,7 +1076,7 @@ class PipelineConfiguration(object):
                    time_field="sent_on",
                    coda_filename="young_people_issues_two.json",
                    icr_filename="young_people_issues_two.csv",
-                   run_id_field="young_people_issues_run_id",
+                   run_id_field="young_people_issues_two_run_id",
                    coding_configurations=[
                        CodingConfiguration(
                            coding_mode=CodingModes.SINGLE,
@@ -1073,6 +1093,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="young_people_issues_two_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("young_people_issues_two"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]

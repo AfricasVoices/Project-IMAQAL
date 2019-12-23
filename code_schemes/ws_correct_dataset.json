@@ -587,6 +587,28 @@
             ]
         },
         {
+            "DisplayText": "idps_minority_clan_decision_making_opportunities",
+            "VisibleInCoda": true,
+            "NumericValue": 55,
+            "CodeID": "code-110c88c3",
+            "CodeType": "Normal",
+            "StringValue": "idps_minority_clan_decision_making_opportunities",
+            "MatchValues": [
+                "idps_minority_clan_decision_making_opportunities"
+            ]
+        },
+        {
+            "DisplayText": "young_people_issues_two",
+            "VisibleInCoda": true,
+            "NumericValue": 56,
+            "CodeID": "code-6daf1602",
+            "CodeType": "Normal",
+            "StringValue": "young_people_issues_two",
+            "MatchValues": [
+                "young_people_issues_two"
+            ]
+        },
+        {
             "CodeID": "code-NR-5e3eee23",
             "CodeType": "Control",
             "ControlCode": "NR",
