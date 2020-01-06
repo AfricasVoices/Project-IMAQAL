@@ -101,6 +101,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag09_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag09"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -297,6 +298,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s01mag20_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag20"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
@@ -340,6 +342,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s02e09_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e09"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -367,6 +370,13 @@ class PipelineConfiguration(object):
                    run_id_field="rqa_s02e11_run_id",
                    coding_configurations=[
                        CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S02E11_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s02e11_yes_no_amb_coded",
+                           analysis_file_key="rqa_s02e11_yes_no_amb",
+                       ),
+                       CodingConfiguration(
                            coding_mode=CodingModes.MULTIPLE,
                            code_scheme=CodeSchemes.S02E11,
                            folding_mode=FoldingModes.MATRIX,
@@ -374,6 +384,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s02e11_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e11"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -384,6 +395,13 @@ class PipelineConfiguration(object):
                    run_id_field="rqa_s02e12_run_id",
                    coding_configurations=[
                        CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S02E13_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s02e13_yes_no_amb_coded",
+                           analysis_file_key="rqa_s02e13_yes_no_amb",
+                       ),
+                       CodingConfiguration(
                            coding_mode=CodingModes.MULTIPLE,
                            code_scheme=CodeSchemes.S02E12,
                            folding_mode=FoldingModes.MATRIX,
@@ -391,6 +409,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s02e12_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e12"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -427,6 +446,178 @@ class PipelineConfiguration(object):
                    ],
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02e14"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE)
+    ]
+
+    Q7_RQA_CODING_PLANS = [
+        CodingPlan(raw_field="rqa_s02mag21_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag21.json",
+                   icr_filename="s02mag21.csv",
+                   run_id_field="rqa_s02mag21_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG21,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag21_coded",
+                           analysis_file_key="rqa_s02mag21_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag21"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag22_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag22.json",
+                   icr_filename="s02mag22.csv",
+                   run_id_field="rqa_s02mag22_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG22,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag22_coded",
+                           analysis_file_key="rqa_s02mag22_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag22"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag23_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag23.json",
+                   icr_filename="s02mag23.csv",
+                   run_id_field="rqa_s02mag23_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG23,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag23_coded",
+                           analysis_file_key="rqa_s02mag23_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag23"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag24_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag24.json",
+                   icr_filename="s02mag24.csv",
+                   run_id_field="rqa_s02mag24_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG24,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag24_coded",
+                           analysis_file_key="rqa_s02mag24_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag24"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag25_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag25.json",
+                   icr_filename="s02mag25.csv",
+                   run_id_field="rqa_s02mag25_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG25,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag25_coded",
+                           analysis_file_key="rqa_s02mag25_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag25"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag26_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag26.json",
+                   icr_filename="s02mag26.csv",
+                   run_id_field="rqa_s02mag26_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG26,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag26_coded",
+                           analysis_file_key="rqa_s02mag26_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag26"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag27_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag27.json",
+                   icr_filename="s02mag27.csv",
+                   run_id_field="rqa_s02mag27_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG27,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag27_coded",
+                           analysis_file_key="rqa_s02mag27_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag27"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag28_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag28.json",
+                   icr_filename="s02mag28.csv",
+                   run_id_field="rqa_s02mag28_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG28,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag28_coded",
+                           analysis_file_key="rqa_s02mag28_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag28"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag29_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag29.json",
+                   icr_filename="s02mag29.csv",
+                   run_id_field="rqa_s02mag29_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG29,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag29_coded",
+                           analysis_file_key="rqa_s02mag29_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag29"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="rqa_s02mag30_raw",
+                   time_field="sent_on",
+                   coda_filename="s02mag30.json",
+                   icr_filename="s02mag30.csv",
+                   run_id_field="rqa_s02mag30_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.S02MAG30,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_s02mag30_coded",
+                           analysis_file_key="rqa_s02mag30_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s02mag30"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
 
     FULL_PIPELINE_RQA_CODING_PLANS = [
@@ -468,6 +659,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s01e02_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e02"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -492,6 +684,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01e03_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e03"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -533,6 +726,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01e05_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e05"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -574,6 +768,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01e07_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01e07"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -598,6 +793,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag03_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag03"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -639,6 +835,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag05_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag05"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -663,6 +860,7 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag06_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag06"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -687,12 +885,14 @@ class PipelineConfiguration(object):
                            coded_field="rqa_s01mag07_coded",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s01mag07"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE)
     ]
     FULL_PIPELINE_RQA_CODING_PLANS += Q4_RQA_CODING_PLANS
     FULL_PIPELINE_RQA_CODING_PLANS += Q5_RQA_CODING_PLANS
     FULL_PIPELINE_RQA_CODING_PLANS += Q6_RQA_CODING_PLANS
+    FULL_PIPELINE_RQA_CODING_PLANS += Q7_RQA_CODING_PLANS
 
     FOLLOW_UP_CODING_PLANS = [
         CodingPlan(raw_field="women_participation_raw",
@@ -716,6 +916,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="women_participation_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("women_participation"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -740,6 +941,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="minority_clan_issues_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("minority_clan_issues"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -764,6 +966,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="young_people_issues_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("young_people_issues"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -788,6 +991,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="decisions_minority_clan_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("decisions_minority_clan"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
 
@@ -812,6 +1016,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="women_decision_making_opportunities_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value(
                        "women_decision_making_opportunities"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
@@ -837,7 +1042,59 @@ class PipelineConfiguration(object):
                            analysis_file_key="idps_decision_making_opportunities_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("idps_decision_making_opportunities"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="idps_minority_clan_decision_making_opportunities_raw",
+                   time_field="sent_on",
+                   coda_filename="idps_minority_clan_decision_making_opportunities.json",
+                   icr_filename="idps_minority_clan_decision_making_opportunities.csv",
+                   run_id_field="idps_minority_clan_decision_making_opportunities_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.IDPS_MINORITY_CLAN_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="idps_minority_clan_decision_making_opportunities_yes_no_amb_coded",
+                           analysis_file_key="idps_minority_clan_decision_making_opportunities_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.IDPS_MINORITY_CLAN_DECISION_MAKING_OPPORTUNITIES,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="idps_minority_clan_decision_making_opportunities_clan_coded",
+                           analysis_file_key="idps_minority_clan_decision_making_opportunities_",
+                       )
+                   ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value(
+                       "idps_minority_clan_decision_making_opportunities"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="young_people_issues_two_raw",
+                   time_field="sent_on",
+                   coda_filename="young_people_issues_two.json",
+                   icr_filename="young_people_issues_two.csv",
+                   run_id_field="young_people_issues_two_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES_TWO_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="young_people_issues_two_yes_no_amb_coded",
+                           analysis_file_key="young_people_issues_two_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.YOUNG_PEOPLE_ISSUES_TWO,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="young_people_issues_two_coded",
+                           analysis_file_key="young_people_issues_two_",
+                       )
+                   ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("young_people_issues_two"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
 
@@ -975,7 +1232,7 @@ class PipelineConfiguration(object):
 
     def __init__(self, rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, survey_flow_names,
                  rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                 memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls=None, pipeline_name=None,
+                 memory_profile_upload_url_prefix, data_archive_upload_url_prefix, move_ws_messages, recovery_csv_urls=None, pipeline_name=None,
                  drive_upload=None):
         """
         :param rapid_pro_domain: URL of the Rapid Pro server to download data from.
@@ -997,6 +1254,8 @@ class PipelineConfiguration(object):
                                                  This prefix will be appended by the id of the pipeline run (provided
                                                  as a command line argument), and the ".profile" file extension.
         :type memory_profile_upload_url_prefix: str
+        :param data_archive_upload_url_prefix:The prefix of the GS URL to upload the data backup file to.
+        :type data_archive_upload_url_prefix: str
         :param move_ws_messages: Whether to move messages labelled as Wrong Scheme to the correct dataset.
         :type move_ws_messages: bool
         :param rapid_pro_key_remappings: List of rapid_pro_key -> pipeline_key remappings.
@@ -1015,6 +1274,7 @@ class PipelineConfiguration(object):
         self.phone_number_uuid_table = phone_number_uuid_table
         self.rapid_pro_key_remappings = rapid_pro_key_remappings
         self.memory_profile_upload_url_prefix = memory_profile_upload_url_prefix
+        self.data_archive_upload_url_prefix = data_archive_upload_url_prefix
         self.move_ws_messages = move_ws_messages
         self.recovery_csv_urls = recovery_csv_urls
         self.pipeline_name = pipeline_name
@@ -1038,6 +1298,8 @@ class PipelineConfiguration(object):
 
         memory_profile_upload_url_prefix = configuration_dict["MemoryProfileUploadURLPrefix"]
 
+        data_archive_upload_url_prefix = configuration_dict["DataArchiveUploadURLPrefix"]
+
         move_ws_messages = configuration_dict["MoveWSMessages"]
 
         recovery_csv_urls = configuration_dict.get("RecoveryCSVURLs")
@@ -1049,7 +1311,7 @@ class PipelineConfiguration(object):
 
         return cls(rapid_pro_domain, rapid_pro_token_file_url, activation_flow_names, survey_flow_names,
                    rapid_pro_test_contact_uuids, phone_number_uuid_table, rapid_pro_key_remappings,
-                   memory_profile_upload_url_prefix, move_ws_messages, recovery_csv_urls, pipeline_name,
+                   memory_profile_upload_url_prefix, data_archive_upload_url_prefix, move_ws_messages, recovery_csv_urls, pipeline_name,
                    drive_upload_paths)
 
     @classmethod
@@ -1083,6 +1345,8 @@ class PipelineConfiguration(object):
             remapping.validate()
 
         validators.validate_string(self.memory_profile_upload_url_prefix, "memory_profile_upload_url_prefix")
+
+        validators.validate_string(self.data_archive_upload_url_prefix, "data_archive_upload_url_prefix")
 
         if self.recovery_csv_urls is not None:
             validators.validate_list(self.recovery_csv_urls, "recovery_csv_urls")
@@ -1159,8 +1423,7 @@ class RapidProKeyRemapping(object):
 
 class DriveUpload(object):
     def __init__(self, drive_credentials_file_url, production_upload_path, messages_upload_path,
-                 individuals_upload_path, messages_traced_data_upload_path, individuals_traced_data_upload_path,
-                 analysis_graphs_dir):
+                 individuals_upload_path, analysis_graphs_dir):
         """
         :param drive_credentials_file_url: GS URL to the private credentials file for the Drive service account to use
                                            to upload the output files.
@@ -1174,13 +1437,6 @@ class DriveUpload(object):
         :param individuals_upload_path: Path in the Drive service account's "Shared with Me" directory to upload the
                                         individuals analysis CSV to.
         :type individuals_upload_path: str
-        :param messages_traced_data_upload_path: Path in the Drive service account's "Shared with Me" directory to
-                                                 upload the serialized messages TracedData from this pipeline run to.
-        :type messages_traced_data_upload_path: str
-        :param individuals_traced_data_upload_path: Path in the Drive service account's "Shared with Me" directory to
-                                                    upload the serialized individuals TracedData from this pipeline
-                                                    run to.
-        :type individuals_traced_data_upload_path: str
         :param analysis_graphs_dir: Directory in the Drive service account's "Shared with Me" directory to upload the
                                     analysis graphs from this pipeline run to.
         :type analysis_graphs_dir: str
@@ -1189,8 +1445,6 @@ class DriveUpload(object):
         self.production_upload_path = production_upload_path
         self.messages_upload_path = messages_upload_path
         self.individuals_upload_path = individuals_upload_path
-        self.messages_traced_data_upload_path = messages_traced_data_upload_path
-        self.individuals_traced_data_upload_path = individuals_traced_data_upload_path
         self.analysis_graphs_dir = analysis_graphs_dir
 
         self.validate()
@@ -1201,13 +1455,10 @@ class DriveUpload(object):
         production_upload_path = configuration_dict["ProductionUploadPath"]
         messages_upload_path = configuration_dict["MessagesUploadPath"]
         individuals_upload_path = configuration_dict["IndividualsUploadPath"]
-        messages_traced_data_upload_path = configuration_dict["MessagesTracedDataUploadPath"]
-        individuals_traced_data_upload_path = configuration_dict["IndividualsTracedDataUploadPath"]
         analysis_graphs_dir = configuration_dict["AnalysisGraphsDir"]
 
         return cls(drive_credentials_file_url, production_upload_path, messages_upload_path,
-                   individuals_upload_path, messages_traced_data_upload_path, individuals_traced_data_upload_path,
-                   analysis_graphs_dir)
+                   individuals_upload_path, analysis_graphs_dir)
 
     def validate(self):
         validators.validate_string(self.drive_credentials_file_url, "drive_credentials_file_url")
@@ -1217,6 +1468,4 @@ class DriveUpload(object):
         validators.validate_string(self.production_upload_path, "production_upload_path")
         validators.validate_string(self.messages_upload_path, "messages_upload_path")
         validators.validate_string(self.individuals_upload_path, "individuals_upload_path")
-        validators.validate_string(self.messages_traced_data_upload_path, "messages_traced_data_upload_path")
-        validators.validate_string(self.individuals_traced_data_upload_path, "individuals_traced_data_upload_path")
         validators.validate_string(self.analysis_graphs_dir, "analysis_graphs_dir")

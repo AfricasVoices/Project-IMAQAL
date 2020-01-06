@@ -1,40 +1,79 @@
 {
+  "SchemeID": "Scheme-caa2bce0",
+  "Name": "S02MAG22",
   "Version": "0.0.0.1",
-  "Name": "S02E11 Yes/No/Amb",
-  "SchemeID": "Scheme-0c4670d4",
   "Codes": [
     {
-      "DisplayText": "Yes",
-      "VisibleInCoda": true,
+      "CodeID": "code-3c79b3b8",
+      "CodeType": "Normal",
+      "DisplayText": "awareness creation",
       "NumericValue": 0,
-      "CodeID": "code-5aed451f",
-      "CodeType": "Normal",
-      "MatchValues": [
-        "yes"
-      ],
-      "StringValue": "yes"
-    },
-    {
-      "NumericValue": 1,
-      "CodeID": "code-c8f98cbf",
-      "CodeType": "Normal",
-      "MatchValues": [
-        "no"
-      ],
-      "StringValue": "no",
-      "DisplayText": "No",
+      "StringValue": "awareness_creation",
       "VisibleInCoda": true
     },
     {
-      "NumericValue": 2,
-      "CodeID": "code-7edd0535",
+      "CodeID": "code-905b8385",
       "CodeType": "Normal",
-      "MatchValues": [
-        "ambivalent"
-      ],
-      "StringValue": "ambivalent",
-      "VisibleInCoda": true,
-      "DisplayText": "Ambivalent"
+      "DisplayText": "interaction and integration",
+      "NumericValue": 1,
+      "StringValue": "interaction_and_integration",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-bbf3cbf1",
+      "CodeType": "Normal",
+      "DisplayText": "follow religious teachings",
+      "NumericValue": 2,
+      "StringValue": "follow_religious_teachings",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-955c8f30",
+      "CodeType": "Normal",
+      "DisplayText": "stop clannism",
+      "NumericValue": 3,
+      "StringValue": "stop_clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-aad6f4bf",
+      "CodeType": "Normal",
+      "DisplayText": "encouragement",
+      "NumericValue": 4,
+      "StringValue": "encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-355ab0ef",
+      "CodeType": "Normal",
+      "DisplayText": "give them opportunities",
+      "NumericValue": 5,
+      "StringValue": "give_them_opportunities",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-62a91aa1",
+      "CodeType": "Normal",
+      "DisplayText": "good governance",
+      "NumericValue": 6,
+      "StringValue": "good_governance",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-43b4987e",
+      "CodeType": "Normal",
+      "DisplayText": "justice",
+      "NumericValue": 7,
+      "StringValue": "justice",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e9c0b932",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 8,
+      "StringValue": "other",
+      "VisibleInCoda": true
     },
     {
       "CodeID": "code-NA-f93d3eb7",

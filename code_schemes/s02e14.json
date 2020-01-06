@@ -3,7 +3,62 @@
   "Name": "S02E14",
   "Version": "0.0.0.1",
   "Codes": [
-
+    {
+      "CodeID": "code-41eeb815",
+      "CodeType": "Normal",
+      "DisplayText": "awareness creation",
+      "NumericValue": 0,
+      "StringValue": "awareness_creation",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-789ef429",
+      "CodeType": "Normal",
+      "DisplayText": "stop clannism",
+      "NumericValue": 1,
+      "StringValue": "stop clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-7492dea3",
+      "CodeType": "Normal",
+      "DisplayText": "integration and intermarriage",
+      "NumericValue": 2,
+      "StringValue": "integration_and_intermarriage",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-5fa86bbf",
+      "CodeType": "Normal",
+      "DisplayText": "follow the religious teachings",
+      "NumericValue": 3,
+      "StringValue": "follow_the_religious_teachings",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-b718fbd1",
+      "CodeType": "Normal",
+      "DisplayText": "stop discrimination",
+      "NumericValue": 4,
+      "StringValue": "stop_discrimination",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-1536a243",
+      "CodeType": "Normal",
+      "DisplayText": "bad culture",
+      "NumericValue": 5,
+      "StringValue": "bad_culture",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-22867bae",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 6,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
