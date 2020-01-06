@@ -119,6 +119,12 @@ class TranslateRapidProKeys(object):
             isoparse("2019-08-28T13:00:00+03:00"),
             isoparse("2019-08-30T12:00:00+03:00")
         )
+        # Correct magazine 21 messages recovered from the Hormuud downtime issue
+        cls._remap_radio_show_by_time_range(
+            user, data, "received_on", "rqa_s02mag21_raw",
+            isoparse("2019-11-28T10:22:00+03:00"),
+            isoparse("2019-11-30T07:00:00+03:00")
+        )
 
     @classmethod
     def remap_key_names(cls, user, data, pipeline_configuration):
@@ -143,6 +149,15 @@ class TranslateRapidProKeys(object):
                 new_key = remapping.pipeline_key
 
                 if old_key in td and new_key not in td:
+                    # Some "old keys" translate to the same new key. This is sometimes desirable, for example if we ask
+                    # the same demog question to the same person in multiple places, we should take take their
+                    # newest response. However, if their newest response is "null" in the flow exported from Rapid Pro,
+                    # taking the newest response would cause loss of some valuable responses. This check ensures we
+                    # are taking the most recent response, unless the most response is "null" and there was a more
+                    # substantive response in the past.
+                    if td[old_key] is None and remapped.get(new_key) is not None:
+                        continue
+
                     remapped[new_key] = td[old_key]
 
             td.append_data(remapped, Metadata(user, Metadata.get_call_location(), TimeUtils.utc_now_as_iso_string()))

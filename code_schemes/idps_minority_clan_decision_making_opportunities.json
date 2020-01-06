@@ -1,104 +1,8 @@
 {
     "Version": "0.0.0.1",
-    "Name": "IDPs Decision Making Opportunities",
-    "SchemeID": "Scheme-6ba707ad",
+    "Name": "IDPs & Minority Clan Decision Making Opportunities",
+    "SchemeID": "Scheme-a8d0045b",
     "Codes": [
-      {
-        "CodeID": "code-041bc127",
-        "CodeType": "Normal",
-        "DisplayText": "part of the community",
-        "NumericValue": 0,
-        "StringValue": "part_of_the_community",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-ef8e547e",
-        "CodeType": "Normal",
-        "DisplayText": "if supported",
-        "NumericValue": 1,
-        "StringValue": "if_supported",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-22ce3397",
-        "CodeType": "Normal",
-        "DisplayText": "awareness creation",
-        "NumericValue": 2,
-        "StringValue": "awareness_creation",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-1ab69d5d",
-        "CodeType": "Normal",
-        "DisplayText": "idps taking responsibility",
-        "NumericValue": 3,
-        "StringValue": "idps_taking_responsibility",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-dedd3025",
-        "CodeType": "Normal",
-        "DisplayText": "the community understands",
-        "NumericValue": 4,
-        "StringValue": "the_community_understands",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-5801379f",
-        "CodeType": "Normal",
-        "DisplayText": "if given opportunity",
-        "NumericValue": 5,
-        "StringValue": "if_given_opportunity",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-39658ce9",
-        "CodeType": "Normal",
-        "DisplayText": "lack of justice",
-        "NumericValue": 6,
-        "StringValue": "lack_of_justice",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-46cce3e4",
-        "CodeType": "Normal",
-        "DisplayText": "exclusion and discrimination",
-        "NumericValue": 7,
-        "StringValue": "exclusion_and_discrimination",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-e78e14b6",
-        "CodeType": "Normal",
-        "DisplayText": "lack of awareness",
-        "NumericValue": 8,
-        "StringValue": "lack_of_awareness",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-f2fdf3d9",
-        "CodeType": "Normal",
-        "DisplayText": "lack of good governance",
-        "NumericValue": 9,
-        "StringValue": "lack_of_good_governance",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-741f4735",
-        "CodeType": "Normal",
-        "DisplayText": "clannism",
-        "NumericValue": 10,
-        "StringValue": "clannism",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-affd8016",
-        "CodeType": "Normal",
-        "DisplayText": "other",
-        "NumericValue": 11,
-        "StringValue": "other",
-        "VisibleInCoda": true
-      },
       {
         "CodeID": "code-NA-f93d3eb7",
         "CodeType": "Control",
@@ -214,6 +118,24 @@
       "DisplayText": "opt-in",
       "NumericValue": -100040,
       "StringValue": "opt_in",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-SC-a3a065bc",
+      "CodeType": "Meta",
+      "MetaCode": "similar_content",
+      "DisplayText": "similar content",
+      "NumericValue": -100050,
+      "StringValue": "similar_content",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-PI-83b90d32",
+      "CodeType": "Meta",
+      "MetaCode": "participation_incentive",
+      "DisplayText": "participation incentive",
+      "NumericValue": -100060,
+      "StringValue": "participation_incentive",
       "VisibleInCoda": true
     }
     ]

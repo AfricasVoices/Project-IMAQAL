@@ -23,12 +23,13 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Check that the correct number of arguments were provided.
-if [[ $# -ne 14 ]]; then
+if [[ $# -ne 16 ]]; then
     echo "Usage: ./docker-run-generate-outputs.sh
     [--profile-cpu <cpu-profile-output-path>] [--profile-memory <memory-profile-output-path>]
     <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <pipeline-run-mode> <raw-data-dir>
     <prev-coded-dir>  <icr-output-dir> <coded-output-dir> <production-output-csv> <auto-coding-json-output-path>
-    <messages-output-csv> <individuals-output-csv> <messages-json-output-path> <individual-json-output-path>"
+    <messages-output-csv> <individuals-output-csv> <messages-json-output-path> <individual-json-output-path>
+    <messages-history-json-output-path> <individuals-history-json-output-path>"
     exit
 fi
 
@@ -47,6 +48,8 @@ OUTPUT_MESSAGES_CSV=${11}
 OUTPUT_INDIVIDUALS_CSV=${12}
 OUTPUT_MESSAGES_JSONL=${13}
 OUTPUT_INDIVIDUALS_JSONL=${14}
+OUTPUT_MESSAGES_HISTORY_JSONL=${15}
+OUTPUT_INDIVIDUALS_HISTORY_JSONL=${16}
 
 # Build an image for this pipeline stage.
 docker build --build-arg INSTALL_CPU_PROFILER="$PROFILE_CPU" --build-arg INSTALL_MEMORY_PROFILER="$PROFILE_MEMORY" -t "$IMAGE_NAME" .
@@ -65,6 +68,7 @@ CMD="pipenv run $PROFILE_CPU_CMD $PROFILE_MEMORY_CMD python -u generate_outputs.
     /data/raw-data /data/prev-coded /data/output-icr /data/coded /data/output-production.csv \
     /data/auto-coding-traced-data.jsonl /data/output-messages.csv /data/output-individuals.csv \
     /data/output-messages.jsonl /data/output-individuals.jsonl \
+    /data/output-messages-history.jsonl /data/output-individuals-history.jsonl
 "
 container="$(docker container create ${SYS_PTRACE_CAPABILITY} -w /app "$IMAGE_NAME" /bin/bash -c "$CMD")"
 
@@ -115,6 +119,14 @@ if [[ $PIPELINE_RUN_MODE = "all-stages" ]]; then
     echo "copying traced individuals.jsonl to "$OUTPUT_INDIVIDUALS_JSONL" "
     mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
     docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
+
+    echo "copying traced messages history.jsonl to $OUTPUT_MESSAGES_HISTORY_JSONL"
+    mkdir -p "$(dirname "$OUTPUT_MESSAGES_HISTORY_JSONL")"
+    docker cp "$container:/data/output-messages-history.jsonl" "$OUTPUT_MESSAGES_HISTORY_JSONL"
+
+    echo "copying traced individuals history.jsonl to $OUTPUT_INDIVIDUALS_HISTORY_JSONL"
+    mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_HISTORY_JSONL")"
+    docker cp "$container:/data/output-individuals-history.jsonl" "$OUTPUT_INDIVIDUALS_HISTORY_JSONL"
 
 elif [[ $PIPELINE_RUN_MODE = "auto-code-only" ]]; then
     echo "copying auto-coding-traced-data.jsonl to "$OUTPUT_AUTO_CODING_TRACED_JSONL" "

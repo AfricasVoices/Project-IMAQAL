@@ -68,4 +68,3 @@ ADD fetch_recovered_data.py /app
 ADD generate_outputs.py /app
 ADD upload_logs.py /app
 ADD generate_analysis_graphs.py /app
-ADD generate_quantitative_analysis_map.py /app

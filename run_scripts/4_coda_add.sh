@@ -65,6 +65,16 @@ DATASETS=(
     "s02e12"
     "s02e13"
     "s02e14"
+    "s02mag21"
+    "s02mag22"
+    "s02mag23"
+    "s02mag24"
+    "s02mag25"
+    "s02mag26"
+    "s02mag27"
+    "s02mag28"
+    "s02mag29"
+    "s02mag30"
 
     "gender"
     "location"
@@ -75,6 +85,8 @@ DATASETS=(
     "decisions_minority_clan"
     "women_decision_making_opportunities"
     "idps_decision_making_opportunities"
+    "idps_minority_clan_decision_making_opportunities"
+    "young_people_issues_two"
     )
 
 cd "$CODA_V2_ROOT/data_tools"
