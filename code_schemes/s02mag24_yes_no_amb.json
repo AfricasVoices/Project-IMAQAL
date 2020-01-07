@@ -1,80 +1,40 @@
 {
     "Version": "0.0.0.1",
-    "Name": "IDPs & Minority Clan Decision Making Opportunities",
-    "SchemeID": "Scheme-a8d0045b",
-    "Codes": [
-      {
-        "CodeID": "code-3510fa54",
-        "CodeType": "Normal",
-        "DisplayText": "raise awareness",
+    "Name": "S02MAG24 Yes/No/Amb",
+    "SchemeID": "Scheme-b5453e23",
+    "Codes": [{
+        "DisplayText": "Yes",
+        "VisibleInCoda": true,
         "NumericValue": 0,
-        "StringValue": "raise_awareness",
-        "VisibleInCoda": true
+        "CodeID": "code-0984ce2c",
+        "CodeType": "Normal",
+        "MatchValues": [
+          "yes"
+        ],
+        "StringValue": "yes"
       },
       {
-        "CodeID": "code-05529edf",
-        "CodeType": "Normal",
-        "DisplayText": "good governance",
         "NumericValue": 1,
-        "StringValue": "good_governance",
+        "CodeID": "code-2d6e5180",
+        "CodeType": "Normal",
+        "MatchValues": [
+          "no"
+        ],
+        "StringValue": "no",
+        "DisplayText": "No",
         "VisibleInCoda": true
       },
       {
-        "CodeID": "code-0fd84ea6",
-        "CodeType": "Normal",
-        "DisplayText": "it is their right",
-        "NumericValue": 2,
-        "StringValue": "it_is_their_right",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-e1dbbbb3",
-        "CodeType": "Normal",
-        "DisplayText": "if given opportunity",
-        "NumericValue": 3,
-        "StringValue": "if_given_opportunity",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-0206112b",
-        "CodeType": "Normal",
-        "DisplayText": "lack of education",
-        "NumericValue": 4,
-        "StringValue": "lack_of_education",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-abb8b6f7",
-        "CodeType": "Normal",
-        "DisplayText": "lack of justice",
-        "NumericValue": 5,
-        "StringValue": "lack_of_justice",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-14319b46",
-        "CodeType": "Normal",
-        "DisplayText": "clannism",
-        "NumericValue": 6,
-        "StringValue": "clannism",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-855de625",
-        "CodeType": "Normal",
-        "DisplayText": "exclusion",
-        "NumericValue": 7,
-        "StringValue": "exclusion",
-        "VisibleInCoda": true
-      },
-      {
-        "CodeID": "code-af9bf8b6",
-        "CodeType": "Normal",
-        "DisplayText": "other",
-        "NumericValue": 8,
-        "StringValue": "other",
-        "VisibleInCoda": true
-      },
+      "NumericValue": 2,
+      "CodeID": "code-5428c1a3",
+      "CodeType": "Normal",
+      "MatchValues": [
+        "ambivalent"
+      ],
+      "StringValue": "ambivalent",
+      "VisibleInCoda": true,
+      "DisplayText": "Ambivalent"
+    },
       {
         "CodeID": "code-NA-f93d3eb7",
         "CodeType": "Control",
@@ -139,15 +99,15 @@
         "VisibleInCoda": true
       },
       {
-        "CodeID": "code-CE-016c1e22",
-        "CodeType": "Control",
-        "ControlCode": "CE",
-        "DisplayText": "CE (coding error)",
-        "NumericValue": -110,
-        "StringValue": "CE",
-        "VisibleInCoda": false
-      },
-      {
+      "CodeID": "code-CE-016c1e22",
+      "CodeType": "Control",
+      "ControlCode": "CE",
+      "DisplayText": "CE (coding error)",
+      "NumericValue": -110,
+      "StringValue": "CE",
+      "VisibleInCoda": false
+    },
+    {
       "CodeID": "code-PB-a434a800",
       "CodeType": "Meta",
       "MetaCode": "push_back",
