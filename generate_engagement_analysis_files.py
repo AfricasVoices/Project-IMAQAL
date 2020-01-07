@@ -112,18 +112,9 @@ if __name__ == "__main__":
     # (1 for show they participated and 0 otherwise.)
     sustained_engagement_map = {}
     for uid in engagement_map.keys():
-        basic_str = f" {len(engagement_map[uid]['shows'])}, {engagement_map[uid]['demog']['gender']}," \
-            f" {engagement_map[uid]['demog']['age']}, {engagement_map[uid]['demog']['recently_displaced']}, "
-
-        show_mapping = ""
-        for show_name in rqa_raw_fields:
-            if show_name in engagement_map[uid]["shows"]:
-                show_mapping = show_mapping + "1, "
-            else:
-                show_mapping = show_mapping + "0, "
-
-        compound_str = basic_str + show_mapping
-        sustained_engagement_map[uid] = [compound_str]
+        basic_str = [f" {len(engagement_map[uid]['shows'])}, {engagement_map[uid]['demog']['gender']}," \
+            f" {engagement_map[uid]['demog']['age']}, {engagement_map[uid]['demog']['recently_displaced']}, "]
+        sustained_engagement_map[uid] = basic_str
 
     log.info(f'Computing repeat engagement / total_participants_with_optins ...' )
     # Compute the number of consented individuals who participated exactly 1 to <number of RQAs> times.
@@ -133,21 +124,21 @@ if __name__ == "__main__":
     for i in range(1, len(rqa_raw_fields) + 1):
         repeat_engagement[i] = {
             "Repeat No": i,
-            "No. of participants with opt-ins": 0,
-            "% of participants with opt-ins": None
+            "No. of repeat participants with opt-ins": 0,
+            "% of repeat participants with opt-ins": None
         }
         for uid, compound_str in sustained_engagement_map.items():
             for item in compound_str:
                 if item[1] == f'{i}':
-                    repeat_engagement[i]["No. of participants with opt-ins"] += 1
+                    repeat_engagement[i]["No. of repeat participants with opt-ins"] += 1
 
     # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times over total participants with optins.
     for rp in repeat_engagement.values():
-        rp["% of participants with opt-ins"] = round(rp["No. of participants with opt-ins"] / len(opted_in_participants) * 100, 1)
+        rp["% of repeat participants with opt-ins"] = round(rp["No. of repeat participants with opt-ins"] / len(opted_in_participants) * 100, 1)
 
     log.info(f'Writing repeat_engagement csv ...' )
     with open(f"{engagement_csv_output_dir}/repeat_engagement.csv", "w") as f:
-        headers = ["Repeat No", "No. of participants with opt-ins", "% of participants with opt-ins"]
+        headers = ["Repeat No", "No. of repeat participants with opt-ins", "% of repeat participants with opt-ins"]
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
 
