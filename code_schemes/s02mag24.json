@@ -4,6 +4,70 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-89b570cb",
+      "CodeType": "Normal",
+      "DisplayText": "against islamic religious teachings",
+      "NumericValue": 0,
+      "StringValue": "against_Islamic_religious_teachings",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-85330cc5",
+      "CodeType": "Normal",
+      "DisplayText": "clannism",
+      "NumericValue": 1,
+      "StringValue": "clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-bb6fee12",
+      "CodeType": "Normal",
+      "DisplayText": "lack of good governance & justice",
+      "NumericValue": 2,
+      "StringValue": "lack_of_good_governance_and_justice",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-7713be84",
+      "CodeType": "Normal",
+      "DisplayText": "negative culture",
+      "NumericValue": 3,
+      "StringValue": "negative_culture",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-c08396a5",
+      "CodeType": "Normal",
+      "DisplayText": "discrimination",
+      "NumericValue": 4,
+      "StringValue": "discrimination",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-7c325536",
+      "CodeType": "Normal",
+      "DisplayText": "illiteracy",
+      "NumericValue": 5,
+      "StringValue": "illiteracy",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-1b2a950c",
+      "CodeType": "Normal",
+      "DisplayText": "lack of awareness creation",
+      "NumericValue": 6,
+      "StringValue": "lack_of_awareness_creation",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-02fa3594",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 7,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
