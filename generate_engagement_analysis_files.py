@@ -121,16 +121,16 @@ if __name__ == "__main__":
     # A consented individual is considered to have participated if they sent a message, regardless of the
     # relevance of any of their messages.
     repeat_engagement = OrderedDict()
-    for i in range(1, len(rqa_raw_fields) + 1):
-        repeat_engagement[i] = {
-            "Repeat No": i,
+    for shows_participated_in in range(1, len(rqa_raw_fields) + 1):
+        repeat_engagement[shows_participated_in] = {
+            "Repeat No": shows_participated_in,
             "No. of repeat participants with opt-ins": 0,
             "% of repeat participants with opt-ins": None
         }
-        for uid, compound_str in sustained_engagement_map.items():
-            for item in compound_str:
-                if item[1] == f'{i}':
-                    repeat_engagement[i]["No. of repeat participants with opt-ins"] += 1
+        for uid, basic_str in sustained_engagement_map.items():
+            for item in basic_str:
+                if item[1] == f'{shows_participated_in}':
+                    repeat_engagement[shows_participated_in]["No. of repeat participants with opt-ins"] += 1
 
     # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times over total participants with optins.
     for rp in repeat_engagement.values():
