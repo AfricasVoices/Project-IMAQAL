@@ -4,6 +4,86 @@
     "SchemeID": "Scheme-449a4599",
     "Codes": [
       {
+        "VisibleInCoda": true,
+        "NumericValue": 0,
+        "CodeID": "code-fb165459",
+        "CodeType": "Normal",
+        "StringValue": "yes_unemployment",
+        "DisplayText": "yes, unemployment"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 1,
+        "CodeID": "code-1d8f9967",
+        "CodeType": "Normal",
+        "StringValue": "yes_youth_are_the_backbone_of_the_community",
+        "DisplayText": "yes, youth are the backbone of the community"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 2,
+        "CodeID": "code-cfefb675",
+        "CodeType": "Normal",
+        "StringValue": "yes_lack_of_good_governance",
+        "DisplayText": "yes, lack of good governance"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 3,
+        "CodeID": "code-493b7e47",
+        "CodeType": "Normal",
+        "StringValue": "yes_irregular_migration",
+        "DisplayText": "yes, irregular migration"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 4,
+        "CodeID": "code-c4271e1a",
+        "CodeType": "Normal",
+        "StringValue": "yes_prevention_method_in_place",
+        "DisplayText": "yes, prevention method in place"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 5,
+        "CodeID": "code-94f38fc7",
+        "CodeType": "Normal",
+        "StringValue": "no_clannism",
+        "DisplayText": "no, clannism"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 6,
+        "CodeID": "code-e7029a5e",
+        "CodeType": "Normal",
+        "StringValue": "no_lack_of_awareness_creation",
+        "DisplayText": "no, lack of awareness creation"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 7,
+        "CodeID": "code-63788a31",
+        "CodeType": "Normal",
+        "StringValue": "no_there_is_no_prevention",
+        "DisplayText": "no, there is no prevention"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 8,
+        "CodeID": "code-2a96cc9a",
+        "CodeType": "Normal",
+        "StringValue": "no_no_support_for_them",
+        "DisplayText": "no, no support for them"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 9,
+        "CodeID": "code-c2a2417b",
+        "CodeType": "Normal",
+        "StringValue": "other",
+        "DisplayText": "other"
+      },
+      {
         "ControlCode": "NA",
         "DisplayText": "NA (missing)",
         "VisibleInCoda": false,
