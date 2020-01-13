@@ -108,7 +108,7 @@ if __name__ == "__main__":
     # Computes the number of new and repeat consented individuals who participated in the TV_radio shows vis-à-vis
     # prior radio shows only.
     # Repeat participants are consented individuals who participated in previous shows prior to the target show.
-    # New participants are consented individuals who participated in target show but din't participate in previous shows.
+    # New participants are consented individuals who participated in target show but didn't participate in previous shows.
     # of rqa_raw_field to participation metrics.
     tv_radio_shows = ["rqa_s02mag23_raw", "rqa_s02mag24_raw", "rqa_s02mag25_raw",
                       "rqa_s02mag26_raw", "rqa_s02mag27_raw", "rqa_s02mag28_raw"]
