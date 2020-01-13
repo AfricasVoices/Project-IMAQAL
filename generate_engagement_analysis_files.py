@@ -116,14 +116,14 @@ if __name__ == "__main__":
             f" {engagement_map[uid]['demog']['age']}, {engagement_map[uid]['demog']['recently_displaced']}, "]
         sustained_engagement_map[uid] = basic_str
 
-    log.info(f'Computing repeat engagement / total_participants_with_optins ...' )
+    log.info(f'Computing repeat engagement / total_participants_with_optins ...')
     # Compute the number of consented individuals who participated exactly 1 to <number of RQAs> times.
     # A consented individual is considered to have participated if they sent a message, regardless of the
     # relevance of any of their messages.
     repeat_engagement = OrderedDict()
     for shows_participated_in in range(1, len(rqa_raw_fields) + 1):
         repeat_engagement[shows_participated_in] = {
-            "Repeat No": shows_participated_in,
+            "No. of participation(s)": shows_participated_in,
             "No. of repeat participants with opt-ins": 0,
             "% of repeat participants with opt-ins": None
         }
@@ -134,11 +134,12 @@ if __name__ == "__main__":
 
     # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times over total participants with optins.
     for rp in repeat_engagement.values():
-        rp["% of repeat participants with opt-ins"] = round(rp["No. of repeat participants with opt-ins"] / len(opted_in_participants) * 100, 1)
+        rp["% of repeat participants with opt-ins"] = round(
+            rp["No. of repeat participants with opt-ins"] / len(opted_in_participants) * 100, 1)
 
-    log.info(f'Writing repeat_engagement csv ...' )
+    log.info(f'Writing repeat_engagement csv ...')
     with open(f"{engagement_csv_output_dir}/repeat_engagement.csv", "w") as f:
-        headers = ["Repeat No", "No. of repeat participants with opt-ins", "% of repeat participants with opt-ins"]
+        headers = ["No. of participation(s)", "No. of repeat participants with opt-ins", "% of repeat participants with opt-ins"]
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
 
