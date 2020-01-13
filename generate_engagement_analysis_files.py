@@ -133,7 +133,7 @@ if __name__ == "__main__":
                 previous_shows_uids.add(uid)
 
     tv_radio_repeat_uids = set()  # uids of individuals who participated in tv_radio and previous shows.
-    tv_radio_new_uids = set()  # uids of individuals who participated in tv_radio show but din't participate in previous shows.
+    tv_radio_new_uids = set()  # uids of individuals who participated in tv_radio show but didn't participate in previous shows.
     for uid in tv_radio_shows_uids:
         if uid in previous_shows_uids:
             tv_radio_repeat_uids.add(uid)
