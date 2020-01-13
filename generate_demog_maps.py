@@ -86,7 +86,7 @@ if __name__ == "__main__":
                     for cc in plan.coding_configurations:
                         if cc.coding_mode == CodingModes.SINGLE:
                             label = msg.get(cc.coded_field)
-                            #TODO: Investigate why some labels are None in traced data
+                            # TODO: Investigate why some labels are None in traced data
                             if label != None:
                                 codes.append(cc.code_scheme.get_code_with_code_id(label["CodeID"]))
                         else:
@@ -134,5 +134,5 @@ if __name__ == "__main__":
         header_writer.writeheader()
 
         writer = csv.writer(f, lineterminator="\n")
-        for row in messages_per_show_with_optins.items():
+        for row in relevant_messages_per_show_with_optins.items():
             writer.writerow(row)
