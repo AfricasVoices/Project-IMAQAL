@@ -140,7 +140,9 @@ if __name__ == "__main__":
         else:
             tv_radio_new_uids.add(uid)
 
-    tv_radio_repeat_new_participation_map = {"No. of previous shows participants": len(previous_shows_uids),
+    tv_radio_repeat_new_participation_map = {
+        "No. of previous shows participants": len(previous_shows_uids),
+        ...
                                              "No. of tv_radio shows participants": len(tv_radio_shows_uids),
                                              "No. of repeat participants":len(tv_radio_repeat_uids),
                                              "No. of new participants":len(tv_radio_new_uids)}
