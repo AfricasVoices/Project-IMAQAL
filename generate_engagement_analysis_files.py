@@ -154,5 +154,5 @@ if __name__ == "__main__":
         writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         writer.writeheader()
 
-        for data in [tv_radio_repeat_new_participation_map]:
+       writer.writerow(tv_radio_repeat_new_participation_map)
             writer.writerow(data)
