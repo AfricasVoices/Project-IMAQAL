@@ -4,11 +4,13 @@ from core_data_modules.cleaners import Codes
 import sys
 from collections import OrderedDict
 import csv
+from core_data_modules.data_models.code_scheme import CodeTypes
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
 
 from src.lib import PipelineConfiguration
+from src.lib.pipeline_configuration import CodingModes
 
 Logger.set_project_name("IMAQAL")
 log = Logger(__name__)
@@ -59,9 +61,11 @@ if __name__ == "__main__":
 
     rqa_raw_fields =[]
     messages_per_show_with_optins = OrderedDict()  # Of radio show index to messages count for the participants who opted in
+    relevant_messages_per_show_with_optins = OrderedDict()
     for plan in PipelineConfiguration.RQA_CODING_PLANS:
         rqa_raw_fields.append(plan.raw_field)
         messages_per_show_with_optins[plan.raw_field] = 0
+        relevant_messages_per_show_with_optins[plan.raw_field] = 0
 
     for rqa_raw_field in rqa_raw_fields:
         # Read the messages dataset
@@ -73,16 +77,30 @@ if __name__ == "__main__":
         demog_map = dict()
         sys.setrecursionlimit(20000)
         for msg in messages:
-            if msg.get(rqa_raw_field, "") != "":
-                continue
-
-            if msg["consent_withdrawn"] == Codes.FALSE:
-                # Compute the number of messages in each show
+            if msg.get(rqa_raw_field, "") != "" and msg["consent_withdrawn"] == Codes.FALSE:
                 messages_per_show_with_optins[rqa_raw_field] += 1
+
+                for plan in PipelineConfiguration.RQA_CODING_PLANS:
+                    # Get all the codes for this message under this code scheme
+                    codes = []
+                    for cc in plan.coding_configurations:
+                        if cc.coding_mode == CodingModes.SINGLE:
+                            label = msg.get(cc.coded_field)
+                            #TODO: Investigate why some labels are None in traced data
+                            if label != None:
+                                codes.append(cc.code_scheme.get_code_with_code_id(label["CodeID"]))
+                        else:
+                            assert cc.coding_mode == CodingModes.MULTIPLE
+                            for label in msg.get(cc.coded_field, []):
+                                codes.append(cc.code_scheme.get_code_with_code_id(label["CodeID"]))
+
+                    # Increment the count of relevant messages if the code is labelled with at least one normal code.
+                    code_types = [code.code_type for code in codes]
+                    if CodeTypes.NORMAL in code_types:
+                        relevant_messages_per_show_with_optins[plan.raw_field] += 1
 
                 if msg["uid"] in demog_map.keys():
                     continue
-
                 uid = msg["uid"]
                 demog_data_for_id = {}
                 for plan in PipelineConfiguration.DEMOG_CODING_PLANS:
@@ -91,7 +109,7 @@ if __name__ == "__main__":
                             continue
                         key = cc.analysis_file_key
                         demog_data_for_id[key] = cc.code_scheme.get_code_with_code_id(msg[cc.coded_field]["CodeID"]).string_value
-                    demog_map[uid] = demog_data_for_id
+                demog_map[uid] = demog_data_for_id
 
         log.info(f'Writing demog map for {len(demog_map.keys())} uids for {rqa_raw_field}')
         with open(f'{output_dir}/{rqa_raw_field}_demog_map.json', "w") as f:
@@ -101,6 +119,17 @@ if __name__ == "__main__":
     # Export the no. of messages for consented participants per frequency data to a csv
     with open(f"{output_dir}/messages_per_show_with_optins.csv", "w") as f:
         headers = ["Show", "No. of messages with opt-ins",]
+        header_writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
+        header_writer.writeheader()
+
+        writer = csv.writer(f, lineterminator="\n")
+        for row in messages_per_show_with_optins.items():
+            writer.writerow(row)
+
+    log.info(f'Writing relevant_messages_per_show with optins csv')
+    # Export the no. of messages for consented participants per frequency data to a csv
+    with open(f"{output_dir}/engagement_csvs/relevant_messages_per_show_with_optins.csv", "w") as f:
+        headers = ["Show", "No. of relevant messages with opt-ins", ]
         header_writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
         header_writer.writeheader()
 
