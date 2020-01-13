@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
     previous_radio_shows = [] # raw_fields of shows before the tv_radio shows
     for rqa_raw_field in rqa_raw_fields:
-        if f"{rqa_raw_field}" == "rqa_s02mag23_raw":
+        if rqa_raw_field == "rqa_s02mag23_raw":
             break
         previous_radio_shows.append(rqa_raw_field)
 
