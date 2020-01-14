@@ -112,7 +112,7 @@ if __name__ == "__main__":
     # of rqa_raw_field to participation metrics.
     tv_radio_shows = ["rqa_s02mag23_raw", "rqa_s02mag24_raw", "rqa_s02mag25_raw",
                       "rqa_s02mag26_raw", "rqa_s02mag27_raw", "rqa_s02mag28_raw"]
-    tv_radio_shows_uids = set()  # uids of individuals who participated in tv_radio shows.
+    tv_radio_show_uids = set()  # uids of individuals who participated in tv_radio shows.
     for rqa_raw_field in tv_radio_shows:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
             tv_radio_shows_data = json.load(f)
