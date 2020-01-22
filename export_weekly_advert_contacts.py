@@ -57,15 +57,16 @@ if __name__ == "__main__":
     )
     log.info("Initialised the Firestore UUID table")
 
-    # Fetch for avf-phone-uuids of the last five episode participants
-    active_episodes = []
+    # create a list of previous episodes
+    previous_episodes = []
     for plan in PipelineConfiguration.FULL_PIPELINE_RQA_CODING_PLANS:
         if plan.raw_field == advert_rqa_raw_field:
             break
-        active_episodes.append(plan.raw_field)
+        previous_episodes.append(plan.raw_field)
 
+    # Fetch for avf-phone-uuids of the last five episode participants
     advert_uuids = set()
-    for rqa_raw_field in active_episodes[-5:]:
+    for rqa_raw_field in previous_episodes[-5:]:
         with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
             data = json.load(f)
             for uid in data:
