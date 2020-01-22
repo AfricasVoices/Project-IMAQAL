@@ -1,8 +1,64 @@
 {
-  "SchemeID": "Scheme-eaeafd01",
+  "SchemeID": "Scheme-eaeafd01-2",
   "Name": "S02MAG28",
   "Version": "0.0.0.1",
   "Codes": [
+    {
+      "CodeID": "code-eae22ea3",
+      "CodeType": "Normal",
+      "DisplayText": "women are the backbone of the community",
+      "NumericValue": 0,
+      "StringValue": "women_are_the_backbone_of_the_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-1fbaf9f4",
+      "CodeType": "Normal",
+      "DisplayText": "women have rights",
+      "NumericValue": 1,
+      "StringValue": "women_have_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-115f2363",
+      "CodeType": "Normal",
+      "DisplayText": "encouragement",
+      "NumericValue": 2,
+      "StringValue": "encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-30fa1d68",
+      "CodeType": "Normal",
+      "DisplayText": "education",
+      "NumericValue": 3,
+      "StringValue": "education",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-f7a52d35",
+      "CodeType": "Normal",
+      "DisplayText": "cooperation",
+      "NumericValue": 4,
+      "StringValue": "cooperation",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-80d0f909",
+      "CodeType": "Normal",
+      "DisplayText": "women belong to the house",
+      "NumericValue": 5,
+      "StringValue": "women_belong_to_the_house",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-3e8a6662",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 6,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
