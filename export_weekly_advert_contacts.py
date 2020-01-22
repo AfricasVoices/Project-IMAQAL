@@ -24,7 +24,7 @@ if __name__ == "__main__":
     parser.add_argument("demog_map_json_input_dir", metavar="demog-map-json-input-dir",
                         help="Path to a directory to read per episode demog map .json files. "
                              "The files should be in the format <rqa_raw_field>_demog_map.json")
-    parser.add_argument("current_rqa_raw_field", metavar="current-rqa-raw-field",
+    parser.add_argument("advert_rqa_raw_field", metavar="current-rqa-raw-field",
                         help="The raw_field of the radio show we are advertising for i.e radio show currently airing."
                              "The string should be in the format <rqa_raw_field>")
     parser.add_argument("csv_output_file_path", metavar="csv-output-file-path",
