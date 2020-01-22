@@ -13,7 +13,7 @@ log = Logger(__name__)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generates lists of phone numbers of consented participants"
-                                                 "who participated in the last five episodes to be used in weekly "
+                                                 "who participated in the last five episodes, to be used in the weekly "
                                                  "sms advert")
 
     parser.add_argument("google_cloud_credentials_file_path", metavar="google-cloud-credentials-file-path",
