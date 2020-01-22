@@ -75,7 +75,18 @@ if __name__ == "__main__":
     # Convert the uuids to phone numbers
     log.info(f'Converting {len(advert_uuids)} uuids to phone numbers...')
     uuids_to_phone_numbers = phone_number_uuid_table.uuid_to_data_batch(list(advert_uuids))
-    advert_phone_numbers = [f"+{uuids_to_phone_numbers[uuid]}" for uuid in advert_uuids]
+    recent_episodes_phone_numbers = [f"+{uuids_to_phone_numbers[uuid]}" for uuid in advert_uuids]
+
+    # Filter non Hormuud(+25261) and Golis(+25290) phone numbers
+    log.info(f'Filtering out non Hormuud(+25261) and Golis(+25290) phone numbers...')
+    advert_phone_numbers = set()
+    other_mno_count = 0
+    for phone_number in recent_episodes_phone_numbers:
+        if phone_number.startswith('+25261') or phone_number.startswith('+25290'):
+            advert_phone_numbers.add(phone_number)
+        else:
+            other_mno_count +=1
+    log.info(f'Filtered {other_mno_count} phone numbers, returning {len(advert_phone_numbers)} phone numbers...')
 
     # Export contacts CSV
     log.warning(f"Exporting {len(advert_phone_numbers)} phone numbers to {csv_output_file_path}...")
@@ -83,8 +94,8 @@ if __name__ == "__main__":
         writer = csv.DictWriter(f, fieldnames=["URN:Tel", "Name"], lineterminator="\n")
         writer.writeheader()
 
-        for n in advert_phone_numbers:
+        for number in advert_phone_numbers:
             writer.writerow({
-                "URN:Tel": n
+                "URN:Tel": number
             })
         log.info(f"Wrote {len(advert_phone_numbers)} contacts to {csv_output_file_path}")
