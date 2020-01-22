@@ -12,7 +12,7 @@ Logger.set_project_name("IMAQAL")
 log = Logger(__name__)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generates lists of phone numbers of consented participants"
+    parser = argparse.ArgumentParser(description="Generates a list of phone numbers of consented participants"
                                                  "who participated in the last five episodes, to be used in the weekly "
                                                  "sms advert")
 
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     google_cloud_credentials_file_path = args.google_cloud_credentials_file_path
     pipeline_configuration_file_path = args.pipeline_configuration_file_path
     demog_map_json_input_dir = args.demog_map_json_input_dir
-    current_rqa_raw_field = args.current_rqa_raw_field
+    advert_rqa_raw_field = args.advert_rqa_raw_field
     csv_output_file_path = args.csv_output_file_path
 
     # Read the settings from the configuration file
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # Fetch for avf-phone-uuids of the last five episode participants
     active_episodes = []
     for plan in PipelineConfiguration.FULL_PIPELINE_RQA_CODING_PLANS:
-        if plan.raw_field == current_rqa_raw_field:
+        if plan.raw_field == advert_rqa_raw_field:
             break
         active_episodes.append(plan.raw_field)
 
@@ -72,7 +72,7 @@ if __name__ == "__main__":
                 advert_uuids.add(uid)
 
     # Convert the uuids to phone numbers
-    log.info("Converting the uuids to phone numbers...")
+    log.info(f'Converting {len(advert_uuids)} uuids to phone numbers...')
     uuids_to_phone_numbers = phone_number_uuid_table.uuid_to_data_batch(list(advert_uuids))
     advert_phone_numbers = [f"+{uuids_to_phone_numbers[uuid]}" for uuid in advert_uuids]
 
