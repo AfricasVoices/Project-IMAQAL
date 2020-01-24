@@ -4,6 +4,78 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-9ce77f25",
+      "CodeType": "Normal",
+      "DisplayText": "educate them",
+      "NumericValue": 0,
+      "StringValue": "educate_them",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-a5a6ba62",
+      "CodeType": "Normal",
+      "DisplayText": "encourage them",
+      "NumericValue": 1,
+      "StringValue": "encourage_them",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-06381ec3",
+      "CodeType": "Normal",
+      "DisplayText": "women are the backbone of the society",
+      "NumericValue": 2,
+      "StringValue": "women_are_the_backbone_of_the_society",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-f467777e",
+      "CodeType": "Normal",
+      "DisplayText": "support them in business",
+      "NumericValue": 3,
+      "StringValue": "support_them_in_business",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-3d19667e",
+      "CodeType": "Normal",
+      "DisplayText": "give them job",
+      "NumericValue": 4,
+      "StringValue": "give_them_job",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-85a9854f",
+      "CodeType": "Normal",
+      "DisplayText": "belong to the house",
+      "NumericValue": 5,
+      "StringValue": "belong_to_the_house",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-918a7f50",
+      "CodeType": "Normal",
+      "DisplayText": "general support",
+      "NumericValue": 6,
+      "StringValue": "general_support",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-a1eac830",
+      "CodeType": "Normal",
+      "DisplayText": "women should work together",
+      "NumericValue": 7,
+      "StringValue": "women_should_work_together",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-f1e5008e",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 8,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",

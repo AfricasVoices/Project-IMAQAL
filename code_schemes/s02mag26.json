@@ -4,6 +4,70 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-804abbcb",
+      "CodeType": "Normal",
+      "DisplayText": "agriculture",
+      "NumericValue": 0,
+      "StringValue": "agriculture",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-dd12baa3",
+      "CodeType": "Normal",
+      "DisplayText": "education",
+      "NumericValue": 1,
+      "StringValue": "education",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-828efa22",
+      "CodeType": "Normal",
+      "DisplayText": "entrepreneurship",
+      "NumericValue": 2,
+      "StringValue": "entrepreneurship",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-3c9c012c",
+      "CodeType": "Normal",
+      "DisplayText": "transport",
+      "NumericValue": 3,
+      "StringValue": "transport",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-38823da2",
+      "CodeType": "Normal",
+      "DisplayText": "raise awareness",
+      "NumericValue": 4,
+      "StringValue": "raise_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-265dd89c",
+      "CodeType": "Normal",
+      "DisplayText": "reconstruction",
+      "NumericValue": 5,
+      "StringValue": "reconstruction",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-5de8c547",
+      "CodeType": "Normal",
+      "DisplayText": "foreign exchange",
+      "NumericValue": 6,
+      "StringValue": "foreign_exchange",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-7c615360",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 7,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
@@ -118,6 +182,24 @@
       "DisplayText": "opt-in",
       "NumericValue": -100040,
       "StringValue": "opt_in",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-SC-a3a065bc",
+      "CodeType": "Meta",
+      "MetaCode": "similar_content",
+      "DisplayText": "similar content",
+      "NumericValue": -100050,
+      "StringValue": "similar_content",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-PI-83b90d32",
+      "CodeType": "Meta",
+      "MetaCode": "participation_incentive",
+      "DisplayText": "participation incentive",
+      "NumericValue": -100060,
+      "StringValue": "participation_incentive",
       "VisibleInCoda": true
     }
   ]

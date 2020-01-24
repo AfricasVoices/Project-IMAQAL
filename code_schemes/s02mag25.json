@@ -4,6 +4,62 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-adf16c3e",
+      "CodeType": "Normal",
+      "DisplayText": "poverty",
+      "NumericValue": 0,
+      "StringValue": "poverty",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ef281dee",
+      "CodeType": "Normal",
+      "DisplayText": "exclusion",
+      "NumericValue": 1,
+      "StringValue": "exclusion",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-796a2d6b",
+      "CodeType": "Normal",
+      "DisplayText": "social stigmatisation",
+      "NumericValue": 2,
+      "StringValue": "social_stigmatisation",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e88e5c22",
+      "CodeType": "Normal",
+      "DisplayText": "lack of justice",
+      "NumericValue": 3,
+      "StringValue": "lack_of_justice",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-61824d7e",
+      "CodeType": "Normal",
+      "DisplayText": "lack of education",
+      "NumericValue": 4,
+      "StringValue": "lack_of_education",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-198fb0fb",
+      "CodeType": "Normal",
+      "DisplayText": "do not have rights",
+      "NumericValue": 5,
+      "StringValue": "do_not_have_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-d6bad3d6",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 6,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
@@ -119,6 +175,24 @@
       "NumericValue": -100040,
       "StringValue": "opt_in",
       "VisibleInCoda": true
-    }
+    },
+    {
+        "CodeID": "code-SC-a3a065bc",
+        "CodeType": "Meta",
+        "MetaCode": "similar_content",
+        "DisplayText": "similar content",
+        "NumericValue": -100050,
+        "StringValue": "similar_content",
+        "VisibleInCoda": true
+      },
+      {
+        "CodeID": "code-PI-83b90d32",
+        "CodeType": "Meta",
+        "MetaCode": "participation_incentive",
+        "DisplayText": "participation incentive",
+        "NumericValue": -100060,
+        "StringValue": "participation_incentive",
+        "VisibleInCoda": true
+      }
   ]
 }
