@@ -145,3 +145,126 @@ if __name__ == "__main__":
 
         for row in repeat_engagement.values():
             writer.writerow(row)
+
+    log.info(f'Computing repeat and new participation per show ...')
+    # Computes the number of new and repeat consented individuals who participated in each radio show.
+    # Repeat participants are consented individuals who participated in previous shows prior to the target show.
+    # New participants are consented individuals who participated in target show but din't participate in previous shows.
+    repeat_new_participation_map = OrderedDict()  # of rqa_raw_field to participation metrics.
+    for rqa_raw_field in rqa_raw_fields:
+        target_radio_show = rqa_raw_field  # radio show in which we are calculating participation metrics for.
+
+        target_radio_show_participants = set()  # contains uids of individuals who participated in target radio show.
+        with open(f'{demog_map_json_input_dir}/{target_radio_show}_demog_map.json') as f:
+            target_radio_show_data = json.load(f)
+            for uid in target_radio_show_data:
+                target_radio_show_participants.add(uid)
+        log.debug(f'No. of uids in {target_radio_show} = {len(target_radio_show_participants)} ')
+
+        previous_radio_shows = []  # rqa_raw_fields of shows that aired before the target radio show.
+        for rqa_raw_field in rqa_raw_fields:
+            if rqa_raw_field == target_radio_show:
+                break
+            previous_radio_shows.append(rqa_raw_field)
+
+        previous_radio_shows_participants = set()  # uids of individuals who participated in previous radio shows.
+        for rqa_raw_field in previous_radio_shows:
+            with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
+                previous_radio_shows_data = json.load(f)
+                for uid in previous_radio_shows_data:
+                    previous_radio_shows_participants.add(uid)
+        log.debug(f'No. of uids in {len(previous_radio_shows)} previous_radio_shows = {len(previous_radio_shows_participants)} ')
+
+        repeat_participants = set()  # uids of individuals who participated in target and previous shows.
+        new_participants = set()  # uids of individuals who participated in target show but din't participate in previous shows.
+        for uid in target_radio_show_participants:
+            if uid in previous_radio_shows_participants:
+                repeat_participants.add(uid)
+            else:
+                new_participants.add(uid)
+        log.debug(f'No. of repeat uids in {target_radio_show} = {len(repeat_participants)} ')
+        log.debug(f'No. of new uids in {target_radio_show} = {len(new_participants)} ')
+
+        repeat_new_participation_map[target_radio_show] = {
+            "Radio Show": target_radio_show,  # Todo switch to dataset name
+            "No. of opt-in participants": len(target_radio_show_participants),
+            "No. of opt-in participants that are new": len(new_participants),
+            "No. of opt-in participants that are repeats": len(repeat_participants),
+            "% of opt-in participants that are new": None,
+            "% of opt-in participants that are repeats": None
+        }
+
+        # Compute:
+        #  -% of opt-in participants that are new, by computing No. of opt-in participants that are new / No. of opt-in participants
+        #  * 100, to 1 decimal place.
+        #  - % of opt-in participants that are repeats, by computing No. of opt-in participants that are repeats / No. of opt-in participants
+        #  * 100, to 1 decimal place.
+        if len(previous_radio_shows_participants) > 0:
+            repeat_new_participation_map[target_radio_show]["% of opt-in participants that are new"] = \
+                round(len(new_participants) / len(target_radio_show_participants) * 100, 1)
+            repeat_new_participation_map[target_radio_show]["% of opt-in participants that are repeats"] = \
+                round(len(repeat_participants) / len(target_radio_show_participants) * 100, 1)
+
+    log.info(f'Writing per show repeat and new participation metrics per show csv ...')
+    with open(f"{engagement_csv_output_dir}/per_show_repeat_and_new_participation.csv", "w") as f:
+        headers = ["Radio Show", "No. of opt-in participants", "No. of opt-in participants that are new",
+                   "No. of opt-in participants that are repeats", "% of opt-in participants that are new",
+                   "% of opt-in participants that are repeats"]
+        writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
+        writer.writeheader()
+
+        for row in repeat_new_participation_map.values():
+            writer.writerow(row)
+
+    log.info(f'Computing new and repeat participation for TV episodes ...')
+    # Computes the number of new and repeat consented individuals who participated in the TV_radio shows vis-à-vis
+    # prior radio shows only.
+    # Repeat participants are consented individuals who participated in previous shows prior to the target show.
+    # New participants are consented individuals who participated in target show but didn't participate in previous shows.
+    # of rqa_raw_field to participation metrics.
+    tv_radio_shows = ["rqa_s02mag23_raw", "rqa_s02mag24_raw", "rqa_s02mag25_raw",
+                      "rqa_s02mag26_raw", "rqa_s02mag27_raw", "rqa_s02mag28_raw"]
+    tv_radio_show_uids = set()  # uids of individuals who participated in tv_radio shows.
+    for rqa_raw_field in tv_radio_shows:
+        with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
+            tv_radio_shows_data = json.load(f)
+            for uid in tv_radio_shows_data:
+                tv_radio_shows_uids.add(uid)
+
+    previous_radio_shows = [] # raw_fields of shows before the tv_radio shows
+    for rqa_raw_field in rqa_raw_fields:
+        if rqa_raw_field == "rqa_s02mag23_raw":
+            break
+        previous_radio_shows.append(rqa_raw_field)
+
+    previous_shows_uids = set()  # uids of individuals who participated in previous radio shows.
+    for rqa_raw_field in previous_radio_shows:
+        with open(f'{demog_map_json_input_dir}/{rqa_raw_field}_demog_map.json') as f:
+            previous_radio_shows_data = json.load(f)
+            for uid in previous_radio_shows_data:
+                previous_shows_uids.add(uid)
+
+    tv_radio_repeat_uids = set()  # uids of individuals who participated in tv_radio and previous shows.
+    tv_radio_new_uids = set()  # uids of individuals who participated in tv_radio show but didn't participate in previous shows.
+    for uid in tv_radio_shows_uids:
+        if uid in previous_shows_uids:
+            tv_radio_repeat_uids.add(uid)
+        else:
+            tv_radio_new_uids.add(uid)
+
+    tv_radio_repeat_new_participation_map = {
+        "No. of previous shows participants": len(previous_shows_uids),
+        ...
+                                             "No. of tv_radio shows participants": len(tv_radio_shows_uids),
+                                             "No. of repeat participants":len(tv_radio_repeat_uids),
+                                             "No. of new participants":len(tv_radio_new_uids)}
+
+    log.info(f'Writing tv_radio repeat and new participation participation csv ...')
+    with open(f"{engagement_csv_output_dir}/tv_radio_show_repeat_and_new_participation.csv", "w") as f:
+        headers = ["No. of previous shows participants", "No. of tv_radio shows participants",
+                   "No. of repeat participants", "No. of new participants"]
+        writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
+        writer.writeheader()
+
+       writer.writerow(tv_radio_repeat_new_participation_map)
+            writer.writerow(data)
