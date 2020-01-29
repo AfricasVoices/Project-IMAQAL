@@ -257,6 +257,7 @@ if __name__ == "__main__":
         "No. of repeat participants":len(tv_radio_repeat_uids),
         "No. of new participants":len(tv_radio_new_uids)}
 
+
     log.info(f'Writing tv_radio repeat and new participation participation csv ...')
     with open(f"{engagement_csv_output_dir}/tv_radio_show_repeat_and_new_participation.csv", "w") as f:
         headers = ["No. of previous shows participants", "No. of tv_radio shows participants",
