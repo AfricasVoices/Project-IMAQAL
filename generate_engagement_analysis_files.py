@@ -127,10 +127,9 @@ if __name__ == "__main__":
             "No. of repeat participants with opt-ins": 0,
             "% of repeat participants with opt-ins": None
         }
-        for uid, basic_str in sustained_engagement_map.items():
-            for item in basic_str:
-                if item[1] == f'{shows_participated_in}':
-                    repeat_engagement[shows_participated_in]["No. of repeat participants with opt-ins"] += 1
+        for uid in engagement_map.keys():
+            if len(engagement_map[uid]['shows']) == shows_participated_in:
+                repeat_engagement[shows_participated_in]["No. of repeat participants with opt-ins"] += 1
 
     # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times over total participants with optins.
     for rp in repeat_engagement.values():
@@ -266,4 +265,3 @@ if __name__ == "__main__":
         writer.writeheader()
 
         writer.writerow(tv_radio_repeat_new_participation_map)
-        writer.writerow(data)
