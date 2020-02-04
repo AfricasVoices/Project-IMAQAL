@@ -36,7 +36,7 @@ RUN_ID=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 #if [[ $PIPELINE_RUN_MODE == "all-stages" ]]; then
     #./5_generate_analysis_graphs.sh --profile-memory "$PERFORMANCE_LOGS_DIR/memory-$RUN_ID.profile" \
         #"$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION" "$DATA_ROOT"
-fi
+#fi
 
 #./6_backup_data_root.sh "$DATA_ROOT" "$DATA_BACKUPS_DIR/data-$RUN_ID.tar.gzip"
 
