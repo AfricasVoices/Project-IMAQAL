@@ -56,14 +56,14 @@ docker build --build-arg INSTALL_CPU_PROFILER="$PROFILE_CPU" --build-arg INSTALL
 
 # Create a container from the image that was just built.
 if [[ "$PROFILE_CPU" = true ]]; then
-    PROFILE_CPU_CMD="pyflame -o /data/cpu.prof -t"
+    PROFILE_CPU_CMD="-m pyinstrument -o /data/cpu.prof --renderer html -- "
     SYS_PTRACE_CAPABILITY="--cap-add SYS_PTRACE"
 fi
 if [[ "$PROFILE_MEMORY" = true ]]; then
     PROFILE_MEMORY_CMD="mprof run -o /data/memory.prof"
 fi
 
-CMD="pipenv run $PROFILE_CPU_CMD $PROFILE_MEMORY_CMD python -u generate_outputs.py  \
+CMD="pipenv run $PROFILE_MEMORY_CMD python -u $PROFILE_CPU_CMD generate_outputs.py \
     \"$USER\" /credentials/google-cloud-credentials.json /data/pipeline_configuration.json "$PIPELINE_RUN_MODE" \
     /data/raw-data /data/prev-coded /data/output-icr /data/coded /data/output-production.csv \
     /data/auto-coding-traced-data.jsonl /data/output-messages.csv /data/output-individuals.csv \
