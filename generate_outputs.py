@@ -155,18 +155,18 @@ if __name__ == "__main__":
         messages_data, individuals_data = AnalysisFile.generate(user, data, csv_by_message_output_path,
                                                                 csv_by_individual_output_path)
 
-        log.info("Flushing messages TracedData history...")
-        IOUtils.ensure_dirs_exist_for_file(messages_history_json_output_path)
-        TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, messages_history_json_output_path)
+        #log.info("Flushing messages TracedData history...")
+        #IOUtils.ensure_dirs_exist_for_file(messages_history_json_output_path)
+        #TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, messages_history_json_output_path)
 
         log.info("Writing latest messages TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(messages_json_output_path)
         with open(messages_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(messages_data, f)
 
-        log.info("Flushing individuals TracedData history...")
-        IOUtils.ensure_dirs_exist_for_file(individuals_history_json_output_path)
-        TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, individuals_history_json_output_path)
+        #log.info("Flushing individuals TracedData history...")
+        #IOUtils.ensure_dirs_exist_for_file(individuals_history_json_output_path)
+        #TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, individuals_history_json_output_path)
 
         log.info("Writing individuals TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(individuals_json_output_path)
