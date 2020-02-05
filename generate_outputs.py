@@ -9,7 +9,7 @@ from id_infrastructure.firestore_uuid_table import FirestoreUuidTable
 from storage.google_cloud import google_cloud_utils
 from storage.google_drive import drive_client_wrapper
 
-from src import CombineRawDatasets, TranslateRapidProKeys, \
+from src import LoadData, TranslateRapidProKeys, \
     AutoCode, ProductionFile, ApplyManualCodes, AnalysisFile, WSCorrection
 
 from src.lib import PipelineConfiguration
@@ -109,48 +109,8 @@ if __name__ == "__main__":
             google_cloud_credentials_file_path, pipeline_configuration.drive_upload.drive_credentials_file_url))
         drive_client_wrapper.init_client_from_info(credentials_info)
 
-    # Load messages
-    messages_datasets = []
-    for i, activation_flow_name in enumerate(pipeline_configuration.activation_flow_names):
-        raw_activation_path = f"{raw_data_dir}/{activation_flow_name}.jsonl"
-        log.info(f"Loading {raw_activation_path}...")
-        with open(raw_activation_path, "r") as f:
-            messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-        log.info(f"Loaded {len(messages)} runs")
-        messages_datasets.append(messages)
-
-    recovery_datasets = []
-    if pipeline_configuration.recovery_csv_urls is None:
-        log.debug("Not loading any recovery datasets (because the pipeline configuration json does not contain the key "
-                  "'RecoveryCSVURLs')")
-    else:
-        log.info("Loading recovery datasets:")
-        for i, recovery_csv_url in enumerate(pipeline_configuration.recovery_csv_urls):
-            raw_recovery_path = f"{raw_data_dir}/{recovery_csv_url.split('/')[-1].split('.')[0]}.json"
-            log.info(f"Loading {raw_recovery_path}...")
-            with open(raw_recovery_path, "r") as f:
-                messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-            log.info(f"Loaded {len(messages)} runs")
-            recovery_datasets.append(messages)
-
-    # Load Follow up Surveys
-    log.info("Loading demographics and follow up surveys")
-    survey_datasets = []
-    for i, survey_flow_name in enumerate(pipeline_configuration.survey_flow_names):
-        raw_survey_up_path = f"{raw_data_dir}/{survey_flow_name}.jsonl"
-        log.info(f"Loading {raw_survey_up_path}...")
-        with open(raw_survey_up_path, "r") as f:
-            contacts = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-        log.info(f"Loaded {len(contacts)} contacts")
-        survey_datasets.append(contacts)
-
-    # Add survey data to the messages
-    log.info("Combining Datasets...")
-    coalesced_survey_datasets = []
-    for dataset in survey_datasets:
-        coalesced_survey_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
-
-    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_survey_datasets)
+    log.info("Loading the raw data...")
+    data = LoadData.load_raw_data(user, raw_data_dir, pipeline_configuration)
 
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
