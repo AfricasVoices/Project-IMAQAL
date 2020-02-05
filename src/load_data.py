@@ -34,6 +34,9 @@ class LoadData(object):
 
     @classmethod
     def load_raw_data(cls, user, raw_data_dir, pipeline_configuration):
+
+        # Load Activation datasets
+        log.info("Loading activation datasets...")
         activation_datasets = []
         for i, activation_flow_name in enumerate(pipeline_configuration.activation_flow_names):
             raw_activation_path = f"{raw_data_dir}/{activation_flow_name}.jsonl"
@@ -49,7 +52,7 @@ class LoadData(object):
                 "Not loading any recovery datasets (because the pipeline configuration json does not contain the key "
                 "'RecoveryCSVURLs')")
         else:
-            log.info("Loading recovery datasets:")
+            log.info("Loading recovery datasets...")
             for i, recovery_csv_url in enumerate(pipeline_configuration.recovery_csv_urls):
                 raw_recovery_path = f"{raw_data_dir}/{recovery_csv_url.split('/')[-1].split('.')[0]}.json"
                 log.info(f"Loading {raw_recovery_path}...")
@@ -58,8 +61,8 @@ class LoadData(object):
                 log.info(f"Loaded {len(messages)} runs")
                 recovery_datasets.append(messages)
 
-            # Load Follow up Surveys
-        log.info("Loading demographics and follow up surveys")
+        # Load Follow up Surveys
+        log.info("Loading demographics and follow up surveys...")
         survey_datasets = []
         for i, survey_flow_name in enumerate(pipeline_configuration.survey_flow_names):
             raw_survey_up_path = f"{raw_data_dir}/{survey_flow_name}.jsonl"
