@@ -68,7 +68,7 @@ class LoadData(object):
                 contacts = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
             log.info(f"Loaded {len(contacts)} contacts")
             survey_datasets.append(contacts)
-        exit()
+
         # Add survey data to the messages
         log.info("Combining Datasets...")
         coalesced_survey_datasets = []
