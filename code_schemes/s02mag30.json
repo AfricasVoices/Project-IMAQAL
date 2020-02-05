@@ -4,6 +4,78 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-4d4fd067",
+      "CodeType": "Normal",
+      "DisplayText": "women play vital roles",
+      "NumericValue": 0,
+      "StringValue": "women_play_vital_roles",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6de3100b",
+      "CodeType": "Normal",
+      "DisplayText": "women are the backbone of the community",
+      "NumericValue": 1,
+      "StringValue": "women_are_the_backbone_of_the_community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-d93c5ab9",
+      "CodeType": "Normal",
+      "DisplayText": "educate women",
+      "NumericValue": 2,
+      "StringValue": "educate_women",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-43e80a70",
+      "CodeType": "Normal",
+      "DisplayText": "encourage women",
+      "NumericValue": 3,
+      "StringValue": "encourage_women",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-5ca547b8",
+      "CodeType": "Normal",
+      "DisplayText": "women put in more efforts",
+      "NumericValue": 4,
+      "StringValue": "women_put_in_more_efforts",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e535a1e9",
+      "CodeType": "Normal",
+      "DisplayText": "it is against islamic religion",
+      "NumericValue": 5,
+      "StringValue": "it_is_against_islamic_religion",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-d5369273",
+      "CodeType": "Normal",
+      "DisplayText": "women belong to the house",
+      "NumericValue": 6,
+      "StringValue": "women_belong_to_the_house",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e29b0778",
+      "CodeType": "Normal",
+      "DisplayText": "women have rights",
+      "NumericValue": 7,
+      "StringValue": "women_have_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-8df0e9d3",
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "NumericValue": 8,
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
@@ -118,6 +190,24 @@
       "DisplayText": "opt-in",
       "NumericValue": -100040,
       "StringValue": "opt_in",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-SC-a3a065bc",
+      "CodeType": "Meta",
+      "MetaCode": "similar_content",
+      "DisplayText": "similar content",
+      "NumericValue": -100050,
+      "StringValue": "similar_content",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-PI-83b90d32",
+      "CodeType": "Meta",
+      "MetaCode": "participation_incentive",
+      "DisplayText": "participation incentive",
+      "NumericValue": -100060,
+      "StringValue": "participation_incentive",
       "VisibleInCoda": true
     }
   ]
