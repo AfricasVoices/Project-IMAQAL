@@ -72,12 +72,6 @@ CMD="pipenv run $PROFILE_CPU_CMD $PROFILE_MEMORY_CMD python -u generate_outputs.
 "
 container="$(docker container create ${SYS_PTRACE_CAPABILITY} -w /app "$IMAGE_NAME" /bin/bash -c "$CMD")"
 
-function finish {
-    # Tear down the container when done.
-    docker container rm "$container" >/dev/null
-}
-trap finish EXIT
-
 # Copy input data into the container
 docker cp "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$container:/credentials/google-cloud-credentials.json"
 docker cp "$PIPELINE_CONFIGURATION" "$container:/data/pipeline_configuration.json"
@@ -143,3 +137,6 @@ if [[ "$PROFILE_MEMORY" = true ]]; then
     mkdir -p "$(dirname "$MEMORY_PROFILE_OUTPUT_PATH")"
     docker cp "$container:/data/memory.prof" "$MEMORY_PROFILE_OUTPUT_PATH"
 fi
+
+# Tear down the container, now that all expected output files have been copied out successfully
+docker container rm "$container" >/dev/null
