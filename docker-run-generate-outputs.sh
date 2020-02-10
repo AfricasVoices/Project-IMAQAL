@@ -120,13 +120,13 @@ if [[ $PIPELINE_RUN_MODE = "all-stages" ]]; then
     mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
     docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
 
-    echo "copying traced messages history.jsonl to $OUTPUT_MESSAGES_HISTORY_JSONL"
-    mkdir -p "$(dirname "$OUTPUT_MESSAGES_HISTORY_JSONL")"
-    docker cp "$container:/data/output-messages-history.jsonl" "$OUTPUT_MESSAGES_HISTORY_JSONL"
+    #echo "copying traced messages history.jsonl to $OUTPUT_MESSAGES_HISTORY_JSONL"
+    #mkdir -p "$(dirname "$OUTPUT_MESSAGES_HISTORY_JSONL")"
+    #docker cp "$container:/data/output-messages-history.jsonl" "$OUTPUT_MESSAGES_HISTORY_JSONL"
 
-    echo "copying traced individuals history.jsonl to $OUTPUT_INDIVIDUALS_HISTORY_JSONL"
-    mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_HISTORY_JSONL")"
-    docker cp "$container:/data/output-individuals-history.jsonl" "$OUTPUT_INDIVIDUALS_HISTORY_JSONL"
+    #echo "copying traced individuals history.jsonl to $OUTPUT_INDIVIDUALS_HISTORY_JSONL"
+    #mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_HISTORY_JSONL")"
+    #docker cp "$container:/data/output-individuals-history.jsonl" "$OUTPUT_INDIVIDUALS_HISTORY_JSONL"
 
 elif [[ $PIPELINE_RUN_MODE = "auto-code-only" ]]; then
     echo "copying auto-coding-traced-data.jsonl to "$OUTPUT_AUTO_CODING_TRACED_JSONL" "
