@@ -3,13 +3,12 @@ import time
 
 from core_data_modules.cleaners import Codes
 from core_data_modules.traced_data import Metadata
-from core_data_modules.traced_data.io import TracedDataCSVIO
 from core_data_modules.traced_data.util import FoldTracedData
 from core_data_modules.util import TimeUtils
 
 from src.lib import PipelineConfiguration, ConsentUtils
 from src.lib.pipeline_configuration import CodingModes, FoldingModes
-
+from src.lib.traced_data_csv_io import TracedDataCSVIO
 
 class AnalysisFile(object):
     @staticmethod
@@ -82,7 +81,8 @@ class AnalysisFile(object):
                             analysis_dict[f"{cc.analysis_file_key}{code_string_value}"] = Codes.MATRIX_1
 
                         for key in show_matrix_keys:
-                            if key not in analysis_dict:
+                            if key not in analysis_dict and (key.endswith(Codes.STOP) or key.endswith(Codes.TRUE_MISSING)
+                                                             or key.endswith(Codes.NOT_CODED)):
                                 analysis_dict[key] = Codes.MATRIX_0
             td.append_data(analysis_dict,
                            Metadata(user, Metadata.get_call_location(), TimeUtils.utc_now_as_iso_string()))
