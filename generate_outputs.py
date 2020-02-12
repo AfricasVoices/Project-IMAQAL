@@ -1,6 +1,5 @@
 import argparse
 import json
-import os
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
@@ -63,10 +62,6 @@ if __name__ == "__main__":
                              "TracedData to <individuals-json-output-path>")
 
     args = parser.parse_args()
-
-    csv_by_message_drive_path = None
-    csv_by_individual_drive_path = None
-    production_csv_drive_path = None
 
     user = args.user
     google_cloud_credentials_file_path = args.google_cloud_credentials_file_path
@@ -172,49 +167,11 @@ if __name__ == "__main__":
         IOUtils.ensure_dirs_exist_for_file(individuals_json_output_path)
         with open(individuals_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(individuals_data, f)
-
-        # Upload to Google Drive, if requested.
-        # Note: This should happen as late as possible in order to reduce the risk of the remainder of the pipeline failing
-        # after a Drive upload has occurred. Failures could result in inconsistent outputs or outputs with no
-        # traced data log.
-        if pipeline_configuration.drive_upload is not None:
-            log.info("Uploading CSVs to Google Drive...")
-
-            production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
-            production_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.production_upload_path)
-            drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
-                                                  target_file_name=production_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-
-            messages_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_upload_path)
-            messages_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.messages_upload_path)
-            drive_client_wrapper.update_or_create(csv_by_message_output_path, messages_csv_drive_dir,
-                                                  target_file_name=messages_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-
-            individuals_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_upload_path)
-            individuals_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.individuals_upload_path)
-            drive_client_wrapper.update_or_create(csv_by_individual_output_path, individuals_csv_drive_dir,
-                                                  target_file_name=individuals_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-        else:
-            log.info("Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
-                     "'DriveUploadPaths')")
     else:
-
         assert pipeline_run_mode == "auto-code-only", "generate analysis files must be either auto-code-only or all-stages"
         log.info("Writing Auto-Coding TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(auto_coding_json_output_path)
         with open(auto_coding_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
-
-        if pipeline_configuration.drive_upload is not None:
-            log.info("Uploading production file to Google Drive...")
-            production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
-            production_csv_drive_file_name = os.path.basename(
-                pipeline_configuration.drive_upload.production_upload_path)
-            drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
-                                                  target_file_name=production_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
 
     log.info("Python script complete")

@@ -40,5 +40,6 @@ fi
 
 ./6_backup_data_root.sh "$DATA_ROOT" "$DATA_BACKUPS_DIR/data-$RUN_ID.tar.gzip"
 
-./7_upload_logs.sh "$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION" "$RUN_ID" \
-    "$PERFORMANCE_LOGS_DIR/memory-$RUN_ID.profile" "$DATA_BACKUPS_DIR/data-$RUN_ID.tar.gzip"
+./7_upload_files.sh "$USER" "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$PIPELINE_CONFIGURATION" "$RUN_ID" \
+    "$DATA_ROOT" "$PERFORMANCE_LOGS_DIR/memory-$RUN_ID.profile" "$DATA_BACKUPS_DIR/data-$RUN_ID.tar.gzip"  \
+    "$PIPELINE_RUN_MODE"
