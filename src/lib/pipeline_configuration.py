@@ -57,7 +57,7 @@ class PipelineConfiguration(object):
 
     PROJECT_START_DATE = isoparse("2019-04-19T00:00:00+03:00")
     # TODO revise this as the project nears the end
-    PROJECT_END_DATE = isoparse("2100-00-00T00:00:00+03:00")
+    PROJECT_END_DATE = isoparse("2100-01-01T00:00:00+03:00")
 
     RQA_CODING_PLANS = None
 
