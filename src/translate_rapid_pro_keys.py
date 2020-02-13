@@ -129,7 +129,7 @@ class TranslateRapidProKeys(object):
         cls._remap_radio_show_by_time_range(
             user, data, "received_on", "rqa_s02mag30_raw",
             isoparse("2020-01-30T00:00:00+03:00"),
-            isoparse("2020-02-02T20:25:00+03:00")
+            isoparse("2020-02-02T22:25:00+03:00")
         )
 
     @classmethod
