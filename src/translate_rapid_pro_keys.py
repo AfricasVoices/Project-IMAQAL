@@ -125,6 +125,12 @@ class TranslateRapidProKeys(object):
             isoparse("2019-11-28T10:22:00+03:00"),
             isoparse("2019-11-30T07:00:00+03:00")
         )
+        # Correct magazine 30 messages recovered from the Golis downtime issue
+        cls._remap_radio_show_by_time_range(
+            user, data, "received_on", "rqa_s02mag30_raw",
+            isoparse("2020-01-30T00:00:00+03:00"),
+            isoparse("2020-02-02T20:25:00+03:00")
+        )
 
     @classmethod
     def remap_key_names(cls, user, data, pipeline_configuration):
