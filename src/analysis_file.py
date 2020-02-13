@@ -80,6 +80,8 @@ class AnalysisFile(object):
                             code_string_value = cc.code_scheme.get_code_with_code_id(label['CodeID']).string_value
                             analysis_dict[f"{cc.analysis_file_key}{code_string_value}"] = Codes.MATRIX_1
 
+                        # An exception is made for keys ending with Codes.NOT_CODED, Codes.TRUE_MISSING, Codes.NOT_CODED
+                        # in this case, the key value is Codes.MATRIX_0 as this are handled in later pipeline stage.
                         for key in show_matrix_keys:
                             if key not in analysis_dict and (key.endswith(Codes.STOP) or key.endswith(Codes.TRUE_MISSING)
                                                              or key.endswith(Codes.NOT_CODED)):
