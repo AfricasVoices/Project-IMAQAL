@@ -107,7 +107,7 @@ if __name__ == "__main__":
         for row in opted_in_uids_per_show.items():
             writer.writerow(row)
 
-    # For each uid generate a sustained engagement map that contains : no of shows participated , their manually
+    # For each uid generate a sustained engagement map that contains: no of shows participated, their manually
     # coded demographics and a matrix representation of the shows they have participated in
     # (1 for show they participated and 0 otherwise.)
     sustained_engagement_map = {}
