@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
             if uid not in engagement_map:
                 engagement_map[uid] = {
-                    "demog": demogs,
+                    "demogs": demogs,
                     "shows": []
                 }
             assert demogs == engagement_map[uid]['demog'] , f"{demogs} not equal to {engagement_map[uid]['demog']}" \
