@@ -137,11 +137,11 @@ class AnalysisFile(object):
 
         # Output to CSV with one message per row
         with open(csv_by_message_output_path, "w") as f:
-            TracedDataCSVIO.export_traced_data_iterable_to_csv(data, f, headers=export_keys)
+            TracedDataCSVIO.export_traced_data_iterable_to_csv(data, f, matrix_keys, headers=export_keys)
         print(f"--Csv by Message exported to {csv_by_message_output_path}")
 
         with open(csv_by_individual_output_path, "w") as f:
-            TracedDataCSVIO.export_traced_data_iterable_to_csv(folded_data, f, headers=export_keys)
+            TracedDataCSVIO.export_traced_data_iterable_to_csv(folded_data, f, matrix_keys, headers=export_keys)
         print(f"--Csv by Individual exported to {csv_by_individual_output_path}")
 
         return data, folded_data
