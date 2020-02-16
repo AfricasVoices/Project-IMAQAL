@@ -239,9 +239,9 @@
     {"RapidProKey": "Women_Decision_Making_Opportunities (Run ID) - imaqal_s02_w22_follow_up", "PipelineKey": "women_decision_making_opportunities_run_id"},
     {"RapidProKey": "Idps_Decision_Making_Opportunities (Value) - imaqal_s02_w24_follow_up", "PipelineKey": "idps_decision_making_opportunities_raw"},
     {"RapidProKey": "Idps_Decision_Making_Opportunities (Run ID) - imaqal_s02_w24_follow_up", "PipelineKey": "idps_decision_making_opportunities_run_id"},
-     {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Value) - mag_s02_w31_follow_up", "PipelineKey": "idps_minority_clan_decision_making_opportunities_raw"},
+    {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Value) - mag_s02_w31_follow_up", "PipelineKey": "idps_minority_clan_decision_making_opportunities_raw"},
     {"RapidProKey": "Young_People_Issues_Two (Value) - mag_s02_w33_follow_up", "PipelineKey": "young_people_issues_two_raw"},
-    {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Value) - mag_s02_w31_follow_up", "PipelineKey": "idps_minority_clan_decision_making_opportunities_run_id"},
+    {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Run ID) - mag_s02_w31_follow_up", "PipelineKey": "idps_minority_clan_decision_making_opportunities_run_id"},
     {"RapidProKey": "Young_People_Issues_Two (Run ID) - mag_s02_w33_follow_up", "PipelineKey": "young_people_issues_two_run_id"}
   ],
   "PipelineName": "full_pipeline",

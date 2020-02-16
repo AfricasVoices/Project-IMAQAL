@@ -154,6 +154,7 @@ class WSCorrection(object):
                     survey_updates[plan.raw_field] = []
                 elif plan.raw_field in td:
                     # Data is not moving
+                    print(td[plan.raw_field], td[plan.time_field], plan.raw_field)
                     survey_updates[plan.raw_field] = [_WSUpdate(td[plan.raw_field], td[plan.time_field], plan.raw_field)]
 
             # Build a list of the rqa fields that haven't been moved.
