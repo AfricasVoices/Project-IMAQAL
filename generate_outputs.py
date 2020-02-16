@@ -108,8 +108,6 @@ if __name__ == "__main__":
     log.info("Loading the raw data...")
     data = LoadData.load_raw_data(user, raw_data_dir, pipeline_configuration)
 
-    data = random.sample(data, 500)
-
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
         log.info("Running Q4 pipeline")
