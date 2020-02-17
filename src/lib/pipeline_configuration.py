@@ -621,6 +621,23 @@ class PipelineConfiguration(object):
     ]
 
     Q8_RQA_CODING_PLANS = [
+        CodingPlan(raw_field="rqa_special_show_raw",
+                   time_field="sent_on",
+                   coda_filename="imaqal_special_show.json",
+                   icr_filename="imaqal_special_show.csv",
+                   run_id_field="rqa_special_show_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.IMAQAL_SPECIAL_SHOW,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="rqa_imaqal_special_show_coded",
+                           analysis_file_key="rqa_imaqal_special_show_",
+                       )
+                   ],
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("imaqal_special_show"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
         CodingPlan(raw_field="rqa_s03e15_raw",
                    time_field="sent_on",
                    coda_filename="s03e15.json",
