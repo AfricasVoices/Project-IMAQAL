@@ -40,10 +40,13 @@ container="$(docker container create -w /app "$IMAGE_NAME" /bin/bash -c "$CMD")"
 docker cp "$INPUT_PIPELINE_CONFIGURATION" "$container:/data/pipeline_configuration.json"
 docker cp "$INPUT_GOOGLE_CLOUD_CREDENTIALS" "$container:/credentials/google-cloud-credentials.json"
 docker cp "$INPUT_PRODUCTION_FILE" "$container:/data/input-production.csv"
-docker cp "$INPUT_MESSAGES_FILE" "$container:/data/input-messages.csv"
-docker cp "$INPUT_INDIVIDUALS_FILE" "$container:/data/input-individuals.csv"
 docker cp "$INPUT_MEMORY_PROFILE" "$container:/data/memory.profile"
 docker cp "$INPUT_DATA_ARCHIVE" "$container:/data/data-archive.tar.gzip"
+
+if [[ $PIPELINE_RUN_MODE = "all-stages" ]]; then
+    docker cp "$INPUT_MESSAGES_FILE" "$container:/data/input-messages.csv"
+    docker cp "$INPUT_INDIVIDUALS_FILE" "$container:/data/input-individuals.csv"
+fi
 
 # Run the container
 docker start -a -i "$container"
