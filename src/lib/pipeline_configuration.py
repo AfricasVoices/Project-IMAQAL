@@ -623,7 +623,7 @@ class PipelineConfiguration(object):
     Q8_RQA_CODING_PLANS = [
         CodingPlan(raw_field="rqa_special_show_raw",
                    time_field="sent_on",
-                   coda_filename="imaqal_special_show.json",
+                   coda_filename="special_show.json",
                    icr_filename="imaqal_special_show.csv",
                    run_id_field="rqa_special_show_run_id",
                    coding_configurations=[
