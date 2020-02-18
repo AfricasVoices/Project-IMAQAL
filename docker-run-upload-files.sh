@@ -2,12 +2,14 @@
 
 set -e
 
-IMAGE_NAME=imaqal-upload-logs
+IMAGE_NAME=imaqal-upload-files
 
 # Check that the correct number of arguments were provided.
-if [[ $# -ne 6 ]]; then
+if [[ $# -ne 10 ]]; then
     echo "Usage: ./docker-run-upload-logs.sh
-    <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <run-id> <memory-profile-path> <data-archive-path>"
+    <user> <google-cloud-credentials-file-path> <pipeline-configuration-file-path> <run-id>
+    <memory-profile-path> <data-archive-path> <production-input-csv>
+    <messages-input-csv> <individuals-input-csv>"
     exit
 fi
 
@@ -16,24 +18,35 @@ USER=$1
 INPUT_GOOGLE_CLOUD_CREDENTIALS=$2
 INPUT_PIPELINE_CONFIGURATION=$3
 RUN_ID=$4
-INPUT_MEMORY_PROFILE=$5
-INPUT_DATA_ARCHIVE=$6
+INPUT_PRODUCTION_FILE=$5
+INPUT_MESSAGES_FILE=$6
+INPUT_INDIVIDUALS_FILE=$7
+INPUT_MEMORY_PROFILE=$8
+INPUT_DATA_ARCHIVE=$9
+PIPELINE_RUN_MODE=${10}
 
 # Build an image for this pipeline stage.
 docker build -t "$IMAGE_NAME" .
 
 # Create a container from the image that was just built.
-CMD="pipenv run python -u upload_logs.py \
-    \"$USER\" /credentials/google-cloud-credentials.json /data/pipeline_configuration.json \
-    \"$RUN_ID\" /data/memory.profile /data/data-archive.tar.gzip
+CMD="pipenv run python -u upload_files.py \
+    \"$USER\" /credentials/google-cloud-credentials.json /data/pipeline_configuration.json \"$RUN_ID\" \
+    /data/input-production.csv /data/input-messages.csv /data/input-individuals.csv /data/memory.profile \
+    /data/data-archive.tar.gzip \"$PIPELINE_RUN_MODE\"
 "
 container="$(docker container create -w /app "$IMAGE_NAME" /bin/bash -c "$CMD")"
 
 # Copy input data into the container
 docker cp "$INPUT_PIPELINE_CONFIGURATION" "$container:/data/pipeline_configuration.json"
 docker cp "$INPUT_GOOGLE_CLOUD_CREDENTIALS" "$container:/credentials/google-cloud-credentials.json"
+docker cp "$INPUT_PRODUCTION_FILE" "$container:/data/input-production.csv"
 docker cp "$INPUT_MEMORY_PROFILE" "$container:/data/memory.profile"
 docker cp "$INPUT_DATA_ARCHIVE" "$container:/data/data-archive.tar.gzip"
+
+if [[ $PIPELINE_RUN_MODE = "all-stages" ]]; then
+    docker cp "$INPUT_MESSAGES_FILE" "$container:/data/input-messages.csv"
+    docker cp "$INPUT_INDIVIDUALS_FILE" "$container:/data/input-individuals.csv"
+fi
 
 # Run the container
 docker start -a -i "$container"

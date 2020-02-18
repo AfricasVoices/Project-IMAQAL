@@ -3,13 +3,12 @@ import time
 
 from core_data_modules.cleaners import Codes
 from core_data_modules.traced_data import Metadata
-from core_data_modules.traced_data.io import TracedDataCSVIO
 from core_data_modules.traced_data.util import FoldTracedData
 from core_data_modules.util import TimeUtils
 
 from src.lib import PipelineConfiguration, ConsentUtils
 from src.lib.pipeline_configuration import CodingModes, FoldingModes
-
+from src.lib.traced_data_csv_io import TracedDataCSVIO
 
 class AnalysisFile(object):
     @staticmethod
@@ -81,8 +80,11 @@ class AnalysisFile(object):
                             code_string_value = cc.code_scheme.get_code_with_code_id(label['CodeID']).string_value
                             analysis_dict[f"{cc.analysis_file_key}{code_string_value}"] = Codes.MATRIX_1
 
+                        # An exception is made for keys ending with Codes.NOT_CODED, Codes.TRUE_MISSING, Codes.NOT_CODED
+                        # in this case, the key value is Codes.MATRIX_0 as this are handled in later pipeline stage.
                         for key in show_matrix_keys:
-                            if key not in analysis_dict:
+                            if key not in analysis_dict and (key.endswith(Codes.STOP) or key.endswith(Codes.TRUE_MISSING)
+                                                             or key.endswith(Codes.NOT_CODED)):
                                 analysis_dict[key] = Codes.MATRIX_0
             td.append_data(analysis_dict,
                            Metadata(user, Metadata.get_call_location(), TimeUtils.utc_now_as_iso_string()))
@@ -135,11 +137,11 @@ class AnalysisFile(object):
 
         # Output to CSV with one message per row
         with open(csv_by_message_output_path, "w") as f:
-            TracedDataCSVIO.export_traced_data_iterable_to_csv(data, f, headers=export_keys)
+            TracedDataCSVIO.export_traced_data_iterable_to_csv(data, f, matrix_keys, headers=export_keys)
         print(f"--Csv by Message exported to {csv_by_message_output_path}")
 
         with open(csv_by_individual_output_path, "w") as f:
-            TracedDataCSVIO.export_traced_data_iterable_to_csv(folded_data, f, headers=export_keys)
+            TracedDataCSVIO.export_traced_data_iterable_to_csv(folded_data, f, matrix_keys, headers=export_keys)
         print(f"--Csv by Individual exported to {csv_by_individual_output_path}")
 
         return data, folded_data

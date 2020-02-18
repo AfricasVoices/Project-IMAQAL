@@ -7,7 +7,8 @@
     "45939459-e4d5-4ad6-8650-3e7134b9a035"
   ],
   "RecoveryCSVURLs": [
-    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_21_de_identified.csv"
+    "gs://avf-project-datasets/2019/IMAQAL/recovered_hormuud_magazine_21_de_identified.csv",
+    "gs://avf-project-datasets/2019/IMAQAL/recovered_golis_magazine_30_de_identified.csv"
   ],
   "PhoneNumberUuidTable": {
     "FirebaseCredentialsFileURL": "gs://avf-credentials/avf-id-infrastructure-firebase-adminsdk-6xps8-b9173f2bfd.json",

@@ -1,6 +1,5 @@
 import argparse
 import json
-import os
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
@@ -9,7 +8,7 @@ from id_infrastructure.firestore_uuid_table import FirestoreUuidTable
 from storage.google_cloud import google_cloud_utils
 from storage.google_drive import drive_client_wrapper
 
-from src import CombineRawDatasets, TranslateRapidProKeys, \
+from src import LoadData, TranslateRapidProKeys, \
     AutoCode, ProductionFile, ApplyManualCodes, AnalysisFile, WSCorrection
 
 from src.lib import PipelineConfiguration
@@ -64,10 +63,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    csv_by_message_drive_path = None
-    csv_by_individual_drive_path = None
-    production_csv_drive_path = None
-
     user = args.user
     google_cloud_credentials_file_path = args.google_cloud_credentials_file_path
     pipeline_configuration_file_path = args.pipeline_configuration_file_path
@@ -109,48 +104,8 @@ if __name__ == "__main__":
             google_cloud_credentials_file_path, pipeline_configuration.drive_upload.drive_credentials_file_url))
         drive_client_wrapper.init_client_from_info(credentials_info)
 
-    # Load messages
-    messages_datasets = []
-    for i, activation_flow_name in enumerate(pipeline_configuration.activation_flow_names):
-        raw_activation_path = f"{raw_data_dir}/{activation_flow_name}.jsonl"
-        log.info(f"Loading {raw_activation_path}...")
-        with open(raw_activation_path, "r") as f:
-            messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-        log.info(f"Loaded {len(messages)} runs")
-        messages_datasets.append(messages)
-
-    recovery_datasets = []
-    if pipeline_configuration.recovery_csv_urls is None:
-        log.debug("Not loading any recovery datasets (because the pipeline configuration json does not contain the key "
-                  "'RecoveryCSVURLs')")
-    else:
-        log.info("Loading recovery datasets:")
-        for i, recovery_csv_url in enumerate(pipeline_configuration.recovery_csv_urls):
-            raw_recovery_path = f"{raw_data_dir}/{recovery_csv_url.split('/')[-1].split('.')[0]}.json"
-            log.info(f"Loading {raw_recovery_path}...")
-            with open(raw_recovery_path, "r") as f:
-                messages = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-            log.info(f"Loaded {len(messages)} runs")
-            recovery_datasets.append(messages)
-
-    # Load Follow up Surveys
-    log.info("Loading demographics and follow up surveys")
-    survey_datasets = []
-    for i, survey_flow_name in enumerate(pipeline_configuration.survey_flow_names):
-        raw_survey_up_path = f"{raw_data_dir}/{survey_flow_name}.jsonl"
-        log.info(f"Loading {raw_survey_up_path}...")
-        with open(raw_survey_up_path, "r") as f:
-            contacts = TracedDataJsonIO.import_jsonl_to_traced_data_iterable(f)
-        log.info(f"Loaded {len(contacts)} contacts")
-        survey_datasets.append(contacts)
-
-    # Add survey data to the messages
-    log.info("Combining Datasets...")
-    coalesced_survey_datasets = []
-    for dataset in survey_datasets:
-        coalesced_survey_datasets.append(CombineRawDatasets.coalesce_traced_runs_by_key(user, dataset, "avf_phone_id"))
-
-    data = CombineRawDatasets.combine_raw_datasets(user, messages_datasets + recovery_datasets, coalesced_survey_datasets)
+    log.info("Loading the raw data...")
+    data = LoadData.load_raw_data(user, raw_data_dir, pipeline_configuration)
 
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
@@ -165,6 +120,9 @@ if __name__ == "__main__":
     elif pipeline_configuration.pipeline_name == "q7_pipeline":
         log.info("Running Q7 pipeline")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q7_RQA_CODING_PLANS
+    elif pipeline_configuration.pipeline_name == "q8_pipeline":
+        log.info("Running Q8 pipeline")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q8_RQA_CODING_PLANS
     else:
         assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either 'a quartely pipeline name' or 'full pipeline'"
         log.info("Running full Pipeline")
@@ -195,66 +153,28 @@ if __name__ == "__main__":
         messages_data, individuals_data = AnalysisFile.generate(user, data, csv_by_message_output_path,
                                                                 csv_by_individual_output_path)
 
-        log.info("Flushing messages TracedData history...")
-        IOUtils.ensure_dirs_exist_for_file(messages_history_json_output_path)
-        TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, messages_history_json_output_path)
+        #log.info("Flushing messages TracedData history...")
+        #IOUtils.ensure_dirs_exist_for_file(messages_history_json_output_path)
+        #TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, messages_history_json_output_path)
 
         log.info("Writing latest messages TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(messages_json_output_path)
         with open(messages_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(messages_data, f)
 
-        log.info("Flushing individuals TracedData history...")
-        IOUtils.ensure_dirs_exist_for_file(individuals_history_json_output_path)
-        TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, individuals_history_json_output_path)
+        #log.info("Flushing individuals TracedData history...")
+        #IOUtils.ensure_dirs_exist_for_file(individuals_history_json_output_path)
+        #TracedDataJsonIO.flush_history_from_traced_data_iterable(user, data, individuals_history_json_output_path)
 
         log.info("Writing individuals TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(individuals_json_output_path)
         with open(individuals_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(individuals_data, f)
-        '''
-        # Upload to Google Drive, if requested.
-        # Note: This should happen as late as possible in order to reduce the risk of the remainder of the pipeline failing
-        # after a Drive upload has occurred. Failures could result in inconsistent outputs or outputs with no
-        # traced data log.
-        if pipeline_configuration.drive_upload is not None:
-            log.info("Uploading CSVs to Google Drive...")
-
-            production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
-            production_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.production_upload_path)
-            drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
-                                                  target_file_name=production_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-
-            messages_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_upload_path)
-            messages_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.messages_upload_path)
-            drive_client_wrapper.update_or_create(csv_by_message_output_path, messages_csv_drive_dir,
-                                                  target_file_name=messages_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-
-            individuals_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_upload_path)
-            individuals_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.individuals_upload_path)
-            drive_client_wrapper.update_or_create(csv_by_individual_output_path, individuals_csv_drive_dir,
-                                                  target_file_name=individuals_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-        else:
-            log.info("Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
-                     "'DriveUploadPaths')")
     else:
-
         assert pipeline_run_mode == "auto-code-only", "generate analysis files must be either auto-code-only or all-stages"
         log.info("Writing Auto-Coding TracedData to file...")
         IOUtils.ensure_dirs_exist_for_file(auto_coding_json_output_path)
         with open(auto_coding_json_output_path, "w") as f:
             TracedDataJsonIO.export_traced_data_iterable_to_jsonl(data, f)
 
-        if pipeline_configuration.drive_upload is not None:
-            log.info("Uploading production file to Google Drive...")
-            production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
-            production_csv_drive_file_name = os.path.basename(
-                pipeline_configuration.drive_upload.production_upload_path)
-            drive_client_wrapper.update_or_create(production_csv_output_path, production_csv_drive_dir,
-                                                  target_file_name=production_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-    '''
     log.info("Python script complete")

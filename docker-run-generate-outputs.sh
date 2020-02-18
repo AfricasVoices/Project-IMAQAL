@@ -72,12 +72,6 @@ CMD="pipenv run $PROFILE_CPU_CMD $PROFILE_MEMORY_CMD python -u generate_outputs.
 "
 container="$(docker container create ${SYS_PTRACE_CAPABILITY} -w /app "$IMAGE_NAME" /bin/bash -c "$CMD")"
 
-function finish {
-    # Tear down the container when done.
-    docker container rm "$container" >/dev/null
-}
-trap finish EXIT
-
 # Copy input data into the container
 docker cp "$GOOGLE_CLOUD_CREDENTIALS_FILE_PATH" "$container:/credentials/google-cloud-credentials.json"
 docker cp "$PIPELINE_CONFIGURATION" "$container:/data/pipeline_configuration.json"
@@ -120,13 +114,13 @@ if [[ $PIPELINE_RUN_MODE = "all-stages" ]]; then
     mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
     docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
 
-    echo "copying traced messages history.jsonl to $OUTPUT_MESSAGES_HISTORY_JSONL"
-    mkdir -p "$(dirname "$OUTPUT_MESSAGES_HISTORY_JSONL")"
-    docker cp "$container:/data/output-messages-history.jsonl" "$OUTPUT_MESSAGES_HISTORY_JSONL"
+    #echo "copying traced messages history.jsonl to $OUTPUT_MESSAGES_HISTORY_JSONL"
+    #mkdir -p "$(dirname "$OUTPUT_MESSAGES_HISTORY_JSONL")"
+    #docker cp "$container:/data/output-messages-history.jsonl" "$OUTPUT_MESSAGES_HISTORY_JSONL"
 
-    echo "copying traced individuals history.jsonl to $OUTPUT_INDIVIDUALS_HISTORY_JSONL"
-    mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_HISTORY_JSONL")"
-    docker cp "$container:/data/output-individuals-history.jsonl" "$OUTPUT_INDIVIDUALS_HISTORY_JSONL"
+    #echo "copying traced individuals history.jsonl to $OUTPUT_INDIVIDUALS_HISTORY_JSONL"
+    #mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_HISTORY_JSONL")"
+    #docker cp "$container:/data/output-individuals-history.jsonl" "$OUTPUT_INDIVIDUALS_HISTORY_JSONL"
 
 elif [[ $PIPELINE_RUN_MODE = "auto-code-only" ]]; then
     echo "copying auto-coding-traced-data.jsonl to "$OUTPUT_AUTO_CODING_TRACED_JSONL" "
@@ -143,3 +137,6 @@ if [[ "$PROFILE_MEMORY" = true ]]; then
     mkdir -p "$(dirname "$MEMORY_PROFILE_OUTPUT_PATH")"
     docker cp "$container:/data/memory.prof" "$MEMORY_PROFILE_OUTPUT_PATH"
 fi
+
+# Tear down the container, now that all expected output files have been copied out successfully
+docker container rm "$container" >/dev/null

@@ -1,80 +1,8 @@
 {
-  "SchemeID": "Scheme-d3ebdfa9",
-  "Name": "S02MAG29",
+  "SchemeID": "Scheme-07816eb3",
+  "Name": "S03E18",
   "Version": "0.0.0.1",
   "Codes": [
-    {
-      "CodeID": "code-7576819a",
-      "CodeType": "Normal",
-      "DisplayText": "educate the youth",
-      "NumericValue": 0,
-      "StringValue": "educate_the_youth",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-4ebaf944",
-      "CodeType": "Normal",
-      "DisplayText": "job creation",
-      "NumericValue": 1,
-      "StringValue": "job_creation",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-01c0bfbb",
-      "CodeType": "Normal",
-      "DisplayText": "provide justice",
-      "NumericValue": 2,
-      "StringValue": "provide_justice",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-333f1078",
-      "CodeType": "Normal",
-      "DisplayText": "encourage them",
-      "NumericValue": 3,
-      "StringValue": "encourage_them",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-7ab3fafe",
-      "CodeType": "Normal",
-      "DisplayText": "good governance",
-      "NumericValue": 4,
-      "StringValue": "good_governance",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-f29bf0cf",
-      "CodeType": "Normal",
-      "DisplayText": "integration in communities",
-      "NumericValue": 5,
-      "StringValue": "integration_in_communities",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-48119b92",
-      "CodeType": "Normal",
-      "DisplayText": "youth are the backbone of the society",
-      "NumericValue": 6,
-      "StringValue": "youth_are_the_backbone_of_the_society",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-8ba6cca2",
-      "CodeType": "Normal",
-      "DisplayText": "give them opportunities",
-      "NumericValue": 7,
-      "StringValue": "give_them_opportunities",
-      "VisibleInCoda": true
-    },
-    {
-      "CodeID": "code-4337589b",
-      "CodeType": "Normal",
-      "DisplayText": "other",
-      "NumericValue": 8,
-      "StringValue": "other",
-      "VisibleInCoda": true
-    },
     {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
