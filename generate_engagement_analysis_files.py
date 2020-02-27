@@ -60,7 +60,8 @@ if __name__ == "__main__":
         rqa_raw_fields.append(plan.raw_field)
 
     log.info(f'Computing unique, lifetime_activations_per_show and per-show participants ...' )
-    engagement_map = {}  # of uid -> name of shows participated in and their demographics data.
+    engagement_map = {}  # of uid -> raw_fields of the shows participated in and their demographics data. \
+    #TODO : update to use dataset name instead of raw fields
     opted_in_participants= set()  # total of participants who sent a message and also opted in.
     opted_in_activations = []  # sum of total of every time consented participants interacts throughout a project.
     opted_in_uids_per_show = OrderedDict()  # of rqa_raw_field -> sum of total of every time consented participants interact in an episode.
@@ -69,18 +70,17 @@ if __name__ == "__main__":
             data = json.load(f)
         log.info(f"Loaded {len(data)} {rqa_raw_field} uids ")
 
-        opted_in_uids_per_show[f"{rqa_raw_field}"] = len(data.keys())
+        opted_in_uids_per_show[rqa_raw_field] = len(data.keys())
 
         for uid, demogs in data.items():
-            demog = data[uid]
 
             if uid not in engagement_map:
                 engagement_map[uid] = {
-                    "demog": demog,
+                    "demogs": demogs,
                     "shows": []
                 }
-                assert demogs == engagement_map[uid]['demog'] , f"{demogs} not equal to {engagement_map[uid]['demog']}" \
-                    f" for {uid}"
+            assert demogs == engagement_map[uid]['demog'] , f"{demogs} not equal to {engagement_map[uid]['demog']}" \
+                f" for {uid}"
 
             engagement_map[uid]["shows"].append(rqa_raw_field)
             opted_in_participants.add(uid)
@@ -102,6 +102,35 @@ if __name__ == "__main__":
         writer = csv.writer(f)
 
         for row in opted_in_uids_per_show.items():
+            writer.writerow(row)
+
+    log.info(f'Computing repeat engagement / total_participants_with_optins ...')
+    # Compute the number of consented individuals who participated exactly 1 to <number of RQAs> times.
+    # A consented individual is considered to have participated if they sent a message, regardless of the
+    # relevance of any of their messages.
+    repeat_engagement = OrderedDict()
+    for shows_participated_in in range(1, len(rqa_raw_fields) + 1):
+        repeat_engagement[shows_participated_in] = {
+            "No. of participation(s)": shows_participated_in,
+            "No. of repeat participants with opt-ins": 0,
+            "% of repeat participants with opt-ins": None
+        }
+        for uid in engagement_map.keys():
+            if len(engagement_map[uid]['shows']) == shows_participated_in:
+                repeat_engagement[shows_participated_in]["No. of repeat participants with opt-ins"] += 1
+
+    # Compute the percentage of individuals who participated exactly 1 to <number of RQAs> times over total participants with optins.
+    for rp in repeat_engagement.values():
+        rp["% of repeat participants with opt-ins"] = round(
+            rp["No. of repeat participants with opt-ins"] / len(opted_in_participants) * 100, 1)
+
+    log.info(f'Writing repeat_engagement csv ...')
+    with open(f"{engagement_csv_output_dir}/repeat_engagement.csv", "w") as f:
+        headers = ["No. of participation(s)", "No. of repeat participants with opt-ins", "% of repeat participants with opt-ins"]
+        writer = csv.DictWriter(f, fieldnames=headers, lineterminator="\n")
+        writer.writeheader()
+
+        for row in repeat_engagement.values():
             writer.writerow(row)
 
     log.info(f'Computing repeat and new participation per show ...')
@@ -214,8 +243,8 @@ if __name__ == "__main__":
         "No. of previous shows participants": len(previous_shows_uids),
         "No. of tv_radio shows participants": len(tv_radio_show_uids),
         "No. of repeat participants":len(tv_radio_repeat_uids),
-        "No. of new participants":len(tv_radio_new_uids)
-    }
+        "No. of new participants":len(tv_radio_new_uids)}
+
 
     log.info(f'Writing tv_radio repeat and new participation participation csv ...')
     with open(f"{engagement_csv_output_dir}/tv_radio_show_repeat_and_new_participation.csv", "w") as f:
@@ -225,4 +254,3 @@ if __name__ == "__main__":
         writer.writeheader()
 
         writer.writerow(tv_radio_repeat_new_participation_map)
-        writer.writerow(data)
