@@ -108,7 +108,7 @@ if __name__ == "__main__":
             writer.writerow(row)
 
     log.info(f'Computing repeat engagement / total_participants_with_optins ...')
-    # Compute the number of consented individuals who participated exactly 1 to <number of RQAs> times.
+    # Compute the number of consenting individuals who participated exactly 1 to <number of RQAs> times.
     # A consented individual is considered to have participated if they sent a message, regardless of the
     # relevance of any of their messages.
     repeat_engagement = OrderedDict()
