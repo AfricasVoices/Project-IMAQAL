@@ -93,7 +93,7 @@ if __name__ == "__main__":
                     flow_id, raw_runs, raw_export_log_file=raw_runs_log_file)
             except FileNotFoundError:
                 log.info(f"File '{raw_runs_path}' not found, will fetch all runs from the Rapid Pro server for flow '{flow}'")
-                raw_runs = rapid_pro.get_raw_runs_for_flow_id(flow_id, raw_export_log_file=raw_runs_log_file)
+                raw_runs = rapid_pro.get_raw_runs_for_flow_id(flow_id, raw_export_log_file=raw_runs_log_file, ignore_archives=True)
 
         # Fetch the latest contacts from Rapid Pro.
         with open(contacts_log_path, "a") as raw_contacts_log_file:
