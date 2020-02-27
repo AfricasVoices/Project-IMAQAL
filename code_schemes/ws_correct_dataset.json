@@ -609,15 +609,6 @@
             ]
         },
         {
-            "CodeID": "code-NR-5e3eee23",
-            "CodeType": "Control",
-            "ControlCode": "NR",
-            "DisplayText": "NR (not reviewed)",
-            "NumericValue": -40,
-            "StringValue": "NR",
-            "VisibleInCoda": false
-        },
-        {
             "CodeID": "code-8b99aa8a",
             "CodeType": "Normal",
             "DisplayText": "imaqal_special_show",
@@ -704,6 +695,15 @@
             "MatchValues": [
                 "s03e21"
             ]
+        },
+        {
+            "CodeID": "code-NR-5e3eee23",
+            "CodeType": "Control",
+            "ControlCode": "NR",
+            "DisplayText": "NR (not reviewed)",
+            "NumericValue": -40,
+            "StringValue": "NR",
+            "VisibleInCoda": false
         },
         {
             "CodeID": "code-CE-016c1e22",
