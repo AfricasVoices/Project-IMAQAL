@@ -59,6 +59,15 @@ DATASETS=(
     "s02mag29"
     "s02mag30"
 
+    "special_show"
+    "s03e15"
+    "s03e16"
+    "s03e17"
+    "s03e18"
+    "s03e19"
+    "s03e20"
+    "s03e21"
+
     "gender"
     "location"
     "age"

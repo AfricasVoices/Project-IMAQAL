@@ -51,6 +51,9 @@ if __name__ == "__main__":
     elif pipeline_configuration.pipeline_name == "q7_pipeline":
         log.info("Extracting Q7 pipeline data")
         PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q7_RQA_CODING_PLANS
+    elif pipeline_configuration.pipeline_name == "q8_pipeline":
+        log.info("Extracting Q8 pipeline data")
+        PipelineConfiguration.RQA_CODING_PLANS = PipelineConfiguration.Q8_RQA_CODING_PLANS
     else:
         assert pipeline_configuration.pipeline_name == "full_pipeline", "PipelineName must be either" \
                                                                         " 'a quarterly pipeline name' or 'full pipeline'"

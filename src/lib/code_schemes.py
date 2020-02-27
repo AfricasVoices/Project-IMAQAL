@@ -69,6 +69,15 @@ class CodeSchemes(object):
     S02MAG29 = _open_scheme("s02mag29.json")
     S02MAG30 = _open_scheme("s02mag30.json")
 
+    IMAQAL_SPECIAL_SHOW = _open_scheme("imaqal_special_show.json")
+    S03E15 = _open_scheme("s03e15.json")
+    S03E16 = _open_scheme("s03e16.json")
+    S03E17 = _open_scheme("s03e17.json")
+    S03E18 = _open_scheme("s03e18.json")
+    S03E19 = _open_scheme("s03e19.json")
+    S03E20 = _open_scheme("s03e20.json")
+    S03E21 = _open_scheme("s03e21.json")
+
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
     WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")
     MINORITY_CLAN_ISSUES = _open_scheme("minority_clan_issues.json")
