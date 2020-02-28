@@ -38,6 +38,10 @@ if __name__ == "__main__":
     parser.add_argument("pipeline_run_mode", help="whether to generate analysis files or not", choices=["all-stages", "auto-code-only"])
 
     args = parser.parse_args()
+    
+    csv_by_message_drive_path = None
+    csv_by_individual_drive_path = None
+    production_csv_drive_path = None
 
     user = args.user
     google_cloud_credentials_file_path = args.google_cloud_credentials_file_path
