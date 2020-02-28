@@ -4,6 +4,70 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "StringValue": "encouragement",
+      "DisplayText": "encouragement",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-e552fbf3",
+      "CodeType": "Normal"
+    },
+    {
+      "NumericValue": 1,
+      "CodeID": "code-3abd8fe8",
+      "CodeType": "Normal",
+      "StringValue": "peace_and_stability",
+      "DisplayText": "peace and stability",
+      "VisibleInCoda": true
+    },
+    {
+      "StringValue": "awareness_creation",
+      "DisplayText": "awareness creation",
+      "VisibleInCoda": true,
+      "NumericValue": 2,
+      "CodeID": "code-51a2553b",
+      "CodeType": "Normal"
+    },
+    {
+      "DisplayText": "fair justice system",
+      "VisibleInCoda": true,
+      "NumericValue": 3,
+      "CodeID": "code-ac52b3ef",
+      "CodeType": "Normal",
+      "StringValue": "fair_justice_system"
+    },
+    {
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-585341f8",
+      "CodeType": "Normal",
+      "StringValue": "cooperation",
+      "DisplayText": "cooperation"
+    },
+    {
+      "StringValue": "follow_the_teachings_of_the_religion",
+      "DisplayText": "follow the teachings of the religion",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-702e99a4",
+      "CodeType": "Normal"
+    },
+    {
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-5f906cc0",
+      "CodeType": "Normal",
+      "StringValue": "stop_discrimination",
+      "DisplayText": "stop discrimination"
+    },
+    {
+      "NumericValue": 7,
+      "CodeID": "code-ad45d449",
+      "CodeType": "Normal",
+      "StringValue": "other",
+      "DisplayText": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
