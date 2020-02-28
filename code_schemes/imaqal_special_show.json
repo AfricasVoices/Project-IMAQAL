@@ -4,6 +4,78 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "StringValue": "ali",
+      "DisplayText": "ali",
+      "VisibleInCoda": true,
+      "NumericValue": 0,
+      "CodeID": "code-6c88bf5a",
+      "CodeType": "Normal"
+    },
+    {
+      "NumericValue": 1,
+      "CodeID": "code-9c9847a6",
+      "CodeType": "Normal",
+      "StringValue": "ismail",
+      "DisplayText": "ismail",
+      "VisibleInCoda": true
+    },
+    {
+      "NumericValue": 2,
+      "CodeID": "code-4cd72bce",
+      "CodeType": "Normal",
+      "StringValue": "mumina",
+      "DisplayText": "mumina",
+      "VisibleInCoda": true
+    },
+    {
+      "NumericValue": 3,
+      "CodeID": "code-10ad4f77",
+      "CodeType": "Normal",
+      "StringValue": "positive_remarks_about_drama",
+      "DisplayText": "positive remarks about drama",
+      "VisibleInCoda": true
+    },
+    {
+      "StringValue": "bilan",
+      "DisplayText": "bilan",
+      "VisibleInCoda": true,
+      "NumericValue": 4,
+      "CodeID": "code-ddf04a8d",
+      "CodeType": "Normal"
+    },
+    {
+      "DisplayText": "jamila",
+      "VisibleInCoda": true,
+      "NumericValue": 5,
+      "CodeID": "code-84843eac",
+      "CodeType": "Normal",
+      "StringValue": "jamila"
+    },
+    {
+      "CodeType": "Normal",
+      "StringValue": "all_characters",
+      "DisplayText": "all characters",
+      "VisibleInCoda": true,
+      "NumericValue": 6,
+      "CodeID": "code-4bdddf48"
+    },
+    {
+      "StringValue": "negative_perception",
+      "DisplayText": "negative perception",
+      "VisibleInCoda": true,
+      "NumericValue": 7,
+      "CodeID": "code-fd9af9e3",
+      "CodeType": "Normal"
+    },
+    {
+      "NumericValue": 8,
+      "CodeID": "code-3cc1540f",
+      "CodeType": "Normal",
+      "StringValue": "others",
+      "DisplayText": "others",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
