@@ -4,6 +4,78 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-583ed610",
+      "NumericValue": 0,
+      "CodeType": "Normal",
+      "StringValue": "encouragement",
+      "DisplayText": "encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-64a681d5",
+      "NumericValue": 1,
+      "CodeType": "Normal",
+      "StringValue": "awareness_creation",
+      "DisplayText": "awareness creation",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-49160869",
+      "NumericValue": 2,
+      "CodeType": "Normal",
+      "StringValue": "elders_have_roles",
+      "DisplayText": "elders have roles",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6ea854d9",
+      "NumericValue": 3,
+      "CodeType": "Normal",
+      "StringValue": "women_are_the_backbone_of_the_community",
+      "DisplayText": "women are the backbone of the community",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-bcec8921",
+      "NumericValue": 4,
+      "CodeType": "Normal",
+      "StringValue": "by_supporting_them_in_politics",
+      "DisplayText": "by supporting them in politics",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-4e730b9c",
+      "NumericValue": 5,
+      "CodeType": "Normal",
+      "StringValue": "give_women_their_rights",
+      "DisplayText": "give women their rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6c104327",
+      "NumericValue": 6,
+      "CodeType": "Normal",
+      "StringValue": "religion_does_not_allow",
+      "DisplayText": "religion does not allow",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ea8989c4",
+      "NumericValue": 7,
+      "CodeType": "Normal",
+      "StringValue": "women_belong_to_the_house",
+      "DisplayText": "women belong to the house",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-f2be6a91",
+      "NumericValue": 8,
+      "CodeType": "Normal",
+      "StringValue": "other",
+      "DisplayText": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
