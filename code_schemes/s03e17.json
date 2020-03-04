@@ -4,6 +4,94 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-583ed610",
+      "NumericValue": 0,
+      "CodeType": "Normal",
+      "DisplayText": "religion does not allow",
+      "StringValue": "religion_does_not_allow",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 1,
+      "CodeType": "Normal",
+      "DisplayText": "awareness creation",
+      "StringValue": "awareness_creation",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 2,
+      "CodeType": "Normal",
+      "DisplayText": "working together",
+      "StringValue": "working_together",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 3,
+      "CodeType": "Normal",
+      "DisplayText": "encouragement",
+      "StringValue": "encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 4,
+      "CodeType": "Normal",
+      "DisplayText": "give them their rights",
+      "StringValue": "give_them_their_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 5,
+      "CodeType": "Normal",
+      "DisplayText": "backbone of the society",
+      "StringValue": "backbone_of_the_society",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 6,
+      "CodeType": "Normal",
+      "DisplayText": "women belong to the house",
+      "StringValue": "women_belong_to_the_house",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 7,
+      "CodeType": "Normal",
+      "DisplayText": "support them in politics",
+      "StringValue": "support_them_in_politics",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 8,
+      "CodeType": "Normal",
+      "DisplayText": "put in more effort",
+      "StringValue": "put_in_more_effort",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 9,
+      "CodeType": "Normal",
+      "DisplayText": "have the rights to participate in politics",
+      "StringValue": "have_the_rights_to_participate_in_politics",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-583ed610",
+      "NumericValue": 10,
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
