@@ -4,6 +4,78 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-6c88bf5a",
+      "CodeType": "Normal",
+      "DisplayText": "ali",
+      "StringValue": "ali",
+      "NumericValue": 0,
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-9c9847a6",
+      "CodeType": "Normal",
+      "DisplayText": "ismail",
+      "StringValue": "ismail",
+      "NumericValue": 1,
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-4cd72bce",
+      "CodeType": "Normal",
+      "DisplayText": "mumina",
+      "StringValue": "mumina",
+      "NumericValue": 2,
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ddf04a8d",
+      "CodeType": "Normal",
+      "DisplayText": "bilan",
+      "StringValue": "bilan",
+      "NumericValue": 4,
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-84843eac",
+      "CodeType": "Normal",
+      "DisplayText": "jamila",
+      "StringValue": "jamila",
+      "NumericValue": 5,
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-4bdddf48",
+      "CodeType": "Normal",
+      "DisplayText": "all characters",
+      "StringValue": "all_characters",
+      "NumericValue": 6,
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-10ad4f77",
+      "CodeType": "Normal",
+      "DisplayText": "positive remarks about drama",
+      "StringValue": "positive_remarks_about_drama",
+      "NumericValue": 3,
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-fd9af9e3",
+      "CodeType": "Normal",
+      "DisplayText": "negative perception",
+      "StringValue": "negative_perception",
+      "NumericValue": 7,
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-3cc1540f",
+      "CodeType": "Normal",
+      "NumericValue": 8,
+      "StringValue": "others",
+      "DisplayText": "others",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
