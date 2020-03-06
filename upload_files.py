@@ -57,7 +57,7 @@ if __name__ == "__main__":
     log.info("Loading Pipeline Configuration File...")
     with open(pipeline_configuration_file_path) as f:
         pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
-
+    '''
     if pipeline_run_mode == "all-stages":
         # Upload to Google Drive, if requested.
         if pipeline_configuration.drive_upload is not None:
@@ -102,7 +102,7 @@ if __name__ == "__main__":
             drive_client_wrapper.update_or_create(production_csv_input_path, production_csv_drive_dir,
                                                   target_file_name=production_csv_drive_file_name,
                                                   target_folder_is_shared_with_me=True)
-
+    '''
     memory_profile_upload_location = f"{pipeline_configuration.memory_profile_upload_url_prefix}{run_id}.profile"
     log.info(f"Uploading the memory profile from {memory_profile_file_path} to "
              f"{memory_profile_upload_location}...")
