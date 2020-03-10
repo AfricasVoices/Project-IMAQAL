@@ -4,6 +4,70 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-6cdc8074",
+      "NumericValue": 0,
+      "CodeType": "Normal",
+      "DisplayText": "create jobs for the youth",
+      "StringValue": "create_jobs_for_the_youth",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-579a3c59",
+      "NumericValue": 1,
+      "CodeType": "Normal",
+      "DisplayText": "education",
+      "StringValue": "education",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-e705638c",
+      "NumericValue": 2,
+      "CodeType": "Normal",
+      "DisplayText": "working together",
+      "StringValue": "working_together",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-33ff657b",
+      "NumericValue": 3,
+      "CodeType": "Normal",
+      "DisplayText": "give them opportunities",
+      "StringValue": "give_them_opportunities",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6a5d42f7",
+      "NumericValue": 4,
+      "CodeType": "Normal",
+      "DisplayText": "encouragement",
+      "StringValue": "encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-2ad22508",
+      "NumericValue": 5,
+      "CodeType": "Normal",
+      "DisplayText": "stop clannism",
+      "StringValue": "stop_clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-4848ce6f",
+      "NumericValue": 6,
+      "CodeType": "Normal",
+      "DisplayText": "youth are the backbone",
+      "StringValue": "youth_are_the_backbone",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-4c484ccf",
+      "NumericValue": 7,
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
