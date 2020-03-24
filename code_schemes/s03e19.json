@@ -4,6 +4,62 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-0e94e65f",
+      "NumericValue": 0,
+      "CodeType": "Normal",
+      "DisplayText": "stop discrimination",
+      "StringValue": "stop_discrimination",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-fa0820b5",
+      "NumericValue": 1,
+      "CodeType": "Normal",
+      "DisplayText": "raise awareness",
+      "StringValue": "raise_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-0599deb3",
+      "NumericValue": 2,
+      "CodeType": "Normal",
+      "DisplayText": "justice and equality",
+      "StringValue": "justice_and_equality",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-cd23b50b",
+      "NumericValue": 3,
+      "CodeType": "Normal",
+      "DisplayText": "good governance",
+      "StringValue": "good_governance",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-3c81dba6",
+      "NumericValue": 4,
+      "CodeType": "Normal",
+      "DisplayText": "stop clannism",
+      "StringValue": "stop_clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ec191e9b",
+      "NumericValue": 5,
+      "CodeType": "Normal",
+      "DisplayText": "follow the teachings of the islamic religion",
+      "StringValue": "follow_the_teachings_of_the_islamic_religion",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-21af2a3f",
+      "NumericValue": 6,
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
