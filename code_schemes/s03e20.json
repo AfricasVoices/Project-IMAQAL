@@ -4,6 +4,86 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 0,
+      "CodeType": "Normal",
+      "DisplayText": "women are the backbone",
+      "StringValue": "women_are_the_backbone",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ce045f3d",
+      "NumericValue": 1,
+      "CodeType": "Normal",
+      "DisplayText": "encouragement",
+      "StringValue": "encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-beb56ce7",
+      "NumericValue": 2,
+      "CodeType": "Normal",
+      "DisplayText": "create awareness",
+      "StringValue": "create_awareness",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-cf0b7c00",
+      "NumericValue": 3,
+      "CodeType": "Normal",
+      "DisplayText": "belong to the house",
+      "StringValue": "belong_to_the_house",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6217d82a",
+      "NumericValue": 4,
+      "CodeType": "Normal",
+      "DisplayText": "religion does not allow",
+      "StringValue": "religion_does_not_allow",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-6a71d2f8",
+      "NumericValue": 5,
+      "CodeType": "Normal",
+      "DisplayText": "give them opportunities",
+      "StringValue": "give_them_opportunities",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ddf009da",
+      "NumericValue": 6,
+      "CodeType": "Normal",
+      "DisplayText": "put in more efforts",
+      "StringValue": "put_in_more_efforts",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-a94fdb23",
+      "NumericValue": 7,
+      "CodeType": "Normal",
+      "DisplayText": "give them their rights",
+      "StringValue": "give_them_their_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-07139c82",
+      "NumericValue": 8,
+      "CodeType": "Normal",
+      "DisplayText": "have rights",
+      "StringValue": "have_rights",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-75156820",
+      "NumericValue": 9,
+      "CodeType": "Normal",
+      "DisplayText": "other",
+      "StringValue": "other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
