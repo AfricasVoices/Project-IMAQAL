@@ -4,6 +4,118 @@
   "Version": "0.0.0.1",
   "Codes": [
     {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 0,
+      "CodeType": "Normal",
+      "DisplayText": "yes, continuity of imaqal programmes",
+      "StringValue": "yes_continuity_of_imaqal_programmes",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 1,
+      "CodeType": "Normal",
+      "DisplayText": "yes, youth issues",
+      "StringValue": "yes_youth_issues",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 2,
+      "CodeType": "Normal",
+      "DisplayText": "yes, how to stop clannism",
+      "StringValue": "yes_how_to_stop_clannism",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 3,
+      "CodeType": "Normal",
+      "DisplayText": "yes, family issues",
+      "StringValue": "yes_family_issues",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 4,
+      "CodeType": "Normal",
+      "DisplayText": "yes, coronavirus issues",
+      "StringValue": "yes_coronavirus_issues",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 5,
+      "CodeType": "Normal",
+      "DisplayText": "yes, development issues",
+      "StringValue": "yes_development_issues",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 6,
+      "CodeType": "Normal",
+      "DisplayText": "yes, rape issues",
+      "StringValue": "yes_rape_issue",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 7,
+      "CodeType": "Normal",
+      "DisplayText": "yes, talk of sports",
+      "StringValue": "yes_talk_of_sports",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 8,
+      "CodeType": "Normal",
+      "DisplayText": "yes, encouragement",
+      "StringValue": "yes_encouragement",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 9,
+      "CodeType": "Normal",
+      "DisplayText": "yes, awareness creation",
+      "StringValue": "yes_awareness_creation",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 10,
+      "CodeType": "Normal",
+      "DisplayText": "no, don't need its continuity",
+      "StringValue": "no_don_t_need_its_continuity",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 11,
+      "CodeType": "Normal",
+      "DisplayText": "no, religious issues",
+      "StringValue": "no_religious_issues",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-ae4b3e1a",
+      "NumericValue": 12,
+      "CodeType": "Normal",
+      "DisplayText": "yes, other",
+      "StringValue": "yes_other",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-eea3fa59",
+      "NumericValue": 13,
+      "CodeType": "Normal",
+      "DisplayText": "no, other",
+      "StringValue": "no_other",
+      "VisibleInCoda": true
+    },
+    {
       "CodeID": "code-NA-f93d3eb7",
       "CodeType": "Control",
       "ControlCode": "NA",
