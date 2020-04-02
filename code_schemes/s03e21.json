@@ -103,8 +103,16 @@
       "CodeID": "code-ae4b3e1a",
       "NumericValue": 12,
       "CodeType": "Normal",
-      "DisplayText": "other",
-      "StringValue": "other",
+      "DisplayText": "yes, other",
+      "StringValue": "yes_other",
+      "VisibleInCoda": true
+    },
+    {
+      "CodeID": "code-eea3fa59",
+      "NumericValue": 13,
+      "CodeType": "Normal",
+      "DisplayText": "no, other",
+      "StringValue": "no_other",
       "VisibleInCoda": true
     },
     {
