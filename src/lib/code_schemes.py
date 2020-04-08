@@ -77,6 +77,8 @@ class CodeSchemes(object):
     S03E19 = _open_scheme("s03e19.json")
     S03E20 = _open_scheme("s03e20.json")
     S03E21 = _open_scheme("s03e21.json")
+    S03E21_YES_NO_AMB = _open_scheme("s03e21_yes_no_amb.json")
+
 
     WOMEN_PARTICIPATION = _open_scheme("women_participation.json")
     WOMEN_PARTICIPATION_YES_NO_AMB = _open_scheme("women_participation_yes_no_amb.json")
