@@ -747,6 +747,13 @@ class PipelineConfiguration(object):
                    run_id_field="rqa_s03e21_run_id",
                    coding_configurations=[
                        CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.S03E21_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="rqa_s03e21_yes_no_amb_coded",
+                           analysis_file_key="rqa_s03e21_yes_no_amb",
+                       ),
+                       CodingConfiguration(
                            coding_mode=CodingModes.MULTIPLE,
                            code_scheme=CodeSchemes.S03E21,
                            folding_mode=FoldingModes.MATRIX,
@@ -754,6 +761,7 @@ class PipelineConfiguration(object):
                            analysis_file_key="rqa_s03e21_",
                        )
                    ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("s03e21"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
@@ -1233,6 +1241,31 @@ class PipelineConfiguration(object):
                    ],
                    code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
                    ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("young_people_issues_two"),
+                   raw_field_folding_mode=FoldingModes.CONCATENATE),
+
+        CodingPlan(raw_field="youth_decision_making_opportunities_raw",
+                   time_field="sent_on",
+                   coda_filename="youth_decision_making_opportunities.json",
+                   icr_filename="youth_decision_making_opportunities.csv",
+                   run_id_field="youth_decision_making_opportunities_run_id",
+                   coding_configurations=[
+                       CodingConfiguration(
+                           coding_mode=CodingModes.SINGLE,
+                           code_scheme=CodeSchemes.YOUTH_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB,
+                           folding_mode=FoldingModes.YES_NO_AMB,
+                           coded_field="youth_decision_making_opportunities_yes_no_amb_coded",
+                           analysis_file_key="youth_decision_making_opportunities_yes_no_amb",
+                       ),
+                       CodingConfiguration(
+                           coding_mode=CodingModes.MULTIPLE,
+                           code_scheme=CodeSchemes.YOUTH_DECISION_MAKING_OPPORTUNITIES,
+                           folding_mode=FoldingModes.MATRIX,
+                           coded_field="youth_decision_making_opportunities_coded",
+                           analysis_file_key="youth_decision_making_opportunities_",
+                       )
+                   ],
+                   code_imputation_function=code_imputation_functions.impute_yes_no_reasons_codes,
+                   ws_code=CodeSchemes.WS_CORRECT_DATASET.get_code_with_match_value("youth_decision_making_opportunities"),
                    raw_field_folding_mode=FoldingModes.CONCATENATE),
     ]
 
