@@ -20,7 +20,8 @@
     "imaqal_s03e18_activation",
     "imaqal_s03e19_activation",
     "imaqal_s03e20_activation",
-    "imaqal_s03e21_activation"
+    "imaqal_s03e21_activation",
+    "imaqal_s03_w50_follow_up"
   ],
   "SurveyFlowNames":[
     "imaqal_demog"
@@ -68,7 +69,11 @@
     {"RapidProKey": "Household_Language (Value) - imaqal_demog", "PipelineKey": "household_language_raw"},
     {"RapidProKey": "Household_Language (Time) - imaqal_demog", "PipelineKey": "household_language_time"},
     {"RapidProKey": "District (Value) - imaqal_demog", "PipelineKey": "location_raw"},
-    {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"}
+    {"RapidProKey": "District (Time) - imaqal_demog", "PipelineKey": "location_time"},
+
+    {"RapidProKey": "Youth_Decision_Making_Opportunities (Time) - imaqal_s03_w50_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Youth_Decision_Making_Opportunities (Value) - imaqal_s03_w50_follow_up", "PipelineKey": "youth_decision_making_opportunities_raw"},
+    {"RapidProKey": "Youth_Decision_Making_Opportunities (Run ID) - imaqal_s03_w50_follow_up", "PipelineKey": "youth_decision_making_opportunities_run_id"}
   ],
   "PipelineName": "q8_pipeline",
   "MoveWSMessages": false,
