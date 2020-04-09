@@ -1,6 +1,6 @@
 import argparse
-import os
 import json
+import os
 
 from core_data_modules.logging import Logger
 from storage.google_cloud import google_cloud_utils
@@ -38,10 +38,6 @@ if __name__ == "__main__":
     parser.add_argument("pipeline_run_mode", help="whether to generate analysis files or not", choices=["all-stages", "auto-code-only"])
 
     args = parser.parse_args()
-    
-    csv_by_message_drive_path = None
-    csv_by_individual_drive_path = None
-    production_csv_drive_path = None
 
     user = args.user
     google_cloud_credentials_file_path = args.google_cloud_credentials_file_path
@@ -58,50 +54,32 @@ if __name__ == "__main__":
     with open(pipeline_configuration_file_path) as f:
         pipeline_configuration = PipelineConfiguration.from_configuration_file(f)
 
+    log.info(f"Downloading Google Drive service account credentials...")
+    credentials_info = json.loads(google_cloud_utils.download_blob_to_string(
+        google_cloud_credentials_file_path, pipeline_configuration.drive_upload.drive_credentials_file_url))
+    drive_client_wrapper.init_client_from_info(credentials_info)
+
+    log.info("Uploading production file to Google Drive...")
+    production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
+    production_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.production_upload_path)
+    drive_client_wrapper.update_or_create(production_csv_input_path, production_csv_drive_dir,
+                                          target_file_name=production_csv_drive_file_name,
+                                          target_folder_is_shared_with_me=True)
+
     if pipeline_run_mode == "all-stages":
-        # Upload to Google Drive, if requested.
-        if pipeline_configuration.drive_upload is not None:
-            log.info(f"Downloading Google Drive service account credentials...")
-            credentials_info = json.loads(google_cloud_utils.download_blob_to_string(
-                google_cloud_credentials_file_path, pipeline_configuration.drive_upload.drive_credentials_file_url))
-            drive_client_wrapper.init_client_from_info(credentials_info)
+        log.info("Uploading Analysis CSVs to Google Drive...")
 
-            log.info("Uploading CSVs to Google Drive...")
+        messages_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_upload_path)
+        messages_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.messages_upload_path)
+        drive_client_wrapper.update_or_create(messages_csv_input_path, messages_csv_drive_dir,
+                                              target_file_name=messages_csv_drive_file_name,
+                                              target_folder_is_shared_with_me=True)
 
-            production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
-            production_csv_drive_file_name = os.path.basename(
-                pipeline_configuration.drive_upload.production_upload_path)
-            drive_client_wrapper.update_or_create(production_csv_input_path, production_csv_drive_dir,
-                                                  target_file_name=production_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-
-            messages_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.messages_upload_path)
-            messages_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.messages_upload_path)
-            drive_client_wrapper.update_or_create(messages_csv_input_path, messages_csv_drive_dir,
-                                                  target_file_name=messages_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-
-            individuals_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_upload_path)
-            individuals_csv_drive_file_name = os.path.basename(
-                pipeline_configuration.drive_upload.individuals_upload_path)
-            drive_client_wrapper.update_or_create(individuals_csv_input_path, individuals_csv_drive_dir,
-                                                  target_file_name=individuals_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
-        else:
-            log.info(
-                "Skipping uploading to Google Drive (because the pipeline configuration json does not contain the key "
-                "'DriveUploadPaths')")
-    else:
-        assert pipeline_run_mode == "auto-code-only", "generate analysis files must be either auto-code-only or all-stages"
-
-        if pipeline_configuration.drive_upload is not None:
-            log.info("Uploading production file to Google Drive...")
-            production_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.production_upload_path)
-            production_csv_drive_file_name = os.path.basename(
-                pipeline_configuration.drive_upload.production_upload_path)
-            drive_client_wrapper.update_or_create(production_csv_input_path, production_csv_drive_dir,
-                                                  target_file_name=production_csv_drive_file_name,
-                                                  target_folder_is_shared_with_me=True)
+        individuals_csv_drive_dir = os.path.dirname(pipeline_configuration.drive_upload.individuals_upload_path)
+        individuals_csv_drive_file_name = os.path.basename(pipeline_configuration.drive_upload.individuals_upload_path)
+        drive_client_wrapper.update_or_create(individuals_csv_input_path, individuals_csv_drive_dir,
+                                              target_file_name=individuals_csv_drive_file_name,
+                                              target_folder_is_shared_with_me=True)
 
     memory_profile_upload_location = f"{pipeline_configuration.memory_profile_upload_url_prefix}{run_id}.profile"
     log.info(f"Uploading the memory profile from {memory_profile_file_path} to "
