@@ -20,11 +20,11 @@
     "imaqal_s03e18_activation",
     "imaqal_s03e19_activation",
     "imaqal_s03e20_activation",
-    "imaqal_s03e21_activation",
-    "imaqal_s03_w50_follow_up"
+    "imaqal_s03e21_activation"
   ],
   "SurveyFlowNames":[
-    "imaqal_demog"
+    "imaqal_demog",
+    "imaqal_s03_w50_follow_up"
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
