@@ -4,6 +4,86 @@
     "SchemeID": "Scheme-3337dcdb",
     "Codes": [
       {
+        "VisibleInCoda": true,
+        "NumericValue": 0,
+        "CodeID": "code-c1ebbaf2",
+        "CodeType": "Normal",
+        "StringValue": "yes_youth_are_the_backbone_of_the_society",
+        "DisplayText": "yes, youth are the backbone of the society"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 1,
+        "CodeID": "code-e102d0a8",
+        "CodeType": "Normal",
+        "StringValue": "yes_they_have_opportunity",
+        "DisplayText": "yes, they have opportunity"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 2,
+        "CodeID": "code-79569cf6",
+        "CodeType": "Normal",
+        "StringValue": "yes_other",
+        "DisplayText": "yes, other"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 3,
+        "CodeID": "code-edbeb652",
+        "CodeType": "Normal",
+        "StringValue": "no_unemployment",
+        "DisplayText": "no, unemployment"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 4,
+        "CodeID": "code-f7fe8858",
+        "CodeType": "Normal",
+        "StringValue": "no_lack_of_good_governance",
+        "DisplayText": "no, lack of good governance"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 5,
+        "CodeID": "code-521102a2",
+        "CodeType": "Normal",
+        "StringValue": "no_lack_of_encouragement",
+        "DisplayText": "no, lack of encouragement"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 6,
+        "CodeID": "code-a37a3264",
+        "CodeType": "Normal",
+        "StringValue": "no_youth_do_not_work_together",
+        "DisplayText": "no, youth do not work together"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 7,
+        "CodeID": "code-8a5667bf",
+        "CodeType": "Normal",
+        "StringValue": "no_exclusion",
+        "DisplayText": "no, exclusion"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 8,
+        "CodeID": "code-b34e7917",
+        "CodeType": "Normal",
+        "StringValue": "no_decisions_are_made_by_traditional_elders",
+        "DisplayText": "no, decisions are made by traditional elders"
+      },
+      {
+        "VisibleInCoda": true,
+        "NumericValue": 9,
+        "CodeID": "code-a3b9b566",
+        "CodeType": "Normal",
+        "StringValue": "no_other",
+        "DisplayText": "no, other"
+      },
+      {
         "CodeID": "code-NA-f93d3eb7",
         "CodeType": "Control",
         "ControlCode": "NA",
