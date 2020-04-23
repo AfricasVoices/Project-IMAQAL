@@ -246,10 +246,9 @@
     {"RapidProKey": "Decisions_Minority_Clan (Time) - mag_s01_w18_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Women_Decision_Making_Opportunities (Time) - imaqal_s02_w22_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Idps_Decision_Making_Opportunities (Time) - imaqal_s02_w24_follow_up", "PipelineKey": "sent_on"},
-    {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Time) - imaqal_s02_w31_follow_up", "PipelineKey": "sent_on"},
+    {"RapidProKey": "Idps_Minority_Clan_Decision_Making_Opportunities (Time) - mag_s02_w31_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Young_People_Issues_Two (Time) - mag_s02_w33_follow_up", "PipelineKey": "sent_on"},
     {"RapidProKey": "Youth_Decision_Making_Opportunities (Time) - imaqal_s03_w50_follow_up", "PipelineKey": "sent_on"},
-
 
     {"RapidProKey": "Gender (Value) - imaqal_demog", "PipelineKey": "gender_raw"},
     {"RapidProKey": "Gender (Time) - imaqal_demog", "PipelineKey": "gender_time"},
