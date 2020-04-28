@@ -153,7 +153,6 @@ class WSCorrection(object):
                     # Data is moving
                     survey_updates[plan.raw_field] = []
                 elif plan.raw_field in td:
-                    print(plan.raw_field)
                     # Data is not moving
                     survey_updates[plan.raw_field] = [_WSUpdate(td[plan.raw_field], td[plan.time_field], plan.raw_field)]
 
