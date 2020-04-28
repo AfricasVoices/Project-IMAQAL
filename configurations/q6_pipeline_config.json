@@ -93,7 +93,7 @@
     {"RapidProKey": "Idps_Decision_Making_Opportunities (Run ID) - imaqal_s02_w24_follow_up", "PipelineKey": "idps_decision_making_opportunities_run_id"}
   ],
   "PipelineName": "q6_pipeline",
-  "MoveWSMessages": false,
+  "MoveWSMessages": true,
   "DriveUpload": {
     "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
     "ProductionUploadPath": "imaqal_analysis_outputs/quarter_six/imaqal_s02_production.csv",

@@ -76,7 +76,7 @@
     {"RapidProKey": "Youth_Decision_Making_Opportunities (Run ID) - imaqal_s03_w50_follow_up", "PipelineKey": "youth_decision_making_opportunities_run_id"}
   ],
   "PipelineName": "q8_pipeline",
-  "MoveWSMessages": false,
+  "MoveWSMessages": true,
   "DriveUpload": {
     "DriveCredentialsFileURL": "gs://avf-credentials/pipeline-runner-service-acct-avf-data-core-64cc71459fe7.json",
     "ProductionUploadPath": "imaqal_analysis_outputs/quarter_eight/imaqal_s03_production.csv",
