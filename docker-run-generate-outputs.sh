@@ -106,13 +106,13 @@ if [[ $PIPELINE_RUN_MODE = "all-stages" ]]; then
     mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_CSV")"
     docker cp "$container:/data/output-individuals.csv" "$OUTPUT_INDIVIDUALS_CSV"
 
-    echo "copying traced messages.jsonl to "$OUTPUT_MESSAGES_JSONL" "
-    mkdir -p "$(dirname "$OUTPUT_MESSAGES_JSONL")"
-    docker cp "$container:/data/output-messages.jsonl" "$OUTPUT_MESSAGES_JSONL"
+    #echo "copying traced messages.jsonl to "$OUTPUT_MESSAGES_JSONL" "
+    #mkdir -p "$(dirname "$OUTPUT_MESSAGES_JSONL")"
+    #docker cp "$container:/data/output-messages.jsonl" "$OUTPUT_MESSAGES_JSONL"
 
-    echo "copying traced individuals.jsonl to "$OUTPUT_INDIVIDUALS_JSONL" "
-    mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
-    docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
+    #echo "copying traced individuals.jsonl to "$OUTPUT_INDIVIDUALS_JSONL" "
+    #mkdir -p "$(dirname "$OUTPUT_INDIVIDUALS_JSONL")"
+    #docker cp "$container:/data/output-individuals.jsonl" "$OUTPUT_INDIVIDUALS_JSONL"
 
     #echo "copying traced messages history.jsonl to $OUTPUT_MESSAGES_HISTORY_JSONL"
     #mkdir -p "$(dirname "$OUTPUT_MESSAGES_HISTORY_JSONL")"
