@@ -77,7 +77,8 @@
     "imaqal_s02_w22_follow_up",
     "imaqal_s02_w24_follow_up",
     "mag_s02_w31_follow_up",
-    "mag_s02_w33_follow_up"
+    "mag_s02_w33_follow_up",
+    "imaqal_s03_w50_follow_up"
   ],
   "RapidProKeyRemappings": [
     {"RapidProKey": "avf_phone_id", "PipelineKey": "uid"},
