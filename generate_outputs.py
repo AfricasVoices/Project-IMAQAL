@@ -98,6 +98,11 @@ if __name__ == "__main__":
         "avf-phone-uuid-"
     )
 
+    print(type(phone_number_uuid_table))
+
+    #print(phone_number_uuid_table)
+    exit()
+
     if pipeline_configuration.drive_upload is not None:
         log.info(f"Downloading Google Drive service account credentials...")
         credentials_info = json.loads(google_cloud_utils.download_blob_to_string(
@@ -106,6 +111,8 @@ if __name__ == "__main__":
 
     log.info("Loading the raw data...")
     data = LoadData.load_raw_data(user, raw_data_dir, pipeline_configuration)
+
+    #data = [td for td in data if td['avf-phone-id'] = ""]
 
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
