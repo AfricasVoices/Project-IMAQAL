@@ -98,9 +98,9 @@ if __name__ == "__main__":
         "avf-phone-uuid-"
     )
 
-    print(type(phone_number_uuid_table))
+    #print(type(phone_number_uuid_table))
 
-    #print(phone_number_uuid_table)
+    print(phone_number_uuid_table)
     exit()
 
     if pipeline_configuration.drive_upload is not None:
