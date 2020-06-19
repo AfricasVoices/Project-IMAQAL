@@ -1150,14 +1150,14 @@ class PipelineConfiguration(object):
                    coding_configurations=[
                        CodingConfiguration(
                            coding_mode=CodingModes.SINGLE,
-                           code_scheme=CodeSchemes.WOMEN_PARTICIPATION_YES_NO_AMB,
+                           code_scheme=CodeSchemes.WOMEN_DECISION_MAKING_OPPORTUNITIES_YES_NO_AMB,
                            folding_mode=FoldingModes.YES_NO_AMB,
                            coded_field="women_decision_making_opportunities_yes_no_amb_coded",
                            analysis_file_key="women_decision_making_opportunities_yes_no_amb",
                        ),
                        CodingConfiguration(
                            coding_mode=CodingModes.MULTIPLE,
-                           code_scheme=CodeSchemes.WOMEN_PARTICIPATION,
+                           code_scheme=CodeSchemes.WOMEN_DECISION_MAKING_OPPORTUNITIES,
                            folding_mode=FoldingModes.MATRIX,
                            coded_field="women_decision_making_opportunities_clan_coded",
                            analysis_file_key="women_decision_making_opportunities_",
