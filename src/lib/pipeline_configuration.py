@@ -1364,7 +1364,8 @@ class PipelineConfiguration(object):
                            code_scheme=CodeSchemes.MOGADISHU_SUB_DISTRICT,
                            folding_mode=FoldingModes.ASSERT_EQUAL,
                            cleaner=somali.DemographicCleaner.clean_mogadishu_sub_district,
-                           coded_field="mogadishu_sub_district_coded"
+                           coded_field="mogadishu_sub_district_coded",
+                           analysis_file_key="mogadishu_sub_district"
                        ),
                        CodingConfiguration(
                            coding_mode=CodingModes.SINGLE,
