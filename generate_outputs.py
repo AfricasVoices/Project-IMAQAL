@@ -1,5 +1,6 @@
 import argparse
-import json
+import json  
+import random
 
 from core_data_modules.logging import Logger
 from core_data_modules.traced_data.io import TracedDataJsonIO
@@ -106,6 +107,8 @@ if __name__ == "__main__":
 
     log.info("Loading the raw data...")
     data = LoadData.load_raw_data(user, raw_data_dir, pipeline_configuration)
+    
+    data = [td for td in data if td['avf-phone-uuid'] == 'avf-phone-uuid-6290f209-69b1-493e-b264-627c7328ae78']
 
     # Infer which RQA coding plans to use from the pipeline name.
     if pipeline_configuration.pipeline_name == "q4_pipeline":
